@@ -1,41 +1,50 @@
-SRC =	$(SRC_DIR)/main.c	\
-		$(SRC_DIR)/resources.c
+SRCS		=	$(SRCS_DIR)/main.c 						\
+				$(SRCS_DIR)/gnl/get_next_line.c 		\
+				$(SRCS_DIR)/gnl/get_next_line_utils.c	\
+				$(SRCS_DIR)/str/str.c					\
+				$(SRCS_DIR)/str/utils1.c				\
+				$(SRCS_DIR)/str/utils2.c				\
+				$(SRCS_DIR)/allocs/allocs.c				
 
+SRCS_DIR	=	srcs
 
-OBJ 	= $(substr $(SRC_DIR), $(OBJ_DIR), $(SRC:.c=.o))
+OBJS		=	$(subst $(SRCS_DIR), $(OBJS_DIR), $(SRCS:.c=.o))
 
-SRC_DIR = srcs
+OBJS_DIR	=	objs
 
-OBJ_DIR = objs
+MLX			=	mlx_linux/libmlx_Linux.a
 
-NAME 	= cub3d
+NAME		=	cub3d
 
-CFLAGS 	= -Wall -Wextra -Werror -g -I$(INC) -fsanitize=address
+CC			=	cc
 
-MLXFLAG = -lXext -lX11 -lm -lz
+INC			=	-Iincludes -Ilibs/printf_fd/include -I/usr/include -Imlx_linux
 
-RM		= rm -rf
+CFLAGS		=	-Wall -Wextra -Werror -g -fsanitize=address
 
-INC		= includes/
+RM			=	rm -rf
 
-CC 		= gcc
+MLX_FLAGS		= -Lmlx_linux -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
 
+all:		$(NAME)
 
-all : $(NAME)
+$(OBJS_DIR)/%.o :	$(SRCS_DIR)/%.c
+		mkdir -p $(@D)
+		$(CC) $(CFLAGS) $(INC) -O3 -c $< -o $@
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux $(MLXFLAG) -o $(NAME) $(OBJ)
+$(NAME):	$(PRINTF) $(MLX) $(OBJS)
+		$(CC) $(CFLAGS) $(OBJS) $(INC) -o $(NAME) $(MLX_FLAGS)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) -I/usr/local/include -Imlx_linux -O3 -c $< -o $@
+$(MLX):
+		make -C mlx_linux
 
 clean:
-	rm -f $(OBJ_DIR)
+		$(RM) $(OBJS_DIR)
+		make clean -C mlx_linux
 
-fclean: clean
-	rm -f $(NAME)
+fclean:		clean
+		$(RM) $(NAME)
 
-re: fclean all
+re:			fclean all
 
-.PHONY: all clean fclean re 
+.PHONY: all clean fclean re

@@ -1,44 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 14:14:19 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/02/15 17:14:31 by mgranate         ###   ########.fr       */
+/*   Created: 2023/02/15 16:55:17 by mgranate          #+#    #+#             */
+/*   Updated: 2023/02/15 16:55:19 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-# include <stdlib.h>
-# include <mlx.h>
-# include <allocs.h>
-# include <str.h>
-# include <stdio.h>
 # include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
 
-# define X_EVENT_KEY_PRESS			2
-# define X_EVENT_KEY_RELEASE		3
-# define X_EVENT_KEY_EXIT			17
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1000
+# endif
 
-# define KEY_ESC		65307
-# define W 119
-# define A 97
-# define S 115
-# define D 100
-# define LEFT 65361
-# define RIGHT 65363
-
-
-typedef struct s_g t_g;
-
-struct s_g
-{
-    void		*mlx;
-	void		*win;
-};
+char	*ft_get_line(char *buff, char *line);
+char	*get_next_line(int fd);
+int		ft_checknl(char *buff);
 
 #endif

@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:14:45 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/02/15 16:12:34 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/02/15 17:19:29 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
+#include <cub3d.h>
 
 int	exit_win(t_g *g)
 {
@@ -32,22 +29,20 @@ int	press_key(int key, t_g *g)
 
 int	main(int ac, char **av)
 {
-	(void)ac;
-	(void)av;
 	t_g		g;
-	// char	*ext;
+	char	*ext;
 	
-	// if (ac != 2)
-	// {
-	// 	write(1, "Error\nInvalid arg count\n", 25);
-	// 	return (1);
-	// }
-	// ext = ft_strrchr(av[1], '.');
-	// if (!ext || strcmp(ext, ".cub"))
-	// {
-	// 	write(1, "Error\nInvalid or missing map file\n", 35);
-	// 	return (1);
-	// }
+	if (ac != 2)
+	{
+		write(1, "Error\nInvalid arg count\n", 25);
+		return (1);
+	}
+	ext = string().strrchr(av[1], '.');
+	if (!ext || string().strncmp(ext, ".cub", 5))
+	{
+		write(1, "Error\nInvalid or missing map file\n", 35);
+		return (1);
+	}
 	g.mlx = mlx_init();
 	// if (!assign_xpm(&g))
 	// 	return (1);
