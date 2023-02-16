@@ -6,7 +6,7 @@
 /*   By: benmonico <benmonico@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:14:19 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/02/16 18:54:33 by benmonico        ###   ########.fr       */
+/*   Updated: 2023/02/16 18:59:23 by benmonico        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define X_EVENT_KEY_EXIT			17
 
 
-# if MACKEYMAP == 1
+# if MACKEYMAP==1
 #  define KEY_ESC	53
 #  define KEY_W		13
 #  define KEY_A		0
@@ -41,7 +41,7 @@
 #  define D 			100
 #  define LEFT 		65361
 #  define RIGHT 		65363
-#  endif
+# endif
 
 typedef struct s_g t_g;
 

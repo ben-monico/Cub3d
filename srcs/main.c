@@ -6,7 +6,7 @@
 /*   By: benmonico <benmonico@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:14:45 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/02/16 18:53:49 by benmonico        ###   ########.fr       */
+/*   Updated: 2023/02/16 18:59:17 by benmonico        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	press_key(int key, t_g *g)
 	if (key == KEY_ESC)
 		exit_win(g);
 	printf("%d\n", key);
-	printf("esc %d\n", KEY_ESC);
 	return (key);
 }
 
