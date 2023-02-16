@@ -1,11 +1,10 @@
 SRCS		=	$(SRCS_DIR)/main.c 						\
-				$(SRCS_DIR)/raycasting.c				\
 				$(SRCS_DIR)/gnl/get_next_line.c 		\
 				$(SRCS_DIR)/gnl/get_next_line_utils.c	\
 				$(SRCS_DIR)/str/str.c					\
 				$(SRCS_DIR)/str/utils1.c				\
 				$(SRCS_DIR)/str/utils2.c				\
-				$(SRCS_DIR)/allocs/allocs.c				
+				$(SRCS_DIR)/allocs/allocs.c							
 
 SRCS_DIR	=	srcs
 

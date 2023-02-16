@@ -6,7 +6,7 @@
 /*   By: benmonico <benmonico@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:14:19 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/02/16 19:37:13 by benmonico        ###   ########.fr       */
+/*   Updated: 2023/02/16 21:06:25 by benmonico        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,6 @@
 # include <str.h>
 # include <stdio.h>
 # include <unistd.h>
-
-# define X_EVENT_KEY_PRESS			2
-# define X_EVENT_KEY_RELEASE		3
-# define X_EVENT_KEY_EXIT			17
-
 
 # if MACKEYMAP == 1
 #  define KEY_ESC	53
@@ -44,9 +39,31 @@
 #  define RIGHT 		65363
 #  endif
 
+# define X_EVENT_KEY_PRESS			2
+# define X_EVENT_KEY_RELEASE		3
+# define X_EVENT_KEY_EXIT			17
+# define screenW	1280
+# define screenH	720
+
 typedef struct s_cub t_cub;
 typedef struct s_img t_img;
 typedef struct s_map t_map;
+typedef struct s_player t_player;
+typedef struct s_dist t_dist;
+
+struct s_dist
+{
+	double  rayDirX;
+    double  rayDirY;
+	double  sideDistX;
+    double  sideDistY;
+    double  deltaDistX;
+    double  deltaDistY;
+    int stepX;
+    int stepY;
+    int mapX;
+    int mapY;
+};
 
 struct	s_map
 {
