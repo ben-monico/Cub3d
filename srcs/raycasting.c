@@ -6,11 +6,50 @@
 /*   By: benmonico <benmonico@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:10:24 by benmonico         #+#    #+#             */
-/*   Updated: 2023/02/16 21:17:02 by benmonico        ###   ########.fr       */
+/*   Updated: 2023/02/16 22:47:32 by benmonico        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
+#include <math.h>
+//missing map getter
+t_map		map;
+
+void    put_line(t_cub *cub, t_line *line)
+{
+    t_img   imgline;
+    int     h;
+
+    imgline.ptr = mlx_new_image(cub->mlx, 1, line->ceilingPoint);
+	imgline.addr = mlx_get_data_addr(imgline.ptr, &imgline.bpp,
+                    &imgline.size_line, &imgline.endian);
+	h = line->floorPoint;
+    printf("floor %d / ceiling %d\n", line->floorPoint, line->ceilingPoint);
+	while (h < line->ceilingPoint)
+	{
+		my_mlx_pixel_put(&imgline, line->x, h, 0x0000FF);
+		h++;
+        printf("linha posta %d\n", h);
+	}
+}
+
+void    fix_fisheye_get_wall_h(t_dist *dist, t_line *line)
+{
+    double  fisheyeDist;
+    int     wallHeight;
+
+    if (dist->wallSide == 0)
+        fisheyeDist = dist->sideDistX - dist->deltaDistX;
+    else
+        fisheyeDist = dist->sideDistY - dist->deltaDistY;
+    wallHeight = (int)(screenH / fisheyeDist);
+    line->ceilingPoint = -wallHeight / 2 + screenH / 2;
+    line->floorPoint = wallHeight / 2 + screenH / 2;
+    if (line->ceilingPoint < 0)
+        line->floorPoint = 0;
+    if (line->floorPoint >= screenH)
+        line->floorPoint = screenH - 1;
+}
 
 void    calc_sidedist(t_dist *dist, t_player *player)
 {
@@ -36,10 +75,9 @@ void    calc_sidedist(t_dist *dist, t_player *player)
     }
 }
 
-void    perform_dda(t_dist *dist)
+void    perform_DDA(t_dist *dist, t_map *map)
 {
     int hit;
-    int side;
 
     hit = 0;
     while (!hit)
@@ -48,47 +86,68 @@ void    perform_dda(t_dist *dist)
         {
             dist->sideDistX += dist->deltaDistX;
             dist->mapX += dist->stepX;
-            side = 0;
+            dist->wallSide = 0;
         }
         else
         {
             dist->sideDistY += dist->deltaDistY;
             dist->mapY += dist->stepY;
-            side = 1;
+            dist->wallSide = 1;
         }
-        if (check_map()[dist->mapX][dist->mapY] > 0)
+        // if (check_map()[dist->mapX][dist->mapY] > 0)
+        //     hit = 1;
+        if (map->map[dist->mapX][dist->mapY] > 0)
             hit = 1;
-    }
+    }    
 }
 
-void    raycasting(t_player *player)
+void    raycasting(t_cub *cub, t_player *player)
 {
-    int x;
-    int w;
     double  cameraX;
-    t_dist dist;
+    t_dist  dist;
+    t_line  line;
+    //placeholder
+      t_map map = tester_map();
+     
+        int x = 0;
+        int y;
+        while(map.map[x])
+        {
+            y = 0;
+            while (map.map[x][y])
+            {
+                if (map.map[x][y] == 'N')
+                {
+                    player->posX = x;
+                    player->posY = y;
+                    player->dirX = 0;
+                    player->dirY = 1;
+                }
+                y++;  
+            }
+            x++;
+        }
+    //end of placeholder
 
-    x = -1;
-    w = 0;
-    while (++x < w)
+    while (++line.x < screenW)
     {
-        cameraX = 2 * x / (double)screenW - 1;
-        dist. rayDirX = player->dirX + player->fovX * cameraX;
+        cameraX = 2 * line.x / (double)screenW - 1;
+        dist.rayDirX = player->dirX + player->fovX * cameraX;
         dist.rayDirY = player->dirY + player->fovY * cameraX;
     }
-    double  perpWallDist;
-    int wallside;
-
     dist.mapX = (int)player->posX;
     dist.mapY = (int)player->posY;
     if (dist.rayDirX == 0)
         dist.deltaDistX = 1e30;
     else
-       dist. deltaDistY = abs(1/dist.rayDirY);
+        dist.deltaDistX = fabs(1/dist.rayDirX);
     if (dist.rayDirY == 0)
         dist.deltaDistY = 1e30;
     else
-       dist. deltaDistY = abs(1/dist.rayDirY);
+       dist.deltaDistY = fabs(1/dist.rayDirY);
     calc_sidedist(&dist, player);
-    perform_DDA(&dist);
+    perform_DDA(&dist, &map);
+    fix_fisheye_get_wall_h(&dist, &line);
+    put_line(cub, &line);
+
 }

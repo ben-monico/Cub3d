@@ -6,7 +6,7 @@
 /*   By: benmonico <benmonico@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:14:19 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/02/16 21:06:25 by benmonico        ###   ########.fr       */
+/*   Updated: 2023/02/16 22:21:04 by benmonico        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,17 @@
 
 typedef struct s_cub t_cub;
 typedef struct s_img t_img;
+typedef struct s_line t_line;
 typedef struct s_map t_map;
 typedef struct s_player t_player;
 typedef struct s_dist t_dist;
+
+struct s_line
+{
+	int	floorPoint;
+	int	ceilingPoint;
+	int	x;
+};
 
 struct s_dist
 {
@@ -63,6 +71,7 @@ struct s_dist
     int stepY;
     int mapX;
     int mapY;
+	int	wallSide;
 };
 
 struct	s_map
@@ -102,4 +111,9 @@ struct		s_player
 	double	fovX;
 	double	fovY;
 };
+
+t_map	tester_map();
+void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
+void    raycasting(t_cub *cub, t_player *player);
+
 #endif
