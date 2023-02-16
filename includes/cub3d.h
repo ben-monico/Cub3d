@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:14:19 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/02/16 20:06:49 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/02/16 21:43:21 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <str.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <get_next_line.h>
 
 # define X_EVENT_KEY_PRESS			2
 # define X_EVENT_KEY_RELEASE		3
@@ -36,12 +37,12 @@
 #  define RIGHT 	124
 # else
 #  define KEY_ESC	65307
-#  define W 			119
-#  define A 			97
-#  define S 			115
-#  define D 			100
+#  define W 		119
+#  define A 		97
+#  define S 		115
+#  define D 		100
 #  define LEFT 		65361
-#  define RIGHT 		65363
+#  define RIGHT 	65363
 #  endif
 
 typedef struct s_cub t_cub;
@@ -50,7 +51,7 @@ typedef struct s_map t_map;
 
 struct	s_map
 {
-	char	**map;
+	char	**mtx;
 	int		player_x;
 	int		player_y;
 	char	p_orientation;
@@ -59,22 +60,25 @@ struct	s_map
 	int		*c_c;
 };
 
-struct s_cub
-{
-    void	*mlx;
-	void    *win;
-    int     **map_mtx;
-	t_map	map;
-};
-
 struct		s_img
 {
+	void	**img;
 	void	*ptr;
 	char	*addr;		// In my code I changed this to int *, which I will explain in a second
 	int		bpp;	//when using ARGB this value is always 32
 	int		size_line;	//This value represents (your image width) * 4 which I will also explain after
 	int		endian;		//This value can be either 0 or 1 and will indicate how the ARGB bytes are organized (from front to back or back to front)
 };
+
+struct s_cub
+{
+    void	*mlx;
+	void    *win;
+    int     **map_mtx;
+	t_map	map;
+	t_img	img;
+};
+
 
 struct		s_player
 {
@@ -85,4 +89,13 @@ struct		s_player
 	double	fovX;
 	double	fovY;
 };
+
+t_cub	*new_cube(void);
+
+//Read File and Create Map
+int		read_file(t_cub *cube, char *file_name);
+
+// Clean Program
+void	exit_free(t_cub *data, int status, char *str);
+
 #endif
