@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   allocs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 17:04:53 by mgranate          #+#    #+#             */
-/*   Updated: 2023/02/15 17:06:20 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/02/15 18:49:32 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	free_array(void *array)
 	if (!array)
 		return ;
 	free(array);
-	array = NULL;
 	array = NULL;
 }
 

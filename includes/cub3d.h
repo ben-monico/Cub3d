@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:14:19 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/02/15 17:14:31 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/02/16 18:48:34 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,22 @@
 # define X_EVENT_KEY_RELEASE		3
 # define X_EVENT_KEY_EXIT			17
 
-# define KEY_ESC		65307
-# define W 119
-# define A 97
-# define S 115
-# define D 100
-# define LEFT 65361
-# define RIGHT 65363
+# define KEY_ESC	65307
+# define W			119
+# define A			97
+# define S			115
+# define D			100
+# define LEFT		65361
+# define RIGHT		65363
 
 
-typedef struct s_g t_g;
+typedef struct s_cub t_cub;
 
-struct s_g
+struct s_cub
 {
     void		*mlx;
 	void		*win;
+	char		**map;
 };
 
 #endif

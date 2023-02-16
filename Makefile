@@ -18,9 +18,9 @@ NAME		=	cub3d
 
 CC			=	cc
 
-INC			=	-Iincludes -Ilibs/printf_fd/include -I/usr/include -Imlx_linux
+INC			=	-Iincludes -I/usr/include -Imlx_linux
 
-CFLAGS		=	-Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS		=	-Wall -Wextra -Werror -g #-fsanitize=address
 
 RM			=	rm -rf
 
