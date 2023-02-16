@@ -6,7 +6,7 @@
 /*   By: benmonico <benmonico@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:14:45 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/02/16 18:59:17 by benmonico        ###   ########.fr       */
+/*   Updated: 2023/02/16 19:09:30 by benmonico        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ int	press_key(int key, t_g *g)
 	printf("%d\n", key);
 	return (key);
 }
-
-
 
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 {

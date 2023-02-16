@@ -6,7 +6,7 @@
 /*   By: benmonico <benmonico@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:14:19 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/02/16 18:59:23 by benmonico        ###   ########.fr       */
+/*   Updated: 2023/02/16 19:21:22 by benmonico        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@
 #  define RIGHT 		65363
 # endif
 
-typedef struct s_g t_g;
+typedef struct	s_g t_g;
+typedef struct	s_img t_img;
+typedef struct	s_player t_player;
 
 struct s_g
 {
@@ -52,13 +54,22 @@ struct s_g
     int     **map_mtx;  
 };
 
-typedef struct		s_img
+struct		s_img
 {
 	void	*ptr;
 	char	*addr;		// In my code I changed this to int *, which I will explain in a second
 	int		bpp;	//when using ARGB this value is always 32
 	int		size_line;	//This value represents (your image width) * 4 which I will also explain after
 	int		endian;		//This value can be either 0 or 1 and will indicate how the ARGB bytes are organized (from front to back or back to front)
-}			t_img;
+};
 
+struct		s_player
+{
+	double	posX;
+	double	posY;
+	double	dirX;
+	double	dirY;
+	double	fovX;
+	double	fovY;
+};
 #endif
