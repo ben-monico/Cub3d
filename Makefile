@@ -1,4 +1,5 @@
 SRCS		=	$(SRCS_DIR)/main.c 						\
+				$(SRCS_DIR)/raycasting.c				\
 				$(SRCS_DIR)/gnl/get_next_line.c 		\
 				$(SRCS_DIR)/gnl/get_next_line_utils.c	\
 				$(SRCS_DIR)/str/str.c					\
@@ -12,35 +13,43 @@ OBJS		=	$(subst $(SRCS_DIR), $(OBJS_DIR), $(SRCS:.c=.o))
 
 OBJS_DIR	=	objs
 
-MLX			=	mlx_linux/libmlx_Linux.a
-
 NAME		=	cub3d
 
 CC			=	cc
 
-INC			=	-Iincludes -I/usr/include -Imlx_linux
-
-CFLAGS		=	-Wall -Wextra -Werror -g #-fsanitize=address
+CFLAGS		=	-Wall -Wextra -Werror -g -fsanitize=address
 
 RM			=	rm -rf
 
-MLX_FLAGS		= -Lmlx_linux -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
+ifeq ($(shell uname), Linux)
+MACFLAG		=	-DMACKEYMAP=0
+MLX			=	mlx_linux/libmlx_Linux.a
+MLX_DIR 	= 	mlx_linux
+MLX_FLAGS	= 	-Lmlx_linux -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
+INC			=	-I . -Iincludes -I/usr/include -Imlx_linux -O3
+else
+MACFLAG		=	-DMACKEYMAP=1
+MLX			=	mlx/libmlx.a
+MLX_DIR		= 	mlx
+MLX_FLAGS	=	-Lmlx -lmlx -framework OpenGL -framework AppKit
+INC			=	-I . -Iincludes -Imlx
+endif
 
 all:		$(NAME)
 
 $(OBJS_DIR)/%.o :	$(SRCS_DIR)/%.c
 		mkdir -p $(@D)
-		$(CC) $(CFLAGS) $(INC) -O3 -c $< -o $@
+		$(CC) $(CFLAGS) $(INC) $(MACFLAG) -c $< -o $@
 
 $(NAME):	$(PRINTF) $(MLX) $(OBJS)
-		$(CC) $(CFLAGS) $(OBJS) $(INC) -o $(NAME) $(MLX_FLAGS)
+		$(CC) $(CFLAGS) $(MLX_FLAGS) $(INC) $(MACFLAG) $(OBJS) -o $(NAME) 
 
 $(MLX):
-		make -C mlx_linux
+		make -C $(MLX_DIR)
 
 clean:
 		$(RM) $(OBJS_DIR)
-		make clean -C mlx_linux
+		make clean -C $(MLX_DIR)
 
 fclean:		clean
 		$(RM) $(NAME)
