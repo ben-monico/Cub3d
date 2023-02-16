@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: benmonico <benmonico@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:14:19 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/02/16 18:59:23 by benmonico        ###   ########.fr       */
+/*   Updated: 2023/02/16 19:34:20 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef CUB3D_H
 # define CUB3D_H
@@ -25,7 +26,7 @@
 # define X_EVENT_KEY_EXIT			17
 
 
-# if MACKEYMAP==1
+# if MACKEYMAP == 1
 #  define KEY_ESC	53
 #  define KEY_W		13
 #  define KEY_A		0
@@ -41,24 +42,38 @@
 #  define D 			100
 #  define LEFT 		65361
 #  define RIGHT 		65363
-# endif
+#  endif
 
-typedef struct s_g t_g;
+typedef struct s_cub t_cub;
+typedef struct s_img t_img;
+typedef struct s_map t_map;
 
-struct s_g
+struct	s_map
+{
+	char	**map;
+	int		player_x;
+	int		player_y;
+	char	p_orientation;
+	int		num_player;
+	int		*f_c;
+	int		*c_c;
+};
+
+struct s_cub
 {
     void	*mlx;
 	void    *win;
-    int     **map_mtx;  
+    int     **map_mtx;
+	t_map	map;
 };
 
-typedef struct		s_img
+struct		s_img
 {
 	void	*ptr;
 	char	*addr;		// In my code I changed this to int *, which I will explain in a second
 	int		bpp;	//when using ARGB this value is always 32
 	int		size_line;	//This value represents (your image width) * 4 which I will also explain after
 	int		endian;		//This value can be either 0 or 1 and will indicate how the ARGB bytes are organized (from front to back or back to front)
-}			t_img;
+};
 
 #endif
