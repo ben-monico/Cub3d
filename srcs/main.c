@@ -6,7 +6,11 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:14:45 by bcarreir          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/02/16 20:03:15 by mgranate_ls      ###   ########.fr       */
+=======
+/*   Updated: 2023/02/16 19:34:42 by mgranate_ls      ###   ########.fr       */
+>>>>>>> master
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +56,11 @@ int	press_key(int key, t_cub *g)
 	return (key);
 }
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> master
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 {
 	char	*dst;
@@ -69,6 +78,7 @@ int	main(int ac, char **av)
 	(void)cub;
 	(void)av;
 	(void)ac;
+<<<<<<< HEAD
 	map = get_map();
 	int	i = -1;
 	while (map.map[++i])
@@ -87,6 +97,26 @@ int	main(int ac, char **av)
 	// 	write(1, "Error\nInvalid or missing map file\n", 35);
 	// 	return (1);
 	// }
+=======
+	map = tester_map();
+	int	i = -1;
+	while (map.map[++i])
+		printf("%s\n", map.map[i]);
+	printf("p_orient: %c\n", map.p_orientation);
+	printf("F: %d, %d, %d\n", map.f_c[0], map.f_c[1], map.f_c[2]);
+	printf("C: %d, %d, %d\n", map.c_c[0], map.c_c[1], map.c_c[2]);
+	// if (ac != 2)
+	// {
+	// 	write(1, "Error\nInvalid arg count\n", 25);
+	// 	return (1);
+	// }
+	// ext = string().strrchr(av[1], '.');
+	// if (!ext || string().strncmp(ext, ".cub", 5))
+	// {
+	// 	write(1, "Error\nInvalid or missing map file\n", 35);
+	// 	return (1);
+	// }
+>>>>>>> master
 	//g.mlx = mlx_init();
 	//g.win = mlx_new_window(g.mlx, 800, 600, "cub3d");
 	//testing images
