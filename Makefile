@@ -5,7 +5,8 @@ SRCS		=	$(SRCS_DIR)/main.c 						\
 				$(SRCS_DIR)/str/utils1.c				\
 				$(SRCS_DIR)/str/utils2.c				\
 				$(SRCS_DIR)/allocs/allocs.c				\
-				$(SRCS_DIR)/read_map/first_read.c		\
+				$(SRCS_DIR)/parsing/read_file.c			\
+				$(SRCS_DIR)/parsing/parse_file.c		\
 				$(SRCS_DIR)/exit/exit.c					
 
 SRCS_DIR	=	srcs

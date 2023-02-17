@@ -6,35 +6,52 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 21:26:04 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/02/16 21:45:26 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/02/17 00:56:59 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-static void	free_imgs(t_cub *data)
-{
-	int	i;
+//static void	free_imgs(t_cub *data)
+//{
+//	int	i;
+//
+//	if (data->img.img)
+//	{
+//		i = -1;
+//		while (data->img.img[++i])
+//			mlx_destroy_image(data->win, data->img.img[i]);
+//		alloc().free_array((void *)data->img.img);
+//	}
+//}
 
-	if (data->img.img)
-	{
-		i = -1;
-		while (data->img.img[++i])
-			mlx_destroy_image(data->win, data->img.img[i]);
-		alloc().free_array((void *)data->img.img);
-	}
-}
+//static void	free_mlx(t_cub	*data)
+//{
+//	free_imgs(data);
+//	if (data->win)
+//		mlx_destroy_window(data->mlx, data->win);
+//	if (data->win)
+//	{
+//		mlx_destroy_display(data->mlx);
+//		free(data->mlx);
+//	}
+//}
 
-static void	free_mlx(t_cub	*data)
+void	exit_parse(t_parse *data, int status, char *str)
 {
-	free_imgs(data);
-	if (data->win)
-		mlx_destroy_window(data->mlx, data->win);
-	if (data->win)
+	if (status)
+		printf("Error: %s\n", str);
+	else
+		printf("%s\n", str);
+	if (data)
 	{
-		mlx_destroy_display(data->mlx);
-		free(data->mlx);
+		if (data->file)
+			alloc().free_matrix((void **)data->file);
+		if (data->path_to_img)
+			alloc().free_matrix((void **)data->path_to_img);
+		//free_mlx(data);
 	}
+	exit(status);
 }
 
 void	exit_free(t_cub *data, int status, char *str)
@@ -47,7 +64,7 @@ void	exit_free(t_cub *data, int status, char *str)
 	{
 		if (data->map.mtx)
 			alloc().free_matrix((void **)data->map.mtx);
-		free_mlx(data);
+		//free_mlx(data);
 	}
 	exit(status);
 }

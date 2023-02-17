@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:14:19 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/02/16 21:43:21 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/02/17 01:17:45 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <get_next_line.h>
+# include <parse.h>
 
 # define X_EVENT_KEY_PRESS			2
 # define X_EVENT_KEY_RELEASE		3
@@ -92,10 +93,12 @@ struct		s_player
 
 t_cub	*new_cube(void);
 
-//Read File and Create Map
+// Read File and Create Map
 int		read_file(t_cub *cube, char *file_name);
 
 // Clean Program
 void	exit_free(t_cub *data, int status, char *str);
+
+// Parsing Resources
 
 #endif

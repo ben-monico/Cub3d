@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:14:45 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/02/16 21:43:36 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/02/17 01:12:24 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ int	main(int ac, char **av)
 	(void)ac;
 
 	if (!(read_file(new_cube(), av[1])))
-		exit_free(new_cube(), 1, "File Currpted\n");
+		exit_free(new_cube(), 1, "File Corrupted");
 	int	i = -1;
-	while (new_cube()->map.mtx[++i])
+	while (new_cube()->map.mtx && new_cube()->map.mtx[++i])
 		printf("%s\n", new_cube()->map.mtx[i]);
 	//printf("p_orient: %c\n", mtx.p_orientation);
 	//printf("F: %d, %d, %d\n", mtx.f_c[0], mtx.f_c[1], mtx.f_c[2]);
@@ -118,5 +118,6 @@ int	main(int ac, char **av)
 	//mlx_hook(g.win, X_EVENT_KEY_PRESS, 0, press_key, &g);
 	//mlx_hook(g.win, X_EVENT_KEY_EXIT, 0, exit_win, &g);
 	//mlx_loop(g.mtx);
+	exit_free(new_cube(), 0, "Exit Successfully");
 	return (0);
 }
