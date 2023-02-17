@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 00:04:36 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/02/17 19:05:24 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/02/17 23:41:28 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	check_identifier(char *line, t_parse *parse, int ct)
 	return (0);
 }
 
-t_parse	*get_path_img(t_parse *parse)
+int	get_path_img(t_parse *parse)
 {
 	int		i;
 	int		j;
@@ -85,18 +85,15 @@ t_parse	*get_path_img(t_parse *parse)
 			}
 		}
 	}
-	if (!get_map(parse->file + i, new_cube()))
-		exit_parse(parse, 1, "Map Not Formated Correctly");
-	return (parse);
+	return (i);
 }
 
 void	parse_file(t_parse *parse)
 {
-	parse = get_path_img(parse);
-	int i = -1;
-	while (parse->path_to_img[++i])	
-		printf("parse_img: %s\n", parse->path_to_img[i]);
-	printf("parse:f %s\n", parse->f_c);
-	printf("parse:c %s\n", parse->c_c);
-	//exit_parse(parse, 1, "Exit Parsing Successfully");
+	int	i;
+	
+	i = get_path_img(parse);
+	if (!get_map(parse->file + i, new_cube()))
+		exit_parse(parse, 1, "Map Not Formated Correctly");
+	load_img(new_cube(), parse->path_to_img);
 }

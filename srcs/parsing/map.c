@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 12:12:06 by mgranate          #+#    #+#             */
-/*   Updated: 2023/02/17 19:14:29 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/02/17 23:15:19 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <parse.h>
 
-int	read_line (char *line)
+static int	read_line (char *line)
 {
 	int	i;
 
@@ -25,7 +25,7 @@ int	read_line (char *line)
 	return (0);
 }
 
-int	check_map_size(char	**file, int i)
+static int	check_map_size(char	**file, int i)
 {
 	int	sz;
 
@@ -38,7 +38,7 @@ int	check_map_size(char	**file, int i)
 	return (sz);
 }
 
-int	copy_map(char **file, int i, t_cub *cube)
+static int	copy_map(char **file, int i, t_cub *cube)
 {
 	int	j;
 	int	sz;

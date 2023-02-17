@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 23:27:42 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/02/17 15:49:41 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/02/17 23:48:39 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,8 @@ struct s_parse
 t_parse		*parsing(void);
 void		exit_parse(t_parse *data, int status, char *str);
 void		parse_file(t_parse *parse);
+void		clean_parsing(t_parse *data);
+void		load_img(t_cub *data, char **path);
+int			get_path_img(t_parse *parse);
 
 #endif
