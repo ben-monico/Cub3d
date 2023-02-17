@@ -21,9 +21,9 @@ CFLAGS		=	-Wall -Wextra -Werror -g -fsanitize=address
 
 RM			=	rm -rf
 
-ifeq ($(shell uname), Linux)
+ ifeq ($(shell uname), Linux)
 MACFLAG		=	-DMACKEYMAP=0
-MLX			=	mlx_linux/libmlx_Linux.a
+MLX			=	mlx_linux/libmlx.a
 MLX_DIR 	= 	mlx_linux
 MLX_FLAGS	= 	-Lmlx_linux -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
 INC			=	-I . -Iincludes -I/usr/include -Imlx_linux -O3
@@ -33,7 +33,7 @@ MLX			=	mlx/libmlx.a
 MLX_DIR		= 	mlx
 MLX_FLAGS	=	-Lmlx -lmlx -framework OpenGL -framework AppKit
 INC			=	-I . -Iincludes -Imlx
-endif
+ endif
 
 all:		$(NAME)
 
