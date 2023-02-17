@@ -6,15 +6,15 @@
 /*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:14:45 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/02/17 15:43:16 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/02/17 18:02:34 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-t_map	tester_map()
+t_map	tester_map(void)
 {
-	t_map mtx;
+	t_map	mtx;
 
 	mtx.mtx = alloc().calloc(sizeof(char *) * 6);
 	mtx.mtx[0] = string().strdup("11111111111111");
@@ -23,7 +23,7 @@ t_map	tester_map()
 	mtx.mtx[3] = string().strdup("1000000000001111");
 	mtx.mtx[4] = string().strdup("11111111111111111");
 	mtx.mtx[5] = NULL;
-	
+
 	mtx.p_orientation = 'N';
 	mtx.f_c = alloc().calloc(sizeof(int) * 4);
 	mtx.f_c[0] = 220;
@@ -38,9 +38,9 @@ t_map	tester_map()
 
 t_cub	*new_cube(void)
 {
-	static	t_cub	data;
+	static t_cub	data;
 
-	return(&data);
+	return (&data);
 }
 //int	exit_win(t_cub *cube)
 //{
@@ -70,11 +70,9 @@ int	main(int ac, char **av)
 {
 	t_cub		cub;
 	// char	*ext;
-
 	(void)cub;
 	(void)av;
 	(void)ac;
-
 	if (!(read_file(new_cube(), av[1])))
 		exit_free(new_cube(), 1, "File Corrupted");
 	int	i = -1;

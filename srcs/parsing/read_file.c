@@ -6,11 +6,25 @@
 /*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:22:03 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/02/17 12:25:12 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/02/17 19:16:14 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <parse.h>
+
+
+void	clean_parsing(t_parse *data)
+{
+	if (data->file)
+		alloc().free_matrix((void **)data->file);
+	if (data->path_to_img)
+		alloc().free_matrix((void **)data->path_to_img);
+	if (data->f_c)
+		alloc().free_array((void *)data->f_c);
+	if (data->c_c)
+		alloc().free_array((void *)data->c_c);
+	//free_mlx(data);
+}
 
 static int	open_file(t_cub *data, char *name)
 {
@@ -66,5 +80,6 @@ int	read_file(t_cub *cube, char *file_name)
 		exit_free(cube, 1, "Invalid File Extension");
 	parse->file = read_lines(NULL, fd, 0, file_name);
 	parse_file(parse);
+	clean_parsing(parse);
 	return (1);
 }

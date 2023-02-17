@@ -6,7 +6,7 @@
 /*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 12:12:06 by mgranate          #+#    #+#             */
-/*   Updated: 2023/02/17 15:48:11 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/02/17 19:14:29 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	copy_map(char **file, int i, t_cub *cube)
 		{
 			if (!string().ft_isspace(file[i][j]))
 			{
-				cube->map.mtx[l++] = file[i];
+				cube->map.mtx[l++] = string().strdup(file[i]);
 				break ;
 			}
 			if (!(file[i][1]) && l > 0)
