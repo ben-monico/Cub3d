@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 23:27:42 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/02/17 01:31:55 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/02/17 15:49:41 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ struct s_parse
 	char	*c_c;
 };
 
-void	exit_parse(t_parse *data, int status, char *str);
-void	parse_file(t_cub *cube, t_parse *parse);
-t_parse	*parsing(void);
+t_parse		*parsing(void);
+void		exit_parse(t_parse *data, int status, char *str);
+void		parse_file(t_parse *parse);
 
 #endif

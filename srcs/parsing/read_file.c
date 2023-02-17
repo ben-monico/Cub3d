@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:22:03 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/02/17 01:36:10 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/02/17 12:25:12 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	**read_lines(char **map, int fd, int ct, char *file_name)
 	{
 		line = get_next_line(fd);
 		if (!line)
-			break;
+			break ;
 		ct++;
 		alloc().free_array(line);
 	}
@@ -48,7 +48,7 @@ char	**read_lines(char **map, int fd, int ct, char *file_name)
 	{
 		line = get_next_line(fd);
 		if (!line)
-			break;
+			break ;
 		map[ct++] = string().strdup(line);
 		alloc().free_array(line);
 	}
@@ -65,6 +65,6 @@ int	read_file(t_cub *cube, char *file_name)
 	if (!string().strrchr(file_name, '.') || string().strncmp(string().strrchr(file_name, '.'), ".cub", 5))
 		exit_free(cube, 1, "Invalid File Extension");
 	parse->file = read_lines(NULL, fd, 0, file_name);
-	parse_file(cube, parse);
+	parse_file(parse);
 	return (1);
 }

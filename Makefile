@@ -7,6 +7,7 @@ SRCS		=	$(SRCS_DIR)/main.c 						\
 				$(SRCS_DIR)/allocs/allocs.c				\
 				$(SRCS_DIR)/parsing/read_file.c			\
 				$(SRCS_DIR)/parsing/parse_file.c		\
+				$(SRCS_DIR)/parsing/map.c				\
 				$(SRCS_DIR)/exit/exit.c					
 
 SRCS_DIR	=	srcs
@@ -25,7 +26,7 @@ RM			=	rm -rf
 
 ifeq ($(shell uname), Linux)
 MACFLAG		=	-DMACKEYMAP=0
-MLX			=	mlx_linux/libmlx_Linux.a
+MLX			=	mlx_linux/libmlx.a
 MLX_DIR 	= 	mlx_linux
 MLX_FLAGS	= 	-Lmlx_linux -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
 INC			=	-I . -Iincludes -I/usr/include -Imlx_linux -O3

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:14:45 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/02/17 01:12:24 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/02/17 15:43:16 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	main(int ac, char **av)
 		exit_free(new_cube(), 1, "File Corrupted");
 	int	i = -1;
 	while (new_cube()->map.mtx && new_cube()->map.mtx[++i])
-		printf("%s\n", new_cube()->map.mtx[i]);
+		printf("%s", new_cube()->map.mtx[i]);
 	//printf("p_orient: %c\n", mtx.p_orientation);
 	//printf("F: %d, %d, %d\n", mtx.f_c[0], mtx.f_c[1], mtx.f_c[2]);
 	//printf("C: %d, %d, %d\n", mtx.c_c[0], mtx.c_c[1], mtx.c_c[2]);
