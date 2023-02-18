@@ -35,13 +35,14 @@
 // 	fill(tab, size, begin, tab[begin.y][begin.x]);
 // }
 
-int    sorrounding_checker_zero(char **map, int y, int x)
+int    checker_zero(char **map, int y, int x)
 {
-    if (!map[y - 1][x] || !map[y][x - 1] || !map[y + 1][x] || !map[y][x + 1])
+    if (!map[y - 1][x] || !map[y][x - 1] || !map[y + 1][x] || !map[y][x + 1] \
+    || !map[y + 1][x + 1] || !map[y - 1][x - 1] || !map[y + 1][x - 1] || !map[y - 1][x + 1])
         return (0);
-    if (map[y - 1][x] == ' ' || map[y][x - 1] == ' ' || map[y + 1][x] == ' ' \
-    || map[y][x + 1] == ' ' || string().len(map[y + 1], -1) > string().len(map[y], -1))
-        return(0);
+    //if (map[y - 1][x] == ' ' || map[y][x - 1] == ' ' || map[y + 1][x] == ' ' \
+    //|| map[y][x + 1] == ' ' || string().len(map[y + 1], -1) > string().len(map[y], -1))
+      //  return(0);
     return (1);
 }
 
@@ -73,7 +74,7 @@ int	read_map(t_cub *cube)
                 exit_free(cube, 1, "Not a valid character on the Map");
             }
             if (map->mtx[y][x] == '0')
-                if (!sorrounding_checker_zero(map->mtx, y, x))
+                if (!checker_zero(map->mtx, y, x))
                 {
                     printf("Line: %d Column: %d => '%c' \n", y, x, map->mtx[y][x]);
                     exit_free(cube, 1, "Does not have a wall to support it");
