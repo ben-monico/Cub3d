@@ -6,7 +6,7 @@
 /*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:14:45 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/02/18 14:28:44 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/02/18 14:35:52 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	main(int ac, char **av)
 	t_player	player;
 	// char	*ext;
 
+	(void)player;
 	if (ac != 2)
 	{
 		write(1, "Error\nInvalid arg count\n", 25);
@@ -89,7 +90,7 @@ int	main(int ac, char **av)
 	// my_mlx_pixel_put(&pink_sqr, 5, 5, 0xFFFFFF);
 	// mlx_put_image_to_window(cub.mlx, cub.win, pink_sqr.ptr, 0, 0); // These zeroes are the coordinates of the window in which you want to place the first pixel of our cute pink cube. Try changing its values to check different coordinates.
 	// end of image testing
-	raycasting(&cub, &player);
+	//raycasting(&cub, &player);
 	mlx_hook(cub.win, X_EVENT_KEY_PRESS, 0, press_key, &cub);
 	mlx_hook(cub.win, X_EVENT_KEY_EXIT, 0, exit_win, &cub);
 	mlx_loop(cub.mlx);

@@ -35,27 +35,49 @@
 // 	fill(tab, size, begin, tab[begin.y][begin.x]);
 // }
 
+int    sorrounding_checker_zero(char **map, int y, int x)
+{
+    if (!map[y - 1][x] || !map[y][x - 1] || !map[y + 1][x] || !map[y][x + 1])
+        return (0);
+    if (map[y - 1][x] == ' ' || map[y][x - 1] == ' ' || map[y + 1][x] == ' ' \
+    || map[y][x + 1] == ' ' || string().len(map[y + 1], -1) > string().len(map[y], -1))
+        return(0);
+    return (1);
+}
+
 int	read_map(t_cub *cube)
 {
 	t_map	*map;
-	int		i;
-	int		j;
+	int		y;
+	int		x;
 	
 	map = &cube->map;
-	i = -1;
-	while (map->mtx[++i])
+	y = -1;
+	while (map->mtx[++y])
 	{
-		j = -1;
-		while (map->mtx[i][++j])
+		x = -1;
+		while (map->mtx[y][++x])
 		{
-			if (map->mtx[i][j] == 'N' || map->mtx[i][j] == 'S' \
-			|| map->mtx[i][j] == 'W' || map->mtx[i][j] == 'E')
+			if (map->mtx[y][x] == 'N' || map->mtx[y][x] == 'S' \
+			|| map->mtx[y][x] == 'W' || map->mtx[y][x] == 'E')
 			{
-				map->p_orientation = map->mtx[i][j];
-				map->player_x = j;
-				map->player_y = i;
+				map->p_orientation = map->mtx[y][x];
+				map->player_x = x;
+				map->player_y = y;
 				map->num_player++;
 			}
+            else if (map->mtx[y][x] != '0' && map->mtx[y][x] != '1' && map->mtx[y][x] \
+            != ' ' && map->mtx[y][x] != '\n')
+            {
+                printf("Line: %d Column: %d => '%c' \n", y, x, map->mtx[y][x]);
+                exit_free(cube, 1, "Not a valid character on the Map");
+            }
+            if (map->mtx[y][x] == '0')
+                if (!sorrounding_checker_zero(map->mtx, y, x))
+                {
+                    printf("Line: %d Column: %d => '%c' \n", y, x, map->mtx[y][x]);
+                    exit_free(cube, 1, "Does not have a wall to support it");
+                }
 		}
 	}
 	if (map->num_player > 1)
