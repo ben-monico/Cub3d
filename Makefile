@@ -7,9 +7,11 @@ SRCS		=	$(SRCS_DIR)/main.c 						\
 				$(SRCS_DIR)/allocs/allocs.c				\
 				$(SRCS_DIR)/parsing/read_file.c			\
 				$(SRCS_DIR)/parsing/parse_file.c		\
-				$(SRCS_DIR)/parsing/map.c				\
 				$(SRCS_DIR)/parsing/load_xpm.c			\
-				$(SRCS_DIR)/exit/exit.c					
+				$(SRCS_DIR)/map/map.c					\
+				$(SRCS_DIR)/map/map_checker.c			\
+				$(SRCS_DIR)/exit/exit.c					\
+				$(SRCS_DIR)/raycasting/raycasting.c				
 
 SRCS_DIR	=	srcs
 

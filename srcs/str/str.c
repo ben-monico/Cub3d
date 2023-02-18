@@ -6,7 +6,7 @@
 /*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:06:16 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/02/17 18:30:26 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/02/18 14:29:54 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ t_str	string(void)
 {
 	static t_str	str = {
 		ft_strlen, ft_strncmp, _atoi, ft_strchr, ft_strrchr, strtrim, isdig,
-		ft_isspace, itoa, ft_substr, ft_strnstr, ft_isalnum, ft_strdup, strjoin, strtrim
+		ft_isspace, itoa, ft_substr, ft_strnstr, ft_isalnum, ft_strdup, strjoin, 
+		strtrim
 	};
 	return (str);
 }

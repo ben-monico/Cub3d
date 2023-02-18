@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 00:04:36 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/02/17 23:41:28 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/02/18 14:29:36 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <parse.h>
+#include <parse.h>
 
 t_parse	*parsing(void)
 {
@@ -95,5 +95,6 @@ void	parse_file(t_parse *parse)
 	i = get_path_img(parse);
 	if (!get_map(parse->file + i, new_cube()))
 		exit_parse(parse, 1, "Map Not Formated Correctly");
-	load_img(new_cube(), parse->path_to_img);
+	//load_img(new_cube(), parse->path_to_img);
+	//DONT FORGET - FUNCTION MISSING: send_f_c.&&.c_c to cube struct
 }
