@@ -27,10 +27,10 @@ RM			=	rm -rf
 
 ifeq ($(shell uname), Linux)
 MACFLAG		=	-DMACKEYMAP=0
-MLX			=	mlx_linux/libmlx.a
+MLX			=	mlx_linux/libmlx_Linux.a
 MLX_DIR 	= 	mlx_linux
 MLX_FLAGS	= 	-Lmlx_linux -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
-INC			=	-I . -Iincludes -I/usr/include -Imlx_linux -O3
+INC			=	-Iincludes -I/usr/include -Imlx_linux
 else
 MACFLAG		=	-DMACKEYMAP=1
 MLX			=	mlx/libmlx.a
@@ -45,8 +45,8 @@ $(OBJS_DIR)/%.o :	$(SRCS_DIR)/%.c
 		mkdir -p $(@D)
 		$(CC) $(CFLAGS) $(INC) $(MACFLAG) -c $< -o $@
 
-$(NAME):	$(PRINTF) $(MLX) $(OBJS)
-		$(CC) $(CFLAGS) $(MLX_FLAGS) $(INC) $(MACFLAG) $(OBJS) -o $(NAME) 
+$(NAME):	$(MLX) $(OBJS)
+		$(CC) $(CFLAGS) $(OBJS) $(INC) -o $(NAME) $(MLX_FLAGS) $(MACFLAG) 
 
 $(MLX):
 		make -C $(MLX_DIR)

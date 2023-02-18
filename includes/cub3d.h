@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:14:19 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/02/17 23:32:16 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/02/18 00:03:21 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,7 @@ void	exit_free(t_cub *data, int status, char *str);
 
 // Parsing Resources
 int		get_map(char **file, t_cub *cube);
+
+void	load_img(t_cub *data, char **path);
 
 #endif

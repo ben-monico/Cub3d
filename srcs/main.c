@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:14:45 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/02/17 23:49:19 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/02/18 00:02:07 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,12 @@ t_cub	*new_cube(void)
 
 	return (&data);
 }
-//int	exit_win(t_cub *cube)
-//{
-//	mlx_destroy_window(cube->mtx, cube->win);
-//	exit(1);
-//}
+
+int	exit_win(t_cub *cube)
+{
+	mlx_destroy_window(cube->mlx, cube->win);
+	exit(1);
+}
 
 int	press_key(int key, t_cub *g)
 {
@@ -85,9 +86,9 @@ int	main(int ac, char **av)
 		printf("%s\n", (char *)new_cube()->img.img[i]);
 	cub.mlx = mlx_init();
 	cub.win = mlx_new_window(cub.mlx, 800, 600, "cub3d");
-	mlx_hook(g.win, X_EVENT_KEY_PRESS, 0, press_key, &g);
-	mlx_hook(g.win, X_EVENT_KEY_EXIT, 0, exit_win, &g);
-	mlx_loop(g.mtx);
+	mlx_hook(cub.win, X_EVENT_KEY_PRESS, 0, press_key, &cub);
+	mlx_hook(cub.win, X_EVENT_KEY_EXIT, 0, exit_win, &cub);
+	mlx_loop(cub.mlx);
 	exit_free(new_cube(), 0, "Exit Successfully");
 	return (0);
 }
