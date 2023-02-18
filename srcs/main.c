@@ -3,40 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: benmonico <benmonico@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:14:45 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/02/16 22:42:23 by benmonico        ###   ########.fr       */
+/*   Updated: 2023/02/18 01:39:47 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-t_map	tester_map()
+t_cub	*new_cube(void)
 {
-	t_map map;
+	static t_cub	data;
 
-	map.map = alloc().calloc(sizeof(char *) * 6);
-	map.map[0] = string().strdup("1111111111111111");
-	map.map[1] = string().strdup("1000000000000001");
-	map.map[2] = string().strdup("1000000N00000001");
-	map.map[3] = string().strdup("1000000000001111");
-	map.map[4] = string().strdup("1111111111111111");
-	map.map[5] = NULL;
-	
-	map.p_orientation = 'N';
-	map.f_c = alloc().calloc(sizeof(int) * 4);
-	map.f_c[0] = 220;
-	map.f_c[2] = 100;
-	map.f_c[3] = 0;
-	map.c_c = alloc().calloc(sizeof(int) * 4);
-	map.c_c[0] = 225;
-	map.c_c[2] = 30;
-	map.c_c[3] = 0;
-	return(map);
+	return (&data);
 }
-
-
 
 int	exit_win(t_cub *cube)
 {
@@ -64,20 +45,17 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 int	main(int ac, char **av)
 {
 	t_cub		cub;
-	t_map		map;
 	t_player	player;
 	// char	*ext;
 
-	(void)cub;
-	(void)av;
-	(void)ac;
-	map = tester_map();
-	int	i = -1;
-	while (map.map[++i])
-		printf("%s\n", map.map[i]);
-	printf("p_orient: %c\n", map.p_orientation);
-	printf("F: %d, %d, %d\n", map.f_c[0], map.f_c[1], map.f_c[2]);
-	printf("C: %d, %d, %d\n", map.c_c[0], map.c_c[1], map.c_c[2]);
+	if (ac != 2)
+	{
+		write(1, "Error\nInvalid arg count\n", 25);
+		return (1);
+	}
+	read_file(new_cube(), av[1]);
+	if (!read_map(new_cube()))
+		exit_free(new_cube(), 1, "Wrong Map Configuration");
 	// if (ac != 2)
 	// {
 	// 	write(1, "Error\nInvalid arg count\n", 25);
