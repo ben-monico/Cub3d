@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 00:04:36 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/02/18 14:29:36 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/02/19 00:57:06 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,7 @@ void	parse_file(t_parse *parse)
 	if (!get_map(parse->file + i, new_cube()))
 		exit_parse(parse, 1, "Map Not Formated Correctly");
 	//load_img(new_cube(), parse->path_to_img);
+	new_cube()->img.colors[0] = get_colors(parse->f_c, parse);
+	new_cube()->img.colors[1] = get_colors(parse->c_c, parse);
 	//DONT FORGET - FUNCTION MISSING: send_f_c.&&.c_c to cube struct
 }

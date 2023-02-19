@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:14:45 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/02/18 14:35:52 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/02/19 01:01:01 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,8 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 
 int	main(int ac, char **av)
 {
-	t_cub		cub;
+	t_cub		cube;
 	t_player	player;
-	// char	*ext;
 
 	(void)player;
 	if (ac != 2)
@@ -57,19 +56,21 @@ int	main(int ac, char **av)
 	read_file(new_cube(), av[1]);
 	if (!read_map(new_cube()))
 		exit_free(new_cube(), 1, "Wrong Map Configuration");
-	// if (ac != 2)
-	// {
-	// 	write(1, "Error\nInvalid arg count\n", 25);
-	// 	return (1);
-	// }
-	// ext = string().strrchr(av[1], '.');
-	// if (!ext || string().strncmp(ext, ".cub", 5))
-	// {
-	// 	write(1, "Error\nInvalid or missing map file\n", 35);
-	// 	return (1);
-	// }
-	cub.mlx = mlx_init();
-	cub.win = mlx_new_window(cub.mlx, screenW, screenH, "cub3d");
+	check_map_elements(new_cube());
+	cube = (*new_cube());
+	int	i = -1;
+	while (cube.map.mtx[++i])
+		printf("%s", cube.map.mtx[i]);
+	printf("\n");
+	printf("img.F_C: %d\n", cube.img.colors[0]);
+	printf("img.C_C: %d\n", cube.img.colors[1]);
+	printf("Nbr Player: %d\n", cube.map.num_player);
+	printf("Nbr Player_x: %d\n", cube.map.player_x);
+	printf("Nbr Player_y: %d\n", cube.map.player_y);
+	printf("Player Orientation: %c\n", cube.map.p_orientation);
+	exit_free(new_cube(), 1, "Exit Program Successfully");
+	//cub.mlx = mlx_init();
+	//cub.win = mlx_new_window(cub.mlx, screenW, screenH, "cub3d");
 	
 	// testing images
 	// t_img pink_sqr;
@@ -91,8 +92,8 @@ int	main(int ac, char **av)
 	// mlx_put_image_to_window(cub.mlx, cub.win, pink_sqr.ptr, 0, 0); // These zeroes are the coordinates of the window in which you want to place the first pixel of our cute pink cube. Try changing its values to check different coordinates.
 	// end of image testing
 	//raycasting(&cub, &player);
-	mlx_hook(cub.win, X_EVENT_KEY_PRESS, 0, press_key, &cub);
-	mlx_hook(cub.win, X_EVENT_KEY_EXIT, 0, exit_win, &cub);
-	mlx_loop(cub.mlx);
+	//mlx_hook(cub.win, X_EVENT_KEY_PRESS, 0, press_key, &cub);
+	//mlx_hook(cub.win, X_EVENT_KEY_EXIT, 0, exit_win, &cub);
+	//mlx_loop(cub.mlx);
 	return (0);
 }

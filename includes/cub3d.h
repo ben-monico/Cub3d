@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/02/18 14:32:10 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/02/19 00:14:19 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@
 # define X_EVENT_KEY_PRESS		2
 # define X_EVENT_KEY_RELEASE	3
 # define X_EVENT_KEY_EXIT		17
-# define screenW				1280
-# define screenH				720
+# define screenW				600
+# define screenH				600
 # define SIZE_X					64
 # define SIZE_Y					64
 
@@ -94,6 +94,7 @@ struct		s_img
 	void	**img;
 	void	*ptr;
 	char	*addr;		// In my code I changed this to int *, which I will explain in a second
+	int		colors[2];
 	int		bpp;	//when using ARGB this value is always 32
 	int		size_line;	//This value represents (your image width) * 4 which I will also explain after
 	int		endian;		//This value can be either 0 or 1 and will indicate how the ARGB bytes are organized (from front to back or back to front)
@@ -129,12 +130,12 @@ void    raycasting(t_cub *cub, t_player *player);
 // Read File and Create Map
 int		read_file(t_cub *cube, char *file_name);
 int		read_map(t_cub *cube);
+void	check_map_elements(t_cub *cub);
 
 // Clean Program
 void	exit_free(t_cub *data, int status, char *str);
 
 // Parsing Resources
 int		get_map(char **file, t_cub *cube);
-
 
 #endif

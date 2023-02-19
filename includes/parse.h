@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 23:27:42 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/02/18 14:29:09 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/02/19 00:23:10 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ void		parse_file(t_parse *parse);
 void		clean_parsing(t_parse *data);
 int			get_path_img(t_parse *parse);
 void		exit_parse(t_parse *data, int status, char *str);
+int			get_colors(char *clr, t_parse *parse);
 
 #endif
