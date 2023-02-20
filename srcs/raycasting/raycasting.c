@@ -6,7 +6,7 @@
 /*   By: benmonico <benmonico@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:10:24 by benmonico         #+#    #+#             */
-/*   Updated: 2023/02/17 18:21:54 by benmonico        ###   ########.fr       */
+/*   Updated: 2023/02/20 18:22:35 by benmonico        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void    perform_DDA(t_dist *dist, t_map *map)
         }
         // if (check_map()[dist->mapX][dist->mapY] > 0)
         //     hit = 1;
-        if (map->map[dist->mapX][dist->mapY] > 0)
+        if (map->mtx[dist->mapX][dist->mapY] > 0)
             hit = 1;
     }    
 }
@@ -109,16 +109,18 @@ void    raycasting2(t_cub *cub, t_player *player)
     t_dist  dist;
     t_line  line;
     //placeholder
-      t_map map = tester_map();
+      t_map map;
+	  
+	  map = cub->map;
      
         int x = 0;
         int y;
-        while(map.map[x])
+        while(map.mtx[x])
         {
             y = 0;
-            while (map.map[x][y])
+            while (map.mtx[x][y])
             {
-                if (map.map[x][y] == 'N')
+                if (map.mtx[x][y] == 'N')
                 {
                     player->posX = x;
                     player->posY = y;

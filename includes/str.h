@@ -22,6 +22,7 @@ struct s_str
 	int		(*ft_isalnum)(char c);
 	char	*(*strdup)(char *s);
 	char	*(*strjoin)(char *s1, char *s2);
+	char	*(*strtrim)(char *s1, char *set);
 };
 
 t_str	string(void);
