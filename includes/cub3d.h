@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: benmonico <benmonico@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/02/19 00:14:19 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/02/22 15:46:53 by benmonico        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@
 #  define RIGHT		65363
 #  endif
 
+# define screenW				640
+# define screenH				480
 # define X_EVENT_KEY_PRESS		2
 # define X_EVENT_KEY_RELEASE	3
 # define X_EVENT_KEY_EXIT		17
-# define screenW				600
-# define screenH				600
 # define SIZE_X					64
 # define SIZE_Y					64
 
@@ -91,9 +91,9 @@ struct	s_map
 
 struct		s_img
 {
-	void	**img;
+	int		**img;
 	void	*ptr;
-	char	*addr;		// In my code I changed this to int *, which I will explain in a second
+	char	*addr;
 	int		colors[2];
 	int		bpp;	//when using ARGB this value is always 32
 	int		size_line;	//This value represents (your image width) * 4 which I will also explain after

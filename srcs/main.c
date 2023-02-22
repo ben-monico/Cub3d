@@ -6,7 +6,7 @@
 /*   By: benmonico <benmonico@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:14:45 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/02/20 18:22:52 by benmonico        ###   ########.fr       */
+/*   Updated: 2023/02/22 15:15:31 by benmonico        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 t_cub	*new_cube(void)
 {
 	static t_cub	data;
+	if (!data.mlx)
+	{
+		data.map_mtx = alloc().calloc(sizeof(int **));
+	}
 
 	return (&data);
 }
@@ -68,32 +72,35 @@ int	main(int ac, char **av)
 	printf("Nbr Player_x: %d\n", cube.map.player_x);
 	printf("Nbr Player_y: %d\n", cube.map.player_y);
 	printf("Player Orientation: %c\n", cube.map.p_orientation);
-	exit_free(new_cube(), 1, "Exit Program Successfully");
-	//cub.mlx = mlx_init();
-	//cub.win = mlx_new_window(cub.mlx, screenW, screenH, "cub3d");
+	cube.mlx = mlx_init();
+	cube.win = mlx_new_window(cube.mlx, screenW, screenH, "cub3d");
 	
 	// testing images
+	
 	// t_img pink_sqr;
-	// pink_sqr.ptr = mlx_new_image(cub.mlx, 250, 250);
+	// pink_sqr.ptr = mlx_new_image(cube.mlx, 1, 250);
 	// pink_sqr.addr = mlx_get_data_addr(pink_sqr.ptr, &pink_sqr.bpp, &pink_sqr.size_line, &pink_sqr.endian);
 	// int h,w;
 	// h = 0;
-	// while (h < 200)
+	// while (h < 250)
 	// {
 	// 	w = 0;
-	// 	while (w < 200)
+	// 	while (w < 1)
 	// 	{
-	// 		my_mlx_pixel_put(&pink_sqr, w+10, h+10, 0xFFFFFF);
+	// 		my_mlx_pixel_put(&pink_sqr, w, h, abs(cube.img.colors[1]));
+	// 		// printf("h = %d\n", h);
 	// 		w++;
 	// 	}
 	// 	h++;
 	// }
-	// my_mlx_pixel_put(&pink_sqr, 5, 5, 0xFFFFFF);
-	// mlx_put_image_to_window(cub.mlx, cub.win, pink_sqr.ptr, 0, 0); // These zeroes are the coordinates of the window in which you want to place the first pixel of our cute pink cube. Try changing its values to check different coordinates.
+	// mlx_put_image_to_window(cube.mlx, cube.win, pink_sqr.ptr, 10, 100); // These zeroes are the coordinates of the window in which you want to place the first pixel of our cute pink cube. Try changing its values to check different coordinates.
+	
 	// end of image testing
-	//raycasting(&cub, &player);
-	//mlx_hook(cub.win, X_EVENT_KEY_PRESS, 0, press_key, &cub);
-	//mlx_hook(cub.win, X_EVENT_KEY_EXIT, 0, exit_win, &cub);
-	//mlx_loop(cub.mlx);
+	
+	raycasting(&cube, &player);
+	mlx_hook(cube.win, X_EVENT_KEY_PRESS, 0, press_key, &cube);
+	mlx_hook(cube.win, X_EVENT_KEY_EXIT, 0, exit_win, &cube);
+	mlx_loop(cube.mlx);
+	// exit_free(new_cube(), 1, "Exit Program Successfully");
 	return (0);
 }

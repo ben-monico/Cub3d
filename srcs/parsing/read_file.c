@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
+/*   By: benmonico <benmonico@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:22:03 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/02/18 14:29:43 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/02/20 18:28:11 by benmonico        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	open_file(t_cub *data, char *name)
 {
 	int	fd;
 
-	fd = open(name, __O_DIRECTORY);
+	fd = open(name, O_DIRECTORY);
 	if (fd != -1)
 	{
 		close(fd);
