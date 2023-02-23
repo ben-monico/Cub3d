@@ -11,7 +11,9 @@ SRCS		=	$(SRCS_DIR)/main.c 						\
 				$(SRCS_DIR)/map/map.c					\
 				$(SRCS_DIR)/map/map_checker.c			\
 				$(SRCS_DIR)/exit/exit.c					\
-				$(SRCS_DIR)/raycasting/raycasting.c				
+				$(SRCS_DIR)/raycasting/raycasting.c		\
+				$(SRCS_DIR)/img/sprite.c				\
+				$(SRCS_DIR)/img/img_utils.c		
 
 SRCS_DIR	=	srcs
 
@@ -23,7 +25,7 @@ NAME		=	cub3d
 
 CC			=	cc
 
-CFLAGS		=	-Wall -Wextra -Werror -g #-fsanitize=address
+CFLAGS		=	-Wall -Wextra -Werror -g -fsanitize=address
 
 RM			=	rm -rf
 

@@ -3,21 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:10:24 by benmonico         #+#    #+#             */
-/*   Updated: 2023/02/18 00:31:45 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/02/23 04:16:36 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.h>
 #include <math.h>
+#include <cub3d.h>
+
 //missing map getter
 t_map		map;
 
 void    put_line(t_cub *cub, t_line *line)
 {
-    t_img   imgline;
+    t_data   imgline;
     int     h;
 
     imgline.ptr = mlx_new_image(cub->mlx, 1, line->ceilingPoint);

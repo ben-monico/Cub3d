@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 00:04:36 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/02/19 00:57:06 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/02/23 04:01:58 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,13 @@ int	get_path_img(t_parse *parse)
 	return (i);
 }
 
+void	get_img(t_parse *data)
+{
+	data->path_to_img = alloc().calloc((sizeof(void *) * 2));
+	data->path_to_img[0] = string().strdup("images/barril.xpm");
+	data->path_to_img[1] = NULL;
+}
+
 void	parse_file(t_parse *parse)
 {
 	int	i;
@@ -98,5 +105,4 @@ void	parse_file(t_parse *parse)
 	//load_img(new_cube(), parse->path_to_img);
 	new_cube()->img.colors[0] = get_colors(parse->f_c, parse);
 	new_cube()->img.colors[1] = get_colors(parse->c_c, parse);
-	//DONT FORGET - FUNCTION MISSING: send_f_c.&&.c_c to cube struct
 }
