@@ -6,7 +6,7 @@
 /*   By: benmonico <benmonico@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:22:03 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/02/20 18:28:11 by benmonico        ###   ########.fr       */
+/*   Updated: 2023/02/23 19:23:41 by benmonico        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,15 @@ char	**read_lines(char **map, int fd, int ct, char *file_name)
 	return (map);
 }
 
-int	read_file(t_cub *cube, char *file_name)
+int	read_file(t_cub *cub, char *file_name)
 {
 	int		fd;
 	t_parse	*parse;
 
 	parse = parsing();
-	fd = open_file(cube, file_name);
+	fd = open_file(cub, file_name);
 	if (!string().strrchr(file_name, '.') || string().strncmp(string().strrchr(file_name, '.'), ".cub", 5))
-		exit_free(cube, 1, "Invalid File Extension");
+		exit_free(cub, 1, "Invalid File Extension");
 	parse->file = read_lines(NULL, fd, 0, file_name);
 	parse_file(parse);
 	clean_parsing(parse);

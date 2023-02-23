@@ -6,7 +6,7 @@
 /*   By: benmonico <benmonico@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:10:24 by benmonico         #+#    #+#             */
-/*   Updated: 2023/02/22 17:37:17 by benmonico        ###   ########.fr       */
+/*   Updated: 2023/02/23 19:42:31 by benmonico        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ void    put_line(t_cub *cub, t_line *line, t_dist *dist)
         // printf("linha posta %d\n", h);
 	}
     printf("X = %d\n", line->x);
-    mlx_put_image_to_window(cub->mlx, cub->win, imgline.ptr, line->x, line->floorPoint); // These zeroes are the coordinates of the window in which you want to place the first pixel of our cute pink cube. Try changing its values to check different coordinates.
+    mlx_put_image_to_window(cub->mlx, cub->win, imgline.ptr, line->x, line->floorPoint); // These zeroes are the coordinates of the window in which you want to place the first pixel of our cute pink cub. Try changing its values to check different coordinates.
 }
 
-void    fix_fisheye_get_wall_h(t_dist *dist, t_line *line)
+void    fix_fisheye_get_wall_h(t_cub *cub, t_dist *dist, t_line *line)
 {
     double  fisheyeDist;
     int     wallHeight;
@@ -57,35 +57,11 @@ void    fix_fisheye_get_wall_h(t_dist *dist, t_line *line)
         line->floorPoint = 0;
     if (line->ceilingPoint >= screenH)
         line->ceilingPoint = screenH - 1;
-    
+    put_line(cub, line, dist);
+
 }
 
-void    calc_sidedist(t_dist *dist, t_player *player)
-{
-    if (dist->rayDirX < 0)
-    {
-        dist->stepX = -1;
-        dist->sideDistX = (player->posX - dist->mapX) * dist->deltaDistX;
-    }
-    else
-    {
-        dist->stepX = 1;
-        dist->sideDistX = (dist->mapX + 1 - player->posX) * dist->deltaDistX;
-    }
-    if (dist->rayDirY < 0)
-    {
-        dist->stepY = -1;
-        dist->sideDistY = (player->posY - dist->mapY) * dist->deltaDistY;
-    }
-    else
-    {
-        dist->stepY = 1;
-        dist->sideDistY = (dist->mapY + 1 - player->posY) * dist->deltaDistY;
-    }
-    printf("sideX %f sideY %f\n", dist->sideDistX, dist->sideDistY);
-}
-
-void    perform_DDA(t_dist *dist, t_map *map)
+void    perform_DDA(t_dist *dist, t_cub *cub, t_line *line)
 {
     int hit;
 
@@ -106,86 +82,55 @@ void    perform_DDA(t_dist *dist, t_map *map)
         }
         // if (check_map().[dist->mapX][dist->mapY] > 0)
         //     hit = 1;
-        if (map->mtx[dist->mapX][dist->mapY] > 0)
+        printf("mapx %d mapy %d\n", dist->mapX, dist->mapY);
+        if (cub->map.mtx[dist->mapX][dist->mapY] > 0)
             hit = 1;
-    }    
+    }
+    fix_fisheye_get_wall_h(cub, dist, line);
 }
 
-void    draw_celingfloor(t_cub *cube)
+void    calc_sidedist(t_dist *dist, t_cub *cub, t_line *line)
 {
-    t_img floor;
-    
-	floor.ptr = mlx_new_image(cube->mlx, screenW, screenH / 8);
-	floor.addr = mlx_get_data_addr(floor.ptr, &floor.bpp, &floor.size_line, &floor.endian);
-	int h,w;
-	h = 0;
-	while (h < screenH / 8)
-	{
-		w = 0;
-		while (w < screenW)
-		{
-			my_mlx_pixel_put(&floor, w, h, abs(cube->img.colors[0]));
-			w++;
-		}
-		h++;
-	}
-	mlx_put_image_to_window(cube->mlx, cube->win, floor.ptr, 0, screenH / 2);
-	h = 0;
-	while (h < screenH / 8)
-	{
-		w = 0;
-		while (w < screenW)
-		{
-			my_mlx_pixel_put(&floor, w, h, abs(cube->img.colors[1]));
-			w++;
-		}
-		h++;
-	} // These zeroes are the coordinates of the window in which you want to place the first pixel of our cute pink cube. Try changing its values to check different coordinates.
-		mlx_put_image_to_window(cube->mlx, cube->win, floor.ptr, 0, 0);
+    if (dist->rayDirX < 0)
+    {
+        dist->stepX = -1;
+        dist->sideDistX = (cub->player.posX - dist->mapX) * dist->deltaDistX;
+    }
+    else
+    {
+        dist->stepX = 1;
+        dist->sideDistX = (dist->mapX + 1 - cub->player.posX) * dist->deltaDistX;
+    }
+    if (dist->rayDirY < 0)
+    {
+        dist->stepY = -1;
+        dist->sideDistY = (cub->player.posY - dist->mapY) * dist->deltaDistY;
+    }
+    else
+    {
+        dist->stepY = 1;
+        dist->sideDistY = (dist->mapY + 1 - cub->player.posY) * dist->deltaDistY;
+    }
+    perform_DDA(dist, cub, line);
+    printf("sideX %f sideY %f\n", dist->sideDistX, dist->sideDistY);
 }
 
-void    raycasting(t_cub *cub, t_player *player)
+void    raycasting(t_cub *cub)
 {
     double  cameraX;
     t_dist  dist;
     t_line  line;
     
-    //placeholder
-      t_map map;
-	  
-	  map = cub->map;
-     
-        int x = 0;
-        int y;
-        while(map.mtx[x])
-        {
-            y = 0;
-            while (map.mtx[x][y])
-            {
-                if (map.mtx[x][y] == 'N')
-                {
-                    player->posX = x;
-                    player->posY = y;
-                    player->dirX = 1;
-                    player->dirY = 0;
-                }
-                y++;  
-            }
-            x++;
-        }
-    //end of placeholder
-    
-    player->fovX = 0;
-    player->fovX = 0.66;
-    line.x = 0;
-    while (line.x < screenW)
+    line.x = -1;
+    while (++line.x < screenW)
     {
         cameraX = 2 * line.x / (double)screenW - 1;
-        dist.rayDirX = player->dirX + player->fovX * cameraX;
-        dist.rayDirY = player->dirY + player->fovY * cameraX;
+        dist.rayDirX = cub->player.dirX + cub->player.fovX * cameraX;
+        dist.rayDirY = cub->player.dirY + cub->player.fovY * cameraX;
         printf("rayX %f rayY %f\n", dist.rayDirX, dist.rayDirY);
-        dist.mapX = (int)player->posX;
-        dist.mapY = (int)player->posY;
+        dist.mapX = (int)cub->player.posX;
+        dist.mapY = (int)cub->player.posY;
+                printf("mapx %d mapy %d\n", dist.mapX, dist.mapY);
         if (dist.rayDirX == 0)
             dist.deltaDistX = 1e30;
         else
@@ -195,11 +140,6 @@ void    raycasting(t_cub *cub, t_player *player)
         else
            dist.deltaDistY = fabs(1 / dist.rayDirY);
         printf("delta X %f deltaY %f\n", dist.deltaDistX, dist.deltaDistY);
-        calc_sidedist(&dist, player);
-        perform_DDA(&dist, &map);
-        fix_fisheye_get_wall_h(&dist, &line);
-        draw_celingfloor(cub);
-        put_line(cub, &line, &dist);
-        line.x++;
+        calc_sidedist(&dist, cub, &line);
     }
 }   

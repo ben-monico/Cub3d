@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: benmonico <benmonico@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 00:42:49 by mgranate          #+#    #+#             */
-/*   Updated: 2023/02/18 23:45:04 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/02/23 19:23:41 by benmonico        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,13 @@ static int	check_zero1(t_map *map, char c, int y, int x)
 	return (1);
 }
 
-int	read_map(t_cub *cube)
+int	read_map(t_cub *cub)
 {
 	t_map	*map;
 	int		y;
 	int		x;
 	
-	map = &cube->map;
+	map = &cub->map;
 	y = -1;
 	while (map->mtx[++y])
 	{
@@ -78,10 +78,10 @@ int	read_map(t_cub *cube)
             != ' ' && map->mtx[y][x] != '\n')
             {
                 printf("Line: %d Column: %d => '%c' \n", y, x, map->mtx[y][x]);
-                exit_free(cube, 1, "Not a valid  character on the Map");
+                exit_free(cub, 1, "Not a valid  character on the Map");
             }
 			if (!check_zero1(map, map->mtx[y][x], y, x))
-				exit_free(cube, 1, "Does not have a wall to support it");
+				exit_free(cub, 1, "Does not have a wall to support it");
 		}
 	}
 	return (1);

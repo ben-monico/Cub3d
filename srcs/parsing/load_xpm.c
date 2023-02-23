@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_xpm.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: benmonico <benmonico@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 23:34:37 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/02/19 00:42:57 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/02/23 19:23:41 by benmonico        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	get_colors(char *clr, t_parse *parse)
 	if (rgb[0] > 255 || rgb[0] < 0)
 	{
 		clean_parsing(parse);
-		exit_free(new_cube(), 1, "Not a recognizable RGB range system");
+		exit_free(new_cub(), 1, "Not a recognizable RGB range system");
 	}
 	while (++i < 3)
 	{
@@ -58,14 +58,14 @@ int	get_colors(char *clr, t_parse *parse)
 		if (*clr != ',')
 		{
 			clean_parsing(parse);
-			exit_free(new_cube(), 1, "Not a recognizable RGB range system");	
+			exit_free(new_cub(), 1, "Not a recognizable RGB range system");	
 		}
 		clr++;
 		rgb[i] = string().atoi(clr);
 		if (rgb[i] > 255 || rgb[i] < 0)
 		{
 			clean_parsing(parse);
-			exit_free(new_cube(), 1, "Not a recognizable RGB range system");
+			exit_free(new_cub(), 1, "Not a recognizable RGB range system");
 		}
 	}
 	i = 255;
