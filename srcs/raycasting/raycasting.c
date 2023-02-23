@@ -6,11 +6,10 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:10:24 by benmonico         #+#    #+#             */
-/*   Updated: 2023/02/23 04:16:36 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/02/23 21:22:20 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
 #include <cub3d.h>
 
 //missing map getter

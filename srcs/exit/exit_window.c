@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   exit_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 14:14:45 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/02/23 21:28:54 by mgranate_ls      ###   ########.fr       */
+/*   Created: 2023/02/23 21:21:36 by mgranate_ls       #+#    #+#             */
+/*   Updated: 2023/02/23 21:21:40 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-t_cub	*new_cube(void)
+int	close_window(t_cub *vars)
 {
-	static t_cub	data;
-
-	return (&data);
+	mlx_destroy_window(vars->mlx, vars->win);
+	free(vars->mlx);
+	exit (0);
 }
 
-
-int	main(int ac, char **av)
+int	ft_close(int keycode, t_cub *vars)
 {
-	read_file(new_cube(), av[1], ac);
-	if (!read_map(new_cube()))
-		exit_free(new_cube(), 1, "Wrong Map Configuration");
-	check_map_elements(new_cube());
-	create_cube(new_cube());
+	if (keycode == KEY_ESC)
+		exit_free(vars, 0, "Exit Program Succesfully");
 	return (0);
 }

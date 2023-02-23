@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 01:59:33 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/02/23 19:21:26 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/02/23 22:29:53 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 typedef struct s_sprite	t_sprite;
 typedef struct s_data	t_data;
-
 
 struct		s_data
 {
@@ -37,8 +36,7 @@ struct s_sprite
 };
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-int		get_color_img(t_data data, int x, int y);
-void	put_image_to_window(t_sprite * cub, char	*file, int	x1, int y1);
 void	add_sprite(t_data *data, int x, int y, int color);
+void	put_image_to_window(t_sprite *spr, char	*file,  int x, int y);
 
 #endif

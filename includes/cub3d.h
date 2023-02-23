@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/02/23 04:17:15 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/02/23 22:02:30 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include <unistd.h>
 # include <parse.h>
 # include <img.h>
+# include <math.h>
+
 
 # if MACKEYMAP == 1
 #  define KEY_ESC	53
@@ -45,8 +47,8 @@
 # define X_EVENT_KEY_PRESS		2
 # define X_EVENT_KEY_RELEASE	3
 # define X_EVENT_KEY_EXIT		17
-# define screenW				800
-# define screenH				800
+# define screenW				1000
+# define screenH				1000
 # define SIZE_X					64
 # define SIZE_Y					64
 # define COLOR_TRANSPARENT 		0xd411aa
@@ -57,6 +59,7 @@ typedef struct s_map	t_map;
 typedef struct s_player	t_player;
 typedef struct s_dist	t_dist;
 typedef struct s_img	t_img;
+
 
 struct		s_img
 {
@@ -120,6 +123,7 @@ struct		s_player
 t_cub	*new_cube(void);
 // Mlx Utils
 void	load_img(t_cub *data, char **path);
+void	create_cube(t_cub *cub);
 
 // Raycastin Utils
 void    raycasting(t_cub *cub, t_player *player);
@@ -129,9 +133,11 @@ int		read_file(t_cub *cube, char *file_name, int ac);
 int		read_map(t_cub *cube);
 void	check_map_elements(t_cub *cub);
 
-// Clean Program
+// Clean and Exit Program
 void	exit_free(t_cub *data, int status, char *str);
 int		free_ob(void *v);
+int		close_window(t_cub *vars);
+int		ft_close(int keycode, t_cub *vars);
 
 // Parsing Resources
 int		get_map(char **file, t_cub *cube);
