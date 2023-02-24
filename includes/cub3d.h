@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/02/23 22:02:30 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/02/23 23:04:06 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,5 @@ int		ft_close(int keycode, t_cub *vars);
 // Parsing Resources
 int		get_map(char **file, t_cub *cube);
 
-//Test program
-void	test(t_cub cub);
 
 #endif
