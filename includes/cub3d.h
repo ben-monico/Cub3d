@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/02/23 23:04:06 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/02/24 00:26:50 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@
 # include <img.h>
 # include <math.h>
 
+# include <img.h>
+# include <math.h>
+
 
 # if MACKEYMAP == 1
 #  define KEY_ESC	53
@@ -34,14 +37,18 @@
 #  define KEY_D		2
 #  define LEFT 		123
 #  define RIGHT 	124
+#  define ARROW_LEFT 	65361
+#  define ARROW_RIGHT	65363
 # else
-#  define KEY_ESC	65307
-#  define W 		119
-#  define A 		97
-#  define S 		115
-#  define D 		100
-#  define LEFT 		65361
-#  define RIGHT		65363
+#  define KEY_ESC		65307
+#  define KEY_W			119
+#  define KEY_A 		97
+#  define KEY_S 		115
+#  define KEY_D 		100
+#  define ARROW_UP 		65362
+#  define ARROW_DOWN 	65364
+#  define ARROW_LEFT 	65361
+#  define ARROW_RIGHT	65363
 #  endif
 
 # define X_EVENT_KEY_PRESS		2
@@ -100,16 +107,6 @@ struct	s_map
 	int		*c_c;
 };
 
-
-struct s_cub
-{
-    void	*mlx;
-	void    *win;
-    int     **map_mtx;
-	t_map	map;
-	t_img	img;
-};
-
 struct		s_player
 {
 	double	posX;
@@ -120,27 +117,45 @@ struct		s_player
 	double	fovY;
 };
 
+struct s_cub
+{
+    void		*mlx;
+	void		*win;
+    int			**map_mtx;
+	t_map		map;
+	t_img		img;
+	t_player	player;
+};
+
+
 t_cub	*new_cube(void);
 // Mlx Utils
 void	load_img(t_cub *data, char **path);
 void	create_cube(t_cub *cub);
+int		press_key(int key, t_cub *cub);
 
 // Raycastin Utils
-void    raycasting(t_cub *cub, t_player *player);
+void    raycasting(t_cub *cub);
+void	init_raycast_vars(t_cub *cub);
 
 // Read File and Create Map
 int		read_file(t_cub *cube, char *file_name, int ac);
-int		read_map(t_cub *cube);
+void	read_map(t_cub *cube);
 void	check_map_elements(t_cub *cub);
 
 // Clean and Exit Program
 void	exit_free(t_cub *data, int status, char *str);
-int		free_ob(void *v);
-int		close_window(t_cub *vars);
-int		ft_close(int keycode, t_cub *vars);
 
 // Parsing Resources
 int		get_map(char **file, t_cub *cube);
+
+// Moving
+void w_press(t_cub *cub);
+void a_press(t_cub *cub);
+void s_press(t_cub *cub);
+void d_press(t_cub *cub);
+void a_left_press(t_cub *cub);
+void a_right_press(t_cub *cub);
 
 
 #endif

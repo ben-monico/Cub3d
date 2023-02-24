@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: benmonico <benmonico@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 12:12:06 by mgranate          #+#    #+#             */
-/*   Updated: 2023/02/17 23:15:19 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/02/23 19:23:41 by benmonico        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,15 @@ static int	check_map_size(char	**file, int i)
 	return (sz);
 }
 
-static int	copy_map(char **file, int i, t_cub *cube)
+static int	copy_map(char **file, int i, t_cub *cub)
 {
 	int	j;
 	int	sz;
 	int	l;
 
 	sz = check_map_size(file, i);
-	cube->map.mtx = alloc().calloc((sz + 1) * sizeof(char *));
-	if (!cube->map.mtx)
+	cub->map.mtx = alloc().calloc((sz + 1) * sizeof(char *));
+	if (!cub->map.mtx)
 		return (0);
 	l = 0;
 	while (file[i])
@@ -56,7 +56,7 @@ static int	copy_map(char **file, int i, t_cub *cube)
 		{
 			if (!string().ft_isspace(file[i][j]))
 			{
-				cube->map.mtx[l++] = string().strdup(file[i]);
+				cub->map.mtx[l++] = string().strdup(file[i]);
 				break ;
 			}
 			if (!(file[i][1]) && l > 0)
@@ -67,12 +67,12 @@ static int	copy_map(char **file, int i, t_cub *cube)
 	return (1);
 }
 
-int	get_map(char **file, t_cub *cube)
+int	get_map(char **file, t_cub *cub)
 {
 	int	i;
 	int	j;
 
-	(void)cube;
+	(void)cub;
 	i = -1;
 	while (file[++i])
 	{
@@ -81,7 +81,7 @@ int	get_map(char **file, t_cub *cube)
 		{
 			if (!string().ft_isspace(file[i][++j]))
 			{
-				if(!copy_map(file, i, cube))
+				if(!copy_map(file, i, cub))
 					return (0);
 				return (1);
 			}
