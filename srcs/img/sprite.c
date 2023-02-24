@@ -15,5 +15,5 @@ void	destroy_sprite(t_sprite *sprite)
 	if (!sprite)
 		return ;
 	mlx_destroy_image(new_cube()->mlx, sprite->img);
-	free_ob(sprite);
+	//free_ob(sprite);
 }
