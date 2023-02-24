@@ -3,21 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: benmonico <benmonico@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:10:24 by benmonico         #+#    #+#             */
-/*   Updated: 2023/02/23 19:42:31 by benmonico        ###   ########.fr       */
+/*   Updated: 2023/02/23 23:22:13 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
-#include <math.h>
-//missing map getter
-t_map		map;
 
 void    put_line(t_cub *cub, t_line *line, t_dist *dist)
 {
-    t_img   imgline;
+    t_data   imgline;
     int     h;
     int     color;
 

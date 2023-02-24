@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: benmonico <benmonico@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/02/23 19:29:10 by benmonico        ###   ########.fr       */
+/*   Updated: 2023/02/24 00:05:49 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <parse.h>
+# include <img.h>
+# include <math.h>
+
 
 # if MACKEYMAP == 1
 #  define KEY_ESC	53
@@ -39,24 +42,34 @@
 #  define KEY_A 		97
 #  define KEY_S 		115
 #  define KEY_D 		100
+#  define ARROW_UP 		65362
+#  define ARROW_DOWN 	65364
 #  define ARROW_LEFT 	65361
 #  define ARROW_RIGHT	65363
 #  endif
 
-# define screenW				640
-# define screenH				480
 # define X_EVENT_KEY_PRESS		2
 # define X_EVENT_KEY_RELEASE	3
 # define X_EVENT_KEY_EXIT		17
+# define screenW				1000
+# define screenH				1000
 # define SIZE_X					64
 # define SIZE_Y					64
+# define COLOR_TRANSPARENT 		0xd411aa
 
 typedef struct s_cub	t_cub;
-typedef struct s_img	t_img;
 typedef struct s_line	t_line;
 typedef struct s_map	t_map;
 typedef struct s_player	t_player;
 typedef struct s_dist	t_dist;
+typedef struct s_img	t_img;
+
+
+struct		s_img
+{
+	void	**img;
+	int		colors[2];
+};
 
 struct s_line
 {
@@ -91,17 +104,6 @@ struct	s_map
 	int		*c_c;
 };
 
-struct		s_img
-{
-	int		**img;
-	void	*ptr;
-	char	*addr;
-	int		colors[2];
-	int		bpp;	//when using ARGB this value is always 32
-	int		size_line;	//This value represents (your image width) * 4 which I will also explain after
-	int		endian;		//This value can be either 0 or 1 and will indicate how the ARGB bytes are organized (from front to back or back to front)
-};
-
 struct		s_player
 {
 	double	posX;
@@ -123,24 +125,28 @@ struct s_cub
 };
 
 
-t_cub	*new_cub(void);
+t_cub	*new_cube(void);
 // Mlx Utils
-void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
 void	load_img(t_cub *data, char **path);
+void	create_cube(t_cub *cub);
+int		press_key(int key, t_cub *cub);
 
 // Raycastin Utils
 void    raycasting(t_cub *cub);
+void	init_raycast_vars(t_cub *cub);
 
 // Read File and Create Map
-int		read_file(t_cub *cub, char *file_name);
-int		read_map(t_cub *cub);
+int		read_file(t_cub *cube, char *file_name, int ac);
+void	read_map(t_cub *cube);
 void	check_map_elements(t_cub *cub);
 
-// Clean Program
+// Clean and Exit Program
 void	exit_free(t_cub *data, int status, char *str);
+int		free_ob(void *v);
+int		close_window(t_cub *vars);
 
 // Parsing Resources
-int		get_map(char **file, t_cub *cub);
+int		get_map(char **file, t_cub *cube);
 
 // Moving
 void w_press(t_cub *cub);

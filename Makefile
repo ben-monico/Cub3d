@@ -1,5 +1,4 @@
 SRCS		=	$(SRCS_DIR)/main.c 						\
-				$(SRCS_DIR)/key_mapping.c 				\
 				$(SRCS_DIR)/gnl/get_next_line.c 		\
 				$(SRCS_DIR)/gnl/get_next_line_utils.c	\
 				$(SRCS_DIR)/str/str.c					\
@@ -12,7 +11,13 @@ SRCS		=	$(SRCS_DIR)/main.c 						\
 				$(SRCS_DIR)/map/map.c					\
 				$(SRCS_DIR)/map/map_checker.c			\
 				$(SRCS_DIR)/exit/exit.c					\
-				$(SRCS_DIR)/raycasting/raycasting.c				
+				$(SRCS_DIR)/exit/exit_window.c			\
+				$(SRCS_DIR)/raycasting/raycasting.c		\
+				$(SRCS_DIR)/raycasting/init_raycaster.c \
+				$(SRCS_DIR)/img/sprite.c				\
+				$(SRCS_DIR)/img/img_utils.c				\
+				$(SRCS_DIR)/cube/start_cube.c			\
+				$(SRCS_DIR)/key_mapping.c				
 
 SRCS_DIR	=	srcs
 

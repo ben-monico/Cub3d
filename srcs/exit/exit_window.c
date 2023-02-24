@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   exit_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 14:14:45 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/02/24 00:02:39 by mgranate_ls      ###   ########.fr       */
+/*   Created: 2023/02/23 21:21:36 by mgranate_ls       #+#    #+#             */
+/*   Updated: 2023/02/24 00:05:40 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-t_cub	*new_cube(void)
+int	close_window(t_cub *vars)
 {
-	static t_cub	data;
-
-	return (&data);
-}
-
-int	main(int ac, char **av)
-{
-	read_file(new_cube(), av[1], ac);
-	read_map(new_cube());
-	check_map_elements(new_cube());
-	create_cube(new_cube());
+	exit_free(vars, 0, "Exit Program Succesfully");
 	return (0);
 }

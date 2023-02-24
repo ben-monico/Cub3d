@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: benmonico <benmonico@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 00:04:36 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/02/23 19:23:41 by benmonico        ###   ########.fr       */
+/*   Updated: 2023/02/23 23:20:59 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,15 +88,21 @@ int	get_path_img(t_parse *parse)
 	return (i);
 }
 
+void	get_img(t_parse *data)
+{
+	data->path_to_img = alloc().calloc((sizeof(void *) * 2));
+	data->path_to_img[0] = string().strdup("images/barril.xpm");
+	data->path_to_img[1] = NULL;
+}
+
 void	parse_file(t_parse *parse)
 {
 	int	i;
 	
 	i = get_path_img(parse);
-	if (!get_map(parse->file + i, new_cub()))
+	if (!get_map(parse->file + i, new_cube()))
 		exit_parse(parse, 1, "Map Not Formated Correctly");
-	//load_img(new_cub(), parse->path_to_img);
-	new_cub()->img.colors[0] = get_colors(parse->f_c, parse);
-	new_cub()->img.colors[1] = get_colors(parse->c_c, parse);
-	//DONT FORGET - FUNCTION MISSING: send_f_c.&&.c_c to cub struct
+	//load_img(new_cube(), parse->path_to_img);
+	new_cube()->img.colors[0] = get_colors(parse->f_c, parse);
+	new_cube()->img.colors[1] = get_colors(parse->c_c, parse);
 }
