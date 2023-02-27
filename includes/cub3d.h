@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: benmonico <benmonico@student.42.fr>        +#+  +:+       +#+        */
+/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/02/27 09:18:51 by benmonico        ###   ########.fr       */
+/*   Updated: 2023/02/27 15:34:32 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,31 +26,13 @@
 # include <math.h>
 
 
-# if MACKEYMAP == 1
-#  define KEY_ESC	53
-#  define KEY_W		13
-#  define KEY_A		0
-#  define KEY_S		1
-#  define KEY_D		2
-#  define ARROW_LEFT 	123
-#  define ARROW_RIGHT	124
-# else
-#  define KEY_ESC		65307
-#  define KEY_W			119
-#  define KEY_A 		97
-#  define KEY_S 		115
-#  define KEY_D 		100
-#  define ARROW_UP 		65362
-#  define ARROW_DOWN 	65364
-#  define ARROW_LEFT 	65361
-#  define ARROW_RIGHT	65363
-#  endif
 
 # define X_EVENT_KEY_PRESS		2
 # define X_EVENT_KEY_RELEASE	3
 # define X_EVENT_KEY_EXIT		17
-# define screenW				1000
-# define screenH				1000
+# define screenW				640
+# define screenH				480
+# define PI						3.14159265359
 # define SIZE_X					64
 # define SIZE_Y					64
 # define COLOR_TRANSPARENT 		0xd411aa
@@ -88,7 +70,7 @@ struct s_dist
     int stepY;
     int mapX;
     int mapY;
-	int	wallSide;
+	int	wallSideY;
 };
 
 struct	s_map
@@ -151,8 +133,28 @@ void w_press(t_cub *cub);
 void a_press(t_cub *cub);
 void s_press(t_cub *cub);
 void d_press(t_cub *cub);
-void a_left_press(t_cub *cub);
-void a_right_press(t_cub *cub);
+void arrow_left_press(t_cub *cub);
+void arrow_right_press(t_cub *cub);
 
+
+# if MACKEYMAP == 1
+#  define KEY_ESC	53
+#  define KEY_W		13
+#  define KEY_A		0
+#  define KEY_S		1
+#  define KEY_D		2
+#  define ARROW_LEFT 	123
+#  define ARROW_RIGHT	124
+# else
+#  define KEY_ESC		65307
+#  define KEY_W			119
+#  define KEY_A 		97
+#  define KEY_S 		115
+#  define KEY_D 		100
+#  define ARROW_UP 		65362
+#  define ARROW_DOWN 	65364
+#  define ARROW_LEFT 	65361
+#  define ARROW_RIGHT	65363
+#  endif
 
 #endif

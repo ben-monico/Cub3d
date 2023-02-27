@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_raycaster.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 23:26:10 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/02/23 23:26:35 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/02/27 15:19:51 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	init_raycast_vars(t_cub *cub)
 	  
 	mtx = cub->map.mtx;
     cub->player.fovX = 0;
-    cub->player.fovX = 0.66;
+    cub->player.fovY = 0.66;
 	cub->player.dirX = 0;
 	cub->player.dirY = 0;
 	x = -1;
@@ -32,15 +32,12 @@ void	init_raycast_vars(t_cub *cub)
             if (mtx[x][y] == 'N' || mtx[x][y] == 'S'
 			|| mtx[x][y] == 'E' || mtx[x][y] == 'W')
             {
-				printf("oi\n");
-                cub->player.posX = x;
-                cub->player.posY = y;
-				printf("x %d y %d\n", x, y);
-
+                cub->player.posX = x + 0.5;
+                cub->player.posY = y + 0.5;
 				if (mtx[x][y] == 'N')
-            	    cub->player.dirY = 1;
+            	    cub->player.dirY = -1;
 				else if (mtx[x][y] == 'S')
-					 cub->player.dirY = -1;
+					 cub->player.dirY = 1;
 				else if (mtx[x][y] == 'E')
 					 cub->player.dirX = -1;
 				else

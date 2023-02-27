@@ -17,7 +17,8 @@ SRCS		=	$(SRCS_DIR)/main.c 						\
 				$(SRCS_DIR)/img/sprite.c				\
 				$(SRCS_DIR)/img/img_utils.c				\
 				$(SRCS_DIR)/cube/start_cube.c			\
-				$(SRCS_DIR)/key_mapping.c				
+				$(SRCS_DIR)/key_mapping.c				\
+				$(SRCS_DIR)/key_mapping2.c	
 
 SRCS_DIR	=	srcs
 

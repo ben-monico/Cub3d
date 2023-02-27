@@ -3,14 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   key_mapping.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: benmonico <benmonico@student.42.fr>        +#+  +:+       +#+        */
+/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:57:10 by benmonico         #+#    #+#             */
-/*   Updated: 2023/02/27 09:19:14 by benmonico        ###   ########.fr       */
+/*   Updated: 2023/02/27 15:15:00 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
+
+int	press_key(int key, t_cub *cub)
+{
+	if (key == KEY_W)
+		w_press(cub);
+	else if (key == KEY_A)
+		a_press(cub);
+	else if (key == KEY_S)
+		s_press(cub);
+	else if (key == KEY_D)
+		d_press(cub);
+	else if (key == ARROW_RIGHT)
+		arrow_right_press(cub);
+	else if (key == ARROW_LEFT)
+		arrow_left_press(cub);
+	else if (key == KEY_ESC)
+		exit_free(cub, 0, "Exit Program Succesfully");
+	return (key);
+}
 
 void w_press(t_cub *cub)
 {
@@ -30,31 +49,4 @@ void s_press(t_cub *cub)
 void d_press(t_cub *cub)
 {
     (void)cub;
-}
-void a_left_press(t_cub *cub)
-{
-    double  oldDirX;
-    double  oldCameraPlaneX;
-
-    oldDirX = cub->player.dirX;
-    oldCameraPlaneX = cub->player.fovX;
-    cub->player.dirX = cub->player.dirX * cos(-90) - cub->player.dirY * sin(-90);
-    cub->player.dirX = oldDirX * sin(-90) + cub->player.dirY * cos(-90);
-    cub->player.fovX = cub->player.fovX * cos(-90) - cub->player.fovY * sin(-90);
-    cub->player.fovY = oldCameraPlaneX * sin(-90) + cub->player.fovY * cos(-90);
-    raycasting(cub);
-}
-
-void a_right_press(t_cub *cub)
-{
-    double  oldDirX;
-    double  oldCameraPlaneX;
-
-    oldDirX = cub->player.dirX;
-    oldCameraPlaneX = cub->player.fovX;
-    cub->player.dirX = cub->player.dirX * cos(90) - cub->player.dirY * sin(90);
-    cub->player.dirX = oldDirX * sin(90) + cub->player.dirY * cos(90);
-    cub->player.fovX = cub->player.fovX * cos(90) - cub->player.fovY * sin(90);
-    cub->player.fovY = oldCameraPlaneX * sin(90) + cub->player.fovY * cos(90);
-    raycasting(cub);
 }
