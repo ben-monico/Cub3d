@@ -6,7 +6,7 @@
 /*   By: benmonico <benmonico@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/02/23 19:29:10 by benmonico        ###   ########.fr       */
+/*   Updated: 2023/02/23 19:48:16 by benmonico        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,8 @@
 #  define KEY_A		0
 #  define KEY_S		1
 #  define KEY_D		2
-#  define LEFT 		123
-#  define RIGHT 	124
-#  define ARROW_LEFT 	65361
-#  define ARROW_RIGHT	65363
+#  define ARROW_LEFT 	123
+#  define ARROW_RIGHT	124
 # else
 #  define KEY_ESC		65307
 #  define KEY_W			119

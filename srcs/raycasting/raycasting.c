@@ -6,21 +6,19 @@
 /*   By: benmonico <benmonico@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:10:24 by benmonico         #+#    #+#             */
-/*   Updated: 2023/02/23 19:42:31 by benmonico        ###   ########.fr       */
+/*   Updated: 2023/02/23 20:30:19 by benmonico        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 #include <math.h>
-//missing map getter
-t_map		map;
 
 void    put_line(t_cub *cub, t_line *line, t_dist *dist)
 {
     t_img   imgline;
     int     h;
     int     color;
-
+	
     imgline.ptr = mlx_new_image(cub->mlx, 1, screenH);
 	imgline.addr = mlx_get_data_addr(imgline.ptr, &imgline.bpp,
                     &imgline.size_line, &imgline.endian);
