@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/02/27 15:34:32 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/02/27 17:51:15 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,9 @@
 # define SIZE_Y					64
 # define COLOR_TRANSPARENT 		0xd411aa
 
+typedef struct s_sprite	t_sprite;
+typedef struct s_data	t_data;
 typedef struct s_cub	t_cub;
-typedef struct s_line	t_line;
 typedef struct s_map	t_map;
 typedef struct s_player	t_player;
 typedef struct s_dist	t_dist;
@@ -51,11 +52,24 @@ struct		s_img
 	int		colors[2];
 };
 
-struct s_line
+struct		s_data
 {
-	int	floorPoint;
-	int	ceilingPoint;
-	int	x;
+	void	*ptr;
+	char	*addr;		// In my code I changed this to int *, which I will explain in a second
+	int		bpp;	//when using ARGB this value is always 32
+	int		size_line;	//This value represents (your image width) * 4 which I will also explain after
+	int		endian;		//This value can be either 0 or 1 and will indicate how the ARGB bytes are organized (from front to back or back to front)
+	int		width;
+	int		height;
+	int		ceilingPoint;
+	int		floorPoint;
+	int		x;
+};
+
+struct s_sprite
+{
+	void		*img;
+	t_data		data;
 };
 
 struct s_dist
@@ -99,11 +113,16 @@ struct s_cub
     void		*mlx;
 	void		*win;
     int			**map_mtx;
+	t_data		line;
 	t_map		map;
 	t_img		img;
 	t_player	player;
 };
 
+
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	add_sprite(t_data *data, int x, int y, int color);
+void	put_image_to_window(t_sprite *spr, char	*file,  int x, int y);
 
 t_cub	*new_cube(void);
 // Mlx Utils

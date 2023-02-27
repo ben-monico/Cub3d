@@ -6,30 +6,27 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:10:24 by benmonico         #+#    #+#             */
-/*   Updated: 2023/02/27 17:14:22 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/02/27 18:31:57 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 #include <math.h>
 
-void    put_line(t_cub *cub, t_line *line, t_dist *dist)
+void    put_line(t_cub *cub, t_dist *dist)
 {
-    t_data   imgline;
     int     h;
     int     color;
 	
-    imgline.ptr = mlx_new_image(cub->mlx, 1, screenH);
-	imgline.addr = mlx_get_data_addr(imgline.ptr, &imgline.bpp,
-                    &imgline.size_line, &imgline.endian);
-    printf("floor %d / ceiling %d x%d\n", line->floorPoint, line->ceilingPoint, line->x);
+    color = 0x840036;
+    if (dist->wallSideY == 1)
+        color /= 1.5;
+    printf("floor %d / ceiling %d x%d\n", cub->line.floorPoint, cub->line.ceilingPoint, cub->line.x);
 	h = 0;
-	while (h < line->ceilingPoint - line->floorPoint)
+	while (h < cub->line.ceilingPoint - cub->line.floorPoint)
 	{
-        color = 0x840036;
-        if (dist->wallSideY == 1)
-            color /= 1.5;
-		my_mlx_pixel_put(&imgline, 1, h, color);
+       
+		my_mlx_pixel_put(&cub->line, 1, h, color);
 		h++;
         // printf("linha posta %d\n", h);
 	}
@@ -38,7 +35,7 @@ void    put_line(t_cub *cub, t_line *line, t_dist *dist)
     mlx_put_image_to_window(cub->mlx, cub->win, imgline.ptr, line->x, line->floorPoint); // These zeroes are the coordinates of the window in which you want to place the first pixel of our cute pink cub. Try changing its values to check different coordinates.
 }
 
-void    get_wall_h(t_dist *dist, t_line *line)
+void    get_wall_h(t_cub *cub, t_dist *dist)
 {
     double  fisheyeDist;
     double     wallHeight;
@@ -47,7 +44,7 @@ void    get_wall_h(t_dist *dist, t_line *line)
         fisheyeDist = dist->sideDistX - dist->deltaDistX;
     else
         fisheyeDist = dist->sideDistY - dist->deltaDistY;
-    wallHeight = (int)(screenH / fisheyeDist;
+    wallHeight = (int)screenH / fisheyeDist;
     line->floorPoint = (screenH - wallHeight) / 2;
     if (wallHeight > screenH)
         line->ceilingPoint = 0;
@@ -137,7 +134,7 @@ void    raycasting(t_cub *cub)
         printf("delta X %f deltaY %f\n", dist.deltaDistX, dist.deltaDistY);
         calc_sidedist(cub, &dist);
         check_ray_hit(cub, &dist);
-        get_wall_h(&dist, &line);
-        put_line(cub, &line, &dist);
+        get_wall_h(cub, &dist);
+        put_line(cub, &dist);
     }
 }   
