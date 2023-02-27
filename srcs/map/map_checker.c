@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: benmonico <benmonico@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 00:42:49 by mgranate          #+#    #+#             */
-/*   Updated: 2023/02/23 19:23:41 by benmonico        ###   ########.fr       */
+/*   Updated: 2023/02/23 23:34:28 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static int	check_zero1(t_map *map, char c, int y, int x)
 	return (1);
 }
 
-int	read_map(t_cub *cub)
+void	read_map(t_cub *cub)
 {
 	t_map	*map;
 	int		y;
@@ -84,5 +84,4 @@ int	read_map(t_cub *cub)
 				exit_free(cub, 1, "Does not have a wall to support it");
 		}
 	}
-	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: benmonico <benmonico@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:10:24 by benmonico         #+#    #+#             */
-/*   Updated: 2023/02/23 20:30:19 by benmonico        ###   ########.fr       */
+/*   Updated: 2023/02/27 09:19:05 by benmonico        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void    put_line(t_cub *cub, t_line *line, t_dist *dist)
 {
-    t_img   imgline;
+    t_data   imgline;
     int     h;
     int     color;
 	

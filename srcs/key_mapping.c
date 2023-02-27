@@ -6,12 +6,11 @@
 /*   By: benmonico <benmonico@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:57:10 by benmonico         #+#    #+#             */
-/*   Updated: 2023/02/23 20:20:55 by benmonico        ###   ########.fr       */
+/*   Updated: 2023/02/27 09:19:14 by benmonico        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
-#include <math.h>
 
 void w_press(t_cub *cub)
 {
