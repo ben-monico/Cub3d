@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 23:26:10 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/02/27 17:48:49 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/02/28 17:25:46 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	init_raycast_vars(t_cub *cub)
 	  
 	mtx = cub->map.mtx;
     cub->player.fovX = 0;
-    cub->player.fovY = 0.66;
-	cub->player.dirX = 0;
+    cub->player.fovY = 0;
 	cub->player.dirY = 0;
+	cub->player.dirX = 0;
 	x = -1;
     while(mtx[++x])
     {
@@ -34,14 +34,26 @@ void	init_raycast_vars(t_cub *cub)
             {
                 cub->player.posX = x + 0.5;
                 cub->player.posY = y + 0.5;
-				if (mtx[x][y] == 'N')
-            	    cub->player.dirY = -1;
+				if (mtx[x][y] == 'E')
+				{
+            	    cub->player.dirX = 1;
+					cub->player.fovX = 0.66;
+				}
+				else if (mtx[x][y] == 'W')
+				{
+					cub->player.dirX = -1;
+					cub->player.fovX = -0.66;
+				}
 				else if (mtx[x][y] == 'S')
+				{
 					 cub->player.dirY = 1;
-				else if (mtx[x][y] == 'E')
-					 cub->player.dirX = -1;
-				else
-					 cub->player.dirX = 1;
+					 cub->player.fovY = -0.66;
+				}
+				else if (mtx[x][y] == 'N')
+				{
+					cub->player.dirY = -1;
+					cub->player.fovY = 0.66;
+				}
 				return ;
             }
         }

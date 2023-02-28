@@ -6,15 +6,17 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:57:10 by benmonico         #+#    #+#             */
-/*   Updated: 2023/02/27 15:15:00 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/02/28 18:43:43 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-int	press_key(int key, t_cub *cub)
+void press_key(int key, t_cub *cub)
 {
-	if (key == KEY_W)
+	if (key == KEY_ESC)
+		exit_free(cub, 0, "Exit Program Succesfully");
+	else if (key == KEY_W)
 		w_press(cub);
 	else if (key == KEY_A)
 		a_press(cub);
@@ -26,27 +28,58 @@ int	press_key(int key, t_cub *cub)
 		arrow_right_press(cub);
 	else if (key == ARROW_LEFT)
 		arrow_left_press(cub);
-	else if (key == KEY_ESC)
-		exit_free(cub, 0, "Exit Program Succesfully");
-	return (key);
+	raycasting(cub);
+	return ;
 }
 
 void w_press(t_cub *cub)
 {
-    (void)cub;
+	double	x;
+	double	y;
+	
+	x = cub->player.posX + cub->player.dirY * 0.1;
+	y = cub->player.posY + cub->player.dirX * 0.1;
+	if (cub->map.mtx[(int)x][(int)y] && cub->map.mtx[(int)x][(int)y] == '1')
+		return ;
+    cub->player.posX = x;
+	cub->player.posY = y;
 }
 
 void a_press(t_cub *cub)
 {
-    (void)cub;
+	double	x;
+	double	y;
+
+	x = cub->player.posX - cub->player.fovX * 0.1;
+	y = cub->player.posY - cub->player.fovY * 0.1;
+	if (cub->map.mtx[(int)x][(int)y] && cub->map.mtx[(int)x][(int)y] == '1')
+		return ;
+    cub->player.posX = x;
+	cub->player.posY = y;
 }
 
 void s_press(t_cub *cub)
 {
-    (void)cub;
+	double	x;
+	double	y;
+	
+	x = cub->player.posX - cub->player.dirY * 0.1;
+	y = cub->player.posY - cub->player.dirX * 0.1;
+	if (cub->map.mtx[(int)x][(int)y] && cub->map.mtx[(int)x][(int)y] == '1')
+		return ;
+    cub->player.posX = x;
+	cub->player.posY = y;
 }
 
 void d_press(t_cub *cub)
 {
-    (void)cub;
+	double	x;
+	double	y;
+
+	x = cub->player.posX + cub->player.fovX * 0.1;
+	y = cub->player.posY + cub->player.fovY * 0.1;
+	if (cub->map.mtx[(int)x][(int)y] && cub->map.mtx[(int)x][(int)y] == '1')
+		return ;
+    cub->player.posX = x;
+	cub->player.posY = y;
 }

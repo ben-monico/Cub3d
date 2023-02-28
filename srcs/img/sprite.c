@@ -1,4 +1,4 @@
-#include <img.h>
+#include <cub3d.h>
 
 void	add_sprite(t_data *data, int x, int y, int color)
 {
