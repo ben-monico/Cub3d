@@ -128,7 +128,7 @@ void	mlx_int_loop_once()
   NSEvent *event;
   NSDate  *thedate;
 
-  thedate = [NSDate dateWithTimeIntervalSinceNow:0.1];
+  thedate = [NSDate dateWithTimeIntervalSinceNow:dubstep];
   while (42)
     {
       event = [NSApp nextEventMatchingMask:NSEventMaskAny

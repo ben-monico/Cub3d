@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:57:10 by benmonico         #+#    #+#             */
-/*   Updated: 2023/03/01 13:48:14 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/01 16:57:05 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,7 @@ void w_press(t_cub *cub, double dubstep)
 	
 	x = cub->player.posX + cub->player.dirY * dubstep;
 	y = cub->player.posY + cub->player.dirX * dubstep;
-	if (check_collision(cub, x, y))
-		return ;
-	cub->player.posX = x;
-	cub->player.posY = y;
+	verify_collision(cub, x, y);
 }
 
 void a_press(t_cub *cub, double dubstep)
@@ -55,10 +52,7 @@ void a_press(t_cub *cub, double dubstep)
 
 	x = cub->player.posX - cub->player.fovX * dubstep;
 	y = cub->player.posY - cub->player.fovY * dubstep;
-	if (check_collision(cub, x, y))
-		return ;
-    cub->player.posX = x;
-	cub->player.posY = y;
+	verify_collision(cub, x, y);
 }
 
 void s_press(t_cub *cub, double dubstep)
@@ -68,10 +62,7 @@ void s_press(t_cub *cub, double dubstep)
 	
 	x = cub->player.posX - cub->player.dirY * dubstep;
 	y = cub->player.posY - cub->player.dirX * dubstep;
-	if (check_collision(cub, x, y))
-		return ;
-    cub->player.posX = x;
-	cub->player.posY = y;
+	verify_collision(cub, x, y);
 }
 
 void d_press(t_cub *cub, double dubstep)
@@ -81,8 +72,5 @@ void d_press(t_cub *cub, double dubstep)
 
 	x = cub->player.posX + cub->player.fovX * dubstep;
 	y = cub->player.posY + cub->player.fovY * dubstep;
-	if (check_collision(cub, x, y))
-		return ;
-    cub->player.posX = x;
-	cub->player.posY = y;
+	verify_collision(cub, x, y);
 }
