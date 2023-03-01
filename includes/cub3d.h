@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/02/28 17:34:48 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/01 13:45:19 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_cub	*new_cube(void);
 // Mlx Utils
 void	load_img(t_cub *data, char **path);
 void	create_cube(t_cub *cub);
-void	press_key(int key, t_cub *cub);
+int		press_key(int key, t_cub *cub);
 
 // Raycastin Utils
 void    raycasting(t_cub *cub);
@@ -58,11 +58,12 @@ int		close_window(t_cub *vars);
 int		get_map(char **file, t_cub *cube);
 
 // Moving
+int check_collision(t_cub *cub, double x, double y);
 void p_rotation(t_player *player, double angle);
-void w_press(t_cub *cub);
-void a_press(t_cub *cub);
-void s_press(t_cub *cub);
-void d_press(t_cub *cub);
+void w_press(t_cub *cub, double dubstep);
+void a_press(t_cub *cub, double dubstep);
+void s_press(t_cub *cub, double dubstep);
+void d_press(t_cub *cub, double dubstep);
 void arrow_left_press(t_cub *cub);
 void arrow_right_press(t_cub *cub);
 

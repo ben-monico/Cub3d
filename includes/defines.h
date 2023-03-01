@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:59:14 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/02/28 11:12:55 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/01 11:53:02 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 # define DEFINES_H
 
 
-# define X_EVENT_KEY_PRESS		2
-# define X_EVENT_KEY_RELEASE	3
-# define X_EVENT_KEY_EXIT		17
-# define screenW				640
-# define screenH				480
+# define screenW				1280
+# define screenH				720
 # define SIZE_X					64
 # define SIZE_Y					64
 # define COLOR_TRANSPARENT 		0xd411aa
+
+# define X_EVENT_KEY_PRESS		2
+# define X_EVENT_KEY_RELEASE	3
+# define X_EVENT_KEY_EXIT		17
 
 # if MACKEYMAP == 1
 #  define KEY_ESC	53

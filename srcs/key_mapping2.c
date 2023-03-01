@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:14:22 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/02/28 17:25:46 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/01 13:47:02 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,3 +44,27 @@ void p_rotation(t_player *player, double angle)
     player->fovY = y;  
 }
 
+int check_collision(t_cub *cub, double x, double y)
+{
+    double  col;
+    int     yy;
+    int     i;
+    int     j;
+
+    col = 0.3;
+    x -= col;
+    i = -1;
+    j = -1;
+    while (++i < 2)
+    {
+        yy = y - col;
+        while(++j < 2)
+        {
+            if (cub->map.mtx[(int)x][(int)y] == '1')
+                return (1);
+            yy += col;
+        }
+        x += col;
+    }
+    return (0);
+}

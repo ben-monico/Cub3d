@@ -6,78 +6,80 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:57:10 by benmonico         #+#    #+#             */
-/*   Updated: 2023/02/28 18:43:43 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/01 13:46:44 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-void press_key(int key, t_cub *cub)
+int press_key(int key, t_cub *cub)
 {
+	double	dubstep;
+
+	dubstep = 0.1;
 	if (key == KEY_ESC)
 		exit_free(cub, 0, "Exit Program Succesfully");
 	else if (key == KEY_W)
-		w_press(cub);
+		w_press(cub, dubstep);
 	else if (key == KEY_A)
-		a_press(cub);
+		a_press(cub, dubstep);
 	else if (key == KEY_S)
-		s_press(cub);
+		s_press(cub, dubstep);
 	else if (key == KEY_D)
-		d_press(cub);
+		d_press(cub, dubstep);
 	else if (key == ARROW_RIGHT)
 		arrow_right_press(cub);
 	else if (key == ARROW_LEFT)
 		arrow_left_press(cub);
 	raycasting(cub);
-	return ;
+	return (key);
 }
 
-void w_press(t_cub *cub)
+void w_press(t_cub *cub, double dubstep)
 {
 	double	x;
 	double	y;
 	
-	x = cub->player.posX + cub->player.dirY * 0.1;
-	y = cub->player.posY + cub->player.dirX * 0.1;
-	if (cub->map.mtx[(int)x][(int)y] && cub->map.mtx[(int)x][(int)y] == '1')
+	x = cub->player.posX + cub->player.dirY * dubstep;
+	y = cub->player.posY + cub->player.dirX * dubstep;
+	if (check_collision(cub, x, y))
 		return ;
-    cub->player.posX = x;
+
+	cub->player.posX = x;
 	cub->player.posY = y;
 }
 
-void a_press(t_cub *cub)
+void a_press(t_cub *cub, double dubstep)
 {
 	double	x;
 	double	y;
 
-	x = cub->player.posX - cub->player.fovX * 0.1;
-	y = cub->player.posY - cub->player.fovY * 0.1;
-	if (cub->map.mtx[(int)x][(int)y] && cub->map.mtx[(int)x][(int)y] == '1')
-		return ;
+	x = cub->player.posX - cub->player.fovX * dubstep;
+	y = cub->player.posY - cub->player.fovY * dubstep;
     cub->player.posX = x;
 	cub->player.posY = y;
 }
 
-void s_press(t_cub *cub)
+void s_press(t_cub *cub, double dubstep)
 {
 	double	x;
 	double	y;
 	
-	x = cub->player.posX - cub->player.dirY * 0.1;
-	y = cub->player.posY - cub->player.dirX * 0.1;
+	x = cub->player.posX - cub->player.dirY * dubstep;
+	y = cub->player.posY - cub->player.dirX * dubstep;
 	if (cub->map.mtx[(int)x][(int)y] && cub->map.mtx[(int)x][(int)y] == '1')
 		return ;
     cub->player.posX = x;
 	cub->player.posY = y;
 }
 
-void d_press(t_cub *cub)
+void d_press(t_cub *cub, double dubstep)
 {
 	double	x;
 	double	y;
 
-	x = cub->player.posX + cub->player.fovX * 0.1;
-	y = cub->player.posY + cub->player.fovY * 0.1;
+	x = cub->player.posX + cub->player.fovX * dubstep;
+	y = cub->player.posY + cub->player.fovY * dubstep;
 	if (cub->map.mtx[(int)x][(int)y] && cub->map.mtx[(int)x][(int)y] == '1')
 		return ;
     cub->player.posX = x;

@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:10:24 by benmonico         #+#    #+#             */
-/*   Updated: 2023/02/28 17:33:17 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/01 12:57:48 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,20 @@ void    put_line(t_cub *cub, t_dist *dist)
     int     h;
     int     color;
 	
-    color = 0x840036;
+    color = 0xDBACD4;
     if (dist->wallSideY == 1)
-        color /= 1.5;
-    // printf("floor %d / ceiling %d x%d\n", cub->line.floorPoint, cub->line.ceilingPoint, cub->line.x);
+        color /= 1.0005;
+    // printf("floor %d / ceiling %d x%d\n", cub->render_img.floorPoint, cub->render_img.ceilingPoint, cub->render_img.x);
     h = -1;
-	while (++h < cub->line.floorPoint)
-		my_mlx_pixel_put(&cub->line, cub->line.x, h, cub->img.colors[0]);
+	while (++h < cub->render_img.floorPoint)
+		my_mlx_pixel_put(&cub->render_img, cub->render_img.x, h, cub->img.colors[0]);
     h--;
-	while (++h < cub->line.ceilingPoint)
-		my_mlx_pixel_put(&cub->line, cub->line.x, h, color);
+	while (++h < cub->render_img.ceilingPoint)
+		my_mlx_pixel_put(&cub->render_img, cub->render_img.x, h, color);
     h--;
 	while (++h < screenH)
-		my_mlx_pixel_put(&cub->line, cub->line.x, h, cub->img.colors[1]);
-    // printf("X = %d\n",cub->line.x);
-    mlx_put_image_to_window(cub->mlx, cub->win, cub->line.ptr, 0, 0);
+		my_mlx_pixel_put(&cub->render_img, cub->render_img.x, h, cub->img.colors[1]);
+    // printf("X = %d\n",cub->render_img.x);
 }
 
 void    get_wall_h(t_cub *cub, t_dist *dist)
@@ -44,14 +43,14 @@ void    get_wall_h(t_cub *cub, t_dist *dist)
         fisheyeDist = dist->sideDistX - dist->deltaDistX;
     else
         fisheyeDist = dist->sideDistY - dist->deltaDistY;
-    wallHeight = (int)(screenH / fisheyeDist) / 2;
-    // printf("lineH %f floor %d ceiling%d\n", wallHeight, cub->line.floorPoint, cub->line.ceilingPoint);
-    cub->line.floorPoint = screenH / 2 - wallHeight / 2;
-    if (cub->line.floorPoint < 0)
-        cub->line.floorPoint = 0;
-    cub->line.ceilingPoint = screenH / 2 + wallHeight / 2;
-    if (cub->line.ceilingPoint >= screenH)
-        cub->line.ceilingPoint = screenH - 1;
+    wallHeight = (int)(screenH / fisheyeDist) / 1.2;
+    // printf("lineH %f floor %d ceiling%d\n", wallHeight, cub->render_img.floorPoint, cub->render_img.ceilingPoint);
+    cub->render_img.floorPoint = screenH / 2 - wallHeight / 2;
+    if (cub->render_img.floorPoint < 0)
+        cub->render_img.floorPoint = 0;
+    cub->render_img.ceilingPoint = screenH / 2 + wallHeight / 2;
+    if (cub->render_img.ceilingPoint >= screenH)
+        cub->render_img.ceilingPoint = screenH - 1;
     // printf("dirY %f dirX %f\n", cub->player.dirY, cub->player.dirX);
 
 }
@@ -112,10 +111,10 @@ void    raycasting(t_cub *cub)
     t_dist  dist;
     double  cameraX;
 
-    cub->line.x = -1;
-    while (++cub->line.x < screenW)
+    cub->render_img.x = -1;
+    while (++cub->render_img.x < screenW)
     {
-        cameraX = 2 * cub->line.x / (double)screenW - 1;
+        cameraX = 2 * cub->render_img.x / (double)screenW - 1;
         dist.raydirY = cub->player.dirY + cub->player.fovX * cameraX;
         dist.raydirX = cub->player.dirX + cub->player.fovY * cameraX;
         // printf("rayX %f rayY %f\n", dist.raydirY, dist.raydirX);
@@ -135,5 +134,6 @@ void    raycasting(t_cub *cub)
         get_wall_h(cub, &dist);
         put_line(cub, &dist);
     }
+    mlx_put_image_to_window(cub->mlx, cub->win, cub->render_img.ptr, 0, 0);
         printf("dirY %f dirX %f\n", cub->player.dirY, cub->player.dirX);
 }   
