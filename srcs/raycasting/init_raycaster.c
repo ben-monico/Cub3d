@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 23:26:10 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/02/28 17:25:46 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/01 18:58:32 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	init_raycast_vars(t_cub *cub)
 					cub->player.dirY = -1;
 					cub->player.fovY = 0.66;
 				}
+				mtx[x][y] = '0';
 				return ;
             }
         }
