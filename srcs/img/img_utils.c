@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 01:58:29 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/01 11:51:23 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/02 17:08:08 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,38 +21,48 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-int	get_color_img(t_data *data, int x, int y)
+unsigned int	get_color_img(t_data *data, int x, int y)
 {
 	char			*dst;
 	unsigned int	color;
 	
 	//printf("data->add: %p\n", data->addr);
-	dst = data->addr + (y * data->size_line + x	* (data->bpp / 8));
-	color = *(unsigned int *)dst;
+	dst = (data->addr + (y * data->size_line + x * (data->bpp / 8)));
+	color = *(unsigned int*)dst;
 	return (color);
 }
 
 void	put_image_to_window(t_sprite *spr, char *file, int x, int y)
 {
 	static t_data	img;
+	static int a;
 	int				h;
 	int				w;
 	
 	(void)x;
 	(void)y;
-	img = spr->data;
-	img.ptr = mlx_xpm_file_to_image(new_cube()->mlx, file, &img.width, &img.height);
-	img.addr = mlx_get_data_addr(img.ptr, &img.bpp, \
-	&img.size_line, &img.endian);
+	if (!a)
+	{
+		a = 1;
+		img = spr->data;
+		img.ptr = mlx_xpm_file_to_image(new_cube()->mlx, file, &img.width, &img.height);
+		img.addr = mlx_get_data_addr(img.ptr, &img.bpp, \
+		&img.size_line, &img.endian);
+	}
 	h = -1;
-	while (++h < img.height)
+	while (++h < img.width)
 	{
 		w = -1;
-		while (++w < img.width)
+		while (++w < img.height)
 		{
-	 		my_mlx_pixel_put(&new_cube()->render_img, h, w, \
-			get_color_img(&img, h, w));
+	// 		printf("h %d w %d\n", h,w );
+	// printf("w%d h%d\n", img.width, img.height);
+			x = get_color_img(&img, h, w);
+			// printf("color - %d\n", x);
+			if (x == 0x050505)
+				continue ;
+	 		my_mlx_pixel_put(&new_cube()->render_img, screenW - img.width - 100 + h , screenH - img.height + w, x);
 		}
 	}
-	printf("h %d w %d\n", h,w );
+	// printf("w%d h%d\n", img.width, img.height);
 }

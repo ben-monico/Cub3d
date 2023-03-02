@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 17:58:25 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/01 19:10:32 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/02 16:22:53 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,34 +69,36 @@ static void	put_minimap(t_cub *cub)
 		{
 			if (mtx[(int)i][(int)j] == '\n')
 				break ;
-			color = 0xFFFFFF;
+			color = cub->img.colors[1];
 			if (mtx[(int)i][(int)j] == '1')
-				color = 0x000000;
+				color = 0x414141;
 			x = -1;
-			while (++x < 28)
+			while (++x < 25)
 			{
 				y = -1;
-				while (++y < 28)
-					my_mlx_pixel_put(&cub->render_img, j * 30 + y, i * 30 + x, color);
+				while (++y < 25)
+					my_mlx_pixel_put(&cub->render_img, j * 25 + y, i * 25 + x, color);
 			}
 		}
 	}
 	j = cub->player.posY;
 	i = cub->player.posX;
 	color = 0xCA12A9;
-	x = -1;
-	while (++x < 5)
+	x = -3;
+	while (++x < 3)
 	{
-		y = -1;
-		while (++y < 5)
-			my_mlx_pixel_put(&cub->render_img, j * 30 + x, i * 30 + y, color);
+		y = -3;
+		while (++y < 3)
+			my_mlx_pixel_put(&cub->render_img, j * 25 + x, i * 25 + y, color);
 	}
 }
 
 void	render_screen(t_cub *cub)
 {
-	
+	t_sprite spr;
 	put_crosshair(cub);
 	put_minimap(cub);
+	// mlx_do_sync(cub->mlx);
+	put_image_to_window(&spr, "images/gun.xpm", 0, 0);
     mlx_put_image_to_window(cub->mlx, cub->win, cub->render_img.ptr, 0, 0);
 }
