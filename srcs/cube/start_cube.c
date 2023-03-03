@@ -6,7 +6,7 @@
 /*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 21:15:20 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/03 17:20:39 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/03/03 17:28:46 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	create_cube(t_cub *cub)
 	init_raycast_vars(cub);
 	raycasting(cub);
 	// put_image_to_window(&spr, "images/barril.xpm", 0, 0);
+	mlx_hook(cub->win, x_ON_MOUSEMOVE, 1L << 6, mouse_move, cub);
 	mlx_hook(cub->win, X_EVENT_KEY_PRESS, 1l << 0, press_key, cub);
 	mlx_hook(cub->win, X_EVENT_KEY_EXIT, 0, close_window, cub);
 	mlx_loop(cub->mlx);

@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:14:22 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/03 15:33:01 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/03 16:52:28 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ void arrow_right_press(t_cub *cub)
 {
     p_rotation(&cub->player, 5);
     raycasting(cub);
+}
+
+void mouse_move(int x, int y, t_cub *cub)
+{
+    double  
 }
 
 void p_rotation(t_player *player, double angle)
