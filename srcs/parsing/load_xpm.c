@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   load_xpm.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 23:34:37 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/03 17:26:53 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/03/03 18:36:59 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <parse.h>
 
-void	load_img(t_cub *data, char **path)
+/* void	load_img(t_cub *data, char **path)
 {
 	int	i;
 	int	width;
@@ -39,7 +39,7 @@ void	load_img(t_cub *data, char **path)
 			exit_free(data, 1, "Fail loading images");		
 		}
 	}
-}
+} */
 
 int	get_colors(char *clr, t_parse *parse)
 {
