@@ -6,13 +6,12 @@
 /*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:53:31 by mgranate          #+#    #+#             */
-/*   Updated: 2023/02/15 17:12:48 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/03/03 18:34:47 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <str_utils.h>
-
-
+#include <stdio.h>
 /*
 	This function evaluates if a char is space
 */
@@ -29,27 +28,18 @@ int	ft_isspace(char c)
 
 char	*strtrim(char *s1, char *set)
 {
-	char	*str;
-	size_t	i;
-	size_t	start;
 	size_t	end;
 
-	start = -1;
-	end = ft_strlen(s1, -1) + 1;
 	if (!s1 || !set)
 		return (NULL);
-	while (s1[++start] && string().strchr(set, s1[start]))
-		;
-	while (s1[--end] && string().strchr(set, s1[end]))
-		;
-	str = alloc().calloc(end - start + 1);
-	if (!str)
-		return (NULL);
-	i = 0;
-	while (start < end)
-		str[i++] = s1[start++];
-	str[i] = 0;
-	return (str);
+	// while (s1[start] && string().strchr(set, s1[start]))
+	// 	start++;
+	while(*s1 && string().strchr(set, *s1))
+		s1++;
+	end = ft_strlen(s1, -1) - 1;
+	while (end >= 0 && s1[end] && string().strchr(set, s1[end]))
+		end--;
+	return (string().substr(s1, 0, end + 1));
 }
 
 /*

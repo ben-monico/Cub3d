@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 00:04:36 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/03 18:39:25 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/03 22:36:20 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	trim_ident(char *line, t_parse *parse, int ct)
 
 	if (!line)
 		exit_parse(parse, 1, "Identifier with no path");
-	trim = string().strtrim(line, " /t/v/r/n");
+	trim = string().strtrim(line, " \t\v\r\n");
 	if (!trim)
 		exit_parse(parse, 1, "Allocation In parsing Failed");
 	if (ct == 4 || ct == 5)

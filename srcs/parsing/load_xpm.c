@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 23:34:37 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/03 18:36:59 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/03 22:36:08 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,16 @@
 	i = -1;
 	while (++i < 4)
 	{
-		printf("%")
-		data->img.img[i] = mlx_xpm_file_to_image(data->win, \
+		// printf("%s\n", path[i]);
+		// printf("data_win: %p\n", data->win);
+		// printf("data_mlx: %p\n", data->mlx);
+		data->img.img[i] = mlx_xpm_file_to_image(data->mlx, \
 		path[i], &width, &height);
-		printf("%p\n", data->img.img[i]);
+		// printf("%p\n", data->img.img[i]);
 		if (!data->img.img[i])
 		{
 			clean_parsing(parsing());
-			exit_free(data, 1, "Fail loading images");		
+			exit_free(data, 1, "Fail loading images");
 		}
 	}
 } */

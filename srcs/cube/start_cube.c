@@ -6,15 +6,18 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 21:15:20 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/03 22:32:45 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/03 22:35:56 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
+#include <parse.h>
 //render rectangles ceiling ground
 void	create_cube(t_cub *cub)
 {
-	cub->win = mlx_new_window(cub->mlx, screenW, screenH, "cub3d");
+	// t_sprite spr;
+	new_cube()->mlx = mlx_init();
+	new_cube()->win = mlx_new_window(new_cube()->mlx, screenW, screenH, "cub3d");
     cub->render_img.ptr = mlx_new_image(cub->mlx, screenW, screenH);
 	cub->render_img.addr = mlx_get_data_addr(cub->render_img.ptr, &cub->render_img.bpp,
                     &cub->render_img.size_line, &cub->render_img.endian);
