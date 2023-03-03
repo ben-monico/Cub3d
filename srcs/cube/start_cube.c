@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_cube.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 21:15:20 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/01 17:12:12 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/03 17:20:39 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	create_cube(t_cub *cub)
 {
 	// t_sprite spr;
-	cub->mlx = mlx_init();
 	cub->win = mlx_new_window(cub->mlx, screenW, screenH, "cub3d");
     cub->render_img.ptr = mlx_new_image(cub->mlx, screenW, screenH);
 	cub->render_img.addr = mlx_get_data_addr(cub->render_img.ptr, &cub->render_img.bpp,

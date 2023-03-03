@@ -1,10 +1,10 @@
-NO  ./path_to_the_north_texture          
+NO  ./images/assets/Wall-000.xpm
 
-SO ./path_to_the_south_texture      
+SO ./images/assets/Wall-001.xpm         
 
-WE       ./path_to_the_west_texture
+WE       ./images/assets/Wall-002.xpm    
 
-EA        ./path_to_the_east_texture
+EA       ./images/assets/Wall-003.xpm   
 
 F 119,212,208
 

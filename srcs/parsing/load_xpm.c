@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_xpm.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 23:34:37 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/02/23 23:21:16 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/03 17:26:53 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ void	load_img(t_cub *data, char **path)
 	i = -1;
 	while (++i < 4)
 	{
+		printf("%")
 		data->img.img[i] = mlx_xpm_file_to_image(data->win, \
 		path[i], &width, &height);
+		printf("%p\n", data->img.img[i]);
 		if (!data->img.img[i])
 		{
 			clean_parsing(parsing());
