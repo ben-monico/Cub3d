@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:59:14 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/03 15:05:25 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/03 16:52:07 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@
 # define COLOR_TRANSPARENT 		0xd411aa
 # define WHITE					0xFFFFFF
 # define DUB_STEP				0.1
+# define MOUSE_STEP				0.1
 
 # define X_EVENT_KEY_PRESS		2
 # define X_EVENT_KEY_RELEASE	3
 # define X_EVENT_KEY_EXIT		17
+# define x_ON_MOUSEMOVE			17
 
 # if MACKEYMAP == 1
 #  define KEY_ESC	53
