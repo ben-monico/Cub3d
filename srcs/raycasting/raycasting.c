@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:10:24 by benmonico         #+#    #+#             */
-/*   Updated: 2023/03/03 03:23:23 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/03 13:35:12 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,12 @@ void    set_line_color(t_cub *cub, t_dist *dist)
     int     h;
     int     color;
 	
-    color = 0xDBACD4;
+    // color = 0xDBACD4;
+    // if (dist->wallSideY == 1)
+    //     color /= 1.0005;
+    color = WALLCOLORX;
+    if (cub->player.obj_hit == '2')
+        color = DOORCOLOR;
     if (dist->wallSideY == 1)
         color /= 1.0005;
     h = -1;
@@ -74,8 +79,11 @@ void    check_ray_hit(t_cub *cub, t_dist *dist)
             dist->mapY += dist->stepY;
             dist->wallSideY = 1;
         }
-        if (mtx[dist->mapX][dist->mapY] == '1')
+        if (mtx[dist->mapX][dist->mapY] == '1' || mtx[dist->mapX][dist->mapY] == '2')
+        {
             hit = 1;
+            cub->player.obj_hit = mtx[dist->mapX][dist->mapY];
+        }
     }
 }
 

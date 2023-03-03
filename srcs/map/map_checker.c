@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 00:42:49 by mgranate          #+#    #+#             */
-/*   Updated: 2023/03/01 12:58:03 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/03 13:38:11 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	read_map(t_cub *cub)
 			|| map->mtx[y][x] == 'W' || map->mtx[y][x] == 'E')
 				add_player_atributes(map, x, y);
             else if (map->mtx[y][x] != '0' && map->mtx[y][x] != '1' && map->mtx[y][x] \
-            != ' ' && map->mtx[y][x] != '\n')
+            != ' ' && map->mtx[y][x] != '\n' && map->mtx[y][x] != '2')
             {
                 printf("Line: %d Column: %d => '%c' \n", y, x, map->mtx[y][x]);
                 exit_free(cub, 1, "Not a valid  character on the Map");
