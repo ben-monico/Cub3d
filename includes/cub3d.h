@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/03/01 18:18:08 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/03 15:33:29 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int		close_window(t_cub *vars);
 int		get_map(char **file, t_cub *cube);
 
 // Moving
-void    verify_collision(t_cub *cub, double x, double y);
+void    verify_collision_and_door(t_cub *cub, double x, double y);
 void p_rotation(t_player *player, double angle);
 void w_press(t_cub *cub);
 void a_press(t_cub *cub);

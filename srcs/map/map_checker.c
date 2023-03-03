@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 00:42:49 by mgranate          #+#    #+#             */
-/*   Updated: 2023/03/03 13:38:11 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/03 15:19:02 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ void	check_map_elements(t_cub *cub)
 
 static int    checker_zero(char **map, int y, int x)
 {
-    if (!map[y - 1][x] || !map[y][x - 1] || !map[y + 1][x] || !map[y][x + 1]	\
-    || !map[y + 1][x + 1] || !map[y - 1][x - 1] || !map[y + 1][x - 1] 			\
+    if (!map[y - 1][x] || !map[y][x - 1] || !map[y + 1][x] || !map[y][x + 1]\
+    || !map[y + 1][x + 1] || !map[y - 1][x - 1] || !map[y + 1][x - 1]\
 	|| !map[y - 1][x + 1])
         return (0);
-    if (map[y - 1][x] == ' ' || map[y][x - 1] == ' ' || map[y + 1][x] == ' ' 	\
+    if (map[y - 1][x] == ' ' || map[y][x - 1] == ' ' || map[y + 1][x] == ' '\
 	|| map[y][x + 1] == ' ' || map[y + 1][x + 1]  == ' ' || map[y - 1][x - 1] == ' ' \
 	|| map[y + 1][x - 1] == ' ' || map[y - 1][x + 1] == ' ')
 	{

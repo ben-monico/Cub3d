@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 01:58:29 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/03 03:23:05 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/03 15:56:29 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,11 @@ unsigned int	get_color_img(t_data *data, int x, int y)
 void	put_image_to_window(t_sprite *spr, char *file, int x, int y)
 {
 	static t_data	img;
-	static int a;
+	static int		bobh;
+	static int		bobw;
+	static int		bobhdir;
+	static int		bobwdir;
+	static int		a;
 	int				h;
 	int				w;
 	
@@ -49,6 +53,22 @@ void	put_image_to_window(t_sprite *spr, char *file, int x, int y)
 		img.addr = mlx_get_data_addr(img.ptr, &img.bpp, \
 		&img.size_line, &img.endian);
 	}
+	if (bobh == 10)
+		bobhdir = 1;
+	else if (bobh == -10)
+		bobhdir = 0;
+	if (!bobhdir)
+		bobh++;
+	else
+		bobh--;
+	if (bobw == 20)
+		bobwdir = 1;
+	else if (bobw == -20)
+		bobwdir = 0;
+	if (!bobwdir)
+		bobw++;
+	else
+		bobw--;
 	h = -1;
 	while (++h < img.width)
 	{
@@ -59,9 +79,9 @@ void	put_image_to_window(t_sprite *spr, char *file, int x, int y)
 	// printf("w%d h%d\n", img.width, img.height);
 			x = get_color_img(&img, h, w);
 			// printf("color - %d\n", x);
-			if (x >= 0x000000 && x <= 0x090304)
+			if (x >= 0x000000 && x <= 0x093304)
 				continue ;
-	 		my_mlx_pixel_put(&new_cube()->render_img, screenW - img.width - 100 + h , screenH - img.height + w, x);
+	 		my_mlx_pixel_put(&new_cube()->render_img, screenW - img.width - 120 + h +bobw, screenH - img.height + 30 + bobh + w, x);
 		}
 	}
 	// printf("w%d h%d\n", img.width, img.height);

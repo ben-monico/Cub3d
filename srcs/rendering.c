@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 17:58:25 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/03 13:00:37 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/03 15:57:08 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ static void	put_minimap(t_cub *cub)
 		j = -1;
 		while (mtx[(int)i][(int)++j] && mtx[(int)i][(int)j] != '\n')
 		{
+			if (mtx[(int)i][(int)j] == ' ')
+				continue ;
 			x = -1;
 			while (++x < 20)
 			{
@@ -85,9 +87,13 @@ static void	put_minimap(t_cub *cub)
 		j = -1;
 		while (mtx[(int)i][(int)++j] && mtx[(int)i][(int)j] != '\n')
 		{
+			if (mtx[(int)i][(int)j] == ' ')
+				continue ;
 			color = cub->img.colors[1];
 			if (mtx[(int)i][(int)j] == '1')
 				color = 0x414141;
+			else if (mtx[(int)i][(int)j] == '2')
+				color = DOORCOLOR;
 			x = -1;
 			while (++x < 10)
 			{
@@ -117,7 +123,7 @@ void	render_screen(t_cub *cub)
 	t_sprite spr;
 	put_crosshair(cub);
 	put_minimap(cub);
-	// mlx_do_sync(cub->mlx);
 	put_image_to_window(&spr, "images/hol1.xpm", 0, 0);
+	// mlx_do_sync(cub->mlx);
     mlx_put_image_to_window(cub->mlx, cub->win, cub->render_img.ptr, 0, 0);
 }
