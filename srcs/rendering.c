@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 17:58:25 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/02 16:22:53 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/03 03:15:59 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ static void	put_crosshair(t_cub *cub)
 		j = -1;
 		while (++j < 21)
 		{
-			if (i == screenW /2 - 3)
+			if (i == screenW /2 - 5)
 			{
-				i += 6;
-				j += 6;
+				i += 10;
+				j += 10;
 			}
 			my_mlx_pixel_put(&cub->render_img, ++i, (screenH / 2) + k, 0xFF0000);
 		}
@@ -41,10 +41,10 @@ static void	put_crosshair(t_cub *cub)
 		j = -1;
 		while (++j < 21)
 		{
-			if (i == screenH /2 - 3)
+			if (i == screenH /2 - 5)
 			{
-				i += 6;
-				j += 6;
+				i += 10;
+				j += 10;
 			}
 			my_mlx_pixel_put(&cub->render_img, (screenW / 2) + k, ++i, 0xFF0000);
 		}
@@ -58,38 +58,57 @@ static void	put_minimap(t_cub *cub)
 	double	j;
 	int		x;
 	int		y;
+	int		outline;
 	int 	color;
 
 	mtx = cub->map.mtx;
+	outline = 5;
+	i = -1;
+	color = 0xFFFFFF;
+	while (mtx[(int)++i])
+	{
+		j = -1;
+		while (mtx[(int)i][(int)++j] && mtx[(int)i][(int)j] != '\n')
+		{
+			x = -1;
+			while (++x < 20)
+			{
+				y = -1;
+				while (++y < 20)
+					my_mlx_pixel_put(&cub->render_img, j * 10 + y, i * 10 + x, color);
+			}
+		}
+	}
 	i = -1;
 	while (mtx[(int)++i])
 	{
 		j = -1;
-		while (mtx[(int)i][(int)++j])
+		while (mtx[(int)i][(int)++j] && mtx[(int)i][(int)j] != '\n')
 		{
-			if (mtx[(int)i][(int)j] == '\n')
-				break ;
 			color = cub->img.colors[1];
 			if (mtx[(int)i][(int)j] == '1')
 				color = 0x414141;
 			x = -1;
-			while (++x < 25)
+			while (++x < 10)
 			{
 				y = -1;
-				while (++y < 25)
-					my_mlx_pixel_put(&cub->render_img, j * 25 + y, i * 25 + x, color);
+				while (++y < 10)
+					my_mlx_pixel_put(&cub->render_img, j * 10 + y + outline, i * 10 + x + outline, color);
 			}
+			
 		}
 	}
 	j = cub->player.posY;
 	i = cub->player.posX;
 	color = 0xCA12A9;
-	x = -3;
-	while (++x < 3)
+	x = -4;
+	while (++x < 4)
 	{
-		y = -3;
-		while (++y < 3)
-			my_mlx_pixel_put(&cub->render_img, j * 25 + x, i * 25 + y, color);
+		y = -4;
+		while (++y < 4)
+		{
+			my_mlx_pixel_put(&cub->render_img, j * 10 + x + outline, i * 10 + y + outline, color);
+		}
 	}
 }
 
@@ -99,6 +118,6 @@ void	render_screen(t_cub *cub)
 	put_crosshair(cub);
 	put_minimap(cub);
 	// mlx_do_sync(cub->mlx);
-	put_image_to_window(&spr, "images/gun.xpm", 0, 0);
+	put_image_to_window(&spr, "images/hol1.xpm", 0, 0);
     mlx_put_image_to_window(cub->mlx, cub->win, cub->render_img.ptr, 0, 0);
 }

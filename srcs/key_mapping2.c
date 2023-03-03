@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:14:22 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/01 17:04:34 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/03 03:17:15 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,7 @@ void p_rotation(t_player *player, double angle)
 {
     double  x;
     double  y;
-    double  olddirY;
-    double  olddirX;
 
-    olddirY = player->dirY;
-    olddirX = player->dirX;
     angle *= M_PI / 180;
     x = player->dirY * cos(angle) + player->dirX * sin(angle);
     y = player->dirY * -sin(angle) + player->dirX * cos(angle);
@@ -46,13 +42,12 @@ void p_rotation(t_player *player, double angle)
 
 void    verify_collision(t_cub *cub, double x, double y)
 {
-    printf("x = %d, y = %d, mtx%c\n", (int)x,(int)y, cub->map.mtx[(int)x][(int)y] );
-		if  (cub->map.mtx[(int)x][(int)cub->player.posY] != '1')
-        {
-    		cub->player.posX = x;
-        }
-        if  (cub->map.mtx[(int)cub->player.posX][(int)y] != '1')
-        {
-            cub->player.posY = y;
-        }	
+    if  (cub->map.mtx[(int)x][(int)cub->player.posY] != '1')
+    {
+    cub->player.posX = x;
+    }
+    if  (cub->map.mtx[(int)cub->player.posX][(int)y] != '1')
+    {
+        cub->player.posY = y;
+    }	
 }

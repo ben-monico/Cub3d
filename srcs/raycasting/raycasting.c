@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:10:24 by benmonico         #+#    #+#             */
-/*   Updated: 2023/03/01 18:18:38 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/03 03:23:23 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,5 +133,5 @@ void    raycasting(t_cub *cub)
         set_line_color(cub, &dist);
     }
         render_screen(cub);
-        printf("dirY %f dirX %f\n", cub->player.dirY, cub->player.dirX);
+        // printf("dirY %f dirX %f\n", cub->player.dirY, cub->player.dirX);
 }   

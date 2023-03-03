@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 01:58:29 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/02 17:08:08 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/03 03:23:05 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	put_image_to_window(t_sprite *spr, char *file, int x, int y)
 	// printf("w%d h%d\n", img.width, img.height);
 			x = get_color_img(&img, h, w);
 			// printf("color - %d\n", x);
-			if (x == 0x050505)
+			if (x >= 0x000000 && x <= 0x090304)
 				continue ;
 	 		my_mlx_pixel_put(&new_cube()->render_img, screenW - img.width - 100 + h , screenH - img.height + w, x);
 		}
