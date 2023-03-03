@@ -7,6 +7,7 @@
 /dataSources/
 /dataSources.local.xml
 */*/*.o
+**/**.o
 objs/*.o
 objs/allocs/*.o
 objs/gnl/*.o
