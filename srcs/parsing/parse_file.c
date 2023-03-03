@@ -6,7 +6,7 @@
 /*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 00:04:36 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/03 17:21:22 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/03/03 18:33:56 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	trim_ident(char *line, t_parse *parse, int ct)
 
 	if (!line)
 		exit_parse(parse, 1, "Identifier with no path");
-	trim = string().strtrim(line, " /t/v/r/n");
+	trim = string().strtrim(line, " \t\v\r\n");
 	if (!trim)
 		exit_parse(parse, 1, "Allocation In parsing Failed");
 	if (ct == 4 || ct == 5)
@@ -102,7 +102,7 @@ void	parse_file(t_parse *parse)
 	i = get_path_img(parse);
 	if (!get_map(parse->file + i, new_cube()))
 		exit_parse(parse, 1, "Map Not Formated Correctly");
-	load_img(new_cube(), parse->path_to_img);
+	//load_img(new_cube(), parse->path_to_img);
 	new_cube()->img.colors[0] = get_colors(parse->f_c, parse);
 	new_cube()->img.colors[1] = get_colors(parse->c_c, parse);
 }

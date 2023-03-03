@@ -6,7 +6,7 @@
 /*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:14:45 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/03 17:20:52 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/03/03 18:26:38 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	exit_win(t_cub *cub)
 
 int	main(int ac, char **av)
 {
-	new_cube()->mlx = mlx_init();
 	read_file(new_cube(), av[1], ac);
 	read_map(new_cube());
 	check_map_elements(new_cube());
