@@ -1,4 +1,4 @@
-#include <img.h>
+#include <cub3d.h>
 
 void	add_sprite(t_data *data, int x, int y, int color)
 {
@@ -15,5 +15,5 @@ void	destroy_sprite(t_sprite *sprite)
 	if (!sprite)
 		return ;
 	mlx_destroy_image(new_cube()->mlx, sprite->img);
-	//free_ob(sprite);
+	free_ob(sprite);
 }

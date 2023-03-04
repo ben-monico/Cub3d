@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 00:42:49 by mgranate          #+#    #+#             */
-/*   Updated: 2023/02/23 23:34:28 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/03 15:19:02 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ void	check_map_elements(t_cub *cub)
 
 static int    checker_zero(char **map, int y, int x)
 {
-    if (!map[y - 1][x] || !map[y][x - 1] || !map[y + 1][x] || !map[y][x + 1]	\
-    || !map[y + 1][x + 1] || !map[y - 1][x - 1] || !map[y + 1][x - 1] 			\
+    if (!map[y - 1][x] || !map[y][x - 1] || !map[y + 1][x] || !map[y][x + 1]\
+    || !map[y + 1][x + 1] || !map[y - 1][x - 1] || !map[y + 1][x - 1]\
 	|| !map[y - 1][x + 1])
         return (0);
-    if (map[y - 1][x] == ' ' || map[y][x - 1] == ' ' || map[y + 1][x] == ' ' 	\
+    if (map[y - 1][x] == ' ' || map[y][x - 1] == ' ' || map[y + 1][x] == ' '\
 	|| map[y][x + 1] == ' ' || map[y + 1][x + 1]  == ' ' || map[y - 1][x - 1] == ' ' \
 	|| map[y + 1][x - 1] == ' ' || map[y - 1][x + 1] == ' ')
 	{
@@ -75,7 +75,7 @@ void	read_map(t_cub *cub)
 			|| map->mtx[y][x] == 'W' || map->mtx[y][x] == 'E')
 				add_player_atributes(map, x, y);
             else if (map->mtx[y][x] != '0' && map->mtx[y][x] != '1' && map->mtx[y][x] \
-            != ' ' && map->mtx[y][x] != '\n')
+            != ' ' && map->mtx[y][x] != '\n' && map->mtx[y][x] != '2')
             {
                 printf("Line: %d Column: %d => '%c' \n", y, x, map->mtx[y][x]);
                 exit_free(cub, 1, "Not a valid  character on the Map");

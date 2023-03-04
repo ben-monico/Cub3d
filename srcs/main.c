@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:14:45 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/02/24 00:28:21 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/03 18:26:38 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,15 @@
 
 t_cub	*new_cube(void)
 {
-	static t_cub	data;
+	static t_cub	cub;
 
-	return (&data);
+	return (&cub);
+}
+
+int	exit_win(t_cub *cub)
+{
+	mlx_destroy_window(cub->mlx, cub->win);
+	exit(1);
 }
 
 int	main(int ac, char **av)

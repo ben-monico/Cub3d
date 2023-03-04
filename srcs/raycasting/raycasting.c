@@ -3,65 +3,90 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:10:24 by benmonico         #+#    #+#             */
-/*   Updated: 2023/02/24 00:29:24 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/04 22:33:01 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-void    put_line(t_cub *cub, t_line *line, t_dist *dist)
+// void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+// {
+// 	char	*dst;
+
+// 	dst = (data->addr + (y * data->size_line + x * (data->bpp / 8)));
+// 	*(unsigned int*)dst = color;
+// }
+float	calculate_y(t_data *data, int i)
 {
-    t_data   imgline;
+	return ((float)(i - data->ceilingPoint) /
+	(data->floorPoint - data->ceilingPoint) * 64);
+}
+
+void    set_line_color(t_cub *cub, t_dist *dist)
+{
     int     h;
     int     color;
-
-    imgline.ptr = mlx_new_image(cub->mlx, 1, screenH);
-	imgline.addr = mlx_get_data_addr(imgline.ptr, &imgline.bpp,
-                    &imgline.size_line, &imgline.endian);
-    printf("floor %d / ceiling %d x%d\n", line->floorPoint, line->ceilingPoint, line->x);
-	h = 0;
-	while (h < line->ceilingPoint - line->floorPoint)
+	
+    // color = 0xDBACD4;
+    // if (dist->wallSideY == 1)
+    //     color /= 1.0005;
+	h = -1;
+	color = cub->img.colors[1];
+	while (++h < screenH)
 	{
-        color = 0x840036;
-        if (dist->wallSide == 1)
-            color /= 1.5;
-		my_mlx_pixel_put(&imgline, 1, h, color);
-		h++;
-        // printf("linha posta %d\n", h);
+		if (h >= cub->render_img.floorPoint && h < cub->render_img.ceilingPoint)
+		{
+				color = get_color_wall(cub->img.no_text,
+				dist->wallX, calculate_y(&cub->render_img, h));
+		}
+		if (h == cub->render_img.ceilingPoint)
+			color = cub->img.colors[0];
+		my_mlx_pixel_put(&cub->render_img, cub->render_img.x, h, color);
 	}
-    printf("X = %d\n", line->x);
-    mlx_put_image_to_window(cub->mlx, cub->win, imgline.ptr, line->x, line->floorPoint); // These zeroes are the coordinates of the window in which you want to place the first pixel of our cute pink cub. Try changing its values to check different coordinates.
+    // if (cub->player.obj_hit == '2')
+    //     color = DOORCOLOR;
+    // if (dist->wallSideY == 1)
+    //     color /= 1.0005;
+    // h = -1;
+	// while (++h < cub->render_img.floorPoint)
+	// 	my_mlx_pixel_put(&cub->render_img, cub->render_img.x, h, cub->img.colors[0]);
+    // h--;
+	// while (++h < cub->render_img.ceilingPoint)
+	// 	my_mlx_pixel_put(&cub->render_img, cub->render_img.x, h, color);
+	// 	//get_textures(cub, h, cub->render_img.ceilingPoint);
+    // h--;
+	// while (++h < screenH)
+	// 	my_mlx_pixel_put(&cub->render_img, cub->render_img.x, h, cub->img.colors[1]);
 }
 
-void    fix_fisheye_get_wall_h(t_cub *cub, t_dist *dist, t_line *line)
+void    get_wall_h(t_cub *cub, t_dist *dist)
 {
-    double  fisheyeDist;
-    int     wallHeight;
+    double  wallHeight;
 
-    if (dist->wallSide == 0)
-        fisheyeDist = dist->sideDistX - dist->deltaDistX;
+    if (dist->wallSideY == 0)
+        dist->fisheyeDist = dist->sideDistX - dist->deltaDistX;
     else
-        fisheyeDist = dist->sideDistY - dist->deltaDistY;
-    printf("fisheye %f\n", fisheyeDist);
-    wallHeight = (int)(screenH / fisheyeDist);
-    line->floorPoint = -wallHeight / 2 + screenH / 2;
-    line->ceilingPoint = wallHeight / 2 + screenH / 2;
-    printf("floor %d ceiling%d \n", line->floorPoint, line->ceilingPoint);
-    if (line->floorPoint < 0)
-        line->floorPoint = 0;
-    if (line->ceilingPoint >= screenH)
-        line->ceilingPoint = screenH - 1;
-    put_line(cub, line, dist);
-
+         dist->fisheyeDist = dist->sideDistY - dist->deltaDistY;
+    wallHeight = (int)(screenH /  dist->fisheyeDist) / 1.2;
+    // printf("lineH %f floor %d ceiling%d\n", wallHeight, cub->render_img.floorPoint, cub->render_img.ceilingPoint);
+    cub->render_img.floorPoint = screenH / 2 - wallHeight / 2;
+    if (cub->render_img.floorPoint < 0)
+        cub->render_img.floorPoint = 0;
+    cub->render_img.ceilingPoint = screenH / 2 + wallHeight / 2;
+    if (cub->render_img.ceilingPoint >= screenH)
+        cub->render_img.ceilingPoint = screenH - 1;
+    // printf("dirY %f dirX %f\n", cub->player.dirY, cub->player.dirX);
 }
 
-void    perform_DDA(t_dist *dist, t_cub *cub, t_line *line)
+void    check_ray_hit(t_cub *cub, t_dist *dist)
 {
-    int hit;
+    int     hit;
+    char    **mtx;
 
+    mtx = cub->map.mtx;
     hit = 0;
     while (hit == 0)
     {
@@ -69,26 +94,25 @@ void    perform_DDA(t_dist *dist, t_cub *cub, t_line *line)
         {
             dist->sideDistX += dist->deltaDistX;
             dist->mapX += dist->stepX;
-            dist->wallSide = 0;
+            dist->wallSideY = 0;
         }
         else
         {
             dist->sideDistY += dist->deltaDistY;
             dist->mapY += dist->stepY;
-            dist->wallSide = 1;
+            dist->wallSideY = 1;
         }
-        // if (check_map().[dist->mapX][dist->mapY] > 0)
-        //     hit = 1;
-        printf("mapx %d mapy %d\n", dist->mapX, dist->mapY);
-        if (cub->map.mtx[dist->mapX][dist->mapY] > 0)
+        if (mtx[dist->mapX][dist->mapY] == '1' || mtx[dist->mapX][dist->mapY] == '2')
+        {
             hit = 1;
+            cub->player.obj_hit = mtx[dist->mapX][dist->mapY];
+        }
     }
-    fix_fisheye_get_wall_h(cub, dist, line);
 }
 
-void    calc_sidedist(t_dist *dist, t_cub *cub, t_line *line)
+void    calc_sidedist(t_cub *cub, t_dist *dist)
 {
-    if (dist->rayDirX < 0)
+    if (dist->raydirY < 0)
     {
         dist->stepX = -1;
         dist->sideDistX = (cub->player.posX - dist->mapX) * dist->deltaDistX;
@@ -98,7 +122,7 @@ void    calc_sidedist(t_dist *dist, t_cub *cub, t_line *line)
         dist->stepX = 1;
         dist->sideDistX = (dist->mapX + 1 - cub->player.posX) * dist->deltaDistX;
     }
-    if (dist->rayDirY < 0)
+    if (dist->raydirX < 0)
     {
         dist->stepY = -1;
         dist->sideDistY = (cub->player.posY - dist->mapY) * dist->deltaDistY;
@@ -108,35 +132,38 @@ void    calc_sidedist(t_dist *dist, t_cub *cub, t_line *line)
         dist->stepY = 1;
         dist->sideDistY = (dist->mapY + 1 - cub->player.posY) * dist->deltaDistY;
     }
-    perform_DDA(dist, cub, line);
-    printf("sideX %f sideY %f\n", dist->sideDistX, dist->sideDistY);
+    // printf("sideX %f sideY %f\n", dist->sideDistX, dist->sideDistY);
 }
 
 void    raycasting(t_cub *cub)
 {
-    double  cameraX;
     t_dist  dist;
-    t_line  line;
-    
-    line.x = -1;
-    while (++line.x < screenW)
+    double  cameraX;
+
+    cub->render_img.x = -1;
+    while (++cub->render_img.x < screenW)
     {
-        cameraX = 2 * line.x / (double)screenW - 1;
-        dist.rayDirX = cub->player.dirX + cub->player.fovX * cameraX;
-        dist.rayDirY = cub->player.dirY + cub->player.fovY * cameraX;
-        printf("rayX %f rayY %f\n", dist.rayDirX, dist.rayDirY);
+        cameraX = 2 * cub->render_img.x / (double)screenW - 1;
+        dist.raydirY = cub->player.dirY + cub->player.fovX * cameraX;
+        dist.raydirX = cub->player.dirX + cub->player.fovY * cameraX;
+        // printf("rayX %f rayY %f\n", dist.raydirY, dist.raydirX);
         dist.mapX = (int)cub->player.posX;
         dist.mapY = (int)cub->player.posY;
-                printf("mapx %d mapy %d\n", dist.mapX, dist.mapY);
-        if (dist.rayDirX == 0)
+        if (dist.raydirY == 0)
             dist.deltaDistX = 1e30;
         else
-            dist.deltaDistX = fabs(1 / dist.rayDirX);
-        if (dist.rayDirY == 0)
+            dist.deltaDistX = fabs(1 / dist.raydirY);
+        if (dist.raydirX == 0)
             dist.deltaDistY = 1e30;
         else
-           dist.deltaDistY = fabs(1 / dist.rayDirY);
-        printf("delta X %f deltaY %f\n", dist.deltaDistX, dist.deltaDistY);
-        calc_sidedist(&dist, cub, &line);
+           dist.deltaDistY = fabs(1 / dist.raydirX);
+        // printf("delta X %f deltaY %f\n", dist.deltaDistX, dist.deltaDistY);
+        calc_sidedist(cub, &dist);
+        check_ray_hit(cub, &dist);
+        get_wall_h(cub, &dist);
+		dist.wallX = get_wall_texture(cub, &dist) * 64;
+        set_line_color(cub, &dist);
     }
+        render_screen(cub);
+        // printf("dirY %f dirX %f\n", cub->player.dirY, cub->player.dirX);
 }   
