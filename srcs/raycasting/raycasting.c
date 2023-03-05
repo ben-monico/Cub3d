@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:10:24 by benmonico         #+#    #+#             */
-/*   Updated: 2023/03/05 03:53:58 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/05 16:02:46 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void    set_line_color(t_cub *cub, t_dist *dist, float wallX)
     int     h;
     int     color;
 	
+	(void)dist;
+	(void)wallX;
     // color = 0xDBACD4;
     // if (dist->wallSideY == 1)
     //     color /= 1.0005; 
@@ -41,12 +43,15 @@ void    set_line_color(t_cub *cub, t_dist *dist, float wallX)
 		{
 			//printf("Wall:x %f\n", wallX);
 			//printf("YCalculate: %f\n", calculate_y(cub->render_img, h));
-			if (dist->wallSideY)
+			/*if (dist->wallSideY)
 				color = get_color_wall(cub->img.wall[!(dist->raydirY > 0)], \
 				wallX, calculate_y(cub->render_img, h));
 			else
 				color = get_color_wall(cub->img.wall[!(dist->raydirX > 0) + 2], \
-				wallX, calculate_y(cub->render_img, h));
+				wallX, calculate_y(cub->render_img, h));*/
+				color = 0xDBACD4;
+    		if (cub->player.obj_hit == '2')
+				color = DOORCOLOR;
 		}
 		if (h >= cub->render_img.ceilingPoint)
 			color = cub->img.colors[0];
