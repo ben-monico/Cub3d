@@ -1,5 +1,5 @@
-NO ./images/wood.xpm
-SO ./images/greystone.xpm
+NO ./images/greystone.xpm
+SO ./images/wood.xpm
 WE ./images/colorstone.xpm
 EA ./images/mossy.xpm
 

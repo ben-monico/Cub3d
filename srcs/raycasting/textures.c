@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 16:42:25 by mgranate          #+#    #+#             */
-/*   Updated: 2023/03/05 16:18:21 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/05 17:08:58 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	get_wall_texture(t_cub *data, t_dist *dst)
 		dst->wallX = data->player.posY + dst->fisheyeDist * dst->raydirY;
 	else
 		dst->wallX = data->player.posX + dst->fisheyeDist * dst->raydirX;
-	printf("wall: %lf\n", dst->wallX);
+	//printf("wall: %lf\n", dst->wallX);
 	dst->wallX -= floor((dst->wallX));
 	printf("wall2: %lf\n", dst->wallX);
 }
