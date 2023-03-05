@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 21:26:04 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/04 16:31:00 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/03/05 01:02:23 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,6 @@ void	exit_parse(t_parse *data, int status, char *str)
 
 void	exit_free(t_cub *data, int status, char *str)
 {
-	int	i;
-
-	i = -1;
 	if (status)
 		printf("Error: %s\n", str);
 	else

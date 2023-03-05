@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:10:24 by benmonico         #+#    #+#             */
-/*   Updated: 2023/03/04 22:33:01 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/03/05 03:53:58 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,36 @@
 // 	dst = (data->addr + (y * data->size_line + x * (data->bpp / 8)));
 // 	*(unsigned int*)dst = color;
 // }
-float	calculate_y(t_data *data, int i)
+float	calculate_y(t_data data, int i)
 {
-	return ((float)(i - data->ceilingPoint) /
-	(data->floorPoint - data->ceilingPoint) * 64);
+	return ((float)(i - data.floorPoint) /
+	(data.ceilingPoint - data.floorPoint) * 64);
 }
 
-void    set_line_color(t_cub *cub, t_dist *dist)
+void    set_line_color(t_cub *cub, t_dist *dist, float wallX)
 {
     int     h;
     int     color;
 	
     // color = 0xDBACD4;
     // if (dist->wallSideY == 1)
-    //     color /= 1.0005;
+    //     color /= 1.0005; 
 	h = -1;
 	color = cub->img.colors[1];
 	while (++h < screenH)
 	{
 		if (h >= cub->render_img.floorPoint && h < cub->render_img.ceilingPoint)
 		{
-				color = get_color_wall(cub->img.no_text,
-				dist->wallX, calculate_y(&cub->render_img, h));
+			//printf("Wall:x %f\n", wallX);
+			//printf("YCalculate: %f\n", calculate_y(cub->render_img, h));
+			if (dist->wallSideY)
+				color = get_color_wall(cub->img.wall[!(dist->raydirY > 0)], \
+				wallX, calculate_y(cub->render_img, h));
+			else
+				color = get_color_wall(cub->img.wall[!(dist->raydirX > 0) + 2], \
+				wallX, calculate_y(cub->render_img, h));
 		}
-		if (h == cub->render_img.ceilingPoint)
+		if (h >= cub->render_img.ceilingPoint)
 			color = cub->img.colors[0];
 		my_mlx_pixel_put(&cub->render_img, cub->render_img.x, h, color);
 	}
@@ -161,8 +167,8 @@ void    raycasting(t_cub *cub)
         calc_sidedist(cub, &dist);
         check_ray_hit(cub, &dist);
         get_wall_h(cub, &dist);
-		dist.wallX = get_wall_texture(cub, &dist) * 64;
-        set_line_color(cub, &dist);
+		get_wall_texture(cub, &dist);
+        set_line_color(cub, &dist, dist.wallX * 64);
     }
         render_screen(cub);
         // printf("dirY %f dirX %f\n", cub->player.dirY, cub->player.dirX);

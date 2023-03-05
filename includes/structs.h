@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:55:20 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/04 20:42:29 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/03/05 02:51:36 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,26 @@ typedef struct s_map	t_map;
 typedef struct s_player	t_player;
 typedef struct s_dist	t_dist;
 typedef struct s_img	t_img;
+typedef struct s_wall	t_wall;
+
+
+typedef struct s_wall
+{
+	int		width;
+	int		height;
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		size_line;
+	int		endian;
+}	t_wall;
 
 
 struct		s_img
 {
 	int		colors[2];
 	char	**path;
-	void	**img;
-	t_data	*no_text;
-	t_data	*so_text;
-	t_data	*ea_text;
-	t_data	*we_text;
+	t_wall	wall[4];
 };
 
 struct		s_data

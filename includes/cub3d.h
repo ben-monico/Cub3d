@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/03/04 21:53:05 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/03/05 03:54:28 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	add_sprite(t_data *data, int x, int y, int color);
 void	put_image_to_window(t_sprite *spr, char	*file,  int x, int y);
 unsigned int	get_color_img(t_data *data, int x, int y);
-unsigned int	get_color_wall(t_data *data, int x, int y);
+unsigned int	get_color_wall(t_wall data, int x, int y);
 
 
 t_cub	*new_cube(void);
@@ -45,7 +45,7 @@ int		press_key(int key, t_cub *cub);
 void    raycasting(t_cub *cub);
 void	init_raycast_vars(t_cub *cub);
 void	get_textures(t_cub *cub, int start, int end);
-double	get_wall_texture(t_cub *data, t_dist *dst);
+void	get_wall_texture(t_cub *data, t_dist *dst);
 
 // Rendering Utils
 void	render_screen(t_cub *cub);

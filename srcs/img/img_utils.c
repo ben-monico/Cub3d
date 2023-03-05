@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 01:58:29 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/04 22:59:01 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/03/05 03:33:50 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,15 @@ unsigned int	get_color_img(t_data *data, int x, int y)
 	return (color);
 }
 
-unsigned int	get_color_wall(t_data *data, int x, int y)
+unsigned int	get_color_wall(t_wall data, int x, int y)
 {
 	char			*dst;
 	unsigned int	color;
-	
-	dst = (data->addr + (y * data->size_line + x * (data->bpp / 8)));
+
+	dst = (data.addr + (y * data.size_line + x * (data.bpp / 8)));
 	color = *(unsigned int*)dst;
-	printf("%d\n", x);
-	printf("%d\n", y);
+	//printf("x: %d\n", x);
+	//printf("y: %d\n", y);
 	return (color);
 }
 

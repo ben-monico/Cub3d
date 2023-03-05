@@ -3,33 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 16:42:25 by mgranate          #+#    #+#             */
-/*   Updated: 2023/03/04 22:50:31 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/03/05 03:55:04 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-double	get_wall_texture(t_cub *data, t_dist *dst)
+void	get_wall_texture(t_cub *data, t_dist *dst)
 {
-	double	wall;
-	// printf("fisheye: %lf\n",dst->fisheyeDist);
-	// printf("rayfirY: %lf\n",dst->raydirY);
-	// printf("posY: %lf\n",data->player.posY);
-	// printf("wallside: %d\n",dst->wallSideY);
+	printf("wallside: %d\n",dst->wallSideY);
+	printf("posY: %lf\n",data->player.posY);
+	printf("fisheye: %lf\n",dst->fisheyeDist);
+	printf("rayfirY: %lf\n",dst->raydirY);
 	if (dst->wallSideY == 0)
-		wall = data->player.posY + dst->fisheyeDist * dst->raydirY;
+		dst->wallX = data->player.posY + dst->fisheyeDist * dst->raydirY;
 	else
-		wall = data->player.posX + dst->fisheyeDist * dst->raydirX;
-	wall -= floor((wall));
-	return (wall);
+		dst->wallX = data->player.posX + dst->fisheyeDist * dst->raydirX;
+	printf("wall: %lf\n", dst->wallX);
+	dst->wallX -= floor((dst->wallX));
+	printf("wall2: %lf\n", dst->wallX);
 }
 
 void	get_textures(t_cub *cub, int start, int end)
 {
-	int 		res;
 	static	int a;
 	static	t_data img;
 
@@ -41,8 +40,6 @@ void	get_textures(t_cub *cub, int start, int end)
 		&img.size_line, &img.endian);
 		
 	}
-	res = end - start;
-	printf("%d\n", res);
 	if (cub->render_img.x > img.width)
 		return ;
 	while (++start < end)
