@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:10:24 by benmonico         #+#    #+#             */
-/*   Updated: 2023/03/06 16:14:56 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/06 18:27:20 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,29 @@
 // 	dst = (data->addr + (y * data->size_line + x * (data->bpp / 8)));
 // 	*(unsigned int*)dst = color;
 // }
-float	calculate_y(t_data data, float i)
+double	calculate_y(t_data *data, float i)
 {
-	return ((float)(i - data.floorPoint) /
-	(data.ceilingPoint - data.floorPoint) * 64);
+    double y;
+
+    y = (float)(i - data->floorPoint) /	(data->ceilingPoint - data->floorPoint) * 64;
+    // printf("y = %f\n", y);
+	return (y);
+}
+
+int get_index(t_cub *cub, t_dist *dist)
+{
+    if (dist->wallSideX)
+    {
+        if (cub->player.dirX > 0)
+            return (2);
+        return (3);
+    }
+    else
+    {
+        if (cub->player.dirY > 0)
+            return (0);
+        return (1);
+    }
 }
 
 void    set_line_color(t_cub *cub, t_dist *dist, float wallX)
@@ -32,29 +51,27 @@ void    set_line_color(t_cub *cub, t_dist *dist, float wallX)
     int     color;
 	
     color = WALLCOLORX;
-	(void)dist;
-	(void)wallX;
     // color = 0xDBACD4;
-    // if (dist->wallSideY == 1)
-    //     color /= 1.0005; 
+    // if (dist->wallSideX == 1)
+    //     color /= 1.0005;
 	h = -1;
 	color = cub->img.colors[1];
+
 	while (++h < screenH)
 	{
 		if (h >= cub->render_img.floorPoint && h < cub->render_img.ceilingPoint)
 		{
-			if (dist->wallSideY)
-			color = get_color_wall(cub->img.wall[0], 
-				63, calculate_y(cub->render_img, h));
-			else
-			{
-				color = get_color_wall(cub->img.wall[0], \
-					10, calculate_y(cub->render_img, h));
-			}
-    		if (cub->player.obj_hit == '2')
-				color = DOORCOLOR;
-		}
-		if (h >= cub->render_img.ceilingPoint)
+			color = get_color_img(&cub->img.wall[get_index(cub, dist)], 
+			        wallX, calculate_y(&cub->render_img, h));
+            if (dist->wallSideX)
+                color = 0xFF00FF;
+            // color = 0xDBACD4;
+            // if (dist->wallSideX == 1)
+            //     color /= 0.005;
+    	    if (cub->player.obj_hit == '2')
+			    color = DOORCOLOR;
+        }
+		else if (h >= cub->render_img.ceilingPoint)
 			color = cub->img.colors[0];
 		my_mlx_pixel_put(&cub->render_img, cub->render_img.x, h, color);
 	}
@@ -62,21 +79,18 @@ void    set_line_color(t_cub *cub, t_dist *dist, float wallX)
 
 void    get_wall_h(t_cub *cub, t_dist *dist)
 {
-    double  wallHeight;
-
-    if (dist->wallSideY == 0)
+    if (dist->wallSideX == 0)
         dist->fisheyeDist = dist->sideDistX - dist->deltaDistX;
     else
          dist->fisheyeDist = dist->sideDistY - dist->deltaDistY;
-    wallHeight = (int)(screenH /  dist->fisheyeDist) / 1.2;
-    // printf("lineH %f floor %d ceiling%d\n", wallHeight, cub->render_img.floorPoint, cub->render_img.ceilingPoint);
-    cub->render_img.floorPoint = screenH / 2 - wallHeight / 2;
-    if (cub->render_img.floorPoint < 0)
-        cub->render_img.floorPoint = 0;
-    cub->render_img.ceilingPoint = screenH / 2 + wallHeight / 2;
-    if (cub->render_img.ceilingPoint >= screenH)
-        cub->render_img.ceilingPoint = screenH - 1;
-    // printf("dirY %f dirX %f\n", cub->player.dirY, cub->player.dirX);
+    if (dist->wallSideX == 0)
+		dist->wallX = cub->player.posY + dist->fisheyeDist * dist->raydirX;
+	else
+		dist->wallX = cub->player.posX + dist->fisheyeDist * dist->raydirY;
+	dist->wallX -= floor((dist->wallX));
+    cub->render_img.wallHeight = (int)(screenH /  dist->fisheyeDist) / 1.2;
+    cub->render_img.floorPoint = screenH / 2 - cub->render_img.wallHeight / 2;
+    cub->render_img.ceilingPoint = screenH / 2 + cub->render_img.wallHeight / 2;
 }
 
 void    check_ray_hit(t_cub *cub, t_dist *dist)
@@ -92,13 +106,13 @@ void    check_ray_hit(t_cub *cub, t_dist *dist)
         {
             dist->sideDistX += dist->deltaDistX;
             dist->mapX += dist->stepX;
-            dist->wallSideY = 0;
+            dist->wallSideX = 0;
         }
         else
         {
             dist->sideDistY += dist->deltaDistY;
             dist->mapY += dist->stepY;
-            dist->wallSideY = 1;
+            dist->wallSideX = 1;
         }
         if (mtx[dist->mapX][dist->mapY] == '1' || mtx[dist->mapX][dist->mapY] == '2')
         {
@@ -144,7 +158,6 @@ void    raycasting(t_cub *cub)
         cameraX = 2 * cub->render_img.x / (double)screenW - 1;
         dist.raydirY = cub->player.dirY + cub->player.fovX * cameraX;
         dist.raydirX = cub->player.dirX + cub->player.fovY * cameraX;
-        // printf("rayX %f rayY %f\n", dist.raydirY, dist.raydirX);
         dist.mapX = (int)cub->player.posX;
         dist.mapY = (int)cub->player.posY;
         if (dist.raydirY == 0)
@@ -155,13 +168,13 @@ void    raycasting(t_cub *cub)
             dist.deltaDistY = 1e30;
         else
            dist.deltaDistY = fabs(1 / dist.raydirX);
-        // printf("delta X %f deltaY %f\n", dist.deltaDistX, dist.deltaDistY);
         calc_sidedist(cub, &dist);
         check_ray_hit(cub, &dist);
         get_wall_h(cub, &dist);
 		get_wall_texture(cub, &dist);
         set_line_color(cub, &dist, dist.wallX * 64);
+
     }
-        render_screen(cub);
-        // printf("dirY %f dirX %f\n", cub->player.dirY, cub->player.dirX);
+    render_screen(cub);
+    printf("dirx %f dirY %f\n", cub->player.dirX, cub->player.dirY);
 }   

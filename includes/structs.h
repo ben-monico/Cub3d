@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:55:20 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/06 16:11:30 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/06 18:26:05 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,27 +20,7 @@ typedef struct s_map	t_map;
 typedef struct s_player	t_player;
 typedef struct s_dist	t_dist;
 typedef struct s_img	t_img;
-typedef struct s_wall	t_wall;
 
-
-typedef struct s_wall
-{
-	int		width;
-	int		height;
-	void	*img;
-	char	*addr;
-	int		bpp;
-	int		size_line;
-	int		endian;
-}	t_wall;
-
-
-struct		s_img
-{
-	int		colors[2];
-	char	**path;
-	t_wall	wall[4];
-};
 
 struct		s_data
 {
@@ -53,7 +33,15 @@ struct		s_data
 	int		height;
 	int		ceilingPoint;
 	int		floorPoint;
+	double	wallHeight;
 	int		x;
+};
+
+struct		s_img
+{
+	int		colors[2];
+	char	**path;
+	t_data	wall[4];
 };
 
 struct s_sprite
@@ -76,7 +64,7 @@ struct s_dist
     int stepY;
     int mapX;
     int mapY;
-	int	wallSideY;
+	int	wallSideX;
 };
 
 struct	s_map

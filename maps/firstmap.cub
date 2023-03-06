@@ -1,8 +1,7 @@
 NO ./images/greystone.xpm
 SO ./images/wood.xpm
 WE ./images/colorstone.xpm
-EA ./images/mossy.xpm
-
+EA ./images/mossy.xpm   
 F 74,41,41
 C 231,236,249
 

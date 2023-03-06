@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:57:10 by benmonico         #+#    #+#             */
-/*   Updated: 2023/03/03 15:35:29 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/06 17:58:24 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,23 @@ int press_key(int key, t_cub *cub)
 		arrow_right_press(cub);
 	else if (key == ARROW_LEFT)
 		arrow_left_press(cub);
+	else if (key == KEY_SPACE)
+	{
+		static int a;
+		
+		if (!a)
+		{
+			a++;
+			mlx_mouse_show(cub->mlx, cub->win);
+		}
+		else
+		{
+			a--;
+			mlx_mouse_hide(cub->mlx, cub->win);
+		}
+	}
 	raycasting(cub);
+	// printf("%d \n", key);
 	return (key);
 }
 

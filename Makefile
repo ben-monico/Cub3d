@@ -32,7 +32,7 @@ NAME		=	cub3d
 
 CC			=	cc
 
-OPTFLAGS	=	-O3 -march=native -ffast-math -funsafe-math-optimizations -ffinite-math-only 
+OPTFLAGS	=	-O3 -march=native -ffast-math -funsafe-math-optimizations -ffinite-math-only
 
 CFLAGS		=	-Wall -Wextra -Werror -g -fsanitize=address
 

@@ -1,10 +1,7 @@
-NO           ./images/assets/Wall-000.xpm                      
-
-SO ./images/assets/Wall-001.xpm         
-
-WE       ./images/assets/Wall-002.xpm    
-
-EA       ./images/assets/Wall-003.xpm   
+NO ./images/greystone.xpm
+SO ./images/wood.xpm
+WE ./images/colorstone.xpm
+EA ./images/mossy.xpm   
 
 F 110,110,110
 

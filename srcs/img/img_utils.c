@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 01:58:29 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/06 16:12:28 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/06 16:46:23 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,6 @@ unsigned int	get_color_img(t_data *data, int x, int y)
 	
 	dst = (data->addr + (y * data->size_line + x * (data->bpp / 8)));
 	color = *(unsigned int*)dst;
-	return (color);
-}
-
-unsigned int	get_color_wall(t_wall data, int x, int y)
-{
-	char			*dst;
-	unsigned int	color;
-
-	dst = (data.addr + (y * data.size_line + x * (data.bpp / 8)));
-	color = *(unsigned int*)dst;
-	//printf("x: %d\n", x);
-	//printf("y: %d\n", y);
 	return (color);
 }
 

@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 17:58:25 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/06 16:16:19 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/06 16:28:05 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	put_crosshair(t_cub *cub)
 				i += 10;
 				j += 10;
 			}
-			my_mlx_pixel_put(&cub->render_img, ++i, (screenH / 2) + k, 0xFF0000);
+			my_mlx_pixel_put(&cub->render_img, ++i, (screenH / 2) + k, 0x00FF00);
 		}
 	}
 	k = -2;
@@ -46,7 +46,7 @@ void	put_crosshair(t_cub *cub)
 				i += 10;
 				j += 10;
 			}
-			my_mlx_pixel_put(&cub->render_img, (screenW / 2) + k, ++i, 0xFF0000);
+			my_mlx_pixel_put(&cub->render_img, (screenW / 2) + k, ++i, 0x00FF00);
 		}
 	}
 }

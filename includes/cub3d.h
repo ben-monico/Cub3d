@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/03/06 16:10:15 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/06 16:48:41 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	add_sprite(t_data *data, int x, int y, int color);
 void	put_image_to_window(t_sprite *spr, char	*file,  int x, int y);
 unsigned int	get_color_img(t_data *data, int x, int y);
-unsigned int	get_color_wall(t_wall data, int x, int y);
 
 
 t_cub	*new_cube(void);
