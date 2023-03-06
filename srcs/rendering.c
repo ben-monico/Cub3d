@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 17:58:25 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/03 15:57:08 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/06 16:08:11 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,6 @@ void	render_screen(t_cub *cub)
 	put_crosshair(cub);
 	put_minimap(cub);
 	put_image_to_window(&spr, "images/hol1.xpm", 0, 0);
-	// mlx_do_sync(cub->mlx);
+	mlx_do_sync(cub->mlx);
     mlx_put_image_to_window(cub->mlx, cub->win, cub->render_img.ptr, 0, 0);
 }

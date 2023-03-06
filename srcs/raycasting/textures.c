@@ -6,7 +6,7 @@
 /*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 16:42:25 by mgranate          #+#    #+#             */
-/*   Updated: 2023/03/05 17:08:58 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/03/06 17:37:30 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 void	get_wall_texture(t_cub *data, t_dist *dst)
 {
-	/*printf("wallside: %d\n",dst->wallSideY);
+	printf("wallside: %d\n",dst->wallSideY);
 	printf("posY: %lf\n",data->player.posY);
+	printf("posX: %lf\n",data->player.posX);
 	printf("fisheye: %lf\n",dst->fisheyeDist);
-	printf("rayfirY: %lf\n",dst->raydirY);*/
+	printf("rayfirY: %lf\n",dst->raydirY);
 	if (dst->wallSideY == 0)
 		dst->wallX = data->player.posY + dst->fisheyeDist * dst->raydirY;
 	else

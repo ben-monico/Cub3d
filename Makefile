@@ -32,6 +32,8 @@ NAME		=	cub3d
 
 CC			=	cc
 
+OPTFLAGS	=	-O3 -march=native -ffast-math -funsafe-math-optimizations -ffinite-math-only -o1 -o2
+
 CFLAGS		=	-Wall -Wextra -Werror -g -fsanitize=address
 
 RM			=	rm -rf
@@ -57,7 +59,7 @@ $(OBJS_DIR)/%.o :	$(SRCS_DIR)/%.c
 		$(CC) $(CFLAGS) $(INC) $(MACFLAG) -c $< -o $@
 
 $(NAME):	$(MLX) $(OBJS)
-		$(CC) $(CFLAGS) $(OBJS) $(INC) -o $(NAME) $(MLX_FLAGS) $(MACFLAG) 
+		$(CC) $(CFLAGS) $(OBJS) $(INC) $(OPTFLAGS) -o $(NAME) $(MLX_FLAGS) $(MACFLAG) 
 
 $(MLX):
 		make -C $(MLX_DIR)

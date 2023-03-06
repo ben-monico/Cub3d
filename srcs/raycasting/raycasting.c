@@ -6,7 +6,7 @@
 /*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:10:24 by benmonico         #+#    #+#             */
-/*   Updated: 2023/03/05 17:34:48 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/03/06 17:13:45 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 // }
 float	calculate_y(t_data data, float i)
 {
+	//printf("%f\n", ((float)(i - data.floorPoint) /
+	// (data.ceilingPoint - data.floorPoint) * 64));
 	return ((float)(i - data.floorPoint) /
 	(data.ceilingPoint - data.floorPoint) * 64);
 }
@@ -36,18 +38,19 @@ void    set_line_color(t_cub *cub, t_dist *dist, float wallX)
     // if (dist->wallSideY == 1)
     //     color /= 1.0005; 
 	h = -1;
+	//printf("wall2: %f\n", wallX);
 	color = cub->img.colors[1];
 	while (++h < screenH)
 	{
 		if (h >= cub->render_img.floorPoint && h < cub->render_img.ceilingPoint)
 		{
 			if (dist->wallSideY)
-			color = get_color_wall(cub->img.wall[0], 
-				63, calculate_y(cub->render_img, h));
+				color = get_color_wall(cub->img.wall[1], 
+					(int)wallX, (int)calculate_y(cub->render_img, h));
 			else
 			{
-				color = get_color_wall(cub->img.wall[0], \
-					10, calculate_y(cub->render_img, h));
+				color = get_color_wall(cub->img.wall[3], \
+					(int)wallX, (int)calculate_y(cub->render_img, h));
 			}
     		if (cub->player.obj_hit == '2')
 				color = DOORCOLOR;

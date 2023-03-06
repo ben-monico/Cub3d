@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 00:42:49 by mgranate          #+#    #+#             */
-/*   Updated: 2023/03/03 15:19:02 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/06 17:09:05 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	check_map_elements(t_cub *cub)
 
 static int    checker_zero(char **map, int y, int x)
 {
+	if ((y - 1) < 0)
+		return (0);
     if (!map[y - 1][x] || !map[y][x - 1] || !map[y + 1][x] || !map[y][x + 1]\
     || !map[y + 1][x + 1] || !map[y - 1][x - 1] || !map[y + 1][x - 1]\
 	|| !map[y - 1][x + 1])
