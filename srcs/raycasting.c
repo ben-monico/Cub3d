@@ -6,44 +6,39 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:10:24 by benmonico         #+#    #+#             */
-/*   Updated: 2023/03/06 19:33:19 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/06 23:09:13 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 #include <math.h>
 
-// void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+// void	my_mlx_pixel_put(t_line *line, int x, int y, int color)
 // {
 // 	char	*dst;
 
-// 	dst = (data->addr + (y * data->size_line + x * (data->bpp / 8)));
+// 	dst = (line->addr + (y * line->size_line + x * (line->bpp / 8)));
 // 	*(unsigned int*)dst = color;
 // }
-double	calculate_y(t_data *data, float i)
+double	calculate_y(t_data *line, float i)
 {
-    // static int      oldcamX;
-    // double          Ystep;
     static double   y;
+    static int      oldcamX;
+    static double   stepY;
 
-    // (void)i;
-    // (void)data;
-    // Ystep = 0.243344;
-    
-    // if (data->x == 0)
-    //     return (0);
-    // if (oldcamX)
-    //     if (data->x > oldcamX)
-    //     {
-    //         oldcamX = data->x;
-    //         y = 0;
-    //         return (y);
-    //     }
-    // oldcamX = data->x;
-    // y += Ystep;
-    // if (y > 64)
-    //     y = 64;
-    y = (float)(i - data->floorPoint) /	(data->ceilingPoint - data->floorPoint) * 64;
+    if (line->ceilingPoint - line->floorPoint > screenH)
+        return ((float)(i - line->floorPoint) /	(line->ceilingPoint - line->floorPoint) * 64);
+    if (stepY == 0 || oldcamX != line->x)
+    {
+        oldcamX = line->x;
+        stepY = (float)(i - line->floorPoint) /	(line->ceilingPoint - line->floorPoint) * 64;
+        y = 0;
+        return (y);
+    }
+    y += stepY;
+    if (y > 64)
+        y = 64;
+    // y = (float)(i - line->floorPoint) /	(line->ceilingPoint - line->floorPoint) * 64;
     // printf("y = %f\n", y);
     return (y);
 }
@@ -62,7 +57,7 @@ void    set_line_color(t_cub *cub, t_dist *dist, float wallX)
 		if (h >= cub->render_img.floorPoint && h < cub->render_img.ceilingPoint)
 		{
 			if (dist->wallSideX)
-			color = get_color_img(&cub->img.wall[!(dist->raydirX < 0) + 2], 
+			color = get_color_img(&cub->img.wall[!(dist->raydirX > 0) + 2], 
 				wallX, calculate_y(&cub->render_img, h));
 			else
 			{
@@ -91,7 +86,7 @@ void    get_wall_h(t_cub *cub, t_dist *dist)
 	else
 		dist->wallX = cub->player.posX + dist->fisheyeDist * dist->raydirY;
 	dist->wallX -= floor((dist->wallX));
-    cub->render_img.wallHeight = (int)(screenH /  dist->fisheyeDist) / 1.2;
+    cub->render_img.wallHeight = (int)(screenH /  dist->fisheyeDist) / 0.9;
     cub->render_img.floorPoint = screenH / 2 - cub->render_img.wallHeight / 2;
     cub->render_img.ceilingPoint = screenH / 2 + cub->render_img.wallHeight / 2;
 }
