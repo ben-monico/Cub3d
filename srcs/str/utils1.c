@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:53:31 by mgranate          #+#    #+#             */
-/*   Updated: 2023/03/03 18:34:47 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/03/06 00:07:25 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*strtrim(char *s1, char *set)
 	while(*s1 && string().strchr(set, *s1))
 		s1++;
 	end = ft_strlen(s1, -1) - 1;
-	while (end >= 0 && s1[end] && string().strchr(set, s1[end]))
+	while (s1[end] && string().strchr(set, s1[end]))
 		end--;
 	return (string().substr(s1, 0, end + 1));
 }

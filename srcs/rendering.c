@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 17:58:25 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/03 20:56:43 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/06 12:19:04 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	put_minimap(t_cub *cub)
 		{
 			if (mtx[(int)i][(int)j] == ' ')
 				continue ;
-			color = cub->img.colors[1];
+			color = cub->img.colors[0];
 			if (mtx[(int)i][(int)j] == '1')
 				color = 0x414141;
 			else if (mtx[(int)i][(int)j] == '2')
