@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 00:04:36 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/03 22:36:20 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/06 16:13:31 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,10 @@ void	parse_file(t_parse *parse)
 	i = get_path_img(parse);
 	if (!get_map(parse->file + i, new_cube()))
 		exit_parse(parse, 1, "Map Not Formated Correctly");
-	// load_img(new_cube(), parse->path_to_img);
+	i = -1;
+	new_cube()->img.path = alloc().calloc((sizeof(char *) * 5));
+	while (++i < 4)
+		new_cube()->img.path[i] = string().strdup(parse->path_to_img[i]);
 	new_cube()->img.colors[0] = get_colors(parse->f_c, parse);
 	new_cube()->img.colors[1] = get_colors(parse->c_c, parse);
 }

@@ -6,47 +6,69 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:10:24 by benmonico         #+#    #+#             */
-/*   Updated: 2023/03/06 16:07:03 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/06 16:14:56 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 #include <math.h>
 
-void    set_line_color(t_cub *cub, t_dist *dist)
+// void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+// {
+// 	char	*dst;
+
+// 	dst = (data->addr + (y * data->size_line + x * (data->bpp / 8)));
+// 	*(unsigned int*)dst = color;
+// }
+float	calculate_y(t_data data, float i)
+{
+	return ((float)(i - data.floorPoint) /
+	(data.ceilingPoint - data.floorPoint) * 64);
+}
+
+void    set_line_color(t_cub *cub, t_dist *dist, float wallX)
 {
     int     h;
     int     color;
 	
+    color = WALLCOLORX;
+	(void)dist;
+	(void)wallX;
     // color = 0xDBACD4;
     // if (dist->wallSideY == 1)
-    //     color /= 1.0005;
-    color = WALLCOLORX;
-    if (cub->player.obj_hit == '2')
-        color = DOORCOLOR;
-    if (dist->wallSideY == 1)
-        color /= 1.0005;
-    h = -1;
-	while (++h < cub->render_img.floorPoint)
-		my_mlx_pixel_put(&cub->render_img, cub->render_img.x, h, cub->img.colors[1]);
-    h--;
-	while (++h < cub->render_img.ceilingPoint)
-		my_mlx_pixel_put(&cub->render_img, cub->render_img.x, h, color);
-    h--;
+    //     color /= 1.0005; 
+	h = -1;
+	color = cub->img.colors[1];
 	while (++h < screenH)
-		my_mlx_pixel_put(&cub->render_img, cub->render_img.x, h, cub->img.colors[0] + h * 0.05);
+	{
+		if (h >= cub->render_img.floorPoint && h < cub->render_img.ceilingPoint)
+		{
+			if (dist->wallSideY)
+			color = get_color_wall(cub->img.wall[0], 
+				63, calculate_y(cub->render_img, h));
+			else
+			{
+				color = get_color_wall(cub->img.wall[0], \
+					10, calculate_y(cub->render_img, h));
+			}
+    		if (cub->player.obj_hit == '2')
+				color = DOORCOLOR;
+		}
+		if (h >= cub->render_img.ceilingPoint)
+			color = cub->img.colors[0];
+		my_mlx_pixel_put(&cub->render_img, cub->render_img.x, h, color);
+	}
 }
 
 void    get_wall_h(t_cub *cub, t_dist *dist)
 {
-    double  fisheyeDist;
     double  wallHeight;
 
     if (dist->wallSideY == 0)
-        fisheyeDist = dist->sideDistX - dist->deltaDistX;
+        dist->fisheyeDist = dist->sideDistX - dist->deltaDistX;
     else
-        fisheyeDist = dist->sideDistY - dist->deltaDistY;
-    wallHeight = (int)(screenH / fisheyeDist) / 1.2;
+         dist->fisheyeDist = dist->sideDistY - dist->deltaDistY;
+    wallHeight = (int)(screenH /  dist->fisheyeDist) / 1.2;
     // printf("lineH %f floor %d ceiling%d\n", wallHeight, cub->render_img.floorPoint, cub->render_img.ceilingPoint);
     cub->render_img.floorPoint = screenH / 2 - wallHeight / 2;
     if (cub->render_img.floorPoint < 0)
@@ -55,7 +77,6 @@ void    get_wall_h(t_cub *cub, t_dist *dist)
     if (cub->render_img.ceilingPoint >= screenH)
         cub->render_img.ceilingPoint = screenH - 1;
     // printf("dirY %f dirX %f\n", cub->player.dirY, cub->player.dirX);
-
 }
 
 void    check_ray_hit(t_cub *cub, t_dist *dist)
@@ -138,7 +159,8 @@ void    raycasting(t_cub *cub)
         calc_sidedist(cub, &dist);
         check_ray_hit(cub, &dist);
         get_wall_h(cub, &dist);
-        set_line_color(cub, &dist);
+		get_wall_texture(cub, &dist);
+        set_line_color(cub, &dist, dist.wallX * 64);
     }
         render_screen(cub);
         // printf("dirY %f dirX %f\n", cub->player.dirY, cub->player.dirX);

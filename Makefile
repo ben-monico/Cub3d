@@ -14,6 +14,7 @@ SRCS		=	$(SRCS_DIR)/main.c 						\
 				$(SRCS_DIR)/exit/exit_window.c			\
 				$(SRCS_DIR)/raycasting/raycasting.c		\
 				$(SRCS_DIR)/raycasting/init_raycaster.c \
+				$(SRCS_DIR)/raycasting/textures.c		\
 				$(SRCS_DIR)/img/sprite.c				\
 				$(SRCS_DIR)/img/img_utils.c				\
 				$(SRCS_DIR)/cube/start_cube.c			\
