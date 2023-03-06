@@ -6,11 +6,12 @@
 /*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:14:22 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/03 17:30:38 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/03/06 18:32:25 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
+#include <math.h>
 
 void arrow_left_press(t_cub *cub)
 {
@@ -24,17 +25,32 @@ void arrow_right_press(t_cub *cub)
     raycasting(cub);
 }
 
-// void mouse_move(int x, int y, t_cub *cub)
-// {
-//     double  
-// }
+int mouse_move(int x, int y, t_cub *cub)
+{
+    double  move_x;
+
+    (void)y;
+    mlx_mouse_get_pos(cub->mlx, cub->win, &x, &y);
+    if (x - screenW / 2 > ((int)screenW / 40) || x - screenW / 2 < -((int)screenW / 40))
+	{
+		move_x = MOUSE_STEP;
+		if (x - screenW / 2 < 0)
+			move_x = -move_x;
+		p_rotation(&cub->player, move_x);
+        raycasting(cub);
+    
+        mlx_mouse_get_pos(cub->mlx, cub->win, &x, &y);
+	    mlx_mouse_move(cub->mlx,cub->win, screenW / 2, screenH / 2);
+	}
+    return (1);
+}
 
 void p_rotation(t_player *player, double angle)
 {
     double  x;
     double  y;
 
-    angle *= M_PI / 180;
+    angle *= 3.14159 / 180;
     x = player->dirY * cos(angle) + player->dirX * sin(angle);
     y = player->dirY * -sin(angle) + player->dirX * cos(angle);
     player->dirY = x;

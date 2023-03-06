@@ -3,10 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   img_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+<<<<<<< HEAD
 /*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 01:58:29 by mgranate_ls       #+#    #+#             */
 /*   Updated: 2023/03/05 17:35:16 by mgranate         ###   ########.fr       */
+=======
+/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/23 01:58:29 by mgranate_ls       #+#    #+#             */
+/*   Updated: 2023/03/03 22:05:43 by bcarreir         ###   ########.fr       */
+>>>>>>> master
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +33,9 @@ unsigned int	get_color_img(t_data *data, int x, int y)
 	char			*dst;
 	unsigned int	color;
 	
+	//printf("data->add: %p\n", data->addr);
 	dst = (data->addr + (y * data->size_line + x * (data->bpp / 8)));
 	color = *(unsigned int*)dst;
-	return (color);
-}
-
-unsigned int	get_color_wall(t_wall data, int x, int y)
-{
-	char			*dst;
-	unsigned int	color;
-
-	dst = (data.addr + (y * data.size_line + x * (data.bpp / 8)));
-	color = *(unsigned int*)dst;
-	//printf("x: %d\n", x);
-	//printf("y: %d\n", y);
 	return (color);
 }
 
@@ -64,17 +60,17 @@ void	put_image_to_window(t_sprite *spr, char *file, int x, int y)
 		img.addr = mlx_get_data_addr(img.ptr, &img.bpp, \
 		&img.size_line, &img.endian);
 	}
-	if (bobh == 10)
+	if (bobh == 15)
 		bobhdir = 1;
-	else if (bobh == -10)
+	else if (bobh == -15)
 		bobhdir = 0;
 	if (!bobhdir)
 		bobh++;
 	else
 		bobh--;
-	if (bobw == 20)
+	if (bobw == 30)
 		bobwdir = 1;
-	else if (bobw == -20)
+	else if (bobw == -30)
 		bobwdir = 0;
 	if (!bobwdir)
 		bobw++;
@@ -90,7 +86,7 @@ void	put_image_to_window(t_sprite *spr, char *file, int x, int y)
 	// printf("w%d h%d\n", img.width, img.height);
 			x = get_color_img(&img, h, w);
 			// printf("color - %d\n", x);
-			if (x >= 0x000000 && x <= 0x093304)
+			if (x >= 0x004000 && x <= 0x02FFBB)
 				continue ;
 	 		my_mlx_pixel_put(&new_cube()->render_img, screenW - img.width - 120 + h +bobw, screenH - img.height + 30 + bobh + w, x);
 		}

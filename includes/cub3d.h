@@ -6,7 +6,7 @@
 /*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/03/06 16:06:08 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/03/06 18:29:36 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	add_sprite(t_data *data, int x, int y, int color);
 void	put_image_to_window(t_sprite *spr, char	*file,  int x, int y);
-unsigned int	get_color_img(t_data *data, int x, int y);
-unsigned int	get_color_wall(t_wall data, int x, int y);
 
 
 t_cub	*new_cube(void);
@@ -46,6 +44,9 @@ void    raycasting(t_cub *cub);
 void	init_raycast_vars(t_cub *cub);
 void	get_textures(t_cub *cub, int start, int end);
 void	get_wall_texture(t_cub *data, t_dist *dst);
+
+// Rendering Utils
+void	render_screen(t_cub *cub);
 
 // Rendering Utils
 void	render_screen(t_cub *cub);
@@ -66,7 +67,7 @@ int		get_map(char **file, t_cub *cube);
 
 // Moving
 void    verify_collision_and_door(t_cub *cub, double x, double y);
-void	mouse_move(t_cub *cub);
+int mouse_move(int x, int y, t_cub *cub);
 void	p_rotation(t_player *player, double angle);
 void	w_press(t_cub *cub);
 void	a_press(t_cub *cub);

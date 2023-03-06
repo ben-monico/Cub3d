@@ -1,14 +1,18 @@
-NO           ./images/assets/Wall-0781647953498.xpm             
+NO           ./images/assets/Wall-000.xpm                      
 
-SO ./images/assets/Wall-0301647953497.xpm      
+SO ./images/assets/Wall-001.xpm         
 
-WE       ./images/assets/Wall-0811647953498.xpm   
+WE       ./images/assets/Wall-002.xpm    
 
-EA       ./images/assets/Wall-0651647953498.xpm 
+EA       ./images/assets/Wall-003.xpm   
 
 F 119,212,208   
 
+<<<<<<< HEAD
+C 110,110,110
+=======
 C 191,170,116      
+>>>>>>> 2aca138983093775c86f9e0a06f523e5175cb21f
 
      11111111111111
 1     20000011

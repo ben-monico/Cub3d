@@ -6,14 +6,14 @@
 /*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 17:58:25 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/06 16:08:11 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/03/06 18:32:39 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
 
-static void	put_crosshair(t_cub *cub)
+void	put_crosshair(t_cub *cub)
 {
 	int	i;
 	int	j;
@@ -51,7 +51,7 @@ static void	put_crosshair(t_cub *cub)
 	}
 }
 
-static void	put_minimap(t_cub *cub)
+void	put_minimap(t_cub *cub)
 {
 	char	**mtx;
 	double	i;
@@ -123,7 +123,7 @@ void	render_screen(t_cub *cub)
 	t_sprite spr;
 	put_crosshair(cub);
 	put_minimap(cub);
-	put_image_to_window(&spr, "images/hol1.xpm", 0, 0);
-	mlx_do_sync(cub->mlx);
+	put_image_to_window(&spr, "images/hol.xpm", 0, 0);
+	// mlx_do_sync(cub->mlx);
     mlx_put_image_to_window(cub->mlx, cub->win, cub->render_img.ptr, 0, 0);
 }

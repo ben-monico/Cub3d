@@ -3,10 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+<<<<<<< HEAD
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:55:20 by bcarreir          #+#    #+#             */
 /*   Updated: 2023/03/05 02:51:36 by mgranate_ls      ###   ########.fr       */
+=======
+/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/28 10:55:20 by bcarreir          #+#    #+#             */
+/*   Updated: 2023/03/03 18:29:32 by mgranate         ###   ########.fr       */
+>>>>>>> master
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,34 +27,21 @@ typedef struct s_map	t_map;
 typedef struct s_player	t_player;
 typedef struct s_dist	t_dist;
 typedef struct s_img	t_img;
-typedef struct s_wall	t_wall;
-
-
-typedef struct s_wall
-{
-	int		width;
-	int		height;
-	void	*img;
-	char	*addr;
-	int		bpp;
-	int		size_line;
-	int		endian;
-}	t_wall;
 
 
 struct		s_img
 {
-	int		colors[2];
 	char	**path;
-	t_wall	wall[4];
+	void	**img;
+	int		colors[2];
 };
 
 struct		s_data
 {
 	void	*ptr;
-	char	*addr;
-	int		bpp;
-	int		size_line;
+	char	*addr;		
+	int		bpp;	
+	int		size_line;	
 	int		endian;		
 	int		width;
 	int		height;
@@ -70,8 +64,6 @@ struct s_dist
     double  sideDistY;
     double  deltaDistX;
     double  deltaDistY;
-	double	fisheyeDist;
-	double	wallX;
     int stepX;
     int stepY;
     int mapX;
