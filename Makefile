@@ -1,26 +1,24 @@
-SRCS		=	$(SRCS_DIR)/main.c 						\
-				$(SRCS_DIR)/gnl/get_next_line.c 		\
-				$(SRCS_DIR)/gnl/get_next_line_utils.c	\
-				$(SRCS_DIR)/str/str.c					\
-				$(SRCS_DIR)/str/utils1.c				\
-				$(SRCS_DIR)/str/utils2.c				\
-				$(SRCS_DIR)/allocs/allocs.c				\
-				$(SRCS_DIR)/parsing/read_file.c			\
-				$(SRCS_DIR)/parsing/parse_file.c		\
-				$(SRCS_DIR)/parsing/load_xpm.c			\
-				$(SRCS_DIR)/map/map.c					\
-				$(SRCS_DIR)/map/map_checker.c			\
-				$(SRCS_DIR)/exit/exit.c					\
-				$(SRCS_DIR)/exit/exit_window.c			\
-				$(SRCS_DIR)/raycasting/raycasting.c		\
-				$(SRCS_DIR)/raycasting/init_raycaster.c \
-				$(SRCS_DIR)/raycasting/textures.c		\
-				$(SRCS_DIR)/img/sprite.c				\
-				$(SRCS_DIR)/img/img_utils.c				\
-				$(SRCS_DIR)/cube/start_cube.c			\
-				$(SRCS_DIR)/rendering.c					\
-				$(SRCS_DIR)/key_mapping.c				\
-				$(SRCS_DIR)/key_mapping2.c	
+SRCS		=	$(SRCS_DIR)/main.c 							\
+				$(SRCS_DIR)/utils/gnl/get_next_line.c 		\
+				$(SRCS_DIR)/utils/gnl/get_next_line_utils.c	\
+				$(SRCS_DIR)/utils/str/str.c					\
+				$(SRCS_DIR)/utils/str/utils1.c				\
+				$(SRCS_DIR)/utils/str/utils2.c				\
+				$(SRCS_DIR)/utils/allocs/allocs.c			\
+				$(SRCS_DIR)/parsing/read_file.c				\
+				$(SRCS_DIR)/parsing/parse_file.c			\
+				$(SRCS_DIR)/parsing/load_xpm.c				\
+				$(SRCS_DIR)/parsing/map.c					\
+				$(SRCS_DIR)/parsing/map_checker.c			\
+				$(SRCS_DIR)/exit/exit.c						\
+				$(SRCS_DIR)/exit/exit_window.c				\
+				$(SRCS_DIR)/raycasting.c					\
+				$(SRCS_DIR)/init_cub3d.c					\
+				$(SRCS_DIR)/rendering/textures.c			\
+				$(SRCS_DIR)/rendering/img_utils.c			\
+				$(SRCS_DIR)/rendering/rendering.c			\
+				$(SRCS_DIR)/key_mapping.c					\
+				$(SRCS_DIR)/interaction.c	
 
 SRCS_DIR	=	srcs
 
@@ -32,7 +30,7 @@ NAME		=	cub3d
 
 CC			=	cc
 
-OPTFLAGS	=	-O3 -march=native -ffast-math -funsafe-math-optimizations -ffinite-math-only
+OPTFLAGS	=	-O3 -march=native -ffast-math -funsafe-math-optimizations -ffinite-math-only -o -o1 -o2
 
 CFLAGS		=	-Wall -Wextra -Werror -g -fsanitize=address
 

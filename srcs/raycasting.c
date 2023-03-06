@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:10:24 by benmonico         #+#    #+#             */
-/*   Updated: 2023/03/06 18:27:20 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/06 19:33:19 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,27 +22,30 @@
 // }
 double	calculate_y(t_data *data, float i)
 {
-    double y;
+    // static int      oldcamX;
+    // double          Ystep;
+    static double   y;
 
+    // (void)i;
+    // (void)data;
+    // Ystep = 0.243344;
+    
+    // if (data->x == 0)
+    //     return (0);
+    // if (oldcamX)
+    //     if (data->x > oldcamX)
+    //     {
+    //         oldcamX = data->x;
+    //         y = 0;
+    //         return (y);
+    //     }
+    // oldcamX = data->x;
+    // y += Ystep;
+    // if (y > 64)
+    //     y = 64;
     y = (float)(i - data->floorPoint) /	(data->ceilingPoint - data->floorPoint) * 64;
     // printf("y = %f\n", y);
-	return (y);
-}
-
-int get_index(t_cub *cub, t_dist *dist)
-{
-    if (dist->wallSideX)
-    {
-        if (cub->player.dirX > 0)
-            return (2);
-        return (3);
-    }
-    else
-    {
-        if (cub->player.dirY > 0)
-            return (0);
-        return (1);
-    }
+    return (y);
 }
 
 void    set_line_color(t_cub *cub, t_dist *dist, float wallX)
@@ -51,25 +54,25 @@ void    set_line_color(t_cub *cub, t_dist *dist, float wallX)
     int     color;
 	
     color = WALLCOLORX;
-    // color = 0xDBACD4;
-    // if (dist->wallSideX == 1)
-    //     color /= 1.0005;
+
 	h = -1;
 	color = cub->img.colors[1];
-
 	while (++h < screenH)
 	{
 		if (h >= cub->render_img.floorPoint && h < cub->render_img.ceilingPoint)
 		{
-			color = get_color_img(&cub->img.wall[get_index(cub, dist)], 
-			        wallX, calculate_y(&cub->render_img, h));
-            if (dist->wallSideX)
-                color = 0xFF00FF;
-            // color = 0xDBACD4;
-            // if (dist->wallSideX == 1)
-            //     color /= 0.005;
+			if (dist->wallSideX)
+			color = get_color_img(&cub->img.wall[!(dist->raydirX < 0) + 2], 
+				wallX, calculate_y(&cub->render_img, h));
+			else
+			{
+				color = get_color_img(&cub->img.wall[!(dist->raydirY > 0)], \
+					wallX, calculate_y(&cub->render_img, h));
+			}
     	    if (cub->player.obj_hit == '2')
 			    color = DOORCOLOR;
+            if(dist->wallSideX == 1)
+                color = (color >> 1) & 8355711;
         }
 		else if (h >= cub->render_img.ceilingPoint)
 			color = cub->img.colors[0];
@@ -176,5 +179,4 @@ void    raycasting(t_cub *cub)
 
     }
     render_screen(cub);
-    printf("dirx %f dirY %f\n", cub->player.dirX, cub->player.dirY);
 }   

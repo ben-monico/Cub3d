@@ -1,0 +1,15 @@
+Mario
+	safety doors holes
+	usability tests parsing
+
+
+Ben
+	optimize
+	change wall textures to match hol
+	show FOV minimap
+	find step on calc Y
+
+COMMON
+	Norm
+	CleanUp
+	Valgrind
