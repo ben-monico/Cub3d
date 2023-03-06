@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:14:22 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/06 12:38:45 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/06 16:04:04 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,13 @@ int mouse_move(int x, int y, t_cub *cub)
 
     (void)y;
     mlx_mouse_get_pos(cub->mlx, cub->win, &x, &y);
-    if (x - screenW / 2 > ((int)screenW / 60) || x - screenW / 2 < -((int)screenW / 60))
+    if (x - screenW / 2 > ((int)screenW / 50) || x - screenW / 2 < -((int)screenW / 50))
 	{
 		move_x = MOUSE_STEP;
 		if (x - screenW / 2 < 0)
 			move_x = -move_x;
 		p_rotation(&cub->player, move_x);
         raycasting(cub);
-        mlx_mouse_hide(cub->mlx, cub->win);
 	    mlx_mouse_move(cub->mlx,cub->win, screenW / 2, screenH / 2);
 	}
     return (1);

@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 21:15:20 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/06 12:00:17 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/06 16:04:16 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	create_cube(t_cub *cub)
     cub->render_img.ptr = mlx_new_image(cub->mlx, screenW, screenH);
 	cub->render_img.addr = mlx_get_data_addr(cub->render_img.ptr, &cub->render_img.bpp,
                     &cub->render_img.size_line, &cub->render_img.endian);
+    mlx_mouse_hide(cub->mlx, cub->win);
 	init_raycast_vars(cub);
 	raycasting(cub);
 	mlx_hook(cub->win, x_ON_MOUSEMOVE, 1L << 6, &mouse_move, cub);

@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:10:24 by benmonico         #+#    #+#             */
-/*   Updated: 2023/03/06 12:16:58 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/06 16:07:03 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void    set_line_color(t_cub *cub, t_dist *dist)
 		my_mlx_pixel_put(&cub->render_img, cub->render_img.x, h, color);
     h--;
 	while (++h < screenH)
-		my_mlx_pixel_put(&cub->render_img, cub->render_img.x, h, cub->img.colors[0]);
+		my_mlx_pixel_put(&cub->render_img, cub->render_img.x, h, cub->img.colors[0] + h * 0.05);
 }
 
 void    get_wall_h(t_cub *cub, t_dist *dist)
