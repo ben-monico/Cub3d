@@ -3,17 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/28 10:55:20 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/05 02:51:36 by mgranate_ls      ###   ########.fr       */
-=======
 /*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:55:20 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/03 18:29:32 by mgranate         ###   ########.fr       */
->>>>>>> master
+/*   Updated: 2023/03/06 18:44:14 by mgranate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +25,8 @@ typedef struct s_img	t_img;
 struct		s_img
 {
 	char	**path;
-	void	**img;
 	int		colors[2];
+	
 };
 
 struct		s_data
