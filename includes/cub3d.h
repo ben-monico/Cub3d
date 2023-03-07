@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/03/07 12:51:15 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/07 16:44:56 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,6 @@ void	check_map_elements(t_cub *cub);
 
 // Clean and Exit Program
 void	exit_free(t_cub *data, int status, char *str);
-int		exit_win(t_cub *cub);
-int		free_ob(void *v);
 int		close_window(t_cub *vars);
 
 // Parsing Resources
