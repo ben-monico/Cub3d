@@ -16,3 +16,4 @@ objs/exit/*.o
 objs/map/*.o
 objs/parsing/*.o
 objs/raycasting/*.o
+mlx_linux/obj/
