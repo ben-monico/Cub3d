@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 00:42:49 by mgranate          #+#    #+#             */
-/*   Updated: 2023/03/03 15:19:02 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/07 15:59:33 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,28 @@ void	check_map_elements(t_cub *cub)
 		exit_free(cub, 1, "Map can only contain one Player");
 }
 
+int	check_matrix_len(char **matrix)
+{
+	int	i;
+
+	i = 0;
+	while (matrix[i])
+		i++;
+	return (i);
+}
+
 static int    checker_zero(char **map, int y, int x)
 {
-    if (!map[y - 1][x] || !map[y][x - 1] || !map[y + 1][x] || !map[y][x + 1]\
-    || !map[y + 1][x + 1] || !map[y - 1][x - 1] || !map[y + 1][x - 1]\
+    if (!map[y + 1] || (y - 1) < 0 || (x - 1) < 0  || !map[y - 1][x] || !map[y][x - 1]	\
+	|| !map[y + 1][x] || !map[y][x + 1]									\
+    || !map[y + 1][x + 1] || !map[y - 1][x - 1] || !map[y + 1][x - 1]	\
 	|| !map[y - 1][x + 1])
         return (0);
     if (map[y - 1][x] == ' ' || map[y][x - 1] == ' ' || map[y + 1][x] == ' '\
 	|| map[y][x + 1] == ' ' || map[y + 1][x + 1]  == ' ' || map[y - 1][x - 1] == ' ' \
 	|| map[y + 1][x - 1] == ' ' || map[y - 1][x + 1] == ' ')
 	{
+		printf("error 2\n");
         return (0);
 	}
 	if (map[y - 1][x] == '\n' || map[y][x - 1] == '\n' || map[y + 1][x] == '\n' 	\
@@ -49,7 +61,7 @@ static void	add_player_atributes(t_map *map, int x, int y)
 
 static int	check_zero1(t_map *map, char c, int y, int x)
 {
-	if (c == '0')
+	if (c == '0' || c == '2')
     	if (!checker_zero(map->mtx, y, x))
 		{
             printf("Line: %d Column: %d => '%c' \n", y, x, c);

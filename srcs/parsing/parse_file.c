@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 00:04:36 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/06 16:13:31 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/07 15:08:13 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	trim_ident(char *line, t_parse *parse, int ct)
 			parse->c_c = string().strdup(trim);
 		alloc().free_array(trim);
 		return ;
-	}	
+	}
 	parse->path_to_img[ct] = string().strdup(trim);
 	alloc().free_array(trim);
 }
@@ -70,6 +70,7 @@ int	get_path_img(t_parse *parse)
 	parse->path_to_img = alloc().calloc((5) * (sizeof(char *)));
 	if (!parse->path_to_img)
 		exit_parse(parse, 1, "Allocation Failed in Parsing Images");
+	parse->path_to_img[4] = NULL;
 	i = -1;
 	while (parse->file[++i] && ct < 6)
 	{
@@ -86,13 +87,6 @@ int	get_path_img(t_parse *parse)
 		}
 	}
 	return (i);
-}
-
-void	get_img(t_parse *data)
-{
-	data->path_to_img = alloc().calloc((sizeof(void *) * 2));
-	data->path_to_img[0] = string().strdup("images/barril.xpm");
-	data->path_to_img[1] = NULL;
 }
 
 void	parse_file(t_parse *parse)

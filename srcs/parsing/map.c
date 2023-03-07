@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: benmonico <benmonico@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 12:12:06 by mgranate          #+#    #+#             */
-/*   Updated: 2023/02/23 19:23:41 by benmonico        ###   ########.fr       */
+/*   Updated: 2023/03/07 15:57:14 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ static int	copy_map(char **file, int i, t_cub *cub)
 				cub->map.mtx[l++] = string().strdup(file[i]);
 				break ;
 			}
-			if (!(file[i][1]) && l > 0)
-				return (0);
+			//if (!(file[i][1]) && l > 0)
+			//	return (0);
 		}
 		i++;
 	}

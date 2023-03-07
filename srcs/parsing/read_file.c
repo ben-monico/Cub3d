@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:22:03 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/03 18:34:01 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/03/07 15:33:27 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	clean_parsing(t_parse *data)
 		alloc().free_array((void *)data->f_c);
 	if (data->c_c)
 		alloc().free_array((void *)data->c_c);
-	//free_mlx(data);
 }
 
 static int	open_file(t_cub *data, char *name)
