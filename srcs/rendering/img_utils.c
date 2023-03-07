@@ -6,12 +6,32 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 01:58:29 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/07 01:44:13 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/07 13:49:39 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
+void	get_textures(t_cub *cub, int start, int end)
+{
+	static	int a;
+	static	t_data img;
+
+	if (!a)
+	{
+		a = 1;
+		img.ptr = mlx_xpm_file_to_image(cub->mlx, cub->img.path[1], &img.width, &img.height);
+		img.addr = mlx_get_data_addr(img.ptr, &img.bpp, \
+		&img.size_line, &img.endian);
+		
+	}
+	if (cub->render_img.x > img.width)
+		return ;
+	while (++start < end)
+	{
+		my_mlx_pixel_put(&cub->render_img, cub->render_img.x, start, get_color_img(&img, start, cub->render_img.x));
+	}
+}
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -31,55 +51,53 @@ unsigned int	get_color_img(t_data *data, int x, int y)
 	return (color);
 }
 
-void	put_image_to_window(t_sprite *spr, char *file, int x, int y)
+static int	calc_bob(int dir, int color)
 {
-	static t_data	img;
-	static int		bobh;
-	static int		bobw;
-	static int		bobhdir;
-	static int		bobwdir;
-	static int		a;
-	int				h;
-	int				w;
-	
-	(void)x;
-	(void)y;
-	if (!a)
+	static int	bobh;
+	static int	bobw;
+	static int	y;
+	static int	x;
+
+	if (color == 0x24FFCF)
+		return (0);
+	if (!y || !x)
 	{
-		a = 1;
-		img = spr->data;
-		img.ptr = mlx_xpm_file_to_image(new_cube()->mlx, file, &img.width, &img.height);
-		img.addr = mlx_get_data_addr(img.ptr, &img.bpp, \
-		&img.size_line, &img.endian);
+		y = 1;
+		x = 1;
 	}
-	if (bobh == 15)
-		bobhdir = 1;
-	else if (bobh == -15)
-		bobhdir = 0;
-	if (!bobhdir)
-		bobh++;
-	else
-		bobh--;
-	if (bobw == 30)
-		bobwdir = 1;
-	else if (bobw == -30)
-		bobwdir = 0;
-	if (!bobwdir)
-		bobw++;
-	else
-		bobw--;
-	h = -1;
-	while (++h < img.width)
+	if (dir)
 	{
-		w = -1;
-		while (++w < img.height)
+		if (bobh == 15 || bobh == -15)
+			y *= -1;
+		bobh += y;
+		return (bobh);
+	}
+	if (bobw == 30 || bobw == -30)
+		x *= -1;
+	bobw += x;
+	return (bobw);
+}
+
+void	put_image_remove_chroma(t_data *img, int offsetW, int offsetH, int chroma_max)
+{
+	int	h;
+	int	w;
+	int	color;
+	int	bobH;
+	int	bobW;
+
+	bobW = calc_bob(0, chroma_max);
+	bobH = calc_bob(1, chroma_max);
+	w = -1;
+	while (++w < img->width)
+	{
+		h = -1;
+		while (++h < img->height)
 		{
-			x = get_color_img(&img, h, w);
-			// printf("color - %d\n", x);
-			if (x >= 0x004000 && x <= 0x02FFBB)
+			color = get_color_img(img, w, h);
+			if (color >= 0x000300 && color <= chroma_max)
 				continue ;
-	 		my_mlx_pixel_put(&new_cube()->render_img, screenW - img.width - 120 + h +bobw, screenH - img.height + 30 + bobh + w, x);
+	 		my_mlx_pixel_put(&new_cube()->render_img, offsetW + w + bobW, offsetH + h + bobH, color);
 		}
 	}
-	// printf("w%d h%d\n", img.width, img.height);
 }

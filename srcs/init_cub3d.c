@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_raycaster.c                                   :+:      :+:    :+:   */
+/*   init_cub3d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 23:26:10 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/06 19:01:55 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/07 12:44:34 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,18 @@ void	create_cube(t_cub *cub)
 	// t_sprite spr;
 	new_cube()->mlx = mlx_init();
 	load_img(cub, cub->img.path);
-	new_cube()->win = mlx_new_window(new_cube()->mlx, screenW, screenH, "cub3d");
+	new_cube()->win = mlx_new_window(cub->mlx, screenW, screenH, "cub3d");
     cub->render_img.ptr = mlx_new_image(cub->mlx, screenW, screenH);
 	cub->render_img.addr = mlx_get_data_addr(cub->render_img.ptr, &cub->render_img.bpp,
                     &cub->render_img.size_line, &cub->render_img.endian);
+	cub->sprites[0].ptr = mlx_xpm_file_to_image(cub->mlx, "images/hol.xpm", \
+							&cub->sprites[0].width, &cub->sprites[0].height);
+	cub->sprites[0].addr = mlx_get_data_addr(cub->sprites[0].ptr,
+							&cub->sprites[0].bpp, &cub->sprites[0].size_line, &cub->sprites[0].endian);
+	cub->sprites[1].ptr = mlx_xpm_file_to_image(cub->mlx, "images/crosshair.xpm", \
+							&cub->sprites[1].width, &cub->sprites[1].height);
+	cub->sprites[1].addr = mlx_get_data_addr(cub->sprites[1].ptr, &cub->sprites[1].bpp, \
+		&cub->sprites[1].size_line, &cub->sprites[1].endian);
 	init_raycast_vars(cub);
     mlx_mouse_hide(cub->mlx, cub->win);
 	raycasting(cub);

@@ -6,124 +6,90 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 17:58:25 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/07 01:33:35 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/07 13:45:01 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-
-void	put_crosshair(t_cub *cub)
+void	put_squares(double j, double i, int color, int size)
 {
-	int	i;
-	int	j;
-	int	k;
+	int	x;
+	int	y;
+	int	offset;
 
-	k = -2;
-	while (++k < 2)
+	offset = 5;
+	if (color == 0xFFFFFF)
+		offset = 0;
+	x = -1;
+	while (++x < size)
 	{
-		i = screenW / 2 - 11;
-		j = -1;
-		while (++j < 21)
-		{
-			if (i == screenW /2 - 5)
-			{
-				i += 10;
-				j += 10;
-			}
-			my_mlx_pixel_put(&cub->render_img, ++i, (screenH / 2) + k, 0x00FF00);
-		}
+		y = -1;
+		while (++y < size)
+			my_mlx_pixel_put(&new_cube()->render_img, j * 10 + y + offset, i * 10 + x + offset, color);
 	}
-	k = -2;
-	while (++k < 2)
+}
+
+void	put_player_minmap(t_cub *cub)
+{
+	double	j;
+	double	i;
+
+	j = cub->player.posY;
+	i = cub->player.posX;
+	put_squares(j, i, 0xCA12A9, 4);
+}
+
+void	outline_minimap(char **mtx)
+{
+	int		i;
+	int		j;
+
+	i = -1;
+	while (mtx[++i])
 	{
-		i = screenH / 2 - 11;
 		j = -1;
-		while (++j < 21)
+		while (mtx[i][++j] && mtx[i][j] != '\n')
 		{
-			if (i == screenH /2 - 5)
-			{
-				i += 10;
-				j += 10;
-			}
-			my_mlx_pixel_put(&cub->render_img, (screenW / 2) + k, ++i, 0x00FF00);
+			if (mtx[i][j] == ' ')
+				continue ;
+			put_squares(j, i, 0xFFFFFF, 20);
 		}
 	}
 }
 
-void	put_minimap(t_cub *cub)
+void	put_minimap(t_cub *cub, char **mtx)
 {
-	char	**mtx;
-	double	i;
-	double	j;
-	int		x;
-	int		y;
-	int		outline;
-	int 	color;
+	int	i;
+	int	j;
+	int color;
 
-	mtx = cub->map.mtx;
-	outline = 5;
+	outline_minimap(mtx);
 	i = -1;
-	color = 0xFFFFFF;
-	while (mtx[(int)++i])
+	while (mtx[++i])
 	{
 		j = -1;
-		while (mtx[(int)i][(int)++j] && mtx[(int)i][(int)j] != '\n')
+		while (mtx[i][++j] && mtx[i][j] != '\n')
 		{
-			if (mtx[(int)i][(int)j] == ' ')
-				continue ;
-			x = -1;
-			while (++x < 20)
-			{
-				y = -1;
-				while (++y < 20)
-					my_mlx_pixel_put(&cub->render_img, j * 10 + y, i * 10 + x, color);
-			}
-		}
-	}
-	i = -1;
-	while (mtx[(int)++i])
-	{
-		j = -1;
-		while (mtx[(int)i][(int)++j] && mtx[(int)i][(int)j] != '\n')
-		{
-			if (mtx[(int)i][(int)j] == ' ')
-				continue ;
 			color = cub->img.colors[0];
-			if (mtx[(int)i][(int)j] == '1')
+			if (mtx[i][j] == ' ')
+				continue ;
+			else if (mtx[i][j] == '1')
 				color = 0x414141;
-			else if (mtx[(int)i][(int)j] == '2')
+			else if (mtx[i][j] == '2')
 				color = DOORCOLOR;
-			x = -1;
-			while (++x < 10)
-			{
-				y = -1;
-				while (++y < 10)
-					my_mlx_pixel_put(&cub->render_img, j * 10 + y + outline, i * 10 + x + outline, color);
-			}
-			
+			put_squares(j, i, color, 10);
 		}
 	}
-	j = cub->player.posY;
-	i = cub->player.posX;
-	color = 0xCA12A9;
-	x = -4;
-	while (++x < 4)
-	{
-		y = -4;
-		while (++y < 4)
-		{
-			my_mlx_pixel_put(&cub->render_img, j * 10 + x + outline, i * 10 + y + outline, color);
-		}
-	}
+	put_player_minmap(cub);
 }
 
 void	render_screen(t_cub *cub)
 {
-	t_sprite spr;
-	put_crosshair(cub);
-	put_minimap(cub);
-	put_image_to_window(&spr, "images/hol.xpm", 0, 0);
+	put_image_remove_chroma(&cub->sprites[0], screenW - cub->sprites[0].width - 120,
+		screenH - cub->sprites[0].height + 30, 0x02FFCF);
+	put_image_remove_chroma(&cub->sprites[1], screenW / 2 - 10, screenH / 2 - 10, 0x24FFCF);
+	put_minimap(cub, cub->map.mtx);
 	mlx_do_sync(cub->mlx);
     mlx_put_image_to_window(cub->mlx, cub->win, cub->render_img.ptr, 0, 0);
 }

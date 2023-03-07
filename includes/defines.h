@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:59:14 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/07 01:35:37 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/07 12:50:40 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@
 # define SIZE_Y					64
 # define WALLCOLORX				0xDBACD4
 # define DOORCOLOR				0xFFA500
-# define COLOR_TRANSPARENT 		0xd411aa
+# define CHROMA_REDMASK 		0x24FFCF
+# define CHROMA_BLACKMASK		0x02FFCF
 # define WHITE					0xFFFFFF
 # define DUB_STEP				0.05
 # define MOUSE_STEP				4
+# define TEX_SIZE				64
 
 # define X_EVENT_KEY_PRESS		2
 # define X_EVENT_KEY_RELEASE	3

@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:10:24 by benmonico         #+#    #+#             */
-/*   Updated: 2023/03/07 01:51:52 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/07 13:50:26 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,18 @@ double	calculate_y(t_data *line, float i)
     static double   stepY;
 
     if (line->ceilingPoint - line->floorPoint > screenH)
-        return ((float)(i - line->floorPoint) /	(line->ceilingPoint - line->floorPoint) * 64);
+        return ((float)(i - line->floorPoint) /	(line->ceilingPoint - line->floorPoint) * TEX_SIZE);
     if (stepY == 0 || oldcamX != line->x)
     {
         oldcamX = line->x;
-        stepY = (float)(i - line->floorPoint) /	(line->ceilingPoint - line->floorPoint) * 64;
+        stepY = (float)(i - line->floorPoint) /	(line->ceilingPoint - line->floorPoint) * TEX_SIZE;
         y = 0;
         return (y);
     }
     y += stepY;
-    if (y > 64)
-        y = 64;
-    // y = (float)(i - line->floorPoint) /	(line->ceilingPoint - line->floorPoint) * 64;
+    if (y > TEX_SIZE)
+        y = TEX_SIZE;
+    // y = (float)(i - line->floorPoint) /	(line->ceilingPoint - line->floorPoint) * TEX_SIZE;
     // printf("y = %f\n", y);
     return (y);
 }
@@ -49,21 +49,21 @@ void    set_line_color(t_cub *cub, t_dist *dist, float wallX)
     int     color;
 	
     color = WALLCOLORX;
-
+    (void)wallX;
 	h = -1;
 	color = cub->img.colors[1];
 	while (++h < screenH)
 	{
 		if (h >= cub->render_img.floorPoint && h < cub->render_img.ceilingPoint)
 		{
-			if (dist->wallSideX)
-			color = get_color_img(&cub->img.wall[!(dist->raydirX > 0) + 2], 
-				wallX, calculate_y(&cub->render_img, h));
-			else
-			{
-				color = get_color_img(&cub->img.wall[!(dist->raydirY > 0)], \
-					wallX, calculate_y(&cub->render_img, h));
-			}
+			// if (dist->wallSideX)
+			// color = get_color_img(&cub->img.wall[!(dist->raydirX > 0) + 2], 
+			// 	wallX, calculate_y(&cub->render_img, h));
+			// else
+			// {
+			// 	color = get_color_img(&cub->img.wall[!(dist->raydirY > 0)], 
+			// 		wallX, calculate_y(&cub->render_img, h));
+			// }
     	    if (cub->player.obj_hit == '2')
 			    color = DOORCOLOR;
             if(dist->wallSideX == 1)
@@ -169,9 +169,7 @@ void    raycasting(t_cub *cub)
         calc_sidedist(cub, &dist);
         check_ray_hit(cub, &dist);
         get_wall_h(cub, &dist);
-		get_wall_texture(cub, &dist);
-        set_line_color(cub, &dist, dist.wallX * 64);
-
+        set_line_color(cub, &dist, dist.wallX * TEX_SIZE);
     }
     render_screen(cub);
 }   

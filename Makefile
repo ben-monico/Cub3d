@@ -14,7 +14,6 @@ SRCS		=	$(SRCS_DIR)/main.c 							\
 				$(SRCS_DIR)/exit/exit_window.c				\
 				$(SRCS_DIR)/raycasting.c					\
 				$(SRCS_DIR)/init_cub3d.c					\
-				$(SRCS_DIR)/rendering/textures.c			\
 				$(SRCS_DIR)/rendering/img_utils.c			\
 				$(SRCS_DIR)/rendering/rendering.c			\
 				$(SRCS_DIR)/key_mapping.c					\
