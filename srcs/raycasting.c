@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:10:24 by benmonico         #+#    #+#             */
-/*   Updated: 2023/03/07 16:53:07 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/07 18:15:36 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ double	calculate_y(t_data *line, float i)
     static double   y;
     static int      oldcamX;
     static double   stepY;
-
+    
     if (line->ceilingPoint - line->floorPoint > screenH)
         return ((float)(i - line->floorPoint) /	(line->ceilingPoint - line->floorPoint) * TEX_SIZE);
     if (stepY == 0 || oldcamX != line->x)
@@ -39,6 +39,7 @@ void    set_line_color(t_cub *cub, t_dist *dist, float wallX)
     int     h;
     int     color;
 	
+    (void)wallX;
 	h = -1;
 	color = cub->img.colors[1];
 	while (++h < screenH)
@@ -46,10 +47,10 @@ void    set_line_color(t_cub *cub, t_dist *dist, float wallX)
 		if (h >= cub->render_img.floorPoint && h < cub->render_img.ceilingPoint)
 		{
 			if (dist->wallSideX)
-			color = get_color_img(&cub->img.wall[!(dist->raydirX > 0) + 2],\
+			color = get_color_img(&cub->img.wall[!(dist->raydirX > 0) + 2],
 				wallX, calculate_y(&cub->render_img, h));
 			else
-				color = get_color_img(&cub->img.wall[!(dist->raydirY > 0)],\
+				color = get_color_img(&cub->img.wall[!(dist->raydirY > 0)],
 					wallX, calculate_y(&cub->render_img, h));
     	    if (cub->player.obj_hit == '2')
 			    color = DOORCOLOR;
@@ -73,7 +74,7 @@ void    get_wall_h(t_cub *cub, t_dist *dist)
 	else
 		dist->wallX = cub->player.posX + dist->fisheyeDist * dist->raydirY;
 	dist->wallX -= floor((dist->wallX));
-    cub->render_img.wallHeight = (int)(screenH /  dist->fisheyeDist) / 0.9;
+    cub->render_img.wallHeight = (int)(screenH /  dist->fisheyeDist) / 1;
     cub->render_img.floorPoint = screenH / 2 - cub->render_img.wallHeight / 2;
     cub->render_img.ceilingPoint = screenH / 2 + cub->render_img.wallHeight / 2;
 }

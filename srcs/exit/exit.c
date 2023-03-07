@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 21:26:04 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/07 16:49:30 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/07 19:02:49 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,25 @@ static void	free_imgs(t_cub *data)
 	if (data->img.wall[0].ptr)
 	{	
 		i = -1;
-		while (data->img.wall[++i].ptr)
+		while (data->img.wall[++i].ptr && i < 4)
 		{
-			printf("i: %d\n", i);
-			printf("image: %p\n", data->img.wall[++i].ptr);
-			mlx_destroy_image(data->mlx, data->img.wall[++i].ptr);
-			alloc().free_array((void *)data->img.wall[++i].ptr);
-			alloc().free_array((void *)data->img.wall[++i].addr);
+			mlx_destroy_image(data->mlx, data->img.wall[i].ptr);
+			data->img.wall[i].ptr = 0;
 		}
+	}
+	if (data->sprites[0].ptr)
+	{	
+		i = -1;
+		while (data->sprites[++i].ptr && i < 2)
+		{
+			mlx_destroy_image(data->mlx, data->sprites[i].ptr);
+			data->sprites[i].ptr = 0;
+		}
+	}
+	if (data->render_img.ptr)
+	{
+		mlx_destroy_image(data->mlx, data->render_img.ptr);
+		data->render_img.ptr = 0;
 	}
 }
 
@@ -40,13 +51,16 @@ static void	free_mlx(t_cub	*data)
 {
 	free_imgs(data);
 	if (data->win)
-		mlx_destroy_window(data->mlx, data->win);
-	if (data->win)
 	{
 		mlx_destroy_display(data->mlx);
-		free(data->mlx);
+		mlx_destroy_window(data->mlx, data->win);
+		data->win = 0;
 	}
-	data->mlx = 0;
+	if (data->mlx)
+	{
+		free(data->mlx);
+		data->mlx = NULL;
+	}
 }
 
 void	exit_parse(t_parse *data, int status, char *str)
@@ -74,7 +88,10 @@ void	exit_free(t_cub *data, int status, char *str)
 	if (data)
 	{
 		if (data->map.mtx)
+		{
 			alloc().free_matrix((void **)data->map.mtx);
+			data->map.mtx = 0;
+		}
 		free_mlx(data);
 	}
 	if (data->img.path)
