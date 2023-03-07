@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 01:58:29 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/06 16:46:23 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/07 01:44:13 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,6 @@ void	put_image_to_window(t_sprite *spr, char *file, int x, int y)
 		w = -1;
 		while (++w < img.height)
 		{
-	// 		printf("h %d w %d\n", h,w );
-	// printf("w%d h%d\n", img.width, img.height);
 			x = get_color_img(&img, h, w);
 			// printf("color - %d\n", x);
 			if (x >= 0x004000 && x <= 0x02FFBB)
