@@ -8,12 +8,5 @@
 /dataSources.local.xml
 */*/*.o
 **/**.o
-objs/*.o
-objs/allocs/*.o
-objs/gnl/*.o
-objs/str/*.o
-objs/exit/*.o
-objs/map/*.o
-objs/parsing/*.o
-objs/raycasting/*.o
+objs/
 mlx_linux/obj/
