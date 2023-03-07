@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 23:26:10 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/07 12:44:34 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/07 21:14:56 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ void	create_cube(t_cub *cub)
 							&cub->sprites[1].width, &cub->sprites[1].height);
 	cub->sprites[1].addr = mlx_get_data_addr(cub->sprites[1].ptr, &cub->sprites[1].bpp, \
 		&cub->sprites[1].size_line, &cub->sprites[1].endian);
+	cub->sprites[2].ptr = mlx_xpm_file_to_image(cub->mlx, "images/portal.xpm", 
+							&cub->sprites[2].width, &cub->sprites[2].height);
+	cub->sprites[2].addr = mlx_get_data_addr(cub->sprites[2].ptr, &cub->sprites[2].bpp, 
+		&cub->sprites[2].size_line, &cub->sprites[2].endian);
 	init_raycast_vars(cub);
     mlx_mouse_hide(cub->mlx, cub->win);
 	raycasting(cub);

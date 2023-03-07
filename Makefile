@@ -16,7 +16,9 @@ SRCS		=	$(SRCS_DIR)/main.c 							\
 				$(SRCS_DIR)/rendering/img_utils.c			\
 				$(SRCS_DIR)/rendering/rendering.c			\
 				$(SRCS_DIR)/key_mapping.c					\
-				$(SRCS_DIR)/interaction.c	
+				$(SRCS_DIR)/interaction.c					\
+				$(SRCS_DIR)/interaction2.c	
+
 
 SRCS_DIR	=	srcs
 
@@ -30,7 +32,7 @@ CC			=	cc
 
 OPTFLAGS	=	-O3 -march=native -ffast-math -funsafe-math-optimizations -ffinite-math-only -o -o1 -o2
 
-CFLAGS		=	-Wall -Wextra -Werror -g #-fsanitize=address
+CFLAGS		=	-Wall -Wextra -Werror -g -fsanitize=leak
 
 RM			=	rm -rf
 
@@ -52,7 +54,7 @@ all:		$(NAME)
 
 $(OBJS_DIR)/%.o :	$(SRCS_DIR)/%.c
 		mkdir -p $(@D)
-		$(CC) $(CFLAGS) $(INC) $(MACFLAG) -c $< -o $@
+		$(CC) $(CFLAGS) $(INC) $(OPTFLAGS) $(MACFLAG) -c $< -o $@
 
 $(NAME):	$(MLX) $(OBJS)
 		$(CC) $(CFLAGS) $(OBJS) $(INC) $(OPTFLAGS) -o $(NAME) $(MLX_FLAGS) $(MACFLAG) 
