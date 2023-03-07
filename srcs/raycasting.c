@@ -6,26 +6,19 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:10:24 by benmonico         #+#    #+#             */
-/*   Updated: 2023/03/07 14:50:39 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/07 22:06:33 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 #include <math.h>
 
-// void	my_mlx_pixel_put(t_line *line, int x, int y, int color)
-// {
-// 	char	*dst;
-
-// 	dst = (line->addr + (y * line->size_line + x * (line->bpp / 8)));
-// 	*(unsigned int*)dst = color;
-// }
 double	calculate_y(t_data *line, float i)
 {
     static double   y;
     static int      oldcamX;
     static double   stepY;
-
+    
     if (line->ceilingPoint - line->floorPoint > screenH)
         return ((float)(i - line->floorPoint) /	(line->ceilingPoint - line->floorPoint) * TEX_SIZE);
     if (stepY == 0 || oldcamX != line->x)
@@ -38,8 +31,6 @@ double	calculate_y(t_data *line, float i)
     y += stepY;
     if (y > TEX_SIZE)
         y = TEX_SIZE;
-    // y = (float)(i - line->floorPoint) /	(line->ceilingPoint - line->floorPoint) * TEX_SIZE;
-    // printf("y = %f\n", y);
     return (y);
 }
 
@@ -48,7 +39,6 @@ void    set_line_color(t_cub *cub, t_dist *dist, float wallX)
     int     h;
     int     color;
 	
-    color = WALLCOLORX;
     (void)wallX;
 	h = -1;
 	color = cub->img.colors[1];
@@ -57,13 +47,11 @@ void    set_line_color(t_cub *cub, t_dist *dist, float wallX)
 		if (h >= cub->render_img.floorPoint && h < cub->render_img.ceilingPoint)
 		{
 			if (dist->wallSideX)
-				color = get_color_img(&cub->img.wall[!(dist->raydirX > 0) + 2], 
+			color = get_color_img(&cub->img.wall[!(dist->raydirX > 0) + 2],
 				wallX, calculate_y(&cub->render_img, h));
 			else
-			{
-				color = get_color_img(&cub->img.wall[!(dist->raydirY > 0)], 
-				wallX, calculate_y(&cub->render_img, h));
-			}
+				color = get_color_img(&cub->img.wall[!(dist->raydirY > 0)],
+					wallX, calculate_y(&cub->render_img, h));
     	    if (cub->player.obj_hit == '2')
 			    color = DOORCOLOR;
             if(dist->wallSideX == 1)
@@ -86,7 +74,7 @@ void    get_wall_h(t_cub *cub, t_dist *dist)
 	else
 		dist->wallX = cub->player.posX + dist->fisheyeDist * dist->raydirY;
 	dist->wallX -= floor((dist->wallX));
-    cub->render_img.wallHeight = (int)(screenH /  dist->fisheyeDist) / 0.9;
+    cub->render_img.wallHeight = (int)(screenH /  dist->fisheyeDist) / 1;
     cub->render_img.floorPoint = screenH / 2 - cub->render_img.wallHeight / 2;
     cub->render_img.ceilingPoint = screenH / 2 + cub->render_img.wallHeight / 2;
 }
@@ -142,7 +130,6 @@ void    calc_sidedist(t_cub *cub, t_dist *dist)
         dist->stepY = 1;
         dist->sideDistY = (dist->mapY + 1 - cub->player.posY) * dist->deltaDistY;
     }
-    // printf("sideX %f sideY %f\n", dist->sideDistX, dist->sideDistY);
 }
 
 void    raycasting(t_cub *cub)

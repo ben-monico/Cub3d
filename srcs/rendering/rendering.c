@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 17:58:25 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/07 13:45:01 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/07 18:32:50 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,10 @@ void	put_minimap(t_cub *cub, char **mtx)
 
 void	render_screen(t_cub *cub)
 {
-	put_image_remove_chroma(&cub->sprites[0], screenW - cub->sprites[0].width - 120,
-		screenH - cub->sprites[0].height + 30, 0x02FFCF);
-	put_image_remove_chroma(&cub->sprites[1], screenW / 2 - 10, screenH / 2 - 10, 0x24FFCF);
 	put_minimap(cub, cub->map.mtx);
+	put_image_remove_chroma(&cub->sprites[0], screenW - cub->sprites[0].width - 120,
+		screenH - cub->sprites[0].height, 0x02FFCF);
+	put_image_remove_chroma(&cub->sprites[1], screenW / 2 - 10, screenH / 2 - 10, 0x24FFCF);
 	mlx_do_sync(cub->mlx);
     mlx_put_image_to_window(cub->mlx, cub->win, cub->render_img.ptr, 0, 0);
 }

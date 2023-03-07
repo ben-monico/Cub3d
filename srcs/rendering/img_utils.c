@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 01:58:29 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/07 18:34:52 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/07 19:18:59 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,12 @@ unsigned int	get_color_img(t_data *data, int x, int y)
 	unsigned int	color;
 	
 	dst = (data->addr + (y * data->size_line + x * (data->bpp / 8)));
+	// printf("augh %u\n", *(unsigned int*)(data->addr + (y * data->size_line + x * (data->bpp / 8))));
 	color = *(unsigned int*)dst;
 	return (color);
 }
 
-static int	calc_bob(int dir, int color)
+int	calc_bob(int dir, int color)
 {
 	static int	bobh;
 	static int	bobw;
@@ -88,6 +89,8 @@ void	put_image_remove_chroma(t_data *img, int offsetW, int offsetH, int chroma_m
 
 	bobW = calc_bob(0, chroma_max);
 	bobH = calc_bob(1, chroma_max);
+	// bobW = 0;
+	// bobH = 0;
 	w = -1;
 	while (++w < img->width)
 	{
@@ -95,9 +98,9 @@ void	put_image_remove_chroma(t_data *img, int offsetW, int offsetH, int chroma_m
 		while (++h < img->height)
 		{
 			color = get_color_img(img, w, h);
-			if (color >= 0x000300 && color <= chroma_max)
+			if ((color >= 0x000300 && color <= chroma_max) || offsetH + h + bobH + 30 > screenH)
 				continue ;
-	 		my_mlx_pixel_put(&new_cube()->render_img, offsetW + w + bobW, offsetH + h + bobH, color);
+	 		my_mlx_pixel_put(&new_cube()->render_img, offsetW + w + bobW, offsetH + h + bobH + 30, color);
 		}
 	}
 }

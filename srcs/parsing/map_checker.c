@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 00:42:49 by mgranate          #+#    #+#             */
-/*   Updated: 2023/03/07 15:59:33 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/07 17:11:41 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ static int    checker_zero(char **map, int y, int x)
 	|| !map[y + 1][x] || !map[y][x + 1]									\
     || !map[y + 1][x + 1] || !map[y - 1][x - 1] || !map[y + 1][x - 1]	\
 	|| !map[y - 1][x + 1])
+    {
+		printf("error 1\n");
         return (0);
+	}
     if (map[y - 1][x] == ' ' || map[y][x - 1] == ' ' || map[y + 1][x] == ' '\
 	|| map[y][x + 1] == ' ' || map[y + 1][x + 1]  == ' ' || map[y - 1][x - 1] == ' ' \
 	|| map[y + 1][x - 1] == ' ' || map[y - 1][x + 1] == ' ')
@@ -47,7 +50,10 @@ static int    checker_zero(char **map, int y, int x)
 	if (map[y - 1][x] == '\n' || map[y][x - 1] == '\n' || map[y + 1][x] == '\n' 	\
 	|| map[y][x + 1] == '\n' || map[y + 1][x + 1]  == '\n' || map[y - 1][x - 1] == '\n' \
 	|| map[y + 1][x - 1] == '\n' || map[y - 1][x + 1] == '\n')
+    {
+		printf("error 3\n");
         return (0);
+	}
     return (1);
 }
 

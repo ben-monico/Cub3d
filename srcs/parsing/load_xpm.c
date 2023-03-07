@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   load_xpm.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 23:34:37 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/07 16:08:33 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/07 17:28:28 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <parse.h>
+#include <strings.h>
 
 void	load_img(t_cub *data, char **path)
 {

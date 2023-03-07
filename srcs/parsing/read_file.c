@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:22:03 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/07 16:24:08 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/07 19:11:07 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,9 @@ int	read_file(t_cub *cube, char *file_name, int ac)
 	if (ac != 2)
 		exit_free(cube, 1, "Invalid arg count");
 	parse = parsing();
-	fd = open_file(cube, file_name);
 	if (!string().strrchr(file_name, '.') || string().strncmp(string().strrchr(file_name, '.'), ".cub", 5))
 		exit_free(cube, 1, "Invalid File Extension");
+	fd = open_file(cube, file_name);
 	parse->file = read_lines(NULL, fd, 0, file_name);
 	parse_file(parse);
 	clean_parsing(parse);
