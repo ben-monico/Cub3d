@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:10:24 by benmonico         #+#    #+#             */
-/*   Updated: 2023/03/07 13:52:16 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/07 16:53:07 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,11 @@ void    set_line_color(t_cub *cub, t_dist *dist, float wallX)
 		if (h >= cub->render_img.floorPoint && h < cub->render_img.ceilingPoint)
 		{
 			if (dist->wallSideX)
-			color = get_color_img(&cub->img.wall[!(dist->raydirX > 0) + 2], 
+			color = get_color_img(&cub->img.wall[!(dist->raydirX > 0) + 2],\
 				wallX, calculate_y(&cub->render_img, h));
 			else
-			{
-				color = get_color_img(&cub->img.wall[!(dist->raydirY > 0)], 
+				color = get_color_img(&cub->img.wall[!(dist->raydirY > 0)],\
 					wallX, calculate_y(&cub->render_img, h));
-			}
     	    if (cub->player.obj_hit == '2')
 			    color = DOORCOLOR;
             if(dist->wallSideX == 1)

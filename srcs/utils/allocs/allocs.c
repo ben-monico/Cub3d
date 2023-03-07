@@ -6,11 +6,12 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 17:04:53 by mgranate          #+#    #+#             */
-/*   Updated: 2023/02/16 20:06:32 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/07 15:33:37 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <allocs.h>
+#include <stdio.h>
 
 /*
 	It will free a matrix

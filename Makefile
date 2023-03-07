@@ -11,7 +11,6 @@ SRCS		=	$(SRCS_DIR)/main.c 							\
 				$(SRCS_DIR)/parsing/map.c					\
 				$(SRCS_DIR)/parsing/map_checker.c			\
 				$(SRCS_DIR)/exit/exit.c						\
-				$(SRCS_DIR)/exit/exit_window.c				\
 				$(SRCS_DIR)/raycasting.c					\
 				$(SRCS_DIR)/init_cub3d.c					\
 				$(SRCS_DIR)/rendering/img_utils.c			\
@@ -67,6 +66,9 @@ clean:
 
 fclean:		clean
 		$(RM) $(NAME)
+
+valgrind:	re
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes --log-file=valgrind-out.txt ./cub3d maps/firstmap.cub 
 
 re:			fclean all
 
