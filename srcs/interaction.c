@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:14:22 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/07 22:31:30 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/08 15:55:40 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,16 @@ void p_rotation(t_player *player, double angle)
     player->fovY = y;  
 }
 
-void    verify_collision_and_door(t_cub *cub, double x, double y)
+void    verify_collision_and_door(double x, double y)
 {
     char    **mtx;
+    t_cub   *cub;
+    double  dist;
 
+    dist = 1.55;
+    cub = new_cube();
     mtx = cub->map.mtx;
+    
     if (mtx[(int)x][(int)cub->player.posY] != '1' && mtx[(int)cub->player.posX][(int)y] != '2')
         cub->player.posX = x;
     if (mtx[(int)cub->player.posX][(int)y] != '1' && mtx[(int)cub->player.posX][(int)y] != '2')

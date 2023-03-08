@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 17:58:25 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/07 23:09:04 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/08 15:45:03 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	put_player_minmap(t_cub *cub)
 
 	j = cub->player.posY;
 	i = cub->player.posX;
-	put_squares(j, i, 0xCA12A9, 4);
+	put_squares(j, i, 0xCA12A9, 5);
 }
 
 void	outline_minimap(char **mtx)
@@ -77,7 +77,7 @@ void	put_minimap(t_cub *cub, char **mtx)
 			else if (mtx[i][j] == '1')
 				color = 0x414141;
 			else if (mtx[i][j] == '2' || mtx[i][j] == '3')
-				color = DOORCOLOR;
+				color = 0x11DD11;
 			put_squares(j, i, color, 10);
 		}
 	}
@@ -90,6 +90,6 @@ void	render_screen(t_cub *cub)
 	put_image_remove_chroma(&cub->sprites[0], screenW - cub->sprites[0].width - 120,
 		screenH - cub->sprites[0].height, 0x02FFCF);
 	put_image_remove_chroma(&cub->sprites[1], screenW / 2 - 10, screenH / 2 - 10, 0x24FFCF);
-	mlx_do_sync(cub->mlx);
+	// mlx_do_sync(cub->mlx);
     mlx_put_image_to_window(cub->mlx, cub->win, cub->render_img.ptr, 0, 0);
 }

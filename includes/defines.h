@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:59:14 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/07 22:08:58 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/08 12:58:05 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define WHITE					0xFFFFFF
 # define DUB_STEP				0.05
 # define MOUSE_STEP				4
-# define TEX_SIZE				64
+# define TEX_SIZE				512
 
 # define X_EVENT_KEY_PRESS		2
 # define X_EVENT_KEY_RELEASE	3

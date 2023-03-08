@@ -1,7 +1,7 @@
-NO ./images/greystone.xpm
-SO ./images/wood.xpm
-WE ./images/colorstone.xpm
-EA ./images/mossy.xpm   
+NO ./images/N1.xpm
+SO ./images/S1.xpm
+WE ./images/W1.xpm
+EA ./images/E1.xpm    
 F 110,110,110
 
 C 41,41,41

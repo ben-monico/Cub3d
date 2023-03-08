@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:10:24 by benmonico         #+#    #+#             */
-/*   Updated: 2023/03/07 23:19:47 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/08 13:07:29 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void    raycasting(t_cub *cub)
         calc_sidedist(cub, &dist);
         check_ray_hit(cub, &dist);
         get_wall_h(cub, &dist);
-        set_line_color(cub, &dist, dist.wallX * TEX_SIZE);
+        set_line_color(cub, &dist, dist.wallX * cub->img.wall[0].width);
     }
     render_screen(cub);
 }   

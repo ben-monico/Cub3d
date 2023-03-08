@@ -12,89 +12,36 @@
 
 #include <cub3d.h>
 
-void open_portal(t_cub *cub, char **mtx)
+int	toggle_portal(double x, double y, char get, char set)
 {
-	double	col;
+	t_cub	*cub;
+	char	**mtx;
+	int		i;
+
+	cub = new_cube();
+	mtx = cub->map.mtx;
+	i = 0;
+	while(++i <= 4)
+	{
+		if (mtx[(int)x][(int)y] == get)
+		{
+			mtx[(int)x][(int)y] = set;
+			return (1);
+		}
+		x = cub->player.posX + cub->player.dirY * DUB_STEP * 10 * i;
+		y = cub->player.posY + cub->player.dirX * DUB_STEP * 10 * i;
+	}
+	return(0);
+}
+
+void open_portal(t_cub *cub)
+{
 	double	x;
 	double	y;
-	int		i;
-	int		j;
 
-	col = 1;
-	x = cub->player.posX - col;
-	j = -1;
-	while(++j < 3)
-	{
-		i = -1;
-		y = cub->player.posY - col;
-		while(++i < 3)
-		{
-			if (mtx[(int)x][(int)y] == '2')
-			{
-				mtx[(int)x][(int)y] = '3';
-				return ; 
-			}
-			y += col;
-		}
-		x += col;
-	}
-	x = cub->player.posX - col;
-	j = -1;
-	while(++j < 3)
-	{
-		i = -1;
-		y = cub->player.posY - col;
-		while(++i < 3)
-		{
-			if ((int)cub->player.posX == '3' && (int)cub->player.posY == '3' && mtx[(int)x][(int)y] == '3' && round(x) == round(cub->player.posX) && round(y) == round(cub->player.posY))
-				continue ;
-			if (mtx[(int)x][(int)y] == '3' )
-			{
-				mtx[(int)x][(int)y] = '2';
-				return ; 
-			}
-			y += col;
-		}
-		x += col;
-	}
-	// if (mtx[(int)(cub->player.posX + col)][(int)cub->player.posY] == '2')
-	// {
-    //     mtx[(int)(cub->player.posX + col)][(int)cub->player.posY] = '3';
-	// 	return ;
-	// }
-    // if (mtx[(int)(cub->player.posX - col)][(int)cub->player.posY] == '2')
-    // {
-    // 	mtx[(int)(cub->player.posX - col)][(int)cub->player.posY] = '3';
-	// 	return ;
-	// }
-    // if (mtx[(int)cub->player.posX][(int)(cub->player.posY + col)] == '2')
-	// {
-    //     mtx[(int)cub->player.posX][(int)(cub->player.posY + col)] = '3';
-	// 	return ;
-	// }
-	// if (mtx[(int)cub->player.posX][(int)(cub->player.posY - col)] == '2')
-	// {
-    //     mtx[(int)cub->player.posX][(int)(cub->player.posY - col)] = '3';
-	// 	return ;
-	// }
-	// if (mtx[(int)(cub->player.posX + col)][(int)cub->player.posY] == '3')
-	// {
-    //     mtx[(int)(cub->player.posX + col)][(int)cub->player.posY] = '2';
-	// 	return ;
-	// }
-    // if (mtx[(int)(cub->player.posX - col)][(int)cub->player.posY] == '3')
-    // {
-    // 	mtx[(int)(cub->player.posX - col)][(int)cub->player.posY] = '2';
-	// 	return ;
-	// }
-    // if (mtx[(int)cub->player.posX][(int)(cub->player.posY + col)] == '3')
-	// {
-    //     mtx[(int)cub->player.posX][(int)(cub->player.posY + col)] = '2';
-	// 	return ;
-	// }
-	// if (mtx[(int)cub->player.posX][(int)(cub->player.posY - col)] == '2')
-	// {
-    //     mtx[(int)cub->player.posX][(int)(cub->player.posY - col)] = '3';
-	// 	return ;
-	// }
+	x = cub->player.posX + cub->player.dirY * DUB_STEP * 10;
+	y = cub->player.posY + cub->player.dirX * DUB_STEP * 10;
+	if (toggle_portal(x, y, '2', '3'))
+		return ;
+	toggle_portal(x, y, '3', '2');
 }

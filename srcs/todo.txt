@@ -6,10 +6,10 @@ Mario
 
 Ben
 	optimize CHECK
-	add double input 
-	change wall textures to match hol
+	change wall textures CHECK
 	show FOV minimap
-	find step on calc Y
+	find step on calc Y CHECK
+	add blinking on gun
 
 COMMON
 	Norm
