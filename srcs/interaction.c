@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:14:22 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/08 15:55:40 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/08 18:18:15 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,43 @@ void    verify_collision_and_door(double x, double y)
 {
     char    **mtx;
     t_cub   *cub;
-    double  dist;
 
-    dist = 1.55;
     cub = new_cube();
     mtx = cub->map.mtx;
-    
-    if (mtx[(int)x][(int)cub->player.posY] != '1' && mtx[(int)cub->player.posX][(int)y] != '2')
+    if (mtx[(int)x][(int)y] == '3')
+    {
+        if (floor(y) > floor(cub->player.posY))
+        {
+            while (mtx[(int)x][(int)(y + 1)] == '3')
+                ++y;
+            cub->player.posY = floor(y) + 1.2;
+        }
+        else if (floor(y) < floor(cub->player.posY))
+        {
+            while (mtx[(int)x][(int)(y - 1)] == '3')
+                --y;
+            cub->player.posY = floor(y) - 0.2;
+        }
+        if (floor(x) > floor(cub->player.posX))
+        {
+            while (mtx[(int)(x + 1)][(int)y] == '3')
+                ++x;
+            cub->player.posX = floor(x) + 1.2;
+        }
+        else if (floor(x) < floor(cub->player.posX))
+        {
+            while (mtx[(int)(x - 1)][(int)y] == '3')
+                --x;
+            cub->player.posX = floor(x) - 0.2;
+        }
+        return ;
+    }
+    if (mtx[(int)x][(int)cub->player.posY] != '1' && mtx[(int)x][(int)cub->player.posY] != '2')
         cub->player.posX = x;
     if (mtx[(int)cub->player.posX][(int)y] != '1' && mtx[(int)cub->player.posX][(int)y] != '2')
         cub->player.posY = y;
+    cub->player.can_open = 1;
+    if (mtx[(int)x][(int)y] == '3')
+        cub->player.can_open = 0;
+    
 }

@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:55:20 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/07 19:36:53 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/08 16:33:11 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ struct		s_player
 	double	fovX;
 	double	fovY;
 	char	obj_hit;
+	int		can_open;
 };
 
 struct s_cub

@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 17:58:25 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/08 15:45:03 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/08 17:38:34 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,9 @@ void	put_minimap(t_cub *cub, char **mtx)
 				continue ;
 			else if (mtx[i][j] == '1')
 				color = 0x414141;
-			else if (mtx[i][j] == '2' || mtx[i][j] == '3')
+			else if (mtx[i][j] == '2')
+				color = 0x116611;
+			else if (mtx[i][j] == '3')
 				color = 0x11DD11;
 			put_squares(j, i, color, 10);
 		}

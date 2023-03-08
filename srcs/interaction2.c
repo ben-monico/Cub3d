@@ -12,6 +12,24 @@
 
 #include <cub3d.h>
 
+void	find_tunnel(double x, double y, char get, char set)
+{
+	t_cub	*cub;
+	char	**mtx;
+
+	cub = new_cube();
+	mtx = cub->map.mtx;
+	mtx[(int)x][(int)y] = set;
+	while (mtx[(int)x + 1][(int)y] == get)
+		mtx[(int)++x][(int)y] = set;
+	while (mtx[(int)x - 1][(int)y] == get)
+		mtx[(int)--x][(int)y] = set;
+	while (mtx[(int)x][(int)y + 1] == get)
+		mtx[(int)x][(int)++y] = set;
+	while (mtx[(int)x][(int)y - 1] == get)
+		mtx[(int)x][(int)--y] = set;
+}
+
 int	toggle_portal(double x, double y, char get, char set)
 {
 	t_cub	*cub;
@@ -25,7 +43,7 @@ int	toggle_portal(double x, double y, char get, char set)
 	{
 		if (mtx[(int)x][(int)y] == get)
 		{
-			mtx[(int)x][(int)y] = set;
+			find_tunnel(x, y, get, set);
 			return (1);
 		}
 		x = cub->player.posX + cub->player.dirY * DUB_STEP * 10 * i;
@@ -41,7 +59,7 @@ void open_portal(t_cub *cub)
 
 	x = cub->player.posX + cub->player.dirY * DUB_STEP * 10;
 	y = cub->player.posY + cub->player.dirX * DUB_STEP * 10;
-	if (toggle_portal(x, y, '2', '3'))
+	if (toggle_portal(x, y, '2', '3') || cub->player.can_open == 0)
 		return ;
 	toggle_portal(x, y, '3', '2');
 }
