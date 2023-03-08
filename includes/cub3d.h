@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/03/08 16:20:47 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/08 18:25:52 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int		get_map(char **file, t_cub *cube);
 // Moving
 void    verify_collision_and_door(double x, double y);
 void	open_portal(t_cub *cub);
+int	portal_teleport(double x, double y);
 int		mouse_move(int x, int y, t_cub *cub);
 void	p_rotation(t_player *player, double angle);
 void	w_press(t_cub *cub);

@@ -12,6 +12,28 @@
 
 #include <cub3d.h>
 
+int	portal_teleport(double x, double y)
+{
+    t_cub   *cub;
+	char    **mtx;
+
+    cub = new_cube();
+    mtx = cub->map.mtx;
+    if (floor(y) > floor(cub->player.posY))
+        while (mtx[(int)x][(int)(y + 1)] == '3')
+        	cub->player.posY = floor(++y) + 1.2;
+    else if (floor(y) < floor(cub->player.posY))
+        while (mtx[(int)x][(int)(y - 1)] == '3')
+        	cub->player.posY = floor(--y) - 0.2;
+    if (floor(x) > floor(cub->player.posX))
+        while (mtx[(int)(x + 1)][(int)y] == '3')
+        	cub->player.posX = floor(++x) + 1.2;
+	else if (floor(x) < floor(cub->player.posX))
+		while (mtx[(int)(x - 1)][(int)y] == '3')
+			cub->player.posX = floor(--x) - 0.2;
+	return (1);
+}
+
 void	find_tunnel(double x, double y, char get, char set)
 {
 	t_cub	*cub;

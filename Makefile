@@ -17,7 +17,7 @@ SRCS		=	$(SRCS_DIR)/main.c 							\
 				$(SRCS_DIR)/rendering/rendering.c			\
 				$(SRCS_DIR)/key_mapping.c					\
 				$(SRCS_DIR)/interaction.c					\
-				$(SRCS_DIR)/interaction2.c					\
+				$(SRCS_DIR)/portal.c						\
 				$(SRCS_DIR)/draw_picture.c
 
 

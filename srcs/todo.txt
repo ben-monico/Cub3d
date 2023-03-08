@@ -1,17 +1,19 @@
 Mario
 	safety doors holes - CHECK
-	usability tests parsing
 	Door Texture CHECK
+	usability tests parsing
 
 
 Ben
 	optimize CHECK
 	change wall textures CHECK
-	show FOV minimap
+	portal tp CHECK
+	portal tunneling CHECK
 	find step on calc Y CHECK
+	show FOV minimap
 	add blinking on gun
 
 COMMON
 	Norm
 	CleanUp
-	Valgrind
+	Valgrind CHECK1
