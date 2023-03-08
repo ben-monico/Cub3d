@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:55:20 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/08 20:50:34 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/08 22:24:04 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ struct		s_data
 	int		endian;		
 	int		width;
 	int		height;
-	int		ceilingPoint;
-	int		floorPoint;
-	double	wallHeight;
+	int		ceilingpoint;
+	int		floorpoint;
+	double	wall_height;
 	int		x;
 };
 
@@ -51,19 +51,19 @@ struct s_sprite
 
 struct s_dist
 {
-	double	raydirY;
-	double	raydirX;
-	double	sideDistX;
-	double	sideDistY;
-	double	deltaDistX;
-	double	deltaDistY;
-	double	fisheyeDist;
-	double	wallX;
-	int		stepX;
-	int		stepY;
-	int		mapX;
-	int		mapY;
-	int		wallSideX;
+	double	raydir_y;
+	double	raydir_x;
+	double	sidedist_x;
+	double	sidedist_y;
+	double	deltadist_x;
+	double	deltadist_y;
+	double	fisheye;
+	double	wallx;
+	int		step_x;
+	int		step_y;
+	int		map_x;
+	int		map_y;
+	int		wallside_x;
 };
 
 struct	s_map
@@ -79,12 +79,12 @@ struct	s_map
 
 struct		s_player
 {
-	double	posX;
-	double	posY;
-	double	dirY;
-	double	dirX;
-	double	fovX;
-	double	fovY;
+	double	pos_x;
+	double	pos_y;
+	double	dir_y;
+	double	dir_x;
+	double	fov_x;
+	double	fov_y;
 	char	obj_hit;
 	int		can_open;
 };

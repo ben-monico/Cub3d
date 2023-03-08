@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 18:44:01 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/08 20:43:59 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/08 22:16:01 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,12 @@ void	check_portal(char **map, int x, int y)
 		printf("Line: %d Column: %d => '%c' \n", y, x, map[y][x]);
 		exit_free(new_cube(), 1, "A portal cannot have a path to a Wall");
 	}
+}
+
+void	read_aux(t_cub *cub, t_map *map, int x, int y)
+{
+	if (!check_zero1(map, map->mtx[y][x], y, x))
+		exit_free(cub, 1, "Does not have a wall to support it");
+	if (map->mtx[y][x] == '2')
+		check_portal(map->mtx, x, y);
 }

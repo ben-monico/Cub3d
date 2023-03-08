@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:57:10 by benmonico         #+#    #+#             */
-/*   Updated: 2023/03/08 20:41:11 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/08 22:07:32 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	w_press(t_cub *cub)
 	double	x;
 	double	y;
 
-	x = cub->player.posX + cub->player.dirY * DUB_STEP;
-	y = cub->player.posY + cub->player.dirX * DUB_STEP;
+	x = cub->player.pos_x + cub->player.dir_y * DUB_STEP;
+	y = cub->player.pos_y + cub->player.dir_x * DUB_STEP;
 	verify_collision_and_door(x, y);
 }
 
@@ -51,8 +51,8 @@ void	a_press(t_cub *cub)
 	double	x;
 	double	y;
 
-	x = cub->player.posX - cub->player.fovX * DUB_STEP;
-	y = cub->player.posY - cub->player.fovY * DUB_STEP;
+	x = cub->player.pos_x - cub->player.fov_x * DUB_STEP;
+	y = cub->player.pos_y - cub->player.fov_y * DUB_STEP;
 	verify_collision_and_door(x, y);
 }
 
@@ -61,8 +61,8 @@ void	s_press(t_cub *cub)
 	double	x;
 	double	y;
 
-	x = cub->player.posX - cub->player.dirY * DUB_STEP;
-	y = cub->player.posY - cub->player.dirX * DUB_STEP;
+	x = cub->player.pos_x - cub->player.dir_y * DUB_STEP;
+	y = cub->player.pos_y - cub->player.dir_x * DUB_STEP;
 	verify_collision_and_door(x, y);
 }
 
@@ -71,7 +71,7 @@ void	d_press(t_cub *cub)
 	double	x;
 	double	y;
 
-	x = cub->player.posX + cub->player.fovX * DUB_STEP;
-	y = cub->player.posY + cub->player.fovY * DUB_STEP;
+	x = cub->player.pos_x + cub->player.fov_x * DUB_STEP;
+	y = cub->player.pos_y + cub->player.fov_y * DUB_STEP;
 	verify_collision_and_door(x, y);
 }

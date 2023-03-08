@@ -46,8 +46,8 @@ int	toggle_portal(double x, double y, char get, char set)
 			find_tunnel(x, y, get, set);
 			return (1);
 		}
-		x = cub->player.posX + cub->player.dirY * DUB_STEP * 10 * i;
-		y = cub->player.posY + cub->player.dirX * DUB_STEP * 10 * i;
+		x = cub->player.pos_x + cub->player.dir_y * DUB_STEP * 10 * i;
+		y = cub->player.pos_y + cub->player.dir_x * DUB_STEP * 10 * i;
 	}
 	return (0);
 }
@@ -57,8 +57,8 @@ void	open_portal(t_cub *cub)
 	double	x;
 	double	y;
 
-	x = cub->player.posX + cub->player.dirY * DUB_STEP * 10;
-	y = cub->player.posY + cub->player.dirX * DUB_STEP * 10;
+	x = cub->player.pos_x + cub->player.dir_y * DUB_STEP * 10;
+	y = cub->player.pos_y + cub->player.dir_x * DUB_STEP * 10;
 	if (toggle_portal(x, y, '2', '3') || cub->player.can_open == 0)
 		return ;
 	toggle_portal(x, y, '3', '2');

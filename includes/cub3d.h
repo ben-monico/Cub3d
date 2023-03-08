@@ -6,11 +6,9 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/03/08 20:47:15 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/08 22:17:54 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #ifndef CUB3D_H
 # define CUB3D_H
@@ -47,12 +45,14 @@ void			get_wall_texture(t_cub *data, t_dist *dst);
 
 // Rendering Utils
 void			render_screen(t_cub *cub);
-void			set_line_color(t_cub *cub, t_dist *dist, float wallX);
+void			set_line_color(t_cub *cub, t_dist *dist, float wallx);
 
 // Read File and Create Map
 int				read_file(t_cub *cube, char *file_name, int ac);
 void			read_map(t_cub *cube);
 void			check_map_elements(t_cub *cub);
+void			read_aux(t_cub *cub, t_map *map, int x, int y);
+int				check_zero1(t_map *map, char c, int y, int x);
 
 // Clean and Exit Program
 void			exit_free(t_cub *data, int status, char *str);

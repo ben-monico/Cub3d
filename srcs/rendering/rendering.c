@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 17:58:25 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/08 20:43:13 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/08 22:06:23 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	put_player_minmap(t_cub *cub)
 	double	j;
 	double	i;
 
-	j = cub->player.posY;
-	i = cub->player.posX;
+	j = cub->player.pos_y;
+	i = cub->player.pos_x;
 	put_squares(j, i, 0xCA12A9, 5);
 }
 
@@ -92,9 +92,9 @@ void	render_screen(t_cub *cub)
 {
 	put_minimap(cub, cub->map.mtx);
 	put_image_remove_chroma(&cub->sprites[0], \
-	screenW - cub->sprites[0].width - 120, \
-	screenH - cub->sprites[0].height, 0x02FFCF);
+	SCREENW - cub->sprites[0].width - 120, \
+	SCREENH - cub->sprites[0].height, 0x02FFCF);
 	put_image_remove_chroma(&cub->sprites[1], \
-	screenW / 2 - 10, screenH / 2 - 10, 0x24FFCF);
+	SCREENW / 2 - 10, SCREENH / 2 - 10, 0x24FFCF);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->render_img.ptr, 0, 0);
 }

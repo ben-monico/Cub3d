@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 00:42:49 by mgranate          #+#    #+#             */
-/*   Updated: 2023/03/08 20:44:57 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/08 22:17:46 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	add_player_atributes(t_map *map, int x, int y)
 	map->num_player++;
 }
 
-static int	check_zero1(t_map *map, char c, int y, int x)
+int	check_zero1(t_map *map, char c, int y, int x)
 {
 	if (c == '0' || c == '2')
 	{
@@ -74,10 +74,7 @@ void	read_map(t_cub *cub)
 				printf("Line: %d Column: %d => '%c' \n", y, x, map->mtx[y][x]);
 				exit_free(cub, 1, "Not a valid  character on the Map");
 			}
-			if (!check_zero1(map, map->mtx[y][x], y, x))
-				exit_free(cub, 1, "Does not have a wall to support it");
-			if (map->mtx[y][x] == '2')
-				check_portal(map->mtx, x, y);
+			read_aux(cub, map, x, y);
 		}
 	}
 }

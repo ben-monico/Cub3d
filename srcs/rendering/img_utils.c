@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 01:58:29 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/08 20:06:40 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/08 22:04:00 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	put_image_remove_chroma(t_data *img, int offsetW, \
 		{
 			color = get_color_img(img, w, h);
 			if ((color >= 0x000300 && color <= chroma_max) \
-			|| offsetH + h + bobh + 30 > screenH)
+			|| offsetH + h + bobh + 30 > SCREENH)
 				continue ;
 			my_mlx_pixel_put(&new_cube()->render_img, offsetW + w + bobw, \
 			offsetH + h + bobh + 30, color);
