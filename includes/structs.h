@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:55:20 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/07 17:23:45 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/07 19:36:53 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ struct s_cub
 	void		*win;
     int			**map_mtx;
 	t_data		render_img;
-	t_data		sprites[2];
+	t_data		sprites[3];
 	t_map		map;
 	t_img		img;
 	t_player	player;

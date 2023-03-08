@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 01:58:29 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/07 19:18:59 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/07 23:06:06 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ unsigned int	get_color_img(t_data *data, int x, int y)
 	unsigned int	color;
 	
 	dst = (data->addr + (y * data->size_line + x * (data->bpp / 8)));
-	// printf("augh %u\n", *(unsigned int*)(data->addr + (y * data->size_line + x * (data->bpp / 8))));
 	color = *(unsigned int*)dst;
 	return (color);
 }

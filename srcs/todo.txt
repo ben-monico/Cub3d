@@ -1,12 +1,12 @@
 Mario
-	safety doors holes
+	safety doors holes - CHECK
 	usability tests parsing
-	Door Texture
+	Door Texture CHECK
 
 
 Ben
-	optimize
-	add double input
+	optimize CHECK
+	add double input 
 	change wall textures to match hol
 	show FOV minimap
 	find step on calc Y

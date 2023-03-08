@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/03/07 16:44:56 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/07 23:21:22 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,7 @@ void	get_wall_texture(t_cub *data, t_dist *dst);
 
 // Rendering Utils
 void	render_screen(t_cub *cub);
-
-// Rendering Utils
-void	render_screen(t_cub *cub);
+void    set_line_color(t_cub *cub, t_dist *dist, float wallX);
 
 // Read File and Create Map
 int		read_file(t_cub *cube, char *file_name, int ac);
@@ -67,6 +65,7 @@ int		get_map(char **file, t_cub *cube);
 
 // Moving
 void    verify_collision_and_door(t_cub *cub, double x, double y);
+void	open_portal(t_cub *cub, char **mtx);
 int		mouse_move(int x, int y, t_cub *cub);
 void	p_rotation(t_player *player, double angle);
 void	w_press(t_cub *cub);

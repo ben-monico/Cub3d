@@ -6,62 +6,12 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:10:24 by benmonico         #+#    #+#             */
-/*   Updated: 2023/03/07 22:06:33 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/07 23:19:47 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 #include <math.h>
-
-double	calculate_y(t_data *line, float i)
-{
-    static double   y;
-    static int      oldcamX;
-    static double   stepY;
-    
-    if (line->ceilingPoint - line->floorPoint > screenH)
-        return ((float)(i - line->floorPoint) /	(line->ceilingPoint - line->floorPoint) * TEX_SIZE);
-    if (stepY == 0 || oldcamX != line->x)
-    {
-        oldcamX = line->x;
-        stepY = (float)(i - line->floorPoint) /	(line->ceilingPoint - line->floorPoint) * TEX_SIZE;
-        y = 0;
-        return (y);
-    }
-    y += stepY;
-    if (y > TEX_SIZE)
-        y = TEX_SIZE;
-    return (y);
-}
-
-void    set_line_color(t_cub *cub, t_dist *dist, float wallX)
-{
-    int     h;
-    int     color;
-	
-    (void)wallX;
-	h = -1;
-	color = cub->img.colors[1];
-	while (++h < screenH)
-	{
-		if (h >= cub->render_img.floorPoint && h < cub->render_img.ceilingPoint)
-		{
-			if (dist->wallSideX)
-			color = get_color_img(&cub->img.wall[!(dist->raydirX > 0) + 2],
-				wallX, calculate_y(&cub->render_img, h));
-			else
-				color = get_color_img(&cub->img.wall[!(dist->raydirY > 0)],
-					wallX, calculate_y(&cub->render_img, h));
-    	    if (cub->player.obj_hit == '2')
-			    color = DOORCOLOR;
-            if(dist->wallSideX == 1)
-                color = (color >> 1) & 8355711;
-        }
-		else if (h >= cub->render_img.ceilingPoint)
-			color = cub->img.colors[0];
-		my_mlx_pixel_put(&cub->render_img, cub->render_img.x, h, color);
-	}
-}
 
 void    get_wall_h(t_cub *cub, t_dist *dist)
 {
@@ -100,7 +50,7 @@ void    check_ray_hit(t_cub *cub, t_dist *dist)
             dist->mapY += dist->stepY;
             dist->wallSideX = 1;
         }
-        if (mtx[dist->mapX][dist->mapY] == '1' || mtx[dist->mapX][dist->mapY] == '2')
+        if (mtx[dist->mapX][dist->mapY] == '1' || mtx[dist->mapX][dist->mapY] == '2' || mtx[dist->mapX][dist->mapY] == '3')
         {
             hit = 1;
             cub->player.obj_hit = mtx[dist->mapX][dist->mapY];

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 17:58:25 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/07 18:32:50 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/07 23:09:04 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	put_minimap(t_cub *cub, char **mtx)
 				continue ;
 			else if (mtx[i][j] == '1')
 				color = 0x414141;
-			else if (mtx[i][j] == '2')
+			else if (mtx[i][j] == '2' || mtx[i][j] == '3')
 				color = DOORCOLOR;
 			put_squares(j, i, color, 10);
 		}
