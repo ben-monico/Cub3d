@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   str.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate <mgranate@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:06:16 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/02/18 14:33:39 by mgranate         ###   ########.fr       */
+/*   Updated: 2023/03/08 19:44:54 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,9 @@ t_str	string(void)
 {
 	static t_str	str = {
 		ft_strlen, ft_strncmp, _atoi, ft_strchr, ft_strrchr, strtrim, isdig,
-		ft_isspace, itoa, ft_substr, ft_strnstr, ft_isalnum, ft_strdup, strjoin, 
+		ft_isspace, itoa, ft_substr, ft_strnstr, ft_isalnum, ft_strdup, strjoin,
 		strtrim
 	};
+
 	return (str);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:55:20 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/08 16:33:11 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/08 20:50:34 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ typedef struct s_map	t_map;
 typedef struct s_player	t_player;
 typedef struct s_dist	t_dist;
 typedef struct s_img	t_img;
-
 
 struct		s_data
 {
@@ -52,19 +51,19 @@ struct s_sprite
 
 struct s_dist
 {
-	double  raydirY;
-    double  raydirX;
-	double  sideDistX;
-    double  sideDistY;
-    double  deltaDistX;
-    double  deltaDistY;
+	double	raydirY;
+	double	raydirX;
+	double	sideDistX;
+	double	sideDistY;
+	double	deltaDistX;
+	double	deltaDistY;
 	double	fisheyeDist;
 	double	wallX;
-    int stepX;
-    int stepY;
-    int mapX;
-    int mapY;
-	int	wallSideX;
+	int		stepX;
+	int		stepY;
+	int		mapX;
+	int		mapY;
+	int		wallSideX;
 };
 
 struct	s_map
@@ -92,9 +91,9 @@ struct		s_player
 
 struct s_cub
 {
-    void		*mlx;
+	void		*mlx;
 	void		*win;
-    int			**map_mtx;
+	int			**map_mtx;
 	t_data		render_img;
 	t_data		sprites[3];
 	t_map		map;

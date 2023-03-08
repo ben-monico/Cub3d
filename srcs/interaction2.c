@@ -39,7 +39,7 @@ int	toggle_portal(double x, double y, char get, char set)
 	cub = new_cube();
 	mtx = cub->map.mtx;
 	i = 0;
-	while(++i <= 4)
+	while (++i <= 4)
 	{
 		if (mtx[(int)x][(int)y] == get)
 		{
@@ -49,10 +49,10 @@ int	toggle_portal(double x, double y, char get, char set)
 		x = cub->player.posX + cub->player.dirY * DUB_STEP * 10 * i;
 		y = cub->player.posY + cub->player.dirX * DUB_STEP * 10 * i;
 	}
-	return(0);
+	return (0);
 }
 
-void open_portal(t_cub *cub)
+void	open_portal(t_cub *cub)
 {
 	double	x;
 	double	y;

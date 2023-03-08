@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 00:42:49 by mgranate          #+#    #+#             */
-/*   Updated: 2023/03/07 17:11:41 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/08 20:44:57 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,33 +30,6 @@ int	check_matrix_len(char **matrix)
 	return (i);
 }
 
-static int    checker_zero(char **map, int y, int x)
-{
-    if (!map[y + 1] || (y - 1) < 0 || (x - 1) < 0  || !map[y - 1][x] || !map[y][x - 1]	\
-	|| !map[y + 1][x] || !map[y][x + 1]									\
-    || !map[y + 1][x + 1] || !map[y - 1][x - 1] || !map[y + 1][x - 1]	\
-	|| !map[y - 1][x + 1])
-    {
-		printf("error 1\n");
-        return (0);
-	}
-    if (map[y - 1][x] == ' ' || map[y][x - 1] == ' ' || map[y + 1][x] == ' '\
-	|| map[y][x + 1] == ' ' || map[y + 1][x + 1]  == ' ' || map[y - 1][x - 1] == ' ' \
-	|| map[y + 1][x - 1] == ' ' || map[y - 1][x + 1] == ' ')
-	{
-		printf("error 2\n");
-        return (0);
-	}
-	if (map[y - 1][x] == '\n' || map[y][x - 1] == '\n' || map[y + 1][x] == '\n' 	\
-	|| map[y][x + 1] == '\n' || map[y + 1][x + 1]  == '\n' || map[y - 1][x - 1] == '\n' \
-	|| map[y + 1][x - 1] == '\n' || map[y - 1][x + 1] == '\n')
-    {
-		printf("error 3\n");
-        return (0);
-	}
-    return (1);
-}
-
 static void	add_player_atributes(t_map *map, int x, int y)
 {
 	map->p_orientation = map->mtx[y][x];
@@ -68,11 +41,13 @@ static void	add_player_atributes(t_map *map, int x, int y)
 static int	check_zero1(t_map *map, char c, int y, int x)
 {
 	if (c == '0' || c == '2')
-    	if (!checker_zero(map->mtx, y, x))
+	{
+		if (!checker_zero(map->mtx, y, x))
 		{
-            printf("Line: %d Column: %d => '%c' \n", y, x, c);
+			printf("Line: %d Column: %d => '%c' \n", y, x, c);
 			return (0);
 		}
+	}
 	return (1);
 }
 
@@ -81,7 +56,7 @@ void	read_map(t_cub *cub)
 	t_map	*map;
 	int		y;
 	int		x;
-	
+
 	map = &cub->map;
 	y = -1;
 	while (map->mtx[++y])
@@ -92,14 +67,17 @@ void	read_map(t_cub *cub)
 			if (map->mtx[y][x] == 'N' || map->mtx[y][x] == 'S' \
 			|| map->mtx[y][x] == 'W' || map->mtx[y][x] == 'E')
 				add_player_atributes(map, x, y);
-            else if (map->mtx[y][x] != '0' && map->mtx[y][x] != '1' && map->mtx[y][x] \
-            != ' ' && map->mtx[y][x] != '\n' && map->mtx[y][x] != '2')
-            {
-                printf("Line: %d Column: %d => '%c' \n", y, x, map->mtx[y][x]);
-                exit_free(cub, 1, "Not a valid  character on the Map");
-            }
+			else if (map->mtx[y][x] != '0' && map->mtx[y][x] != '1' \
+			&& map->mtx[y][x] != ' ' && map->mtx[y][x] != '\n' \
+			&& map->mtx[y][x] != '2')
+			{
+				printf("Line: %d Column: %d => '%c' \n", y, x, map->mtx[y][x]);
+				exit_free(cub, 1, "Not a valid  character on the Map");
+			}
 			if (!check_zero1(map, map->mtx[y][x], y, x))
 				exit_free(cub, 1, "Does not have a wall to support it");
+			if (map->mtx[y][x] == '2')
+				check_portal(map->mtx, x, y);
 		}
 	}
 }

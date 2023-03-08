@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 23:27:42 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/02/19 00:23:10 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/08 19:37:34 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,12 @@ struct s_parse
 };
 
 t_parse		*parsing(void);
+int			get_path_img(t_parse *parse);
+int			get_colors(char *clr, t_parse *parse);
+int			checker_zero(char **map, int y, int x);
 void		parse_file(t_parse *parse);
 void		clean_parsing(t_parse *data);
-int			get_path_img(t_parse *parse);
 void		exit_parse(t_parse *data, int status, char *str);
-int			get_colors(char *clr, t_parse *parse);
+void		check_portal(char **map, int x, int y);
 
 #endif
