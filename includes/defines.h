@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:59:14 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/08 12:58:05 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/08 22:04:14 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINES_H
 # define DEFINES_H
 
-# define screenW				1280
-# define screenH				720
+# define SCREENW				1280
+# define SCREENH				720
 # define SIZE_X					64
 # define SIZE_Y					64
 # define WALLCOLORX				0xDBACD4
@@ -29,7 +29,7 @@
 # define X_EVENT_KEY_PRESS		2
 # define X_EVENT_KEY_RELEASE	3
 # define X_EVENT_KEY_EXIT		17
-# define x_ON_MOUSEMOVE			6
+# define X_ON_MOUSEMOVE			6
 
 # if MACKEYMAP == 1
 #  define KEY_ESC	53
@@ -50,6 +50,6 @@
 #  define ARROW_LEFT 	65361
 #  define ARROW_RIGHT	65363
 #  define KEY_SPACE		32
-#  endif
+# endif
 
 #endif

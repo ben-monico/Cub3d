@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 17:58:25 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/08 18:31:31 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/08 23:40:29 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	put_squares(double j, double i, int color, int size)
 	{
 		y = -1;
 		while (++y < size)
-			my_mlx_pixel_put(&new_cube()->render_img, j * 10 + y + offset, i * 10 + x + offset, color);
+			my_mlx_pixel_put(&new_cube()->render_img, j * 10 + y + \
+			offset, i * 10 + x + offset, color);
 	}
 }
 
@@ -35,8 +36,8 @@ void	put_player_minmap(t_cub *cub)
 	double	j;
 	double	i;
 
-	j = cub->player.posY;
-	i = cub->player.posX;
+	j = cub->player.pos_y;
+	i = cub->player.pos_x;
 	put_squares(j, i, 0xCA12A9, 5);
 }
 
@@ -62,7 +63,7 @@ void	put_minimap(t_cub *cub, char **mtx)
 {
 	int	i;
 	int	j;
-	int color;
+	int	color;
 
 	outline_minimap(mtx);
 	i = -1;
@@ -86,12 +87,14 @@ void	put_minimap(t_cub *cub, char **mtx)
 	put_player_minmap(cub);
 }
 
+	//mlx_do_sync(cub->mlx);
 void	render_screen(t_cub *cub)
 {
 	put_minimap(cub, cub->map.mtx);
-	put_image_remove_chroma(&cub->sprites[0], screenW - cub->sprites[0].width - 120,
-		screenH - cub->sprites[0].height, 0x02FFCF);
-	put_image_remove_chroma(&cub->sprites[1], screenW / 2 - 10, screenH / 2 - 10, 0x24FFCF);
-	mlx_do_sync(cub->mlx);
-    mlx_put_image_to_window(cub->mlx, cub->win, cub->render_img.ptr, 0, 0);
+	put_image_remove_chroma(&cub->sprites[0], \
+	SCREENW - cub->sprites[0].width - 120, \
+	SCREENH - cub->sprites[0].height, 0x02FFCF);
+	put_image_remove_chroma(&cub->sprites[1], \
+	SCREENW / 2 - 10, SCREENH / 2 - 10, 0x24FFCF);
+	mlx_put_image_to_window(cub->mlx, cub->win, cub->render_img.ptr, 0, 0);
 }

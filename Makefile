@@ -10,6 +10,7 @@ SRCS		=	$(SRCS_DIR)/main.c 							\
 				$(SRCS_DIR)/parsing/load_xpm.c				\
 				$(SRCS_DIR)/parsing/map.c					\
 				$(SRCS_DIR)/parsing/map_checker.c			\
+				$(SRCS_DIR)/parsing/map_portal.c			\
 				$(SRCS_DIR)/exit/exit.c						\
 				$(SRCS_DIR)/raycasting.c					\
 				$(SRCS_DIR)/init_cub3d.c					\

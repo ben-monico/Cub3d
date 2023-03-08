@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   load_xpm.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 23:34:37 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/07 17:28:28 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/08 20:45:22 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <parse.h>
-#include <strings.h>
 
 void	load_img(t_cub *data, char **path)
 {
@@ -24,8 +23,9 @@ void	load_img(t_cub *data, char **path)
 		path[i], &data->img.wall[i].width, &data->img.wall[i].height);
 		if (!data->img.wall[i].ptr)
 			exit_free(data, 1, "Fail loading images");
-		data->img.wall[i].addr = mlx_get_data_addr(data->img.wall[i].ptr, &data->img.wall[i].bpp, \
-		&data->img.wall[i].size_line, &data->img.wall[i].endian);
+		data->img.wall[i].addr = mlx_get_data_addr(data->img.wall[i].ptr, \
+		&data->img.wall[i].bpp, &data->img.wall[i].size_line, \
+		&data->img.wall[i].endian);
 	}
 }
 
@@ -33,7 +33,7 @@ int	get_colors(char *clr, t_parse *parse)
 {
 	int	i;
 	int	rgb[3];
-	
+
 	i = 0;
 	rgb[i] = string().atoi(clr);
 	if (rgb[0] > 255 || rgb[0] < 0)
@@ -48,7 +48,7 @@ int	get_colors(char *clr, t_parse *parse)
 		if (*clr != ',')
 		{
 			clean_parsing(parse);
-			exit_free(new_cube(), 1, "Not a recognizable RGB range system");	
+			exit_free(new_cube(), 1, "Not a recognizable RGB range system");
 		}
 		clr++;
 		rgb[i] = string().atoi(clr);
