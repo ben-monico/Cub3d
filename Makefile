@@ -1,25 +1,25 @@
 SRCS		=	$(SRCS_DIR)/main.c 							\
-				$(SRCS_DIR)/utils/gnl/get_next_line.c 		\
-				$(SRCS_DIR)/utils/gnl/get_next_line_utils.c	\
-				$(SRCS_DIR)/utils/str/str.c					\
-				$(SRCS_DIR)/utils/str/utils1.c				\
-				$(SRCS_DIR)/utils/str/utils2.c				\
-				$(SRCS_DIR)/utils/allocs/allocs.c			\
+				$(SRCS_DIR)/_utils/gnl/get_next_line.c 		\
+				$(SRCS_DIR)/_utils/gnl/get_next_line_utils.c\
+				$(SRCS_DIR)/_utils/str/str.c				\
+				$(SRCS_DIR)/_utils/str/utils1.c				\
+				$(SRCS_DIR)/_utils/str/utils2.c				\
+				$(SRCS_DIR)/_utils/allocs/allocs.c			\
 				$(SRCS_DIR)/parsing/read_file.c				\
 				$(SRCS_DIR)/parsing/parse_file.c			\
-				$(SRCS_DIR)/parsing/load_xpm.c				\
+				$(SRCS_DIR)/parsing/parse_rgb.c				\
 				$(SRCS_DIR)/parsing/map.c					\
 				$(SRCS_DIR)/parsing/map_checker.c			\
 				$(SRCS_DIR)/parsing/map_portal.c			\
 				$(SRCS_DIR)/exit/exit.c						\
 				$(SRCS_DIR)/raycasting.c					\
 				$(SRCS_DIR)/init_cub3d.c					\
+				$(SRCS_DIR)/rendering/draw_picture.c		\
 				$(SRCS_DIR)/rendering/img_utils.c			\
 				$(SRCS_DIR)/rendering/rendering.c			\
-				$(SRCS_DIR)/key_mapping.c					\
-				$(SRCS_DIR)/interaction.c					\
-				$(SRCS_DIR)/portal.c						\
-				$(SRCS_DIR)/draw_picture.c
+				$(SRCS_DIR)/interaction/key_mapping.c		\
+				$(SRCS_DIR)/interaction/interaction.c		\
+				$(SRCS_DIR)/interaction/portal.c			
 
 
 SRCS_DIR	=	srcs

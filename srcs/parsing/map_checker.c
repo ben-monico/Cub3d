@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 00:42:49 by mgranate          #+#    #+#             */
-/*   Updated: 2023/03/09 00:37:46 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/09 18:57:38 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static void	add_player_atributes(t_map *map, int x, int y)
 	map->player_x = x;
 	map->player_y = y;
 	map->num_player++;
+	map->mtx[y][x] = '0';
 }
 
 int	check_zero1(t_map *map, char c, int y, int x)
@@ -78,4 +79,5 @@ void	read_map(t_cub *cub)
 			read_aux(cub, map, x, y);
 		}
 	}
+	map->mtx[map->player_y][map->player_x] = 'N';
 }

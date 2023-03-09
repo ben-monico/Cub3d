@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/03/09 01:43:12 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/09 17:21:26 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,14 @@ int				press_key(int key, t_cub *cub);
 
 // Raycastin Utils
 void			raycasting(t_cub *cub);
-void			init_raycast_vars(t_cub *cub);
+void			init_player_vars(t_cub *cub);
+void			init_screen_images(t_cub *cub);
 void			get_textures(t_cub *cub, int start, int end);
-void			get_wall_texture(t_cub *data, t_dist *dst);
+void			get_wall_texture(t_cub *data, t_rcast *dst);
 
 // Rendering Utils
 void			render_screen(t_cub *cub);
-void			set_line_color(t_cub *cub, t_dist *dist, float wallx);
+void			set_line_color(t_cub *cub, t_rcast *rcast, float wallx);
 
 // Read File and Create Map
 int				read_file(t_cub *cube, char *file_name, int ac);

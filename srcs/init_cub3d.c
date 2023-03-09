@@ -6,13 +6,56 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 23:26:10 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/08 22:07:32 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/09 17:35:06 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-void	get_images(t_cub *cub)
+void	create_cube(t_cub *cub)
+{
+	cub->mlx = mlx_init();
+	if (!cub->mlx)
+		exit_free(cub, 1, "Failed to init mlx.\n") ;
+	cub->win = mlx_new_window(cub->mlx, SCREENW, SCREENH, "cub3d");
+	if (!cub->win)
+		exit_free(cub, 1, "Failed to init mlx.\n") ;
+	load_img(cub, cub->img.path);
+    mlx_mouse_hide(cub->mlx, cub->win);
+	init_screen_images(cub);
+	init_player_vars(cub);
+	raycasting(cub);
+	mlx_hook(cub->win, X_ON_MOUSEMOVE, 1L << 6, mouse_move, cub);
+	mlx_hook(cub->win, X_EVENT_KEY_PRESS, 1l << 0, press_key, cub);
+	mlx_hook(cub->win, X_EVENT_KEY_EXIT, 0, close_window, cub);
+	mlx_loop(cub->mlx);
+}
+
+void	load_img(t_cub *data, char **path)
+{
+	int	i;
+
+	i = -1;
+	while (++i < 4)
+	{
+		data->img.wall[i].ptr = mlx_xpm_file_to_image(data->mlx, \
+		path[i], &data->img.wall[i].width, &data->img.wall[i].height);
+		if (!data->img.wall[i].ptr)
+			exit_free(data, 1, "Fail loading images");
+		data->img.wall[i].addr = mlx_get_data_addr(data->img.wall[i].ptr, \
+		&data->img.wall[i].bpp, &data->img.wall[i].size_line, \
+		&data->img.wall[i].endian);
+	}
+	data->img.wall[4].ptr = mlx_xpm_file_to_image(new_cube()->mlx, "images/port.xpm", \
+	&data->img.wall[4].width, &data->img.wall[4].height);
+	if (!data->img.wall[4].ptr)
+			exit_free(data, 1, "Fail loading images");
+	data->img.wall[4].addr = mlx_get_data_addr(data->img.wall[4].ptr, \
+	&data->img.wall[4].bpp, &data->img.wall[4].size_line, \
+	&data->img.wall[4].endian);
+}
+
+void	init_screen_images(t_cub *cub)
 {
     cub->render_img.ptr = mlx_new_image(cub->mlx, SCREENW, SCREENH);
 	cub->render_img.addr = mlx_get_data_addr(cub->render_img.ptr, &cub->render_img.bpp,
@@ -25,38 +68,44 @@ void	get_images(t_cub *cub)
 							&cub->sprites[1].width, &cub->sprites[1].height);
 	cub->sprites[1].addr = mlx_get_data_addr(cub->sprites[1].ptr, &cub->sprites[1].bpp, \
 		&cub->sprites[1].size_line, &cub->sprites[1].endian);
-	cub->sprites[2].ptr = mlx_xpm_file_to_image(cub->mlx, "images/portal1.xpm", 
-							&cub->sprites[2].width, &cub->sprites[2].height);
-	cub->sprites[2].addr = mlx_get_data_addr(cub->sprites[2].ptr, &cub->sprites[2].bpp, 
-		&cub->sprites[2].size_line, &cub->sprites[2].endian);
 }
 
-void	create_cube(t_cub *cub)
+void	set_player_dir_fov(t_cub *cub, char **mtx, int x, int y)
 {
-	new_cube()->mlx = mlx_init();
-	load_img(cub, cub->img.path);
-	get_images(cub);
-	new_cube()->win = mlx_new_window(cub->mlx, SCREENW, SCREENH, "cub3d");
-	init_raycast_vars(cub);
-    mlx_mouse_hide(cub->mlx, cub->win);
-	raycasting(cub);
-	mlx_hook(cub->win, X_ON_MOUSEMOVE, 1L << 6, mouse_move, cub);
-	mlx_hook(cub->win, X_EVENT_KEY_PRESS, 1l << 0, press_key, cub);
-	mlx_hook(cub->win, X_EVENT_KEY_EXIT, 0, close_window, cub);
-	mlx_loop(cub->mlx);
+	cub->player.fov_x = 0;
+    cub->player.fov_y = 0;
+	cub->player.dir_y = 0;
+	cub->player.dir_x = 0;
+	if (mtx[x][y] == 'E')
+	{
+        cub->player.dir_x = 1;
+		cub->player.fov_x = 0.66;
+	}
+	else if (mtx[x][y] == 'W')
+	{
+		cub->player.dir_x = -1;
+		cub->player.fov_x = -0.66;
+	}
+	else if (mtx[x][y] == 'S')
+	{
+		 cub->player.dir_y = 1;
+		 cub->player.fov_y = -0.66;
+	}
+	else if (mtx[x][y] == 'N')
+	{
+		cub->player.dir_y = -1;
+		cub->player.fov_y = 0.66;
+	}
+	mtx[x][y] = '0';
 }
 
-void	init_raycast_vars(t_cub *cub)
+void	init_player_vars(t_cub *cub)
 {
 	char	**mtx;
 	int		x;
     int		y;
 	  
 	mtx = cub->map.mtx;
-    cub->player.fov_x = 0;
-    cub->player.fov_y = 0;
-	cub->player.dir_y = 0;
-	cub->player.dir_x = 0;
 	x = -1;
     while(mtx[++x])
     {
@@ -68,27 +117,7 @@ void	init_raycast_vars(t_cub *cub)
             {
                 cub->player.pos_x = x + 0.5;
                 cub->player.pos_y = y + 0.5;
-				if (mtx[x][y] == 'E')
-				{
-            	    cub->player.dir_x = 1;
-					cub->player.fov_x = 0.66;
-				}
-				else if (mtx[x][y] == 'W')
-				{
-					cub->player.dir_x = -1;
-					cub->player.fov_x = -0.66;
-				}
-				else if (mtx[x][y] == 'S')
-				{
-					 cub->player.dir_y = 1;
-					 cub->player.fov_y = -0.66;
-				}
-				else if (mtx[x][y] == 'N')
-				{
-					cub->player.dir_y = -1;
-					cub->player.fov_y = 0.66;
-				}
-				mtx[x][y] = '0';
+				set_player_dir_fov(cub, mtx, x, y);
 				return ;
             }
         }

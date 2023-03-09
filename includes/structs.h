@@ -3,22 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:55:20 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/09 01:25:30 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/09 17:21:34 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-typedef struct s_sprite	t_sprite;
 typedef struct s_data	t_data;
 typedef struct s_cub	t_cub;
 typedef struct s_map	t_map;
 typedef struct s_player	t_player;
-typedef struct s_dist	t_dist;
+typedef struct s_rcast	t_rcast;
 typedef struct s_img	t_img;
 
 struct		s_data
@@ -43,13 +42,7 @@ struct		s_img
 	t_data	wall[5];
 };
 
-struct s_sprite
-{
-	void		*img;
-	t_data		data;
-};
-
-struct s_dist
+struct s_rcast
 {
 	double	raydir_y;
 	double	raydir_x;
@@ -94,7 +87,7 @@ struct s_cub
 	void		*win;
 	int			**map_mtx;
 	t_data		render_img;
-	t_data		sprites[3];
+	t_data		sprites[2];
 	t_map		map;
 	t_img		img;
 	t_player	player;
