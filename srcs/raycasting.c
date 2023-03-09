@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:10:24 by benmonico         #+#    #+#             */
-/*   Updated: 2023/03/09 17:24:11 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/09 20:02:18 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ void	check_ray_hit(t_cub *cub, t_rcast *rcast)
 		}
 		if (mtx[rcast->map_x][rcast->map_y] == '1' \
 		|| mtx[rcast->map_x][rcast->map_y] == '2' \
-		|| mtx[rcast->map_x][rcast->map_y] == '3')
+		|| mtx[rcast->map_x][rcast->map_y] == '3'
+		|| mtx[rcast->map_x][rcast->map_y] == '5')
 		{
 			hit = 1;
 			cub->player.obj_hit = mtx[rcast->map_x][rcast->map_y];

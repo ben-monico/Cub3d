@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 23:19:04 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/09 17:23:32 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/09 20:02:55 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,17 @@ void	set_line_color(t_cub *cub, t_rcast *rcast, float wallx)
 	{
 		if (h >= cub->render_img.floorpoint && h < cub->render_img.ceilingpoint)
 		{
-			y = calculate_y(&cub->render_img, h);
+			y = calculate_y(&cub->render_img, h);				
 			if (cub->player.obj_hit == '3')
 			{
 				if (!get_portal_color(cub, wallx, y, h))
 					continue ;
 				c = get_portal_color(cub, wallx, y, h);
 			}
-			c = get_pixel_color_dodge(cub, rcast, wallx, y);
+			if (cub->player.obj_hit == '5')
+				c = get_color_img(&cub->img.wall[5], wallx, y);
+			else
+				c = get_pixel_color_dodge(cub, rcast, wallx, y);
 		}
 		else if (h >= cub->render_img.ceilingpoint)
 			c = cub->img.colors[0];

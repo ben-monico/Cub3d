@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/03/09 17:21:26 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/09 19:53:38 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_cub			*new_cube(void);
 void			load_img(t_cub *data, char **path);
 void			create_cube(t_cub *cub);
 int				press_key(int key, t_cub *cub);
+void			easter_egg(t_cub *data);
 
 // Raycastin Utils
 void			raycasting(t_cub *cub);

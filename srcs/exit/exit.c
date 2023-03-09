@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 21:26:04 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/09 17:35:33 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/09 20:01:05 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	free_imgs(t_cub *data)
 	if (data->img.wall[0].ptr)
 	{	
 		i = -1;
-		while (++i < 5 && data->img.wall[i].ptr)
+		while (++i < 6 && data->img.wall[i].ptr)
 		{
 			mlx_destroy_image(data->mlx, data->img.wall[i].ptr);
 			data->img.wall[i].ptr = 0;

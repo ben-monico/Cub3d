@@ -6,11 +6,22 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 23:26:10 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/09 17:35:06 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/09 20:06:51 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
+
+void	easter_egg(t_cub *data)
+{
+	data->img.wall[5].ptr = mlx_xpm_file_to_image(data->mlx, \
+	"images/easter.xpm", &data->img.wall[5].width, &data->img.wall[5].height);
+	if (!data->img.wall[5].ptr)
+		exit_free(data, 1, "Fail loading images");
+	data->img.wall[5].addr = mlx_get_data_addr(data->img.wall[5].ptr, \
+	&data->img.wall[5].bpp, &data->img.wall[5].size_line, \
+	&data->img.wall[5].endian);
+}
 
 void	create_cube(t_cub *cub)
 {
@@ -18,9 +29,11 @@ void	create_cube(t_cub *cub)
 	if (!cub->mlx)
 		exit_free(cub, 1, "Failed to init mlx.\n") ;
 	cub->win = mlx_new_window(cub->mlx, SCREENW, SCREENH, "cub3d");
+	if (cub->img.wall[5].x)
+		easter_egg(cub);
+	load_img(cub, cub->img.path);
 	if (!cub->win)
 		exit_free(cub, 1, "Failed to init mlx.\n") ;
-	load_img(cub, cub->img.path);
     mlx_mouse_hide(cub->mlx, cub->win);
 	init_screen_images(cub);
 	init_player_vars(cub);

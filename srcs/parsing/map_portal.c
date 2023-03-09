@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 18:44:01 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/09 18:58:28 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/09 19:52:56 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,14 @@ int	checker_zero(char **map, int y, int x)
 
 void	check_portal(char **map, int x, int y)
 {
-	if ((map[y][x - 1] == '1' && (map[y][x + 1] == '0' || map[y][x + 1] == '2')) \
-	|| ((map[y][x - 1] == '0' || map[y][x - 1] == '2') && map[y][x + 1] == '1') \
-	|| (map[y - 1][x] == '1' && (map[y + 1][x] == '0' || map[y + 1][x] == '2')) \
-	|| (map[y + 1][x] == '1' && (map[y - 1][x] == '0' || map[y - 1][x] == '0')))
+	if (((map[y][x - 1] == '1' || map[y][x - 1] == '5') \
+	&& (map[y][x + 1] == '0' || map[y][x + 1] == '2')) \
+	|| ((map[y][x - 1] == '0' || map[y][x - 1] == '2') \
+	&& (map[y][x + 1] == '1' || map[y][x + 1] == '5')) \
+	|| ((map[y - 1][x] == '1' || map[y - 1][x] == '5') \
+	&& (map[y + 1][x] == '0' || map[y + 1][x] == '2')) \
+	|| ((map[y + 1][x] == '1' || map[y + 1][x] == '5') \
+	&& (map[y - 1][x] == '0' || map[y - 1][x] == '0'))) \
 	{
 		printf("Line: %d Column: %d => '%c'\n", y, x, map[y][x]);
 		exit_free(new_cube(), 1, "Invalid Use of Portal");
@@ -50,4 +54,6 @@ void	read_aux(t_cub *cub, t_map *map, int x, int y)
 		exit_free(cub, 1, "Does not have a wall to support it");
 	if (map->mtx[y][x] == '2')
 		check_portal(map->mtx, x, y);
+	if (map->mtx[y][x] == '5')
+		cub->img.wall[5].x = 1;
 }
