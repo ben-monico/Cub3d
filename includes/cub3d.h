@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/03/08 18:25:52 by bcarreir         ###   ########.fr       */
-=======
-/*   Updated: 2023/03/08 22:17:54 by mgranate_ls      ###   ########.fr       */
->>>>>>> 26bd9c3326026bdd0592044b4e0146f4de632c9e
+/*   Updated: 2023/03/09 01:43:12 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +64,7 @@ int				get_map(char **file, t_cub *cube);
 // Moving
 void			verify_collision_and_door(double x, double y);
 void			open_portal(t_cub *cub);
+int				portal_teleport(t_cub *cub, char **mtx, double x, double y);
 int				mouse_move(int x, int y, t_cub *cub);
 void			p_rotation(t_player *player, double angle);
 void			w_press(t_cub *cub);

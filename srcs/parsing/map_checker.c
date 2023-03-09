@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 00:42:49 by mgranate          #+#    #+#             */
-/*   Updated: 2023/03/08 22:17:46 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/09 00:37:46 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	check_zero1(t_map *map, char c, int y, int x)
 	{
 		if (!checker_zero(map->mtx, y, x))
 		{
-			printf("Line: %d Column: %d => '%c' \n", y, x, c);
+			printf("Line: %d Column: %d => '%c'\n", y, x, c);
 			return (0);
 		}
 	}
@@ -71,7 +71,8 @@ void	read_map(t_cub *cub)
 			&& map->mtx[y][x] != ' ' && map->mtx[y][x] != '\n' \
 			&& map->mtx[y][x] != '2')
 			{
-				printf("Line: %d Column: %d => '%c' \n", y, x, map->mtx[y][x]);
+				printf("asas %s\n", map->mtx[y]);
+				printf("Line: %d Column: %d => '%d' \n", y, x, map->mtx[y][x]);
 				exit_free(cub, 1, "Not a valid  character on the Map");
 			}
 			read_aux(cub, map, x, y);

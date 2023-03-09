@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 17:58:25 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/08 23:40:29 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/08 23:58:27 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	put_squares(double j, double i, int color, int size)
 	offset = 5;
 	if (color == 0xFFFFFF)
 		offset = 0;
+	else if (color == 0xCA12A9)
+		offset = 3;
 	x = -1;
 	while (++x < size)
 	{
@@ -38,7 +40,7 @@ void	put_player_minmap(t_cub *cub)
 
 	j = cub->player.pos_y;
 	i = cub->player.pos_x;
-	put_squares(j, i, 0xCA12A9, 5);
+	put_squares(j, i, 0xCA12A9, 6);
 }
 
 void	outline_minimap(char **mtx)
@@ -87,7 +89,6 @@ void	put_minimap(t_cub *cub, char **mtx)
 	put_player_minmap(cub);
 }
 
-	//mlx_do_sync(cub->mlx);
 void	render_screen(t_cub *cub)
 {
 	put_minimap(cub, cub->map.mtx);
@@ -96,5 +97,6 @@ void	render_screen(t_cub *cub)
 	SCREENH - cub->sprites[0].height, 0x02FFCF);
 	put_image_remove_chroma(&cub->sprites[1], \
 	SCREENW / 2 - 10, SCREENH / 2 - 10, 0x24FFCF);
+	mlx_do_sync(cub->mlx);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->render_img.ptr, 0, 0);
 }

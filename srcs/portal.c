@@ -12,25 +12,32 @@
 
 #include <cub3d.h>
 
-int	portal_teleport(double x, double y)
+int	portal_teleport(t_cub *cub, char **mtx, double x, double y)
 {
-    t_cub   *cub;
-	char    **mtx;
-
-    cub = new_cube();
-    mtx = cub->map.mtx;
-    if (floor(y) > floor(cub->player.posY))
+	if (floor(y) > floor(cub->player.pos_y))
+    {
         while (mtx[(int)x][(int)(y + 1)] == '3')
-        	cub->player.posY = floor(++y) + 1.2;
-    else if (floor(y) < floor(cub->player.posY))
+            ++y;
+        cub->player.pos_y = floor(y) + 1.2;
+    }
+    else if (floor(y) < floor(cub->player.pos_y))
+    {
         while (mtx[(int)x][(int)(y - 1)] == '3')
-        	cub->player.posY = floor(--y) - 0.2;
-    if (floor(x) > floor(cub->player.posX))
+            --y;
+        cub->player.pos_y = floor(y) - 0.2;
+    }
+    if (floor(x) > floor(cub->player.pos_x))
+    {
         while (mtx[(int)(x + 1)][(int)y] == '3')
-        	cub->player.posX = floor(++x) + 1.2;
-	else if (floor(x) < floor(cub->player.posX))
-		while (mtx[(int)(x - 1)][(int)y] == '3')
-			cub->player.posX = floor(--x) - 0.2;
+            ++x;
+        cub->player.pos_x = floor(x) + 1.2;
+    }
+    else if (floor(x) < floor(cub->player.pos_x))
+    {
+        while (mtx[(int)(x - 1)][(int)y] == '3')
+            --x;
+        cub->player.pos_x = floor(x) - 0.2;
+    }
 	return (1);
 }
 
@@ -81,7 +88,7 @@ void	open_portal(t_cub *cub)
 
 	x = cub->player.pos_x + cub->player.dir_y * DUB_STEP * 10;
 	y = cub->player.pos_y + cub->player.dir_x * DUB_STEP * 10;
-	if (toggle_portal(x, y, '2', '3') || cub->player.can_open == 0)
+	if (toggle_portal(x, y, '2', '3'))
 		return ;
 	toggle_portal(x, y, '3', '2');
 }
