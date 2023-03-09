@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:14:22 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/09 17:14:35 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/09 20:26:32 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,12 @@ void	verify_collision_and_door(double x, double y)
     mtx = cub->map.mtx;
     if (mtx[(int)x][(int)y] == '3' && portal_teleport(cub, cub->map.mtx, x, y))
         return ;
-    if (mtx[(int)x][(int)cub->player.pos_y] != '1' &&\
-		mtx[(int)x][(int)cub->player.pos_y] != '2')
+    if (mtx[(int)x][(int)cub->player.pos_y] != '1' \
+	&& mtx[(int)x][(int)cub->player.pos_y] != '2' 
+	&& mtx[(int)x][(int)cub->player.pos_y] != '5')
         cub->player.pos_x = x;
     if (mtx[(int)cub->player.pos_x][(int)y] != '1'\
-		&& mtx[(int)cub->player.pos_x][(int)y] != '2')
+		&& mtx[(int)cub->player.pos_x][(int)y] != '2'
+		&& mtx[(int)cub->player.pos_x][(int)y] != '5')
         cub->player.pos_y = y;
 }

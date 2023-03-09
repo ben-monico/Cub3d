@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 23:26:10 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/09 20:06:51 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/09 20:07:59 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	create_cube(t_cub *cub)
 	load_img(cub, cub->img.path);
 	if (!cub->win)
 		exit_free(cub, 1, "Failed to init mlx.\n") ;
-    mlx_mouse_hide(cub->mlx, cub->win);
+   // mlx_mouse_hide(cub->mlx, cub->win);
 	init_screen_images(cub);
 	init_player_vars(cub);
 	raycasting(cub);

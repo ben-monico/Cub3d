@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 17:58:25 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/08 23:58:27 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/09 20:27:50 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	put_minimap(t_cub *cub, char **mtx)
 			color = cub->img.colors[0];
 			if (mtx[i][j] == ' ')
 				continue ;
-			else if (mtx[i][j] == '1')
+			else if (mtx[i][j] == '1' || mtx[i][j] == '5')
 				color = 0x414141;
 			else if (mtx[i][j] == '2')
 				color = 0x116611;
