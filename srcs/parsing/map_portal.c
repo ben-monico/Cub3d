@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 18:44:01 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/09 19:52:56 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/09 20:59:29 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,7 @@ void	read_aux(t_cub *cub, t_map *map, int x, int y)
 	if (map->mtx[y][x] == '2')
 		check_portal(map->mtx, x, y);
 	if (map->mtx[y][x] == '5')
-		cub->img.wall[5].x = 1;
+		cub->img.wall[5].x ++;
+	if (cub->img.wall[5].x > 1)
+		exit_free(cub, 1, "Invalid Map Format");
 }
