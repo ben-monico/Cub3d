@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw_picture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 23:19:04 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/09 20:02:55 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/09 23:46:02 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
-
-double	calculate_y(t_data *line, float i);
 
 int	get_pixel_color_dodge(t_cub *cub, t_rcast *rcast, float wallx, double y)
 {
@@ -24,7 +22,7 @@ int	get_pixel_color_dodge(t_cub *cub, t_rcast *rcast, float wallx, double y)
 	else
 		color = get_color_img(&cub->img.wall[!(rcast->raydir_y > 0)], \
 		wallx, y);
-	if (cub->player.obj_hit == '2' || cub->player.obj_hit == '3')
+	if (rcast->obj_hit == '2' || rcast->obj_hit == '3')
 		color = (color >> 8) & 0xFF20;
 	else if (rcast->wallside_x == 1)
 		color = (color >> 1) & 8355711;
@@ -57,13 +55,13 @@ void	set_line_color(t_cub *cub, t_rcast *rcast, float wallx)
 		if (h >= cub->render_img.floorpoint && h < cub->render_img.ceilingpoint)
 		{
 			y = calculate_y(&cub->render_img, h);				
-			if (cub->player.obj_hit == '3')
+			if (rcast->obj_hit == '3')
 			{
 				if (!get_portal_color(cub, wallx, y, h))
 					continue ;
 				c = get_portal_color(cub, wallx, y, h);
 			}
-			if (cub->player.obj_hit == '5')
+			if (rcast->obj_hit == '5')
 				c = get_color_img(&cub->img.wall[5], wallx, y);
 			else
 				c = get_pixel_color_dodge(cub, rcast, wallx, y);

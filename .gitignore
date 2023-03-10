@@ -10,3 +10,4 @@
 **/**.o
 objs/
 mlx_linux/obj/
+valgrind-out.txt

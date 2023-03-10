@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 21:26:04 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/09 20:01:05 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/10 00:04:44 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	free_imgs(t_cub *data)
 	if (data->img.wall[0].ptr)
 	{	
 		i = -1;
-		while (++i < 6 && data->img.wall[i].ptr)
+		while (++i < 7 && data->img.wall[i].ptr)
 		{
 			mlx_destroy_image(data->mlx, data->img.wall[i].ptr);
 			data->img.wall[i].ptr = 0;

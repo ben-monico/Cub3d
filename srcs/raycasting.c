@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:10:24 by benmonico         #+#    #+#             */
-/*   Updated: 2023/03/09 20:02:18 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/09 23:42:29 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	check_ray_hit(t_cub *cub, t_rcast *rcast)
 		|| mtx[rcast->map_x][rcast->map_y] == '5')
 		{
 			hit = 1;
-			cub->player.obj_hit = mtx[rcast->map_x][rcast->map_y];
+			rcast->obj_hit = mtx[rcast->map_x][rcast->map_y];
 		}
 	}
 }

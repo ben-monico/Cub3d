@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/03/09 19:53:38 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/10 00:21:04 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ unsigned int	get_color_img(t_data *data, int x, int y);
 
 // Cube Utils
 t_cub			*new_cube(void);
+void			win_condition();
 void			load_img(t_cub *data, char **path);
 void			create_cube(t_cub *cub);
 int				press_key(int key, t_cub *cub);
@@ -47,6 +48,7 @@ void			get_wall_texture(t_cub *data, t_rcast *dst);
 
 // Rendering Utils
 void			render_screen(t_cub *cub);
+double			calculate_y(t_data *line, float i);
 void			set_line_color(t_cub *cub, t_rcast *rcast, float wallx);
 
 // Read File and Create Map

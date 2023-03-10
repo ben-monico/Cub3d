@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:55:20 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/09 19:23:54 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/10 00:17:21 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ struct		s_img
 {
 	int		colors[2];
 	char	**path;
-	t_data	wall[6];
+	t_data	wall[7];
 };
 
 struct s_rcast
@@ -57,6 +57,7 @@ struct s_rcast
 	int		map_x;
 	int		map_y;
 	int		wallside_x;
+	char	obj_hit;
 };
 
 struct	s_map
@@ -78,7 +79,6 @@ struct		s_player
 	double	dir_x;
 	double	fov_x;
 	double	fov_y;
-	char	obj_hit;
 };
 
 struct s_cub
@@ -91,6 +91,7 @@ struct s_cub
 	t_map		map;
 	t_img		img;
 	t_player	player;
+	int			game_won;
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:57:10 by benmonico         #+#    #+#             */
-/*   Updated: 2023/03/09 01:40:03 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/10 00:41:09 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	press_key(int key, t_cub *cub)
 {
+	if (cub->game_won && key != KEY_ESC)
+		return (1);
 	if (key == KEY_ESC)
 		exit_free(cub, 0, "Exit Program Succesfully");
 	else if (key == KEY_W)
@@ -32,7 +34,8 @@ int	press_key(int key, t_cub *cub)
 		open_portal(cub);
 	else
 		return (1);
-	raycasting(cub);
+	if (!cub->game_won)
+		raycasting(cub);
 	return (0);
 }
 

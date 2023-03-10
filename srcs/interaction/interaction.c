@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interaction.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:14:22 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/09 20:26:32 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/10 00:36:02 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	mouse_move(int x, int y, t_cub *cub)
 {
 	double	move_x;
 
+	if (cub->game_won)
+		return (0);
 	(void)y;
 	mlx_mouse_get_pos(cub->mlx, cub->win, &x, &y);
 	if (x - SCREENW / 2 > ((int)SCREENW / 50) \
@@ -66,14 +68,15 @@ void	verify_collision_and_door(double x, double y)
 
     cub = new_cube();
     mtx = cub->map.mtx;
-    if (mtx[(int)x][(int)y] == '3' && portal_teleport(cub, cub->map.mtx, x, y))
-        return ;
-    if (mtx[(int)x][(int)cub->player.pos_y] != '1' \
-	&& mtx[(int)x][(int)cub->player.pos_y] != '2' 
-	&& mtx[(int)x][(int)cub->player.pos_y] != '5')
+	if (mtx[(int)x][(int)y] == '5')
+	{
+		win_condition() ;
+		return ;
+	}
+	if (mtx[(int)x][(int)y] == '3' && portal_teleport(cub, cub->map.mtx, x, y))
+    	return ;
+    if (mtx[(int)x][(int)cub->player.pos_y] == '0')
         cub->player.pos_x = x;
-    if (mtx[(int)cub->player.pos_x][(int)y] != '1'\
-		&& mtx[(int)cub->player.pos_x][(int)y] != '2'
-		&& mtx[(int)cub->player.pos_x][(int)y] != '5')
+    if (mtx[(int)cub->player.pos_x][(int)y] == '0')
         cub->player.pos_y = y;
 }
