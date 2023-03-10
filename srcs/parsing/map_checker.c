@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 00:42:49 by mgranate          #+#    #+#             */
-/*   Updated: 2023/03/09 20:56:59 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/10 09:09:20 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,5 @@ void	read_map(t_cub *cub)
 			read_aux(cub, map, x, y);
 		}
 	}
-	map->mtx[map->player_y][map->player_x] = 'N';
+	map->mtx[map->player_y][map->player_x] = map->p_orientation;
 }
