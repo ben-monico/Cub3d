@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 00:42:49 by mgranate          #+#    #+#             */
-/*   Updated: 2023/03/10 09:09:20 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/10 10:00:34 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	read_map(t_cub *cub)
 			&& map->mtx[y][x] != ' ' && map->mtx[y][x] != '\n' \
 			&& map->mtx[y][x] != '2' && map->mtx[y][x] != '5')
 			{
-				printf("Line: %d Column: %d => '%d' \n", y, x, map->mtx[y][x]);
+				printf("Line: %d Column: %d => '%c' \n", y, x, map->mtx[y][x]);
 				exit_free(cub, 1, "Not a valid  character on the Map");
 			}
 			read_aux(cub, map, x, y);
