@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_picture.c                                     :+:      :+:    :+:   */
+/*   color_lines.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 23:19:04 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/09 23:46:02 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/10 17:28:32 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,25 +36,24 @@ int	get_portal_color(t_cub *cub, float wallx, double y, int h)
 	c = get_color_img(&cub->img.wall[4], wallx, y);
 	if (c > 0x010101)
 	{
-		my_mlx_pixel_put(&cub->render_img, cub->render_img.x, h, c);
+		my_mlx_pixel_put(&cub->screen, cub->screen.x, h, c);
 		return (0);
 	}
 	return (c);
 }
 
-void	set_line_color(t_cub *cub, t_rcast *rcast, float wallx)
+void	set_line_color(int c, t_cub *cub, t_rcast *rcast, float wallx)
 {
 	int		h;
-	int		c;
 	double	y;
 
 	h = -1;
 	c = cub->img.colors[1];
 	while (++h < SCREENH)
 	{
-		if (h >= cub->render_img.floorpoint && h < cub->render_img.ceilingpoint)
+		if (h >= cub->screen.floorpoint && h < cub->screen.ceilingpoint)
 		{
-			y = calculate_y(&cub->render_img, h);				
+			y = calculate_y(&cub->screen, h);
 			if (rcast->obj_hit == '3')
 			{
 				if (!get_portal_color(cub, wallx, y, h))
@@ -66,9 +65,9 @@ void	set_line_color(t_cub *cub, t_rcast *rcast, float wallx)
 			else
 				c = get_pixel_color_dodge(cub, rcast, wallx, y);
 		}
-		else if (h >= cub->render_img.ceilingpoint)
+		else if (h >= cub->screen.ceilingpoint)
 			c = cub->img.colors[0];
-		my_mlx_pixel_put(&cub->render_img, cub->render_img.x, h, c);
+		my_mlx_pixel_put(&cub->screen, cub->screen.x, h, c);
 	}
 }
 
@@ -80,17 +79,17 @@ double	calculate_y(t_data *line, float i)
 
 	if (line->ceilingpoint - line->floorpoint > SCREENH)
 		return ((float)(i - line->floorpoint) / (line->ceilingpoint - \
-		line->floorpoint) * new_cube()->img.wall[0].height);
+		line->floorpoint) * cube()->img.wall[0].height);
 	if (step_y == 0 || oldcamx != line->x)
 	{
 		oldcamx = line->x;
 		step_y = (float)(i - line->floorpoint) / (line->ceilingpoint - \
-		line->floorpoint) * new_cube()->img.wall[0].height;
+		line->floorpoint) * cube()->img.wall[0].height;
 		y = 0;
 		return (y);
 	}
 	y += step_y;
-	if (y > new_cube()->img.wall[0].height)
-		y = new_cube()->img.wall[0].height;
+	if (y > cube()->img.wall[0].height)
+		y = cube()->img.wall[0].height;
 	return (y);
 }

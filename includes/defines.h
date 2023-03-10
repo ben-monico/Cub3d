@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:59:14 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/08 22:04:14 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/10 15:25:52 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define CHROMA_BLACKMASK		0x02FFCF
 # define WHITE					0xFFFFFF
 # define DUB_STEP				0.05
-# define MOUSE_STEP				4
+# define MOUSE_STEP				3.5
 # define TEX_SIZE				512
 
 # define X_EVENT_KEY_PRESS		2

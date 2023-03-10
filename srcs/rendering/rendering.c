@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 17:58:25 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/09 20:27:50 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/10 16:21:30 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	put_squares(double j, double i, int color, int size)
 	{
 		y = -1;
 		while (++y < size)
-			my_mlx_pixel_put(&new_cube()->render_img, j * 10 + y + \
+			my_mlx_pixel_put(&cube()->screen, j * 10 + y + \
 			offset, i * 10 + x + offset, color);
 	}
 }
@@ -98,5 +98,5 @@ void	render_screen(t_cub *cub)
 	put_image_remove_chroma(&cub->sprites[1], \
 	SCREENW / 2 - 10, SCREENH / 2 - 10, 0x24FFCF);
 	mlx_do_sync(cub->mlx);
-	mlx_put_image_to_window(cub->mlx, cub->win, cub->render_img.ptr, 0, 0);
+	mlx_put_image_to_window(cub->mlx, cub->win, cub->screen.ptr, 0, 0);
 }

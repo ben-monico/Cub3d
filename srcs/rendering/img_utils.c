@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 01:58:29 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/08 22:04:00 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/10 16:52:56 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ void	get_textures(t_cub *cub, int start, int end)
 		img.addr = mlx_get_data_addr(img.ptr, &img.bpp, \
 		&img.size_line, &img.endian);
 	}
-	if (cub->render_img.x > img.width)
+	if (cub->screen.x > img.width)
 		return ;
 	while (++start < end)
 	{
-		my_mlx_pixel_put(&cub->render_img, cub->render_img.x, start, \
-		get_color_img(&img, start, cub->render_img.x));
+		my_mlx_pixel_put(&cub->screen, cub->screen.x, start, \
+		get_color_img(&img, start, cub->screen.x));
 	}
 }
 
@@ -52,10 +52,10 @@ unsigned int	get_color_img(t_data *data, int x, int y)
 	return (color);
 }
 
-int	calc_bob(int dir, int color)
+int	calc_prs(int dir, int color)
 {
-	static int	bobh;
-	static int	bobw;
+	static int	prsh;
+	static int	prsw;
 	static int	y;
 	static int	x;
 
@@ -68,15 +68,15 @@ int	calc_bob(int dir, int color)
 	}
 	if (dir)
 	{
-		if (bobh == 15 || bobh == -15)
+		if (prsh == 15 || prsh == -15)
 			y *= -1;
-		bobh += y;
-		return (bobh);
+		prsh += y;
+		return (prsh);
 	}
-	if (bobw == 30 || bobw == -30)
+	if (prsw == 30 || prsw == -30)
 		x *= -1;
-	bobw += x;
-	return (bobw);
+	prsw += x;
+	return (prsw);
 }
 
 void	put_image_remove_chroma(t_data *img, int offsetW, \
@@ -85,11 +85,11 @@ void	put_image_remove_chroma(t_data *img, int offsetW, \
 	int	h;
 	int	w;
 	int	color;
-	int	bobh;
-	int	bobw;
+	int	prsh;
+	int	prsw;
 
-	bobw = calc_bob(0, chroma_max);
-	bobh = calc_bob(1, chroma_max);
+	prsw = calc_prs(0, chroma_max);
+	prsh = calc_prs(1, chroma_max);
 	w = -1;
 	while (++w < img->width)
 	{
@@ -98,10 +98,10 @@ void	put_image_remove_chroma(t_data *img, int offsetW, \
 		{
 			color = get_color_img(img, w, h);
 			if ((color >= 0x000300 && color <= chroma_max) \
-			|| offsetH + h + bobh + 30 > SCREENH)
+			|| offsetH + h + prsh + 30 > SCREENH)
 				continue ;
-			my_mlx_pixel_put(&new_cube()->render_img, offsetW + w + bobw, \
-			offsetH + h + bobh + 30, color);
+			my_mlx_pixel_put(&cube()->screen, offsetW + w + prsw, \
+			offsetH + h + prsh + 30, color);
 		}
 	}
 }

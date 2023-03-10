@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:55:20 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/10 09:08:50 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/10 16:51:11 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ struct	s_map
 	int		player_y;
 	char	p_orientation;
 	int		num_player;
-	int		*f_c;
-	int		*c_c;
+	int		*floor_c;
+	int		*color_c;
 };
 
 struct		s_player
@@ -86,7 +86,7 @@ struct s_cub
 	void		*mlx;
 	void		*win;
 	int			**map_mtx;
-	t_data		render_img;
+	t_data		screen;
 	t_data		sprites[2];
 	t_map		map;
 	t_img		img;

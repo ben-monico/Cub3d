@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:14:22 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/10 00:36:02 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/10 16:25:16 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,20 +63,22 @@ void	p_rotation(t_player *player, double angle)
 
 void	verify_collision_and_door(double x, double y)
 {
-    t_cub   *cub;
-    char    **mtx;
+	t_cub	*cub;
+	char	**mtx;
 
-    cub = new_cube();
-    mtx = cub->map.mtx;
+	cub = cube();
+	mtx = cub->map.mtx;
 	if (mtx[(int)x][(int)y] == '5')
 	{
-		win_condition() ;
+		win_condition();
 		return ;
 	}
 	if (mtx[(int)x][(int)y] == '3' && portal_teleport(cub, cub->map.mtx, x, y))
-    	return ;
-    if (mtx[(int)x][(int)cub->player.pos_y] == '0')
-        cub->player.pos_x = x;
-    if (mtx[(int)cub->player.pos_x][(int)y] == '0')
-        cub->player.pos_y = y;
+		return ;
+	if (mtx[(int)x][(int)cub->player.pos_y] != '1' && \
+		mtx[(int)x][(int)cub->player.pos_y] != '2')
+		cub->player.pos_x = x;
+	if (mtx[(int)cub->player.pos_x][(int)y] != '1' && \
+		mtx[(int)cub->player.pos_x][(int)y] != '2')
+		cub->player.pos_y = y;
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/03/10 00:21:04 by bcarreir         ###   ########.fr       */
+/*   Created: 2023/03/10 16:57:00 by bcarreir          #+#    #+#             */
+/*   Updated: 2023/03/10 17:28:50 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <str.h>
 # include <stdio.h>
 # include <unistd.h>
-# include <parse.h>
+# include <prs.h>
 # include <structs.h>
 # include <defines.h>
 # include <math.h>
@@ -32,8 +32,8 @@ void			put_image_remove_chroma(t_data *img, int offsetW, int offsetH, \
 unsigned int	get_color_img(t_data *data, int x, int y);
 
 // Cube Utils
-t_cub			*new_cube(void);
-void			win_condition();
+t_cub			*cube(void);
+void			win_condition(void);
 void			load_img(t_cub *data, char **path);
 void			create_cube(t_cub *cub);
 int				press_key(int key, t_cub *cub);
@@ -49,7 +49,7 @@ void			get_wall_texture(t_cub *data, t_rcast *dst);
 // Rendering Utils
 void			render_screen(t_cub *cub);
 double			calculate_y(t_data *line, float i);
-void			set_line_color(t_cub *cub, t_rcast *rcast, float wallx);
+void			set_line_color(int c, t_cub *cub, t_rcast *rcast, float wallx);
 
 // Read File and Create Map
 int				read_file(t_cub *cube, char *file_name, int ac);

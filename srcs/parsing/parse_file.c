@@ -1,86 +1,87 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_file.c                                       :+:      :+:    :+:   */
+/*   prs_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 00:04:36 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/07 15:08:13 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/10 16:51:11 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <parse.h>
+#include <prs.h>
 
-t_parse	*parsing(void)
+t_prs	*parsing(void)
 {
-	static	t_parse	data;
+	static t_prs	data;
 
-	return(&data);
+	return (&data);
 }
 
-void	trim_ident(char *line, t_parse *parse, int ct)
+int	trim_ident(char *line, t_prs *prs, int ct)
 {
 	char	*trim;
 
 	if (!line)
-		exit_parse(parse, 1, "Identifier with no path");
+		exit_prs(prs, 1, "Identifier with no path");
 	trim = string().strtrim(line, " \t\v\r\n");
 	if (!trim)
-		exit_parse(parse, 1, "Allocation In parsing Failed");
-	if (ct == 4 || ct == 5)
+		exit_prs(prs, 1, "Allocation In parsing Failed");
+	if (string().strchr(trim, 'F') || string().strchr(trim, 'C'))
 	{
-		if (ct == 4)
-			parse->f_c = string().strdup(trim);
+		if (string().strchr(trim, 'F'))
+			prs->floor_c = string().strdup(trim);
 		else
-			parse->c_c = string().strdup(trim);
+			prs->color_c = string().strdup(trim);
 		alloc().free_array(trim);
-		return ;
+		return (1);
 	}
-	parse->path_to_img[ct] = string().strdup(trim);
+	prs->path_to_img[ct] = string().strdup(trim);
 	alloc().free_array(trim);
+	return (1);
 }
 
-int	check_identifier(char *line, t_parse *parse, int ct)
+int	check_identifier(char *line, t_prs *prs, int ct)
 {
-	if (!string().strncmp("NO", line, 2) && ct == 0)
-		trim_ident(line + 2, parse, ct);
-	else if (!string().strncmp("SO", line, 2) && ct == 1)
-		trim_ident(line + 2, parse, ct);
-	else if (!string().strncmp("WE", line, 2) && ct == 2)
-		trim_ident(line + 2, parse, ct);
-	else if (!string().strncmp("EA", line, 2)  && ct == 3)
-		trim_ident(line + 2, parse, ct);
-	else if (!string().strncmp("F", line, 1) && ct == 4)
-		trim_ident(line + 1, parse, ct);
-	else if (!string().strncmp("C", line, 1) && ct == 5)
-		trim_ident(line + 1, parse, ct);
-	if (parse->f_c || parse->c_c || parse->path_to_img[ct])
+	if (!string().strncmp("NO", line, 2))
+		return (trim_ident(line + 2, prs, 0));
+	else if (!string().strncmp("SO", line, 2))
+		return (trim_ident(line + 2, prs, 1));
+	else if (!string().strncmp("WE", line, 2))
+		return (trim_ident(line + 2, prs, 2));
+	else if (!string().strncmp("EA", line, 2))
+		return (trim_ident(line + 2, prs, 3));
+	else if (!string().strncmp("F", line, 1))
+		return (trim_ident(line, prs, ct));
+	else if (!string().strncmp("C", line, 1))
+		return (trim_ident(line, prs, ct));
+	if (prs->floor_c || prs->color_c)
 		return (1);
 	return (0);
 }
 
-int	get_path_img(t_parse *parse)
+int	get_path_img(t_prs *prs)
 {
 	int		i;
 	int		j;
 	int		ct;
 
 	ct = 0;
-	parse->path_to_img = alloc().calloc((5) * (sizeof(char *)));
-	if (!parse->path_to_img)
-		exit_parse(parse, 1, "Allocation Failed in Parsing Images");
-	parse->path_to_img[4] = NULL;
+	prs->path_to_img = alloc().calloc((5) * (sizeof(char *)));
+	if (!prs->path_to_img)
+		exit_prs(prs, 1, "Allocation Failed in Parsing Images");
+	prs->path_to_img[4] = NULL;
 	i = -1;
-	while (parse->file[++i] && ct < 6)
+	while (prs->file[++i] && ct < 6)
 	{
 		j = -1;
-		while (parse->file[i][++j])
+		while (prs->file[i][++j])
 		{
-			if (!string().ft_isspace(parse->file[i][j]))
+			if (!string().ft_isspace(prs->file[i][j]))
 			{
-				if (!check_identifier(parse->file[i] + j, parse, ct))
-					exit_parse(parse, 1, "File Not Formated Correctly");
+				if (!check_identifier(prs->file[i] + j, prs, ct))
+					exit_prs(prs, 1, "File Not Formated Correctly.");
 				ct++;
 				break ;
 			}
@@ -89,17 +90,34 @@ int	get_path_img(t_parse *parse)
 	return (i);
 }
 
-void	parse_file(t_parse *parse)
+void	prs_file(t_prs *prs)
 {
 	int	i;
-	
-	i = get_path_img(parse);
-	if (!get_map(parse->file + i, new_cube()))
-		exit_parse(parse, 1, "Map Not Formated Correctly");
+	int	c;
+	int	f;
+
+	i = get_path_img(prs);
+	if (!get_map(prs->file + i, cube()))
+		exit_prs(prs, 1, "Map Not Formated Correctly");
 	i = -1;
-	new_cube()->img.path = alloc().calloc((sizeof(char *) * 5));
+	cube()->img.path = alloc().calloc((sizeof(char *) * 5));
 	while (++i < 4)
-		new_cube()->img.path[i] = string().strdup(parse->path_to_img[i]);
-	new_cube()->img.colors[0] = get_colors(parse->f_c, parse);
-	new_cube()->img.colors[1] = get_colors(parse->c_c, parse);
+	{
+		if (!prs->path_to_img[i])
+			exit_prs(prs, 1, "Map Not Formated Correctly");
+		if (string().strchr(prs->path_to_img[i], 'N'))
+			cube()->img.path[0] = string().strdup(prs->path_to_img[i]);
+		if (string().strchr(prs->path_to_img[i], 'S'))
+			cube()->img.path[1] = string().strdup(prs->path_to_img[i]);
+		if (string().strchr(prs->path_to_img[i], 'W'))
+			cube()->img.path[2] = string().strdup(prs->path_to_img[i]);
+		if (string().strchr(prs->path_to_img[i], 'E'))
+			cube()->img.path[3] = string().strdup(prs->path_to_img[i]);
+	}
+	if (!prs->floor_c || !prs->color_c)
+		exit_prs(prs, 1, "Map Not Formated Correctly");
+	f = get_colors(prs->floor_c + 1, prs);
+	c = get_colors(prs->color_c + 1, prs);
+	cube()->img.colors[0] = f;
+	cube()->img.colors[1] = c;
 }

@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 21:26:04 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/10 00:04:44 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/10 16:52:42 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ static void	free_imgs(t_cub *data)
 			data->sprites[i].ptr = 0;
 		}
 	}
-	if (data->render_img.ptr)
+	if (data->screen.ptr)
 	{
-		mlx_destroy_image(data->mlx, data->render_img.ptr);
-		data->render_img.ptr = 0;
+		mlx_destroy_image(data->mlx, data->screen.ptr);
+		data->screen.ptr = 0;
 	}
 }
 
@@ -63,7 +63,7 @@ static void	free_mlx(t_cub	*data)
 	}
 }
 
-void	exit_parse(t_parse *data, int status, char *str)
+void	exit_prs(t_prs *data, int status, char *str)
 {
 	if (status)
 		printf("Error: %s\n", str);
