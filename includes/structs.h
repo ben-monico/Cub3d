@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:55:20 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/11 00:58:26 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/11 15:29:23 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ struct		s_img
 {
 	int		colors[2];
 	char	**path;
-	t_data	wall[7];
+	t_data	wall[8];
 };
 
 struct s_rcast
@@ -92,6 +92,7 @@ struct s_cub
 	t_img		img;
 	t_player	player;
 	int			game_won;
+	int			opening;
 };
 
 #endif

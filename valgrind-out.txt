@@ -5,574 +5,858 @@
 ==4590== Parent PID: 4336
 ==4590== 
 ==4590== Invalid read of size 8
-==4590==    at 0x4884EFC: XDestroyWindow (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x115A69: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x111A62: free_mlx (exit.c:56)
-==4590==    by 0x111A62: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Address 0x4f26f08 is 2,408 bytes inside a block of size 4,704 free'd
-==4590==    at 0x48399AB: free (vg_replace_malloc.c:538)
-==4590==    by 0x4882BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x111A56: free_mlx (exit.c:55)
-==4590==    by 0x111A56: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Block was alloc'd at
-==4590==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
-==4590==    by 0x48959ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x1123F4: create_cube (init_cub3d.c:18)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590== 
-==4590== Invalid read of size 8
-==4590==    at 0x48A8F6A: _XGetRequest (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x4884F1B: XDestroyWindow (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x115A69: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x111A62: free_mlx (exit.c:56)
-==4590==    by 0x111A62: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Address 0x4f26650 is 176 bytes inside a block of size 4,704 free'd
-==4590==    at 0x48399AB: free (vg_replace_malloc.c:538)
-==4590==    by 0x4882BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x111A56: free_mlx (exit.c:55)
-==4590==    by 0x111A56: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Block was alloc'd at
-==4590==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
-==4590==    by 0x48959ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x1123F4: create_cube (init_cub3d.c:18)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590== 
-==4590== Invalid read of size 8
-==4590==    at 0x48A8F77: _XGetRequest (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x4884F1B: XDestroyWindow (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x115A69: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x111A62: free_mlx (exit.c:56)
-==4590==    by 0x111A62: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Address 0x4f26658 is 184 bytes inside a block of size 4,704 free'd
-==4590==    at 0x48399AB: free (vg_replace_malloc.c:538)
-==4590==    by 0x4882BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x111A56: free_mlx (exit.c:55)
-==4590==    by 0x111A56: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Block was alloc'd at
-==4590==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
-==4590==    by 0x48959ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x1123F4: create_cube (init_cub3d.c:18)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590== 
-==4590== Invalid write of size 8
-==4590==    at 0x48A8F89: _XGetRequest (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x4884F1B: XDestroyWindow (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x115A69: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x111A62: free_mlx (exit.c:56)
-==4590==    by 0x111A62: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Address 0x4f26640 is 160 bytes inside a block of size 4,704 free'd
-==4590==    at 0x48399AB: free (vg_replace_malloc.c:538)
-==4590==    by 0x4882BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x111A56: free_mlx (exit.c:55)
-==4590==    by 0x111A56: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Block was alloc'd at
-==4590==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
-==4590==    by 0x48959ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x1123F4: create_cube (init_cub3d.c:18)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590== 
-==4590== Invalid write of size 1
-==4590==    at 0x48A8F94: _XGetRequest (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x4884F1B: XDestroyWindow (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x115A69: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x111A62: free_mlx (exit.c:56)
-==4590==    by 0x111A62: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Address 0x4f2e3f0 is 0 bytes inside a block of size 16,384 free'd
-==4590==    at 0x48399AB: free (vg_replace_malloc.c:538)
-==4590==    by 0x4895837: _XFreeDisplayStructure (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x4882BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x111A56: free_mlx (exit.c:55)
-==4590==    by 0x111A56: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Block was alloc'd at
-==4590==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
-==4590==    by 0x4895D79: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x1123F4: create_cube (init_cub3d.c:18)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590== 
-==4590== Invalid write of size 2
-==4590==    at 0x48A8F97: _XGetRequest (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x4884F1B: XDestroyWindow (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x115A69: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x111A62: free_mlx (exit.c:56)
-==4590==    by 0x111A62: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Address 0x4f2e3f2 is 2 bytes inside a block of size 16,384 free'd
-==4590==    at 0x48399AB: free (vg_replace_malloc.c:538)
-==4590==    by 0x4895837: _XFreeDisplayStructure (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x4882BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x111A56: free_mlx (exit.c:55)
-==4590==    by 0x111A56: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Block was alloc'd at
-==4590==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
-==4590==    by 0x4895D79: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x1123F4: create_cube (init_cub3d.c:18)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590== 
-==4590== Invalid read of size 8
-==4590==    at 0x48A8F9B: _XGetRequest (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x4884F1B: XDestroyWindow (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x115A69: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x111A62: free_mlx (exit.c:56)
-==4590==    by 0x111A62: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Address 0x4f26650 is 176 bytes inside a block of size 4,704 free'd
-==4590==    at 0x48399AB: free (vg_replace_malloc.c:538)
-==4590==    by 0x4882BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x111A56: free_mlx (exit.c:55)
-==4590==    by 0x111A56: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Block was alloc'd at
-==4590==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
-==4590==    by 0x48959ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x1123F4: create_cube (init_cub3d.c:18)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590== 
-==4590== Invalid read of size 8
-==4590==    at 0x48A8FA2: _XGetRequest (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x4884F1B: XDestroyWindow (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x115A69: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x111A62: free_mlx (exit.c:56)
-==4590==    by 0x111A62: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Address 0x4f26638 is 152 bytes inside a block of size 4,704 free'd
-==4590==    at 0x48399AB: free (vg_replace_malloc.c:538)
-==4590==    by 0x4882BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x111A56: free_mlx (exit.c:55)
-==4590==    by 0x111A56: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Block was alloc'd at
-==4590==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
-==4590==    by 0x48959ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x1123F4: create_cube (init_cub3d.c:18)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590== 
-==4590== Invalid write of size 4
-==4590==    at 0x4884F1C: XDestroyWindow (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x115A69: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x111A62: free_mlx (exit.c:56)
-==4590==    by 0x111A62: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Address 0x4f2e3f4 is 4 bytes inside a block of size 16,384 free'd
-==4590==    at 0x48399AB: free (vg_replace_malloc.c:538)
-==4590==    by 0x4895837: _XFreeDisplayStructure (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x4882BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x111A56: free_mlx (exit.c:55)
-==4590==    by 0x111A56: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Block was alloc'd at
-==4590==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
-==4590==    by 0x4895D79: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x1123F4: create_cube (init_cub3d.c:18)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590== 
-==4590== Invalid read of size 8
-==4590==    at 0x4884F1F: XDestroyWindow (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x115A69: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x111A62: free_mlx (exit.c:56)
-==4590==    by 0x111A62: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Address 0x4f26f08 is 2,408 bytes inside a block of size 4,704 free'd
-==4590==    at 0x48399AB: free (vg_replace_malloc.c:538)
-==4590==    by 0x4882BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x111A56: free_mlx (exit.c:55)
-==4590==    by 0x111A56: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Block was alloc'd at
-==4590==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
-==4590==    by 0x48959ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x1123F4: create_cube (init_cub3d.c:18)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590== 
-==4590== Invalid read of size 8
-==4590==    at 0x4884F31: XDestroyWindow (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x115A69: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x111A62: free_mlx (exit.c:56)
-==4590==    by 0x111A62: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Address 0x4f26670 is 208 bytes inside a block of size 4,704 free'd
-==4590==    at 0x48399AB: free (vg_replace_malloc.c:538)
-==4590==    by 0x4882BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x111A56: free_mlx (exit.c:55)
-==4590==    by 0x111A56: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Block was alloc'd at
-==4590==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
-==4590==    by 0x48959ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x1123F4: create_cube (init_cub3d.c:18)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590== 
-==4590== Invalid read of size 8
-==4590==    at 0x48890EA: XFreeGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x115A75: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x111A62: free_mlx (exit.c:56)
-==4590==    by 0x111A62: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Address 0x4f26f08 is 2,408 bytes inside a block of size 4,704 free'd
-==4590==    at 0x48399AB: free (vg_replace_malloc.c:538)
-==4590==    by 0x4882BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x111A56: free_mlx (exit.c:55)
-==4590==    by 0x111A56: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Block was alloc'd at
-==4590==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
-==4590==    by 0x48959ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x1123F4: create_cube (init_cub3d.c:18)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590== 
-==4590== Invalid read of size 8
-==4590==    at 0x48890F8: XFreeGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x115A75: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x111A62: free_mlx (exit.c:56)
-==4590==    by 0x111A62: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Address 0x4f266e0 is 320 bytes inside a block of size 4,704 free'd
-==4590==    at 0x48399AB: free (vg_replace_malloc.c:538)
-==4590==    by 0x4882BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x111A56: free_mlx (exit.c:55)
-==4590==    by 0x111A56: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Block was alloc'd at
-==4590==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
-==4590==    by 0x48959ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x1123F4: create_cube (init_cub3d.c:18)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590== 
-==4590== Invalid read of size 8
-==4590==    at 0x48A8F6A: _XGetRequest (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x4889136: XFreeGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x115A75: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x111A62: free_mlx (exit.c:56)
-==4590==    by 0x111A62: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Address 0x4f26650 is 176 bytes inside a block of size 4,704 free'd
-==4590==    at 0x48399AB: free (vg_replace_malloc.c:538)
-==4590==    by 0x4882BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x111A56: free_mlx (exit.c:55)
-==4590==    by 0x111A56: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Block was alloc'd at
-==4590==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
-==4590==    by 0x48959ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x1123F4: create_cube (init_cub3d.c:18)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590== 
-==4590== Invalid read of size 8
-==4590==    at 0x48A8F77: _XGetRequest (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x4889136: XFreeGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x115A75: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x111A62: free_mlx (exit.c:56)
-==4590==    by 0x111A62: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Address 0x4f26658 is 184 bytes inside a block of size 4,704 free'd
-==4590==    at 0x48399AB: free (vg_replace_malloc.c:538)
-==4590==    by 0x4882BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x111A56: free_mlx (exit.c:55)
-==4590==    by 0x111A56: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Block was alloc'd at
-==4590==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
-==4590==    by 0x48959ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x1123F4: create_cube (init_cub3d.c:18)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590== 
-==4590== Invalid write of size 8
-==4590==    at 0x48A8F89: _XGetRequest (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x4889136: XFreeGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x115A75: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x111A62: free_mlx (exit.c:56)
-==4590==    by 0x111A62: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Address 0x4f26640 is 160 bytes inside a block of size 4,704 free'd
-==4590==    at 0x48399AB: free (vg_replace_malloc.c:538)
-==4590==    by 0x4882BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x111A56: free_mlx (exit.c:55)
-==4590==    by 0x111A56: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Block was alloc'd at
-==4590==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
-==4590==    by 0x48959ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x1123F4: create_cube (init_cub3d.c:18)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590== 
-==4590== Invalid write of size 1
-==4590==    at 0x48A8F94: _XGetRequest (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x4889136: XFreeGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x115A75: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x111A62: free_mlx (exit.c:56)
-==4590==    by 0x111A62: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Address 0x4f2e3f8 is 8 bytes inside a block of size 16,384 free'd
-==4590==    at 0x48399AB: free (vg_replace_malloc.c:538)
-==4590==    by 0x4895837: _XFreeDisplayStructure (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x4882BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x111A56: free_mlx (exit.c:55)
-==4590==    by 0x111A56: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Block was alloc'd at
-==4590==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
-==4590==    by 0x4895D79: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x1123F4: create_cube (init_cub3d.c:18)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590== 
-==4590== Invalid write of size 2
-==4590==    at 0x48A8F97: _XGetRequest (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x4889136: XFreeGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x115A75: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x111A62: free_mlx (exit.c:56)
-==4590==    by 0x111A62: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Address 0x4f2e3fa is 10 bytes inside a block of size 16,384 free'd
-==4590==    at 0x48399AB: free (vg_replace_malloc.c:538)
-==4590==    by 0x4895837: _XFreeDisplayStructure (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x4882BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x111A56: free_mlx (exit.c:55)
-==4590==    by 0x111A56: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Block was alloc'd at
-==4590==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
-==4590==    by 0x4895D79: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x1123F4: create_cube (init_cub3d.c:18)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590== 
-==4590== Invalid read of size 8
-==4590==    at 0x48A8F9B: _XGetRequest (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x4889136: XFreeGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x115A75: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x111A62: free_mlx (exit.c:56)
-==4590==    by 0x111A62: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Address 0x4f26650 is 176 bytes inside a block of size 4,704 free'd
-==4590==    at 0x48399AB: free (vg_replace_malloc.c:538)
-==4590==    by 0x4882BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x111A56: free_mlx (exit.c:55)
-==4590==    by 0x111A56: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Block was alloc'd at
-==4590==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
-==4590==    by 0x48959ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x1123F4: create_cube (init_cub3d.c:18)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590== 
-==4590== Invalid read of size 8
-==4590==    at 0x48A8FA2: _XGetRequest (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x4889136: XFreeGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x115A75: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x111A62: free_mlx (exit.c:56)
-==4590==    by 0x111A62: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Address 0x4f26638 is 152 bytes inside a block of size 4,704 free'd
-==4590==    at 0x48399AB: free (vg_replace_malloc.c:538)
-==4590==    by 0x4882BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x111A56: free_mlx (exit.c:55)
-==4590==    by 0x111A56: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Block was alloc'd at
-==4590==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
-==4590==    by 0x48959ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x1123F4: create_cube (init_cub3d.c:18)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590== 
-==4590== Invalid write of size 4
-==4590==    at 0x488913C: XFreeGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x115A75: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x111A62: free_mlx (exit.c:56)
-==4590==    by 0x111A62: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Address 0x4f2e3fc is 12 bytes inside a block of size 16,384 free'd
-==4590==    at 0x48399AB: free (vg_replace_malloc.c:538)
-==4590==    by 0x4895837: _XFreeDisplayStructure (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x4882BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x111A56: free_mlx (exit.c:55)
-==4590==    by 0x111A56: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Block was alloc'd at
-==4590==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
-==4590==    by 0x4895D79: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x1123F4: create_cube (init_cub3d.c:18)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590== 
-==4590== Invalid read of size 8
-==4590==    at 0x488913F: XFreeGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x115A75: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x111A62: free_mlx (exit.c:56)
-==4590==    by 0x111A62: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Address 0x4f26f08 is 2,408 bytes inside a block of size 4,704 free'd
-==4590==    at 0x48399AB: free (vg_replace_malloc.c:538)
-==4590==    by 0x4882BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x111A56: free_mlx (exit.c:55)
-==4590==    by 0x111A56: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Block was alloc'd at
-==4590==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
-==4590==    by 0x48959ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x1123F4: create_cube (init_cub3d.c:18)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590== 
-==4590== Invalid read of size 8
-==4590==    at 0x4889151: XFreeGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x115A75: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x111A62: free_mlx (exit.c:56)
-==4590==    by 0x111A62: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Address 0x4f26670 is 208 bytes inside a block of size 4,704 free'd
-==4590==    at 0x48399AB: free (vg_replace_malloc.c:538)
-==4590==    by 0x4882BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x111A56: free_mlx (exit.c:55)
-==4590==    by 0x111A56: exit_free (exit.c:95)
-==4590==    by 0x11335F: press_key (key_mapping.c:20)
-==4590==    by 0x114525: mlx_loop (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590==  Block was alloc'd at
-==4590==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
-==4590==    by 0x48959ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==4590==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
-==4590==    by 0x1123F4: create_cube (init_cub3d.c:18)
-==4590==    by 0x10F4F9: main (main.c:50)
-==4590== 
-==4590== 
-==4590== FILE DESCRIPTORS: 4 open at exit.
-==4590== Open file descriptor 3: /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/valgrind-out.txt
-==4590==    <inherited from parent>
-==4590== 
-==4590== Open file descriptor 2: /dev/pts/0
-==4590==    <inherited from parent>
-==4590== 
-==4590== Open file descriptor 1: /dev/pts/0
-==4590==    <inherited from parent>
-==4590== 
-==4590== Open file descriptor 0: /dev/pts/0
-==4590==    <inherited from parent>
-==4590== 
-==4590== 
-==4590== HEAP SUMMARY:
-==4590==     in use at exit: 0 bytes in 0 blocks
-==4590==   total heap usage: 3,411 allocs, 3,411 frees, 2,039,087 bytes allocated
-==4590== 
-==4590== All heap blocks were freed -- no leaks are possible
-==4590== 
-==4590== For lists of detected and suppressed errors, rerun with: -s
-==4590== ERROR SUMMARY: 29 errors from 23 contexts (suppressed: 4 from 1)
+==4590==    at 0x4884EFC: XDestroyWindow (in /usr/lib/x86_64-linux-==4322== Invalid read of size 8
+==4322==    at 0x5173EFC: XDestroyWindow (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x115A69: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x111A62: free_mlx (exit.c:56)
+==4322==    by 0x111A62: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Address 0x6802f98 is 2,408 bytes inside a block of size 4,704 free'd
+==4322==    at 0x48399AB: free (vg_replace_malloc.c:538)
+==4322==    by 0x5171BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A56: free_mlx (exit.c:55)
+==4322==    by 0x111A56: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Block was alloc'd at
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x51849ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== Invalid read of size 8
+==4322==    at 0x5197F6A: _XGetRequest (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x5173F1B: XDestroyWindow (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x115A69: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x111A62: free_mlx (exit.c:56)
+==4322==    by 0x111A62: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Address 0x68026e0 is 176 bytes inside a block of size 4,704 free'd
+==4322==    at 0x48399AB: free (vg_replace_malloc.c:538)
+==4322==    by 0x5171BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A56: free_mlx (exit.c:55)
+==4322==    by 0x111A56: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Block was alloc'd at
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x51849ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== Invalid read of size 8
+==4322==    at 0x5197F77: _XGetRequest (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x5173F1B: XDestroyWindow (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x115A69: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x111A62: free_mlx (exit.c:56)
+==4322==    by 0x111A62: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Address 0x68026e8 is 184 bytes inside a block of size 4,704 free'd
+==4322==    at 0x48399AB: free (vg_replace_malloc.c:538)
+==4322==    by 0x5171BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A56: free_mlx (exit.c:55)
+==4322==    by 0x111A56: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Block was alloc'd at
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x51849ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== Invalid write of size 8
+==4322==    at 0x5197F89: _XGetRequest (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x5173F1B: XDestroyWindow (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x115A69: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x111A62: free_mlx (exit.c:56)
+==4322==    by 0x111A62: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Address 0x68026d0 is 160 bytes inside a block of size 4,704 free'd
+==4322==    at 0x48399AB: free (vg_replace_malloc.c:538)
+==4322==    by 0x5171BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A56: free_mlx (exit.c:55)
+==4322==    by 0x111A56: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Block was alloc'd at
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x51849ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== Invalid write of size 1
+==4322==    at 0x5197F94: _XGetRequest (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x5173F1B: XDestroyWindow (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x115A69: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x111A62: free_mlx (exit.c:56)
+==4322==    by 0x111A62: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Address 0x680a480 is 0 bytes inside a block of size 16,384 free'd
+==4322==    at 0x48399AB: free (vg_replace_malloc.c:538)
+==4322==    by 0x5184837: _XFreeDisplayStructure (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x5171BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A56: free_mlx (exit.c:55)
+==4322==    by 0x111A56: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Block was alloc'd at
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x5184D79: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== Invalid write of size 2
+==4322==    at 0x5197F97: _XGetRequest (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x5173F1B: XDestroyWindow (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x115A69: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x111A62: free_mlx (exit.c:56)
+==4322==    by 0x111A62: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Address 0x680a482 is 2 bytes inside a block of size 16,384 free'd
+==4322==    at 0x48399AB: free (vg_replace_malloc.c:538)
+==4322==    by 0x5184837: _XFreeDisplayStructure (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x5171BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A56: free_mlx (exit.c:55)
+==4322==    by 0x111A56: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Block was alloc'd at
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x5184D79: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== Invalid read of size 8
+==4322==    at 0x5197F9B: _XGetRequest (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x5173F1B: XDestroyWindow (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x115A69: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x111A62: free_mlx (exit.c:56)
+==4322==    by 0x111A62: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Address 0x68026e0 is 176 bytes inside a block of size 4,704 free'd
+==4322==    at 0x48399AB: free (vg_replace_malloc.c:538)
+==4322==    by 0x5171BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A56: free_mlx (exit.c:55)
+==4322==    by 0x111A56: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Block was alloc'd at
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x51849ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== Invalid read of size 8
+==4322==    at 0x5197FA2: _XGetRequest (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x5173F1B: XDestroyWindow (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x115A69: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x111A62: free_mlx (exit.c:56)
+==4322==    by 0x111A62: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Address 0x68026c8 is 152 bytes inside a block of size 4,704 free'd
+==4322==    at 0x48399AB: free (vg_replace_malloc.c:538)
+==4322==    by 0x5171BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A56: free_mlx (exit.c:55)
+==4322==    by 0x111A56: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Block was alloc'd at
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x51849ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== Invalid write of size 4
+==4322==    at 0x5173F1C: XDestroyWindow (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x115A69: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x111A62: free_mlx (exit.c:56)
+==4322==    by 0x111A62: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Address 0x680a484 is 4 bytes inside a block of size 16,384 free'd
+==4322==    at 0x48399AB: free (vg_replace_malloc.c:538)
+==4322==    by 0x5184837: _XFreeDisplayStructure (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x5171BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A56: free_mlx (exit.c:55)
+==4322==    by 0x111A56: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Block was alloc'd at
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x5184D79: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== Invalid read of size 8
+==4322==    at 0x5173F1F: XDestroyWindow (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x115A69: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x111A62: free_mlx (exit.c:56)
+==4322==    by 0x111A62: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Address 0x6802f98 is 2,408 bytes inside a block of size 4,704 free'd
+==4322==    at 0x48399AB: free (vg_replace_malloc.c:538)
+==4322==    by 0x5171BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A56: free_mlx (exit.c:55)
+==4322==    by 0x111A56: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Block was alloc'd at
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x51849ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== Invalid read of size 8
+==4322==    at 0x5173F31: XDestroyWindow (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x115A69: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x111A62: free_mlx (exit.c:56)
+==4322==    by 0x111A62: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Address 0x6802700 is 208 bytes inside a block of size 4,704 free'd
+==4322==    at 0x48399AB: free (vg_replace_malloc.c:538)
+==4322==    by 0x5171BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A56: free_mlx (exit.c:55)
+==4322==    by 0x111A56: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Block was alloc'd at
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x51849ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== Invalid read of size 8
+==4322==    at 0x51780EA: XFreeGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x115A75: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x111A62: free_mlx (exit.c:56)
+==4322==    by 0x111A62: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Address 0x6802f98 is 2,408 bytes inside a block of size 4,704 free'd
+==4322==    at 0x48399AB: free (vg_replace_malloc.c:538)
+==4322==    by 0x5171BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A56: free_mlx (exit.c:55)
+==4322==    by 0x111A56: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Block was alloc'd at
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x51849ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== Invalid read of size 8
+==4322==    at 0x51780F8: XFreeGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x115A75: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x111A62: free_mlx (exit.c:56)
+==4322==    by 0x111A62: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Address 0x6802770 is 320 bytes inside a block of size 4,704 free'd
+==4322==    at 0x48399AB: free (vg_replace_malloc.c:538)
+==4322==    by 0x5171BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A56: free_mlx (exit.c:55)
+==4322==    by 0x111A56: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Block was alloc'd at
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x51849ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== Invalid read of size 8
+==4322==    at 0x5197F6A: _XGetRequest (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x5178136: XFreeGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x115A75: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x111A62: free_mlx (exit.c:56)
+==4322==    by 0x111A62: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Address 0x68026e0 is 176 bytes inside a block of size 4,704 free'd
+==4322==    at 0x48399AB: free (vg_replace_malloc.c:538)
+==4322==    by 0x5171BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A56: free_mlx (exit.c:55)
+==4322==    by 0x111A56: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Block was alloc'd at
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x51849ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== Invalid read of size 8
+==4322==    at 0x5197F77: _XGetRequest (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x5178136: XFreeGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x115A75: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x111A62: free_mlx (exit.c:56)
+==4322==    by 0x111A62: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Address 0x68026e8 is 184 bytes inside a block of size 4,704 free'd
+==4322==    at 0x48399AB: free (vg_replace_malloc.c:538)
+==4322==    by 0x5171BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A56: free_mlx (exit.c:55)
+==4322==    by 0x111A56: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Block was alloc'd at
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x51849ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== Invalid write of size 8
+==4322==    at 0x5197F89: _XGetRequest (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x5178136: XFreeGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x115A75: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x111A62: free_mlx (exit.c:56)
+==4322==    by 0x111A62: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Address 0x68026d0 is 160 bytes inside a block of size 4,704 free'd
+==4322==    at 0x48399AB: free (vg_replace_malloc.c:538)
+==4322==    by 0x5171BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A56: free_mlx (exit.c:55)
+==4322==    by 0x111A56: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Block was alloc'd at
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x51849ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== Invalid write of size 1
+==4322==    at 0x5197F94: _XGetRequest (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x5178136: XFreeGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x115A75: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x111A62: free_mlx (exit.c:56)
+==4322==    by 0x111A62: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Address 0x680a488 is 8 bytes inside a block of size 16,384 free'd
+==4322==    at 0x48399AB: free (vg_replace_malloc.c:538)
+==4322==    by 0x5184837: _XFreeDisplayStructure (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x5171BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A56: free_mlx (exit.c:55)
+==4322==    by 0x111A56: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Block was alloc'd at
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x5184D79: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== Invalid write of size 2
+==4322==    at 0x5197F97: _XGetRequest (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x5178136: XFreeGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x115A75: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x111A62: free_mlx (exit.c:56)
+==4322==    by 0x111A62: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Address 0x680a48a is 10 bytes inside a block of size 16,384 free'd
+==4322==    at 0x48399AB: free (vg_replace_malloc.c:538)
+==4322==    by 0x5184837: _XFreeDisplayStructure (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x5171BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A56: free_mlx (exit.c:55)
+==4322==    by 0x111A56: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Block was alloc'd at
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x5184D79: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== Invalid read of size 8
+==4322==    at 0x5197F9B: _XGetRequest (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x5178136: XFreeGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x115A75: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x111A62: free_mlx (exit.c:56)
+==4322==    by 0x111A62: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Address 0x68026e0 is 176 bytes inside a block of size 4,704 free'd
+==4322==    at 0x48399AB: free (vg_replace_malloc.c:538)
+==4322==    by 0x5171BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A56: free_mlx (exit.c:55)
+==4322==    by 0x111A56: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Block was alloc'd at
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x51849ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== Invalid read of size 8
+==4322==    at 0x5197FA2: _XGetRequest (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x5178136: XFreeGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x115A75: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x111A62: free_mlx (exit.c:56)
+==4322==    by 0x111A62: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Address 0x68026c8 is 152 bytes inside a block of size 4,704 free'd
+==4322==    at 0x48399AB: free (vg_replace_malloc.c:538)
+==4322==    by 0x5171BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A56: free_mlx (exit.c:55)
+==4322==    by 0x111A56: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Block was alloc'd at
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x51849ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== Invalid write of size 4
+==4322==    at 0x517813C: XFreeGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x115A75: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x111A62: free_mlx (exit.c:56)
+==4322==    by 0x111A62: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Address 0x680a48c is 12 bytes inside a block of size 16,384 free'd
+==4322==    at 0x48399AB: free (vg_replace_malloc.c:538)
+==4322==    by 0x5184837: _XFreeDisplayStructure (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x5171BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A56: free_mlx (exit.c:55)
+==4322==    by 0x111A56: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Block was alloc'd at
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x5184D79: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== Invalid read of size 8
+==4322==    at 0x517813F: XFreeGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x115A75: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x111A62: free_mlx (exit.c:56)
+==4322==    by 0x111A62: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Address 0x6802f98 is 2,408 bytes inside a block of size 4,704 free'd
+==4322==    at 0x48399AB: free (vg_replace_malloc.c:538)
+==4322==    by 0x5171BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A56: free_mlx (exit.c:55)
+==4322==    by 0x111A56: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Block was alloc'd at
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x51849ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== Invalid read of size 8
+==4322==    at 0x5178151: XFreeGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x115A75: mlx_destroy_window (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x111A62: free_mlx (exit.c:56)
+==4322==    by 0x111A62: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Address 0x6802700 is 208 bytes inside a block of size 4,704 free'd
+==4322==    at 0x48399AB: free (vg_replace_malloc.c:538)
+==4322==    by 0x5171BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A56: free_mlx (exit.c:55)
+==4322==    by 0x111A56: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Block was alloc'd at
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x51849ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== Invalid read of size 8
+==4322==    at 0x51765B1: XFlush (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A62: free_mlx (exit.c:56)
+==4322==    by 0x111A62: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Address 0x6802f98 is 2,408 bytes inside a block of size 4,704 free'd
+==4322==    at 0x48399AB: free (vg_replace_malloc.c:538)
+==4322==    by 0x5171BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A56: free_mlx (exit.c:55)
+==4322==    by 0x111A56: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Block was alloc'd at
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x51849ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== Invalid read of size 8
+==4322==    at 0x51952B4: _XFlush (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x51765C9: XFlush (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A62: free_mlx (exit.c:56)
+==4322==    by 0x111A62: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Address 0x68026d8 is 168 bytes inside a block of size 4,704 free'd
+==4322==    at 0x48399AB: free (vg_replace_malloc.c:538)
+==4322==    by 0x5171BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A56: free_mlx (exit.c:55)
+==4322==    by 0x111A56: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Block was alloc'd at
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x51849ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== Invalid read of size 8
+==4322==    at 0x51952BB: _XFlush (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x51765C9: XFlush (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A62: free_mlx (exit.c:56)
+==4322==    by 0x111A62: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Address 0x68026e8 is 184 bytes inside a block of size 4,704 free'd
+==4322==    at 0x48399AB: free (vg_replace_malloc.c:538)
+==4322==    by 0x5171BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A56: free_mlx (exit.c:55)
+==4322==    by 0x111A56: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Block was alloc'd at
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x51849ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== Invalid read of size 8
+==4322==    at 0x5194D6C: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x51952CF: _XFlush (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x51765C9: XFlush (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A62: free_mlx (exit.c:56)
+==4322==    by 0x111A62: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Address 0x6802728 is 248 bytes inside a block of size 4,704 free'd
+==4322==    at 0x48399AB: free (vg_replace_malloc.c:538)
+==4322==    by 0x5171BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A56: free_mlx (exit.c:55)
+==4322==    by 0x111A56: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Block was alloc'd at
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x51849ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== Invalid read of size 8
+==4322==    at 0x5194D7B: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x51952CF: _XFlush (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x51765C9: XFlush (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A62: free_mlx (exit.c:56)
+==4322==    by 0x111A62: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Address 0x68026d8 is 168 bytes inside a block of size 4,704 free'd
+==4322==    at 0x48399AB: free (vg_replace_malloc.c:538)
+==4322==    by 0x5171BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A56: free_mlx (exit.c:55)
+==4322==    by 0x111A56: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Block was alloc'd at
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x51849ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== Invalid read of size 8
+==4322==    at 0x5194D8B: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x51952CF: _XFlush (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x51765C9: XFlush (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A62: free_mlx (exit.c:56)
+==4322==    by 0x111A62: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Address 0x68026e0 is 176 bytes inside a block of size 4,704 free'd
+==4322==    at 0x48399AB: free (vg_replace_malloc.c:538)
+==4322==    by 0x5171BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A56: free_mlx (exit.c:55)
+==4322==    by 0x111A56: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Block was alloc'd at
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x51849ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== Invalid read of size 8
+==4322==    at 0x5194D9D: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x51952CF: _XFlush (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x51765C9: XFlush (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A62: free_mlx (exit.c:56)
+==4322==    by 0x111A62: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Address 0x6803060 is 2,608 bytes inside a block of size 4,704 free'd
+==4322==    at 0x48399AB: free (vg_replace_malloc.c:538)
+==4322==    by 0x5171BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A56: free_mlx (exit.c:55)
+==4322==    by 0x111A56: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Block was alloc'd at
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x51849ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== Invalid read of size 8
+==4322==    at 0x5194DA4: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x51952CF: _XFlush (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x51765C9: XFlush (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A62: free_mlx (exit.c:56)
+==4322==    by 0x111A62: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Address 0x68026c8 is 152 bytes inside a block of size 4,704 free'd
+==4322==    at 0x48399AB: free (vg_replace_malloc.c:538)
+==4322==    by 0x5171BD0: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A56: free_mlx (exit.c:55)
+==4322==    by 0x111A56: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Block was alloc'd at
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x51849ED: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== Invalid read of size 8
+==4322==    at 0x5194DAB: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x51952CF: _XFlush (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x51765C9: XFlush (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x111A62: free_mlx (exit.c:56)
+==4322==    by 0x111A62: exit_free (exit.c:95)
+==4322==    by 0x1120BF: load_img (init_cub3d.c:47)
+==4322==    by 0x11243A: create_cube (init_cub3d.c:24)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==4322== 
+==4322== 
+==4322== FILE DESCRIPTORS: 4 open at exit.
+==4322== Open file descriptor 3: /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/valgrind-out.txt
+==4322==    <inherited from parent>
+==4322== 
+==4322== Open file descriptor 2: /dev/pts/0
+==4322==    <inherited from parent>
+==4322== 
+==4322== Open file descriptor 1: /dev/pts/0
+==4322==    <inherited from parent>
+==4322== 
+==4322== Open file descriptor 0: /dev/pts/0
+==4322==    <inherited from parent>
+==4322== 
+==4322== 
+==4322== HEAP SUMMARY:
+==4322==     in use at exit: 474 bytes in 9 blocks
+==4322==   total heap usage: 496 allocs, 487 frees, 341,202 bytes allocated
+==4322== 
+==4322== 13 bytes in 1 blocks are still reachable in loss record 1 of 9
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x1103F2: ft_calloc (allocs.c:68)
+==4322==    by 0x110255: ft_strdup (utils2.c:94)
+==4322==    by 0x110CB7: prs_file (parse_file.c:109)
+==4322==    by 0x1106F3: read_file (read_file.c:88)
+==4322==    by 0x10F4D5: main (main.c:47)
+==4322== 
+==4322== 13 bytes in 1 blocks are still reachable in loss record 2 of 9
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x1103F2: ft_calloc (allocs.c:68)
+==4322==    by 0x110255: ft_strdup (utils2.c:94)
+==4322==    by 0x110D22: prs_file (parse_file.c:111)
+==4322==    by 0x1106F3: read_file (read_file.c:88)
+==4322==    by 0x10F4D5: main (main.c:47)
+==4322== 
+==4322== 13 bytes in 1 blocks are still reachable in loss record 3 of 9
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x1103F2: ft_calloc (allocs.c:68)
+==4322==    by 0x110255: ft_strdup (utils2.c:94)
+==4322==    by 0x110D8E: prs_file (parse_file.c:113)
+==4322==    by 0x1106F3: read_file (read_file.c:88)
+==4322==    by 0x10F4D5: main (main.c:47)
+==4322== 
+==4322== 13 bytes in 1 blocks are still reachable in loss record 4 of 9
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x1103F2: ft_calloc (allocs.c:68)
+==4322==    by 0x110255: ft_strdup (utils2.c:94)
+==4322==    by 0x110DFA: prs_file (parse_file.c:115)
+==4322==    by 0x1106F3: read_file (read_file.c:88)
+==4322==    by 0x10F4D5: main (main.c:47)
+==4322== 
+==4322== 22 bytes in 1 blocks are still reachable in loss record 5 of 9
+==4322==    at 0x483877F: malloc (vg_replace_malloc.c:307)
+==4322==    by 0x561D3FF: XauFileName (in /usr/lib/x86_64-linux-gnu/libXau.so.6.0.0)
+==4322==    by 0x561D5F8: XauGetBestAuthByAddr (in /usr/lib/x86_64-linux-gnu/libXau.so.6.0.0)
+==4322==    by 0x56023B3: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==4322==    by 0x560258E: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==4322==    by 0x5602013: xcb_connect_to_display_with_auth_info (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==4322==    by 0x5194241: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x5184A24: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==4322==    by 0x1141A3: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== 40 bytes in 1 blocks are still reachable in loss record 6 of 9
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x1103F2: ft_calloc (allocs.c:68)
+==4322==    by 0x110C2C: prs_file (parse_file.c:103)
+==4322==    by 0x1106F3: read_file (read_file.c:88)
+==4322==    by 0x10F4D5: main (main.c:47)
+==4322== 
+==4322== 88 bytes in 1 blocks are still reachable in loss record 7 of 9
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x114717: mlx_int_new_xshm_image (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x114A2E: mlx_new_image (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1152B7: mlx_int_parse_xpm (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1156ED: mlx_xpm_file_to_image (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x111560: easter_egg (map_portal.c:17)
+==4322==    by 0x1124D7: create_cube (init_cub3d.c:23)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== 136 bytes in 1 blocks are still reachable in loss record 8 of 9
+==4322==    at 0x483877F: malloc (vg_replace_malloc.c:307)
+==4322==    by 0x11418B: mlx_init (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1123F4: create_cube (init_cub3d.c:18)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== 136 bytes in 1 blocks are still reachable in loss record 9 of 9
+==4322==    at 0x483AB65: calloc (vg_replace_malloc.c:760)
+==4322==    by 0x51459FF: XShmCreateImage (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==4322==    by 0x114742: mlx_int_new_xshm_image (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x114A2E: mlx_new_image (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1152B7: mlx_int_parse_xpm (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x1156ED: mlx_xpm_file_to_image (in /mnt/c/Users/Admin/Desktop/42-cursus-cub3d/cub3d)
+==4322==    by 0x111560: easter_egg (map_portal.c:17)
+==4322==    by 0x1124D7: create_cube (init_cub3d.c:23)
+==4322==    by 0x10F4F9: main (main.c:50)
+==4322== 
+==4322== LEAK SUMMARY:
+==4322==    definitely lost: 0 bytes in 0 blocks
+==4322==    indirectly lost: 0 bytes in 0 blocks
+==4322==      possibly lost: 0 bytes in 0 blocks
+==4322==    still reachable: 474 bytes in 9 blocks
+==4322==         suppressed: 0 bytes in 0 blocks
+==4322== 
+==4322== For lists of detected and suppressed errors, rerun with: -s
+==4322== ERROR SUMMARY: 38 errors from 32 contexts (suppressed: 1 from 1)

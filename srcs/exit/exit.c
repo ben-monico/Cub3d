@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 21:26:04 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/10 16:52:42 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/11 15:28:01 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	free_imgs(t_cub *data)
 	if (data->img.wall[0].ptr)
 	{	
 		i = -1;
-		while (++i < 7 && data->img.wall[i].ptr)
+		while (++i < 8 && data->img.wall[i].ptr)
 		{
 			mlx_destroy_image(data->mlx, data->img.wall[i].ptr);
 			data->img.wall[i].ptr = 0;

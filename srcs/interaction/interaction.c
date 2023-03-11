@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:14:22 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/10 16:25:16 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/11 15:32:56 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	verify_collision_and_door(double x, double y)
 	mtx = cub->map.mtx;
 	if (mtx[(int)x][(int)y] == '5')
 	{
-		win_condition();
+		ft_screens(6);
 		return ;
 	}
 	if (mtx[(int)x][(int)y] == '3' && portal_teleport(cub, cub->map.mtx, x, y))

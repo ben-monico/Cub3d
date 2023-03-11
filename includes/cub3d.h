@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 16:57:00 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/10 17:28:50 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/11 15:43:01 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ unsigned int	get_color_img(t_data *data, int x, int y);
 
 // Cube Utils
 t_cub			*cube(void);
-void			win_condition(void);
+void			ft_screens(int i);
+void			init_screens(t_cub *cub);
+void			screen_sprite_cmp(t_cub *cub, char **mtx);
 void			load_img(t_cub *data, char **path);
 void			create_cube(t_cub *cub);
 int				press_key(int key, t_cub *cub);
