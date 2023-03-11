@@ -32,6 +32,9 @@ static void	check_portal_x(t_cub *cub, char **mtx, double x, double y)
 
 int	portal_teleport(t_cub *cub, char **mtx, double x, double y)
 {
+	if (floor(y) == floor(cub->player.pos_y) \
+		&& floor(x) == floor(cub->player.pos_x))
+		return (0);
 	if (floor(y) > floor(cub->player.pos_y))
 	{
 		while (mtx[(int)x][(int)(y + 1)] == '3')

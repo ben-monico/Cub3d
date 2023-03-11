@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 01:58:29 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/10 16:52:56 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/10 21:23:35 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ unsigned int	get_color_img(t_data *data, int x, int y)
 	return (color);
 }
 
-int	calc_prs(int dir, int color)
+int	calc_bob(int dir, int color)
 {
-	static int	prsh;
-	static int	prsw;
+	static int	bobh;
+	static int	bobw;
 	static int	y;
 	static int	x;
 
@@ -68,28 +68,28 @@ int	calc_prs(int dir, int color)
 	}
 	if (dir)
 	{
-		if (prsh == 15 || prsh == -15)
+		if (bobh == 15 || bobh == -15)
 			y *= -1;
-		prsh += y;
-		return (prsh);
+		bobh += y;
+		return (bobh);
 	}
-	if (prsw == 30 || prsw == -30)
+	if (bobw == 30 || bobw == -30)
 		x *= -1;
-	prsw += x;
-	return (prsw);
+	bobw += x;
+	return (bobw);
 }
 
-void	put_image_remove_chroma(t_data *img, int offsetW, \
-			int offsetH, int chroma_max)
+void	put_image_remove_chroma(t_data *img, int x, \
+			int y, int isgun)
 {
 	int	h;
 	int	w;
 	int	color;
-	int	prsh;
-	int	prsw;
+	int	bobh;
+	int	bobw;
 
-	prsw = calc_prs(0, chroma_max);
-	prsh = calc_prs(1, chroma_max);
+	bobw = calc_bob(0, isgun);
+	bobh = calc_bob(1, isgun);
 	w = -1;
 	while (++w < img->width)
 	{
@@ -97,11 +97,10 @@ void	put_image_remove_chroma(t_data *img, int offsetW, \
 		while (++h < img->height)
 		{
 			color = get_color_img(img, w, h);
-			if ((color >= 0x000300 && color <= chroma_max) \
-			|| offsetH + h + prsh + 30 > SCREENH)
+			if ((color < 0x010101) || y + h + bobh + 30 > SCREENH)
 				continue ;
-			my_mlx_pixel_put(&cube()->screen, offsetW + w + prsw, \
-			offsetH + h + prsh + 30, color);
+			my_mlx_pixel_put(&cube()->screen, x + w + bobw, \
+			y + h + bobh + 30, color);
 		}
 	}
 }

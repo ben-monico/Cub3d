@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 17:58:25 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/10 16:21:30 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/10 20:41:53 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,9 @@ void	render_screen(t_cub *cub)
 	put_minimap(cub, cub->map.mtx);
 	put_image_remove_chroma(&cub->sprites[0], \
 	SCREENW - cub->sprites[0].width - 120, \
-	SCREENH - cub->sprites[0].height, 0x02FFCF);
+	SCREENH - cub->sprites[0].height, 1);
 	put_image_remove_chroma(&cub->sprites[1], \
-	SCREENW / 2 - 10, SCREENH / 2 - 10, 0x24FFCF);
+	SCREENW / 2 - 10, SCREENH / 2 - 10, 0);
 	mlx_do_sync(cub->mlx);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->screen.ptr, 0, 0);
 }
