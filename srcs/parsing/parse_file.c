@@ -42,20 +42,21 @@ int	trim_ident(char *line, t_prs *prs, int ct)
 	return (1);
 }
 
-int	check_identifier(char *line, t_prs *prs, int ct)
+int	check_identifier(char *line, t_prs *prs)
 {
-	if (!string().strncmp("NO", line, 2))
-		return (trim_ident(line + 2, prs, 0));
-	else if (!string().strncmp("SO", line, 2))
-		return (trim_ident(line + 2, prs, 1));
-	else if (!string().strncmp("WE", line, 2))
-		return (trim_ident(line + 2, prs, 2));
-	else if (!string().strncmp("EA", line, 2))
-		return (trim_ident(line + 2, prs, 3));
-	else if (!string().strncmp("F", line, 1))
-		return (trim_ident(line, prs, ct));
-	else if (!string().strncmp("C", line, 1))
-		return (trim_ident(line, prs, ct));
+	static int	ctr;
+
+	if (!string().strncmp("NO ", line, 3))
+		return (trim_ident(line + 2, prs, ctr++));
+	else if (!string().strncmp("SO ", line, 3))
+		return (trim_ident(line + 2, prs, ctr++));
+	else if (!string().strncmp("WE ", line, 3))
+		return (trim_ident(line + 2, prs, ctr++));
+	else if (!string().strncmp("EA ", line, 3))
+		return (trim_ident(line + 2, prs, ctr++));
+	else if (!string().strncmp("F ", line, 1)
+		|| !string().strncmp("C ", line, 1))
+		return (trim_ident(line, prs, ctr));
 	if (prs->floor_c || prs->color_c)
 		return (1);
 	return (0);
@@ -80,8 +81,8 @@ int	get_path_img(t_prs *prs)
 		{
 			if (!string().ft_isspace(prs->file[i][j]))
 			{
-				if (!check_identifier(prs->file[i] + j, prs, ct))
-					exit_prs(prs, 1, "File Not Formated Correctly.");
+				if (!check_identifier(prs->file[i] + j, prs))
+					exit_prs(prs, 1, "File Not Formated Correctly");
 				ct++;
 				break ;
 			}
@@ -102,18 +103,7 @@ void	prs_file(t_prs *prs)
 	i = -1;
 	cube()->img.path = alloc().calloc((sizeof(char *) * 5));
 	while (++i < 4)
-	{
-		if (!prs->path_to_img[i])
-			exit_prs(prs, 1, "Map Not Formated Correctly");
-		if (string().strchr(prs->path_to_img[i], 'N'))
-			cube()->img.path[0] = string().strdup(prs->path_to_img[i]);
-		if (string().strchr(prs->path_to_img[i], 'S'))
-			cube()->img.path[1] = string().strdup(prs->path_to_img[i]);
-		if (string().strchr(prs->path_to_img[i], 'W'))
-			cube()->img.path[2] = string().strdup(prs->path_to_img[i]);
-		if (string().strchr(prs->path_to_img[i], 'E'))
-			cube()->img.path[3] = string().strdup(prs->path_to_img[i]);
-	}
+		parse_image(prs, i);
 	if (!prs->floor_c || !prs->color_c)
 		exit_prs(prs, 1, "Map Not Formated Correctly");
 	f = get_colors(prs->floor_c + 1, prs);

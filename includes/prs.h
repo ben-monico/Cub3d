@@ -35,5 +35,5 @@ void		prs_file(t_prs *prs);
 void		clean_parsing(t_prs *data);
 void		exit_prs(t_prs *data, int status, char *str);
 void		check_portal(char **map, int x, int y);
-
+void		parse_image(t_prs *prs, int i);
 #endif

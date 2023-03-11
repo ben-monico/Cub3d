@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cub3d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 23:26:10 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/10 17:05:10 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/11 00:04:20 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	create_cube(t_cub *cub)
 	cub->mlx = mlx_init();
 	if (!cub->mlx)
 		exit_free(cub, 1, "Failed to init mlx.\n");
-	cub->win = mlx_new_window(cub->mlx, SCREENW, SCREENH, "cub3d");
 	if (cub->img.wall[5].x)
 		easter_egg(cub);
 	load_img(cub, cub->img.path);
+	cub->win = mlx_new_window(cub->mlx, SCREENW, SCREENH, "cub3d");
 	if (!cub->win)
 		exit_free(cub, 1, "Failed to init mlx.\n");
 	mlx_mouse_hide(cub->mlx, cub->win);
