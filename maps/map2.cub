@@ -1,10 +1,10 @@
-SO ./img/S1.xpm
-EA ./img/E1.xpm    
-WE ./img/W1.xpm
+SO      ./img/S1.xpm
+F                  210,110,110
+EA          ./img/E1.xpm    
+WE                              ./img/W1.xpm
 
-F  110,110,110
-C 41,41,41
-NO                       ./img/N1.xpm
+   NO                       ./img/N1.xpm
+     C 41,41,41
 
           1111111111111111111111111111
        1111111022022002202220000000011111
