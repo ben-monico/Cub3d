@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:59:14 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/10 15:25:52 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/11 00:57:01 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,8 @@
 
 # define SCREENW				1280
 # define SCREENH				720
-# define SIZE_X					64
-# define SIZE_Y					64
-# define WALLCOLORX				0xDBACD4
-# define DOORCOLOR				0xFFA500
-# define CHROMA_REDMASK 		0x24FFCF
-# define CHROMA_BLACKMASK		0x02FFCF
-# define WHITE					0xFFFFFF
 # define DUB_STEP				0.05
-# define MOUSE_STEP				3.5
+# define MOUSE_STEP				1.5
 # define TEX_SIZE				512
 
 # define X_EVENT_KEY_PRESS		2

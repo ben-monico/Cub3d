@@ -1,9 +1,10 @@
-NO ./img/N1.xpm
-SO ./img/S1.xpm
-WE ./img/W1.xpm
-EA ./img/E1.xpm
-    F     74,41,41
-    C     231,236,249
+NO ./img/N.xpm
+SO ./img/S.xpm
+WE ./img/W.xpm
+EA ./img/E.xpm    
+
+F     74,41,41
+C     231,236,249
 
 
         1111111111111111111111111
