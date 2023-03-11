@@ -42,20 +42,20 @@ int	trim_ident(char *line, t_prs *prs, int ct)
 	return (1);
 }
 
-int	check_identifier(char *line, t_prs *prs, int ct)
+int	check_identifier(char *line, t_prs *prs)
 {
+	static int	ctr;
+
 	if (!string().strncmp("NO", line, 2))
-		return (trim_ident(line + 2, prs, 0));
+		return (trim_ident(line + 2, prs, ctr++));
 	else if (!string().strncmp("SO", line, 2))
-		return (trim_ident(line + 2, prs, 1));
+		return (trim_ident(line + 2, prs, ctr++));
 	else if (!string().strncmp("WE", line, 2))
-		return (trim_ident(line + 2, prs, 2));
+		return (trim_ident(line + 2, prs, ctr++));
 	else if (!string().strncmp("EA", line, 2))
-		return (trim_ident(line + 2, prs, 3));
-	else if (!string().strncmp("F", line, 1))
-		return (trim_ident(line, prs, ct));
-	else if (!string().strncmp("C", line, 1))
-		return (trim_ident(line, prs, ct));
+		return (trim_ident(line + 2, prs, ctr++));
+	else if (!string().strncmp("F", line, 1) || !string().strncmp("C", line, 1))
+		return (trim_ident(line, prs, ctr));
 	if (prs->floor_c || prs->color_c)
 		return (1);
 	return (0);
@@ -80,7 +80,7 @@ int	get_path_img(t_prs *prs)
 		{
 			if (!string().ft_isspace(prs->file[i][j]))
 			{
-				if (!check_identifier(prs->file[i] + j, prs, ct))
+				if (!check_identifier(prs->file[i] + j, prs))
 					exit_prs(prs, 1, "File Not Formated Correctly.");
 				ct++;
 				break ;
