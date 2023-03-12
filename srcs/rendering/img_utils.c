@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 01:58:29 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/10 21:23:35 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/12 01:48:26 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@ unsigned int	get_color_img(t_data *data, int x, int y)
 	return (color);
 }
 
-int	calc_bob(int dir, int color)
+int	calc_bob(int dir, int isgun)
 {
 	static int	bobh;
 	static int	bobw;
 	static int	y;
 	static int	x;
 
-	if (color == 0x24FFCF)
+	if (!isgun)
 		return (0);
 	if (!y || !x)
 	{
@@ -79,8 +79,7 @@ int	calc_bob(int dir, int color)
 	return (bobw);
 }
 
-void	put_image_remove_chroma(t_data *img, int x, \
-			int y, int isgun)
+void	put_png(t_data *img, int x, int y, int isgun)
 {
 	int	h;
 	int	w;

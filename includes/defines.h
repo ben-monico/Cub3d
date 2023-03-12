@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:59:14 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/11 15:29:48 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/11 18:03:01 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # define SCREENW				1280
 # define SCREENH				720
+# define MINIMAP_W				250
+# define MINIMAP_H				250
 # define DUB_STEP				0.05
 # define MOUSE_STEP				1.5
 # define TEX_SIZE				512
