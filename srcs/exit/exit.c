@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 21:26:04 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/11 15:28:01 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/12 19:30:26 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ static void	free_mlx(t_cub	*data)
 
 void	exit_prs(t_prs *data, int status, char *str)
 {
+	int	i;
+
 	if (status)
 		printf("Error: %s\n", str);
 	else
@@ -74,7 +76,15 @@ void	exit_prs(t_prs *data, int status, char *str)
 		if (data->file)
 			alloc().free_matrix((void **)data->file);
 		if (data->path_to_img)
-			alloc().free_matrix((void **)data->path_to_img);
+		{
+			i = -1;
+			while (++i < 4)
+				alloc().free_array((void *)data->path_to_img[++i]);
+		}
+		if (data->floor_c)
+			alloc().free_array((void *)data->floor_c);
+		if (data->color_c)
+			alloc().free_array((void *)data->color_c);
 	}
 	exit(status);
 }

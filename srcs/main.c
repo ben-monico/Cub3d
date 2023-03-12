@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:14:45 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/11 15:47:34 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/12 19:34:00 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void	screen_sprite_cmp(t_cub *cub, char **mtx)
 
 	y = -1;
 	x = -1;
-	while(mtx[y + 1][++x])
+	while (mtx[y + 1][++x])
 		;
-	while(mtx[++y])
+	while (mtx[++y])
 		;
 	if (y * 10 + 10 >= SCREENH || x * 10 + 10 >= SCREENW)
 		exit_free(cub, 1, "Screen dimensions too small for minimap.\n");

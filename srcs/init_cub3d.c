@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cub3d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 23:26:10 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/11 15:42:09 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/12 19:33:40 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	create_cube(t_cub *cub)
 	load_img(cub, cub->img.path);
 	init_screens(cub);
 	init_screen_images(cub);
-	// screen_sprite_cmp(cub, cub->map.mtx);
+	//screen_sprite_cmp(cub, cub->map.mtx);
 	cub->win = mlx_new_window(cub->mlx, SCREENW, SCREENH, "cub3d");
 	if (!cub->win)
 		exit_free(cub, 1, "Failed to init mlx.\n");

@@ -25,14 +25,16 @@ int	trim_ident(char *line, t_prs *prs, int ct)
 
 	if (!line)
 		exit_prs(prs, 1, "Identifier with no path");
+	if (ct > 4)
+		return (0);
 	trim = string().strtrim(line, " \t\v\r\n");
 	if (!trim)
 		exit_prs(prs, 1, "Allocation In parsing Failed");
 	if (string().strchr(trim, 'F') || string().strchr(trim, 'C'))
 	{
-		if (string().strchr(trim, 'F'))
+		if (!prs->floor_c && string().strchr(trim, 'F'))
 			prs->floor_c = string().strdup(trim);
-		else
+		else if (!prs->color_c && string().strchr(trim, 'C'))
 			prs->color_c = string().strdup(trim);
 		alloc().free_array(trim);
 		return (1);
@@ -46,6 +48,8 @@ int	check_identifier(char *line, t_prs *prs)
 {
 	static int	ctr;
 
+	if (ctr > 4)
+		return (0);
 	if (!string().strncmp("NO ", line, 3))
 		return (trim_ident(line + 2, prs, ctr++));
 	else if (!string().strncmp("SO ", line, 3))

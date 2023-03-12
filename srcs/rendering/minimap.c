@@ -12,7 +12,7 @@
 
 #include <cub3d.h>
 
-void put_player(t_cub *cub)
+void	put_player(t_cub *cub)
 {
 	int	x;
 	int	y;
@@ -38,6 +38,7 @@ int	get_clr(char c)
 	else
 		return (0xFFFFFF);
 }
+
 void	new_minimap(t_cub *cub, char **mtx, double iter)
 {
 	double	x;
@@ -53,7 +54,7 @@ void	new_minimap(t_cub *cub, char **mtx, double iter)
 		x = cub->player.pos_y - (MINIMAP_W / 100 * 2);
 		while (++j < MINIMAP_W)
 		{
-			if (y < 0 || x < 0 || x > string().len(mtx[(int)y], 0) ||\
+			if (y < 0 || x < 0 || x > string().len(mtx[(int)y], 0) || \
 			((mtx[(int)y][(int)x] < '0' || mtx[(int)y][(int)x] > '5')))
 			{
 				x += iter;
