@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:14:45 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/13 17:11:07 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/13 23:40:27 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,17 @@ void	init_screens(t_cub *cub)
 void	screen_sprite_cmp(t_cub *cub)
 {
 	int	x;
-	int	i;
 
 	if (MINIMAP_H >= SCREENH || MINIMAP_W >= SCREENW)
 		exit_free(cub, 1, "Screen dimensions too small for minimap.\n");
-	i = -1;
-	x = -1;
-	while (cub->sprites[++x].ptr && ++i < 2)
+	x = 0;
+	while (x < 2 && cub->sprites[x].ptr)
+	{
 		if (cub->sprites[x].width >= SCREENW || \
 		cub->sprites[x].height >= SCREENH)
 			exit_free(cub, 1, "Screen dimensions too small.\n");
+		x++;
+	}
 }
 
 void	ft_screens(int i)
