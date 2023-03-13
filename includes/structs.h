@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:55:20 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/11 15:29:23 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/13 17:03:36 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ struct	s_map
 	int		num_player;
 	int		*floor_c;
 	int		*color_c;
+	int		sz;
 };
 
 struct		s_player

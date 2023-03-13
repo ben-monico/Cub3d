@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 12:12:06 by mgranate          #+#    #+#             */
-/*   Updated: 2023/03/10 16:52:42 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/13 17:03:46 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ static int	copy_map(char **file, int i, t_cub *cub)
 
 	sz = check_map_size(file, i);
 	cub->map.mtx = alloc().calloc((sz + 1) * sizeof(char *));
+	cub->map.sz = sz;
 	if (!cub->map.mtx)
 		return (0);
 	l = 0;

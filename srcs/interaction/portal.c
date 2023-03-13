@@ -80,8 +80,10 @@ int	toggle_portal(double x, double y, char get, char set)
 	cub = cube();
 	mtx = cub->map.mtx;
 	i = 0;
-	while (++i <= 4)
+	while (++i <= 3)
 	{
+		if (x > cub->map.sz || y > string().len(mtx[(int)x], 0))
+			return (0);
 		if (mtx[(int)x][(int)y] == get)
 		{
 			find_tunnel(x, y, get, set);
@@ -95,11 +97,26 @@ int	toggle_portal(double x, double y, char get, char set)
 
 void	open_portal(t_cub *cub)
 {
+	char	**mtx;
 	double	x;
 	double	y;
 
+	if (cub->opening)
+	{
+		cub->opening = 0;
+		return ;
+	}
+	mtx = cub->map.mtx;
 	x = cub->player.pos_x + cub->player.dir_y * DUB_STEP * 10;
 	y = cub->player.pos_y + cub->player.dir_x * DUB_STEP * 10;
+	if (y < 0)
+		y = 0;
+	else if (y > string().len(mtx[(int)x], 0))
+		y = string().len(mtx[(int)x], 0);
+	if (x < 0)
+		x = 0;
+	else if (x > cub->map.sz)
+		x = cub->map.sz;
 	if (toggle_portal(x, y, '2', '3'))
 		return ;
 	toggle_portal(x, y, '3', '2');

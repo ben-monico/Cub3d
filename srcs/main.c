@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:14:45 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/12 19:34:00 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/13 17:11:07 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,16 @@ void	init_screens(t_cub *cub)
 	&cub->img.wall[7].endian);
 }
 
-void	screen_sprite_cmp(t_cub *cub, char **mtx)
+void	screen_sprite_cmp(t_cub *cub)
 {
 	int	x;
-	int	y;
+	int	i;
 
-	y = -1;
-	x = -1;
-	while (mtx[y + 1][++x])
-		;
-	while (mtx[++y])
-		;
-	if (y * 10 + 10 >= SCREENH || x * 10 + 10 >= SCREENW)
+	if (MINIMAP_H >= SCREENH || MINIMAP_W >= SCREENW)
 		exit_free(cub, 1, "Screen dimensions too small for minimap.\n");
+	i = -1;
 	x = -1;
-	while (cub->sprites[++x].ptr)
+	while (cub->sprites[++x].ptr && ++i < 2)
 		if (cub->sprites[x].width >= SCREENW || \
 		cub->sprites[x].height >= SCREENH)
 			exit_free(cub, 1, "Screen dimensions too small.\n");

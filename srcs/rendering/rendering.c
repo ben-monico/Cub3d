@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 17:58:25 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/12 01:48:16 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/13 17:07:20 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	render_screen(t_cub *cub)
 		ft_screens(7);
 	else
 	{
-		new_minimap(cub, cub->map.mtx, 0.015 * 2);
+		new_minimap(cub, cub->map.mtx, 0.015 * 2, 0);
 		put_png(&cub->sprites[0], \
 		SCREENW - cub->sprites[0].width - 120, \
 		SCREENH - cub->sprites[0].height, 1);

@@ -39,11 +39,10 @@ int	get_clr(char c)
 		return (0xFFFFFF);
 }
 
-void	new_minimap(t_cub *cub, char **mtx, double iter)
+void	new_minimap(t_cub *cub, char **mtx, double iter, int i)
 {
 	double	x;
 	double	y;
-	int		i;
 	int		j;
 
 	y = cub->player.pos_x - MINIMAP_H / 100 * 2;
@@ -54,7 +53,8 @@ void	new_minimap(t_cub *cub, char **mtx, double iter)
 		x = cub->player.pos_y - (MINIMAP_W / 100 * 2);
 		while (++j < MINIMAP_W)
 		{
-			if (y < 0 || x < 0 || x > string().len(mtx[(int)y], 0) || \
+			if (y < 0 || x < 0 || y > cub->map.sz || \
+			x > string().len(mtx[(int)y], 0) || \
 			((mtx[(int)y][(int)x] < '0' || mtx[(int)y][(int)x] > '5')))
 			{
 				x += iter;

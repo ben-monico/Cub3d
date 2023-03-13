@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 16:57:00 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/12 01:48:07 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/13 17:11:23 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ void			add_sprite(t_data *data, int x, int y, int color);
 void			put_image_to_window(t_data *img, char *file, int x, int y);
 void			put_png(t_data *img, int offsetW, int offsetH, int chroma_max);
 unsigned int	get_color_img(t_data *data, int x, int y);
-void			new_minimap(t_cub *cub, char **mtx, double iter);
+void			new_minimap(t_cub *cub, char **mtx, double iter, int i);
 
 // Cube Utils
 t_cub			*cube(void);
 void			ft_screens(int i);
 void			init_screens(t_cub *cub);
-void			screen_sprite_cmp(t_cub *cub, char **mtx);
+void			screen_sprite_cmp(t_cub *cub);
 void			load_img(t_cub *data, char **path);
 void			create_cube(t_cub *cub);
 int				press_key(int key, t_cub *cub);
