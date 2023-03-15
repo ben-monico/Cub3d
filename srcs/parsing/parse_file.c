@@ -51,13 +51,13 @@ int	check_identifier(char *line, t_prs *prs)
 	if (ctr > 4)
 		return (0);
 	if (!string().strncmp("NO ", line, 3))
-		return (trim_ident(line + 2, prs, ctr++));
+		return (trim_ident(line + 2, prs, 0));
 	else if (!string().strncmp("SO ", line, 3))
-		return (trim_ident(line + 2, prs, ctr++));
+		return (trim_ident(line + 2, prs, 1));
 	else if (!string().strncmp("WE ", line, 3))
-		return (trim_ident(line + 2, prs, ctr++));
+		return (trim_ident(line + 2, prs, 2));
 	else if (!string().strncmp("EA ", line, 3))
-		return (trim_ident(line + 2, prs, ctr++));
+		return (trim_ident(line + 2, prs, 3));
 	else if (!string().strncmp("F ", line, 1)
 		|| !string().strncmp("C ", line, 1))
 		return (trim_ident(line, prs, ctr));

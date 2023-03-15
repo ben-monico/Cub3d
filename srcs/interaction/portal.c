@@ -35,6 +35,12 @@ int	portal_teleport(t_cub *cub, char **mtx, double x, double y)
 	if (floor(y) == floor(cub->player.pos_y) \
 		&& floor(x) == floor(cub->player.pos_x))
 		return (0);
+	if (mtx[(int)x + 1][(int)(y)] == '3' || mtx[(int)x + 1][(int)(y)] == '0' || \
+		mtx[(int)x - 1][(int)(y)] == '3' || mtx[(int)x - 1][(int)(y)] == '0')
+	{
+		check_portal_x(cub, mtx, x, y);
+		return (1);
+	}
 	if (floor(y) > floor(cub->player.pos_y))
 	{
 		while (mtx[(int)x][(int)(y + 1)] == '3')
@@ -49,7 +55,6 @@ int	portal_teleport(t_cub *cub, char **mtx, double x, double y)
 		cub->player.pos_y = floor(y) - 0.2;
 		cub->player.pos_x = floor(x) + 0.5;
 	}
-	check_portal_x(cub, mtx, x, y);
 	return (1);
 }
 
