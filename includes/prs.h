@@ -22,7 +22,6 @@ typedef struct s_prs	t_prs;
 struct s_prs
 {
 	char	**file;
-	char	**path_to_img;
 	char	*floor_c;
 	char	*color_c;
 };

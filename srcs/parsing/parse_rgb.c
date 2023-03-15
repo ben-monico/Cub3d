@@ -12,19 +12,6 @@
 
 #include <prs.h>
 
-void	parse_image(t_prs *prs, int i)
-{
-	if (!prs->path_to_img[i])
-		exit_prs(prs, 1, "Map Not Formated Correctly");
-	if (string().strchr(prs->path_to_img[i], 'N'))
-		cube()->img.path[0] = string().strdup(prs->path_to_img[i]);
-	if (string().strchr(prs->path_to_img[i], 'S'))
-		cube()->img.path[1] = string().strdup(prs->path_to_img[i]);
-	if (string().strchr(prs->path_to_img[i], 'W'))
-		cube()->img.path[2] = string().strdup(prs->path_to_img[i]);
-	if (string().strchr(prs->path_to_img[i], 'E'))
-		cube()->img.path[3] = string().strdup(prs->path_to_img[i]);
-}
 
 int	rgb_util(char *clr, t_prs *prs)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:22:03 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/10 16:52:42 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/13 23:52:04 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	clean_parsing(t_prs *data)
 {
 	if (data->file)
 		alloc().free_matrix((void **)data->file);
-	if (data->path_to_img)
-		alloc().free_matrix((void **)data->path_to_img);
 	if (data->floor_c)
 		alloc().free_array((void *)data->floor_c);
 	if (data->color_c)

@@ -35,7 +35,7 @@ CC			=	cc
 
 OPTFLAGS	=	-O3 -march=native -ffast-math -funsafe-math-optimizations -ffinite-math-only -o -o1 -o2
 
-CFLAGS		=	-Wall -Wextra -Werror -g -fsanitize=leak
+CFLAGS		=	-Wall -Wextra -Werror -g #-fsanitize=leak
 
 RM			=	rm -rf
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:14:45 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/13 17:11:07 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/13 23:12:23 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,12 @@ void	screen_sprite_cmp(t_cub *cub)
 	i = -1;
 	x = -1;
 	while (cub->sprites[++x].ptr && ++i < 2)
+	{
 		if (cub->sprites[x].width >= SCREENW || \
 		cub->sprites[x].height >= SCREENH)
 			exit_free(cub, 1, "Screen dimensions too small.\n");
+		
+	}
 }
 
 void	ft_screens(int i)

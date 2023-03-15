@@ -6,7 +6,7 @@
 /*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 21:26:04 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/12 19:30:26 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/13 23:34:08 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,32 +65,23 @@ static void	free_mlx(t_cub	*data)
 
 void	exit_prs(t_prs *data, int status, char *str)
 {
-	int	i;
-
-	if (status)
-		printf("Error: %s\n", str);
-	else
-		printf("%s\n", str);
 	if (data)
 	{
 		if (data->file)
 			alloc().free_matrix((void **)data->file);
-		if (data->path_to_img)
-		{
-			i = -1;
-			while (++i < 4)
-				alloc().free_array((void *)data->path_to_img[++i]);
-		}
 		if (data->floor_c)
 			alloc().free_array((void *)data->floor_c);
 		if (data->color_c)
 			alloc().free_array((void *)data->color_c);
 	}
-	exit(status);
+	exit_free(cube(), status, str);
 }
 
 void	exit_free(t_cub *data, int status, char *str)
 {
+	int	i;
+
+	i = -1;
 	if (status)
 		printf("Error: %s\n", str);
 	else
@@ -105,6 +96,13 @@ void	exit_free(t_cub *data, int status, char *str)
 		free_mlx(data);
 	}
 	if (data->img.path)
-		alloc().free_matrix((void **) data->img.path);
+	{
+		while (++i < 4)
+		{
+			if (data->img.path[i])
+				alloc().free_array((void *) data->img.path[i]);
+		}
+		free(data->img.path);
+	}
 	exit(status);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cub3d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 23:26:10 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/13 17:17:50 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/13 23:52:23 by mgranate_ls      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ void	create_cube(t_cub *cub)
 	load_img(cub, cub->img.path);
 	init_screens(cub);
 	init_screen_images(cub);
-	screen_sprite_cmp(cub);
+	//screen_sprite_cmp(cub);
 	cub->win = mlx_new_window(cub->mlx, SCREENW, SCREENH, "cub3d");
 	if (!cub->win)
 		exit_free(cub, 1, "Failed to init mlx.\n");
-	mlx_mouse_hide(cub->mlx, cub->win);
+	//mlx_mouse_hide(cub->mlx, cub->win);
 	init_player_vars(cub);
 	raycasting(cub);
 	mlx_hook(cub->win, X_ON_MOUSEMOVE, 1L << 6, mouse_move, cub);
@@ -47,7 +47,7 @@ void	load_img(t_cub *data, char **path)
 		data->img.wall[i].ptr = mlx_xpm_file_to_image(data->mlx, \
 		path[i], &data->img.wall[i].width, &data->img.wall[i].height);
 		if (!data->img.wall[i].ptr)
-			exit_free(data, 1, "Fail loading images.");
+			exit_free(data, 1, "Fail loading images");
 		data->img.wall[i].addr = mlx_get_data_addr(data->img.wall[i].ptr, \
 		&data->img.wall[i].bpp, &data->img.wall[i].size_line, \
 		&data->img.wall[i].endian);
