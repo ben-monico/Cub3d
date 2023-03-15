@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include <prs.h>
+#include <unistd.h>
+#include <fcntl.h>
 
 t_prs	*parsing(void)
 {
@@ -105,8 +107,12 @@ void	prs_file(t_prs *prs)
 		exit_prs(prs, 1, "Map Not Formated Correctly");
 	i = -1;
 	while (++i < 4)
+	{
 		if (!cube()->img.path[i])
 			exit_prs(prs, 1, "Missing a Texture on the wall!");
+		if (open(cube()->img.path[i], O_RDONLY) == -1)
+			exit_prs(prs, 1, "Texture File does not exist!");
+	}
 	if (!prs->floor_c || !prs->color_c)
 		exit_prs(prs, 1, "Missing Floor or Celling Color!");
 	f = get_colors(prs->floor_c + 1, prs);

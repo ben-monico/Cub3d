@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 21:26:04 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/13 23:34:08 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/15 19:40:49 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,29 +22,25 @@ static void	free_imgs(t_cub *data)
 {
 	int	i;
 
-	if (data->img.wall[0].ptr)
-	{	
-		i = -1;
-		while (++i < 8 && data->img.wall[i].ptr)
-		{
+	i = 0;
+	while (i < 8)
+	{
+		if (data->img.wall[i].ptr)
 			mlx_destroy_image(data->mlx, data->img.wall[i].ptr);
-			data->img.wall[i].ptr = 0;
-		}
+		data->img.wall[i].ptr = 0;
+		i++;
 	}
-	if (data->sprites[0].ptr)
-	{	
-		i = -1;
-		while (++i < 2 && data->sprites[i].ptr)
-		{
+	i = 0;
+	while (i < 2)
+	{
+		if (data->sprites[i].ptr)
 			mlx_destroy_image(data->mlx, data->sprites[i].ptr);
-			data->sprites[i].ptr = 0;
-		}
+		data->sprites[i].ptr = 0;
+		i++;
 	}
 	if (data->screen.ptr)
-	{
 		mlx_destroy_image(data->mlx, data->screen.ptr);
-		data->screen.ptr = 0;
-	}
+	data->screen.ptr = 0;
 }
 
 static void	free_mlx(t_cub	*data)
@@ -54,7 +50,7 @@ static void	free_mlx(t_cub	*data)
 	{
 		mlx_destroy_display(data->mlx);
 		mlx_destroy_window(data->mlx, data->win);
-		data->win = 0;
+		data->win = NULL;
 	}
 	if (data->mlx)
 	{
@@ -86,23 +82,18 @@ void	exit_free(t_cub *data, int status, char *str)
 		printf("Error: %s\n", str);
 	else
 		printf("%s\n", str);
-	if (data)
+	if (data->map.mtx)
 	{
-		if (data->map.mtx)
-		{
-			alloc().free_matrix((void **)data->map.mtx);
-			data->map.mtx = 0;
-		}
-		free_mlx(data);
+		alloc().free_matrix((void **)data->map.mtx);
+		data->map.mtx = 0;
 	}
 	if (data->img.path)
 	{
 		while (++i < 4)
-		{
 			if (data->img.path[i])
 				alloc().free_array((void *) data->img.path[i]);
-		}
 		free(data->img.path);
 	}
+	free_mlx(data);
 	exit(status);
 }
