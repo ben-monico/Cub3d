@@ -1,7 +1,7 @@
 NO ./img/N.xpm
 SO ./img/S.xpm
-WE ./img/N.xpm
-EA ./img/N.xpm    
+WE ./img/E.xpm
+EA ./img/W.xpm    
 
 F     74,41,41
 C     231,236,249

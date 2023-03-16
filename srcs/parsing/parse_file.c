@@ -101,6 +101,7 @@ void	prs_file(t_prs *prs)
 	int	i;
 	int	c;
 	int	f;
+	int	fd;
 
 	i = get_path_img(prs);
 	if (!get_map(prs->file + i, cube()))
@@ -110,8 +111,11 @@ void	prs_file(t_prs *prs)
 	{
 		if (!cube()->img.path[i])
 			exit_prs(prs, 1, "Missing a Texture on the wall!");
-		if (open(cube()->img.path[i], O_RDONLY) == -1)
+		fd = open(cube()->img.path[i], O_RDONLY);
+		if (fd == -1 && close(fd))
 			exit_prs(prs, 1, "Texture File does not exist!");
+		else
+			close(fd);
 	}
 	if (!prs->floor_c || !prs->color_c)
 		exit_prs(prs, 1, "Missing Floor or Celling Color!");

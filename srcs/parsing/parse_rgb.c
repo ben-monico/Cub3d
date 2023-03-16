@@ -12,7 +12,6 @@
 
 #include <prs.h>
 
-
 int	rgb_util(char *clr, t_prs *prs)
 {
 	int	n;
