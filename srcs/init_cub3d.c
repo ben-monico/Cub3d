@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 23:26:10 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/16 16:57:13 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/16 17:51:41 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	create_cube(t_cub *cub)
 	if (!cub->win)
 		exit_free(cub, 1, "Failed to init mlx.\n");
 	screen_sprite_cmp(cub);
-	// mlx_mouse_hide(cub->mlx, cub->win);
+	mlx_mouse_hide(cub->mlx, cub->win);
 	init_player_vars(cub);
 	raycasting(cub);
 	mlx_hook(cub->win, X_ON_MOUSEMOVE, 1L << 6, mouse_move, cub);

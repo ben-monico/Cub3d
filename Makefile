@@ -36,7 +36,8 @@ CC			=	cc
 
 OPTFLAGS	=	-O3 -march=native -ffast-math -funsafe-math-optimizations -ffinite-math-only -o -o1 -o2
 
-CFLAGS		=	-Wall -Wextra -Werror -g #-fsanitize=leak
+CFLAGS		=	-Wall -Wextra -Werror -g \
+				# -fsanitize=leak
 
 RM			=	rm -rf
 
@@ -69,12 +70,14 @@ $(MLX):
 clean:
 		$(RM) $(OBJS_DIR)
 		make clean -C $(MLX_DIR)
+		rm -f vg_out/*
+		rm -f valgrind-out.txt
 
 fclean:		clean
 		$(RM) $(NAME)
 
 valgrind:	re
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes --log-file=valgrind-out.txt ./cub3d maps/firstmap.cub 
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes --log-file=valgrind-out.txt ./cub3d maps/itsamemario.cub 
 
 re:			fclean all
 

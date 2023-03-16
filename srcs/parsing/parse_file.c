@@ -112,7 +112,7 @@ void	prs_file(t_prs *prs)
 		if (!cube()->img.path[i])
 			exit_prs(prs, 1, "Missing a Texture on the wall!");
 		fd = open(cube()->img.path[i], O_RDONLY);
-		if (fd == -1 && close(fd))
+		if (fd == -1)
 			exit_prs(prs, 1, "Texture File does not exist!");
 		else
 			close(fd);
