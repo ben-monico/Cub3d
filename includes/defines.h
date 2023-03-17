@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgranate_ls <mgranate_ls@student.42.fr>    +#+  +:+       +#+        */
+/*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:59:14 by bcarreir          #+#    #+#             */
-/*   Updated: 2023/03/15 18:51:50 by mgranate_ls      ###   ########.fr       */
+/*   Updated: 2023/03/17 16:28:38 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define MINIMAP_W				250
 # define MINIMAP_H				250
 # define DUB_STEP				0.05
-# define MOUSE_STEP				3.5
+# define MOUSE_STEP				4.5
 # define TEX_SIZE				512
 
 # define X_EVENT_KEY_PRESS		2

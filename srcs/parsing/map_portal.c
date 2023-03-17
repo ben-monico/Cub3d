@@ -6,7 +6,7 @@
 /*   By: bcarreir <bcarreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 18:44:01 by mgranate_ls       #+#    #+#             */
-/*   Updated: 2023/03/10 17:04:51 by bcarreir         ###   ########.fr       */
+/*   Updated: 2023/03/17 14:38:14 by bcarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,18 @@ int	checker_zero(char **map, int y, int x)
 
 void	check_portal(char **map, int x, int y)
 {
+	if (map[y][x - 1] == '0' && map[y][x + 1] == '0' &&
+		(map[y + 1][x] == '0' || map[y - 1][x] == '0'))
+	{
+		printf("Line: %d Column: %d => '%c'\n", y, x, map[y][x]);
+		exit_free(cube(), 1, "Invalid Use of Portal");
+	}
+	if (map[y + 1][x] == '0' && map[y - 1][x] == '0' &&
+		(map[y][x + 1] == '0' || map[y][x - 1] == '0'))
+	{
+		printf("Line: %d Column: %d => '%c'\n", y, x, map[y][x]);
+		exit_free(cube(), 1, "Invalid Use of Portal");
+	}
 	if (((map[y][x - 1] == '1' || map[y][x - 1] == '5') \
 		&& (map[y][x + 1] == '0' || map[y][x + 1] == '2')) \
 		|| ((map[y][x - 1] == '0' || map[y][x - 1] == '2') \

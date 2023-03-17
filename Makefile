@@ -37,7 +37,7 @@ CC			=	cc
 OPTFLAGS	=	-O3 -march=native -ffast-math -funsafe-math-optimizations -ffinite-math-only -o -o1 -o2
 
 CFLAGS		=	-Wall -Wextra -Werror -g \
-				# -fsanitize=leak
+				-fsanitize=leak
 
 RM			=	rm -rf
 
@@ -77,7 +77,7 @@ fclean:		clean
 		$(RM) $(NAME)
 
 valgrind:	re
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes --log-file=valgrind-out.txt ./cub3d maps/itsamemario.cub 
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes --log-file=valgrind-out.txt ./cub3d maps/line.cub 
 
 re:			fclean all
 
